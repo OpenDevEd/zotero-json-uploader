@@ -1,0 +1,1 @@
+.results| [.[]| { key: .id, value: .referenced_works}] | from_entries
