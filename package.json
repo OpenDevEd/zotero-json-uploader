@@ -1,0 +1,22 @@
+{
+  "name": "zotero-json-uploader",
+  "version": "1.0.0",
+  "description": "zotero-json-uploader",
+  "main": "src/index.js",
+  "bin": {
+    "zotero-json-upload": "src/index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OpenDevEd/zotero-json-uploader.git"
+  },
+  "author": "",
+  "license": "",
+  "bugs": {
+    "url": "https://github.com/OpenDevEd/zotero-json-uploader/issues"
+  },
+  "homepage": "https://github.com/OpenDevEd/zotero-json-uploader#readme"
+}
