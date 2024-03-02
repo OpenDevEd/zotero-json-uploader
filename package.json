@@ -18,5 +18,10 @@
   "bugs": {
     "url": "https://github.com/OpenDevEd/zotero-json-uploader/issues"
   },
-  "homepage": "https://github.com/OpenDevEd/zotero-json-uploader#readme"
+  "homepage": "https://github.com/OpenDevEd/zotero-json-uploader#readme",
+  "dependencies": {
+    "node-jq": "^4.3.0",
+    "openalex-sdk": "^1.1.1",
+    "zotero-lib": "^1.0.95"
+  }
 }
