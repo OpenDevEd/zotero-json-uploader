@@ -1,9 +1,11 @@
 # Map types from openalex to zotero
 def typeMap: if . == "article" then "journalArticle" else "report" end;
 #
-def openalexCode: ("openalex:"+(. | split("/")[-1]));
+def openalexCode: if ((.!=null) and (. | split("/")[-1]) != "") then ("openalex: "+(. | split("/")[-1])+"\n") else "" end;
+def magCode: if ((. != "") and (. != null)) then ("mag: "+(.)) else "" end;
 # Determine whether the doi should be put into the Zotero extra field
-def showDOIInExtra: if (.type != "article" and .doi != "") then ("DOI: " + .doi + "\n") else "" end;
+def showDOIInExtra: if ((.type != "article") and (.doi != "") and (.doi != null)) then ("DOI: "+ .doi + "\n") else "" end;
+def doilean: if (.!="" and . != null) then (.|sub("https://doi.org/";"")) else "" end;
 # Turn abstract_inverted_index into abstract:
 def absInvert: [[ . | to_entries | .[] | { key: .key, value: .value | .[] } ] | sort_by(.value) | .[] | .key] | join(" ");
 
@@ -32,9 +34,11 @@ def absInvert: [[ . | to_entries | .[] | { key: .key, value: .value | .[] } ] | 
   # "callNumber": (. | tostring),
   "callNumber": (.ids.openalex | openalexCode),
   "rights": "",
-  "extra": (({doi: .doi, type: .type} | showDOIInExtra)+(.ids.openalex|openalexCode)+"\nmag:"+(.ids.mag//"")+"\n"),
-  "tags": [],
-  "collections": [],
+  "extra": (({doi: (.doi|doilean), type: .type} | showDOIInExtra)+(.ids.openalex|openalexCode)+(.ids.mag|magCode)+"\n"),
+  "tags": [{
+      "tag": "openalex:import"
+    }],
+  "collections": ["DUMMY_IMPORT_COLLECTION"],
   "relations": {}
 } 
 # Zotero has fields that are only valid for certain types. Handle those specific fields.
@@ -48,7 +52,7 @@ def absInvert: [[ . | to_entries | .[] | { key: .key, value: .value | .[] } ] | 
   "series": "",
   "seriesTitle": "",
   "journalAbbreviation": "",
-  "DOI": (.doi // ""),
+  "DOI": ((.doi|doilean) // ""),
   "ISSN": (.primary_location.source.issn_l // "")
 } else 
 # Extra fields for Zotero-type report:
