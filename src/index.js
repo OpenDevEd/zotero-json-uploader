@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 const Zotero = require('zotero-lib');
 const jq = require('node-jq');
 // const OpenAlex = require('openalex-sdk');
@@ -10,7 +11,7 @@ const filterfile = argv[1];
 const files = process.argv.slice(4);
 // load filterfile as json
 const filter = fs.readFileSync(filterfile, 'utf8')
-    .replace(/DUMMY_IMPORT_COLLECTION/g, 'S9BQCLJR');
+    .replace(/DUMMY_IMPORT_COLLECTION/g, 'T5K5SYSW');
 
 //    .replace(/\"DUMMY_IMPORT_COLLECTION\"/g, '');
 // console.log(filter);
