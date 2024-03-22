@@ -22,6 +22,7 @@
   "dependencies": {
     "node-jq": "^4.3.0",
     "openalex-sdk": "^1.1.1",
+    "yargs": "^17.7.2",
     "zotero-lib": "^1.0.95"
   }
 }

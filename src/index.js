@@ -3,12 +3,79 @@ const Zotero = require('zotero-lib');
 const jq = require('node-jq');
 // const OpenAlex = require('openalex-sdk');
 const fs = require('fs');
+const yargs = require('yargs');
+const path = require('path');
+const defaultJQPath = path.join(__dirname, '../jq/openalex-to-zotero.jq');
 
-// Parse command line arguments
-const argv = process.argv.slice(2);
-const group = argv[0];
-const filterfile = argv[1];
-const files = process.argv.slice(4);
+const argv = yargs
+    .option('group', {
+        alias: 'g',
+        describe: 'zotero://-style link to a group (mandatory argument)',
+        type: 'string',
+        demandOption: true,
+    })
+    .option('jq', {
+        alias: 'j',
+        describe: 'A mandatory string argument',
+        type: 'string',
+        default: defaultJQPath, // Sets the default value
+    })
+    .command('$0 [files...]', 'Example script', (yargs) => {
+        yargs.positional('files', {
+            describe: 'One or more files',
+            type: 'string',
+            array: true,
+        });
+    })
+    .help()
+    .alias('help', 'h')
+    .argv;
+
+// Example of accessing the arguments
+console.log(`Group/collection: ${argv.group}`);
+console.log(`JQ: ${argv.jq}`);
+if (argv.files) {
+    console.log(`Files: ${argv.files.join(', ')}`);
+} else {
+    console.log('No files provided');
+    process.exit(1);
+}
+
+if (!fs.existsSync(argv.jq)) {
+    console.log('JQ file not found');
+    process.exit(1);
+}
+
+// function to get ids from zotero://-style link
+function getids(newlocation) {
+    const res = newlocation.match(
+        /^zotero\:\/\/select\/groups\/(library|\d+)\/(items|collections)\/([A-Z01-9]+)/
+    );
+    let x = {};
+    if (res) {
+        x.key = res[3];
+        x.type = res[2];
+        x.group = res[1];
+    } else {
+        x.key = newlocation;
+    }
+    return x;
+}
+
+const x = getids(argv.group);
+if (!x.key) {
+    console.log('Require: --group -> zotero://-style link to a group (mandatory argument)');
+    process.exit(1);
+};
+if (!x.group) {
+    console.log('Require: --group -> zotero://-style link to a group (mandatory argument)');
+    process.exit(1);
+};
+const key = x.key;
+const group = x.group;
+const filterfile = argv.jq;
+const files = argv.files;
+
 // load filterfile as json
 const filter = fs.readFileSync(filterfile, 'utf8')
     .replace(/DUMMY_IMPORT_COLLECTION/g, 'T5K5SYSW');
