@@ -60,6 +60,19 @@ const argv = yargs
         describe: 'Provide your own jq file',
         type: 'string',
     })
+    .option('openalex', {
+        alias: 'o',
+        describe: 'Wheter the input json is from openalex',
+        type: 'boolean',
+        default: false,
+    })
+    .option('scholarly', {
+        alias: 's',
+        describe: 'Wheter the input json is from scholarly',
+        type: 'boolean',
+        default: false,
+    
+    })
     .command('$0 [files...]', 'Example script', (yargs) => {
         yargs.positional('files', {
             describe: 'One or more files',
