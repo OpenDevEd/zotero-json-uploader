@@ -7,6 +7,7 @@ const yargs = require('yargs');
 const path = require('path');
 const defaultJQPath = path.join(__dirname, '../jq/openalex-to-zotero.jq');
 
+//TODO: Create middleware
 const argv = yargs
     .option('group', {
         alias: 'g',
@@ -14,11 +15,15 @@ const argv = yargs
         type: 'string',
         demandOption: true,
     })
+    .option('transform', {
+        alias: 't',
+        describe: 'Chose the transformation to apply to the data. For the option jq, you need to provide a jq file if -j',
+        choices: ['jq','openalexjq', 'openalexjs', 'scholarlyjq'] // Define the allowed values
+    })
     .option('jq', {
         alias: 'j',
-        describe: 'A mandatory string argument',
+        describe: 'Provide your own jq file',
         type: 'string',
-        default: defaultJQPath, // Sets the default value
     })
     .command('$0 [files...]', 'Example script', (yargs) => {
         yargs.positional('files', {
@@ -31,9 +36,16 @@ const argv = yargs
     .alias('help', 'h')
     .argv;
 
+
+    /*
+    -t jq -j myjqfile.jq
+    -t openalexjq
+    -t openalexjs
+    -t scholarlyjq
+    */
+//TODO: argv.zoterojs or argv.jq needs to be present. 
 // Example of accessing the arguments
 console.log(`Group/collection: ${argv.group}`);
-console.log(`JQ: ${argv.jq}`);
 if (argv.files) {
     console.log(`Files: ${argv.files.join(', ')}`);
 } else {
@@ -76,9 +88,6 @@ const group = x.group;
 const filterfile = argv.jq;
 const files = argv.files;
 
-// load filterfile as json
-const filter = fs.readFileSync(filterfile, 'utf8')
-    .replace(/DUMMY_IMPORT_COLLECTION/g, 'T5K5SYSW');
 
 //    .replace(/\"DUMMY_IMPORT_COLLECTION\"/g, '');
 // console.log(filter);
@@ -113,11 +122,39 @@ const zotero = new Zotero({ group_id: group });
  * -- Download whole library, and determine which openalex ids already exist in zotero
  */
 async function main(infile) {
-    const outf = infile + ".zotero.json";
-    const inob = JSON.parse(fs.readFileSync(infile, 'utf8'));
+    let data;
+    // handle command line arguments...
+    if (argv.transform === 'jq') {
+        data = await jqfilter(infile, argv.jq);
+    } else if (argv.transform === 'openalexjq') {
+        const filterfile = "jq/openalex-to-zotero.jq";
+        data = await jqfilter(infile, filterfile);
+    } else if (argv.transform === 'openalexjs') {
+        data = await openalexjs(infile, filterfile);
+    } else {
+        // ...
+    }
+    await upload(infile, data);
+};
+
+async function openalexjs(infile, filterfile) {
+    // TODO: Implement this
+    // uses utils/openalex-to-zotero.js
+}
+
+async function jqfilter(infile, filterfile) {
+    // load filterfile as json
+    const filter = fs.readFileSync(filterfile, 'utf8')
+        .replace(/DUMMY_IMPORT_COLLECTION/g, 'T5K5SYSW');
+    const infileObject = JSON.parse(fs.readFileSync(infile, 'utf8'));
     const data = await jq.run(filter,
-        inob,
+        infileObject,
         { input: 'json', output: 'pretty' });
+    return data;
+};
+
+async function upload(infile, data) {
+    const outf = infile + ".zotero.json";
     fs.writeFileSync(outf, data);
     const result = await zotero.create_item({ files: [outf] });
     fs.writeFileSync(infile + ".zotero-result.json", JSON.stringify(result));
@@ -126,6 +163,7 @@ async function main(infile) {
     // console.log("data: " + JSON.stringify(result, null, 4));
     const zotobject = await jq.run("[ .[] | .successful | [ to_entries[] | .value.data ] ] | flatten ", result, { input: 'json', output: 'json' });
     fs.writeFileSync(infile + ".zotero-result-filtered.json", JSON.stringify(zotobject, null, 4));
+    const inob = JSON.parse(fs.readFileSync(infile, 'utf8'));
     const openalexobject = await jq.run('.results | [ .[] | { "key": .id, "value": . } ] | from_entries', inob, { input: 'json', output: 'json' });
     fs.writeFileSync(infile + ".oa-object.json", JSON.stringify(openalexobject, null, 4));
     const tempdir = "temp";
@@ -146,6 +184,7 @@ async function main(infile) {
             console.log("did not find call number with oa key: " + s.key + " " + s.callNumber);
         };
     };
+
 };
 
 function show(obj) {
