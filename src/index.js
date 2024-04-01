@@ -8,6 +8,40 @@ const path = require('path');
 const defaultPath = path.join(__dirname);
 // const defaultJQPath = path.join(__dirname, '../jq/openalex-to-zotero.jq');
 
+/*
+* Issues:
+(1) - Collection - inspect zotero-lib: An option 'collections' should have been added to zotero.create
+* - Upload into specific collection, or with specific tag (this has been address via the filter settings above, but can be improved.)
+ zotero-lib create --help
+usage: zotero-lib create [-h] [--template TEMPLATE] [--files [FILES ...]] [--items [ITEMS ...]] [--collections [COLLECTIONS ...]] [--newcollection NEWCOLLECTION]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --template TEMPLATE   Retrieve a template for the item you wish to create. You can retrieve the template types using the main argument 'types'.
+  --files [FILES ...]   Text files with JSON for the items to be created.
+  --items [ITEMS ...]   JSON string(s) for the item(s) to be created.
+  --collections [COLLECTIONS ...]
+                        The key of the collection in which the new item is created. You can provide the key as zotero-select link (zotero://...) to also set the group-id.
+  --newcollection NEWCOLLECTION
+                        The title of the new collection in which the new item is created.
+
+Test this issue and develop a test in the repo.
+
+(2) Implemnent zoterojs
+
+(3) 
+- Support json from scholarcy
+ 
+(4) 
+ * - Proper cli (middleware)
+ * - Proper error handling
+ 
+Issues:
+ * - What happens if the zotero upload fails (or fails partially)?
+ * - What happens if the file attachment fails?
+ * 
+ */
+
 //TODO: Create middleware
 const argv = yargs
     .option('group', {
@@ -70,17 +104,17 @@ function getids(newlocation) {
     return x;
 }
 
-const x = getids(argv.group);
-if (!x.key) {
+const groupCollection = getids(argv.group);
+if (!groupCollection.key) {
     console.log('Require: --group -> zotero://-style link to a group (mandatory argument)');
     process.exit(1);
 };
-if (!x.group) {
+if (!groupCollection.group) {
     console.log('Require: --group -> zotero://-style link to a group (mandatory argument)');
     process.exit(1);
 };
-const key = x.key;
-const group = x.group;
+const collectionKey = groupCollection.key;
+const group = groupCollection.group;
 const filterfile = argv.jq;
 const files = argv.files;
 
@@ -105,17 +139,6 @@ const zotero = new Zotero({ group_id: group });
  * Upload the zotero json to zotero;
  * Attached the original json to the zotero item.
  * 
- * Issues:
- * - What happens if the zotero upload fails (or fails partially)?
- * - What happens if the file attachment fails?
- * 
- * Improvements:
- * - Proper cli
- * - Upload into specific collection, or with specific tag (this has been address via the filter settings above, but can be improved.)
- * - Proper error handling
- * - Support json from scholarcy
- * - Implmement checking for duplicates:
- * -- Download whole library, and determine which openalex ids already exist in zotero
  */
 async function main(infile) {
     let data;
@@ -157,8 +180,8 @@ async function jqfilter(infile, filterfile) {
 async function upload(infile, data) {
     const outf = infile + ".zotero.json";
     fs.writeFileSync(outf, data);
-    // TODO: This needs a collection, x.key, and zotero object
-    const result = await zotero.create_item({ files: [outf] });
+    // TODO: This needs a collection, collectionKey, and zotero object
+    const result = await zotero.create_item({ files: [outf], collections: [collectionKey] });
     fs.writeFileSync(infile + ".zotero-result.json", JSON.stringify(result));
     // if the code below fails, you can resume from here:
     // const result = JSON.parse(fs.readFileSync(infile + ".zotero-result.json", 'utf8'));
