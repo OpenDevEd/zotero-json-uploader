@@ -5,7 +5,8 @@ const jq = require('node-jq');
 const fs = require('fs');
 const yargs = require('yargs');
 const path = require('path');
-const defaultJQPath = path.join(__dirname, '../jq/openalex-to-zotero.jq');
+const defaultPath = path.join(__dirname);
+// const defaultJQPath = path.join(__dirname, '../jq/openalex-to-zotero.jq');
 
 //TODO: Create middleware
 const argv = yargs
@@ -50,11 +51,6 @@ if (argv.files) {
     console.log(`Files: ${argv.files.join(', ')}`);
 } else {
     console.log('No files provided');
-    process.exit(1);
-}
-
-if (!fs.existsSync(argv.jq)) {
-    console.log('JQ file not found');
     process.exit(1);
 }
 
@@ -127,7 +123,12 @@ async function main(infile) {
     if (argv.transform === 'jq') {
         data = await jqfilter(infile, argv.jq);
     } else if (argv.transform === 'openalexjq') {
-        const filterfile = "jq/openalex-to-zotero.jq";
+        const filterfile = defaultPath+"/../jq/openalex-to-zotero.jq";
+        // check if file exists
+        if (!fs.existsSync(filterfile)) {
+            console.log(`JQ file not found: ${filterfile}`);
+            process.exit(1);
+        }
         data = await jqfilter(infile, filterfile);
     } else if (argv.transform === 'openalexjs') {
         data = await openalexjs(infile, filterfile);
@@ -144,6 +145,7 @@ async function openalexjs(infile, filterfile) {
 
 async function jqfilter(infile, filterfile) {
     // load filterfile as json
+    // check that filterfile exists
     const filter = fs.readFileSync(filterfile, 'utf8');
     const infileObject = JSON.parse(fs.readFileSync(infile, 'utf8'));
     const data = await jq.run(filter,
