@@ -38,7 +38,7 @@ def absInvert: [[ . | to_entries | .[] | { key: .key, value: .value | .[] } ] | 
   "tags": [{
       "tag": "openalex:import"
     }],
-  "collections": ["DUMMY_IMPORT_COLLECTION"],
+  "collections": [],
   "relations": {}
 } 
 # Zotero has fields that are only valid for certain types. Handle those specific fields.

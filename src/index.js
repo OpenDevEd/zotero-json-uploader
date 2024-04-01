@@ -144,8 +144,7 @@ async function openalexjs(infile, filterfile) {
 
 async function jqfilter(infile, filterfile) {
     // load filterfile as json
-    const filter = fs.readFileSync(filterfile, 'utf8')
-        .replace(/DUMMY_IMPORT_COLLECTION/g, 'T5K5SYSW');
+    const filter = fs.readFileSync(filterfile, 'utf8');
     const infileObject = JSON.parse(fs.readFileSync(infile, 'utf8'));
     const data = await jq.run(filter,
         infileObject,
@@ -156,6 +155,7 @@ async function jqfilter(infile, filterfile) {
 async function upload(infile, data) {
     const outf = infile + ".zotero.json";
     fs.writeFileSync(outf, data);
+    // TODO: This needs a collection, x.key, and zotero object
     const result = await zotero.create_item({ files: [outf] });
     fs.writeFileSync(infile + ".zotero-result.json", JSON.stringify(result));
     // if the code below fails, you can resume from here:
