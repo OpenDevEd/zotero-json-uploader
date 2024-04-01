@@ -69,6 +69,49 @@ const argv = yargs
     })
     .help()
     .alias('help', 'h')
+    .middleware((args) => {
+        if (!args.transform) {
+            console.log('Transformation option is missing');
+            process.exit(1);
+        }
+
+        if (args.transform === 'jq' && !args.jq) {
+            console.log('JQ option is missing');
+            process.exit(1);
+        }
+
+        const transformOptions = ['jq', 'openalexjq', 'openalexjs', 'scholarlyjq'];
+        if (!transformOptions.includes(args.transform)) {
+            console.log('Transformation option is not one of the options');
+            process.exit(1);
+        }
+
+        if (args.jq) {
+            if (!fs.existsSync(args.jq)) {
+                console.log('JQ file not found');
+                process.exit(1);
+            }
+            // if (!fs.accessSync(args.jq, fs.constants.R_OK)) {
+            //     console.log('No access to JQ file');
+            //     process.exit(1);
+            // }
+        }
+        if (args.files) {
+            for (file of args.files) {
+                if (!fs.existsSync(file)) {
+                    console.log('File not found: ' + file);
+                    process.exit(1);
+                }
+                // if (!fs.accessSync(file, fs.constants.R_OK)) {
+                //     console.log('No access to file: ' + file);
+                //     process.exit(1);
+                // }
+            }
+        } else {
+            console.log('No files provided');
+            process.exit(1);
+        }
+    })
     .argv;
 
 
