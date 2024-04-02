@@ -5,7 +5,7 @@ const jq = require('node-jq');
 const fs = require('fs');
 const yargs = require('yargs');
 const path = require('path');
-const defaultPath = path.join(__dirname);
+const defaultPath = path.join(__dirname, '..');
 // const defaultJQPath = path.join(__dirname, '../jq/openalex-to-zotero.jq');
 
 /*
@@ -53,7 +53,7 @@ const argv = yargs
     .option('transform', {
         alias: 't',
         describe: 'Chose the transformation to apply to the data. For the option jq, you need to provide a jq file if -j',
-        choices: ['jq','openalexjq', 'openalexjs', 'scholarlyjq'] // Define the allowed values
+        choices: ['jq','openalexjq', 'openalexjs', 'scholarlyjq', 'openalexjq-sdgs'] // Define the allowed values
     })
     .option('jq', {
         alias: 'j',
@@ -80,7 +80,7 @@ const argv = yargs
             process.exit(1);
         }
 
-        const transformOptions = ['jq', 'openalexjq', 'openalexjs', 'scholarlyjq'];
+        const transformOptions = ['jq', 'openalexjq', 'openalexjs', 'scholarlyjq', 'openalexjq-sdgs'];
         if (!transformOptions.includes(args.transform)) {
             console.log('Transformation option is not one of the options');
             process.exit(1);
@@ -189,7 +189,15 @@ async function main(infile) {
     if (argv.transform === 'jq') {
         data = await jqfilter(infile, argv.jq);
     } else if (argv.transform === 'openalexjq') {
-        const filterfile = defaultPath+"/../jq/openalex-to-zotero.jq";
+        const filterfile = defaultPath+"/jq/openalex-to-zotero.jq";
+        // check if file exists
+        if (!fs.existsSync(filterfile)) {
+            console.log(`JQ file not found: ${filterfile}`);
+            process.exit(1);
+        }
+        data = await jqfilter(infile, filterfile);
+    } else if (argv.transform === 'openalexjq-sdgs') {
+        const filterfile = defaultPath + '/jq/openalex-to-zotero-sdgs.jq';
         // check if file exists
         if (!fs.existsSync(filterfile)) {
             console.log(`JQ file not found: ${filterfile}`);
