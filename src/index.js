@@ -240,8 +240,14 @@ async function upload(infile, data) {
     const zotobject = await jq.run("[ .[] | .successful | [ to_entries[] | .value.data ] ] | flatten ", result, { input: 'json', output: 'json' });
     fs.writeFileSync(infile + ".zotero-result-filtered.json", JSON.stringify(zotobject, null, 4));
     const inob = JSON.parse(fs.readFileSync(infile, 'utf8'));
-    const openalexobject = await jq.run('.results | [ .[] | { "key": .id, "value": . } ] | from_entries', inob, { input: 'json', output: 'json' });
-    fs.writeFileSync(infile + ".oa-object.json", JSON.stringify(openalexobject, null, 4));
+    let openalexobject;
+    if (argv.transform === 'openalexjq') {
+        openalexobject = await jq.run('.results | [ .[] | { "key": .id, "value": . } ] | from_entries', inob, { input: 'json', output: 'json' });
+        fs.writeFileSync(infile + ".oa-object.json", JSON.stringify(openalexobject, null, 4));
+    } else if (argv.transform === 'openalexjq-sdgs') {
+        openalexobject = await jq.run('[ .[] | { "key": .id, "value": . } ] | from_entries', inob, { input: 'json', output: 'json' });
+        fs.writeFileSync(infile + ".oa-object.json", JSON.stringify(openalexobject, null, 4));
+    }
     const tempdir = "temp";
     if (!fs.existsSync(tempdir)) {
         fs.mkdirSync(tempdir);
