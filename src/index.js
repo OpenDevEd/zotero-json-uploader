@@ -212,9 +212,16 @@ async function main(infile) {
     await upload(infile, data);
 };
 
+const openalexToZotero = require('./utils/openalex-to-zotero');
+
 async function openalexjs(infile, filterfile) {
     // TODO: Implement this
     // uses utils/openalex-to-zotero.js
+    const json = fs.readFileSync(infile, 'utf8');
+    let data = openalexToZotero(json, true);
+    console.log(data);
+    fs.writeFileSync("tesst.json", data);
+    process.exit(1);
 }
 
 async function jqfilter(infile, filterfile) {
@@ -225,6 +232,8 @@ async function jqfilter(infile, filterfile) {
     const data = await jq.run(filter,
         infileObject,
         { input: 'json', output: 'pretty' });
+    console.log(data);
+    process.exit(1);
     return data;
 };
 
