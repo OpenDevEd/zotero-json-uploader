@@ -7,20 +7,20 @@ var PDFversionMap = {
 /* eslint-disable camelcase*/
 var mappingTypes = {
 	article: "journalArticle",
-	book: "book",
-	"book-chapter": "bookSection",
-	dissertation: "thesis",
-	other: "document",
-	report: "report",
-	paratext: "document",
-	dataset: "dataset",
-	"reference-entry": "encyclopediaArticle",
-	standard: "standard",
-	editorial: "journalArticle",
-	letter: "journalArticle",
-	"peer-review": "document", // up for debate
-	erratum: "journalArticle",
-	grant: "manuscript" // up for debate
+	// book: "book",
+	// "book-chapter": "bookSection",
+	// dissertation: "thesis",
+	// other: "document",
+	// report: "report",
+	// paratext: "document",
+	// dataset: "dataset",
+	// "reference-entry": "encyclopediaArticle",
+	// standard: "standard",
+	// editorial: "journalArticle",
+	// letter: "journalArticle",
+	// "peer-review": "document", // up for debate
+	// erratum: "journalArticle",
+	// grant: "manuscript" // up for debate
 };
 
 function openalexToZotero(json, isSDGS = false) {
@@ -31,7 +31,6 @@ function openalexToZotero(json, isSDGS = false) {
 	}
   else if (isSDGS) {
     let results = data;
-    console.log(results.length);
     for (let result of results) {
       returns.push(parseIndividual(result));
     }
@@ -67,7 +66,7 @@ function parseIndividual(data) {
 	let OAtype = data.type || "document";
 
 	var item = {};
-	item.type = mappingTypes[OAtype] || "document";
+	item.itemType = mappingTypes[OAtype] || "document";
 	item.title = data.title;
 	// fix all caps titles
 	if (item.title == item.title.toUpperCase()) {
@@ -92,7 +91,11 @@ function parseIndividual(data) {
         item.publicationTitle = sourceName;
         item.publisher = data.primary_location.source.host_organization_name;
       }
-      item.ISSN = data.primary_location.source.issn;
+      if (data.primary_location.source.issn) {
+        item.ISSN = data.primary_location.source.issn[0];
+      } else {
+        item.ISSN = "";
+      }
     }
   }
 
@@ -129,13 +132,19 @@ function parseIndividual(data) {
 		item.attachments.push({ url: data.best_oa_location.pdf_url, title: version, mimeType: "application/pdf" });
 	}
 	if (data.keywords) {
-    let tags = data.keywords;
-    item.tags = [];
-    for (let tag of tags) {
-      item.tags.push(tag.keyword);
-    }
+    // let tags = data.keywords;
+    // item.tags = [];
+    // for (let tag of tags) {
+    //   item.tags.push(tag.keyword);
+    // }
+    item.tags = [
+      {
+        tag: "openalex:import"
+      }
+    ]
   }
   item.extra = "openalex: " + data.ids.openalex;
+  item.collections = [];
   return item;
 }
 

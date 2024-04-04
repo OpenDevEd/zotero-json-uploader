@@ -204,7 +204,7 @@ async function main(infile) {
             process.exit(1);
         }
         data = await jqfilter(infile, filterfile);
-    } else if (argv.transform === 'openalexjs') {
+    } else if (argv.transform === 'openalexjs' || argv.transform === 'openalexjs-sdgs') {
         data = await openalexjs(infile, filterfile);
     } else {
         // ...
@@ -220,9 +220,6 @@ async function openalexjs(infile, filterfile) {
     const json = fs.readFileSync(infile, 'utf8');
     const isSDGS = argv.transform == 'openalexjs-sdgs';
     let data = openalexToZotero(json, isSDGS);
-    console.log(data);
-    // fs.writeFileSync("tesst.json", data);
-    // process.exit(1);
     return data;
 }
 
