@@ -53,7 +53,7 @@ const argv = yargs
     .option('transform', {
         alias: 't',
         describe: 'Chose the transformation to apply to the data. For the option jq, you need to provide a jq file if -j',
-        choices: ['jq','openalexjq', 'openalexjs', 'scholarlyjq', 'openalexjq-sdgs'] // Define the allowed values
+        choices: ['jq','openalexjq', 'openalexjs-sdgs', 'openalexjs', 'scholarlyjq', 'openalexjq-sdgs'] // Define the allowed values
     })
     .option('jq', {
         alias: 'j',
@@ -80,7 +80,7 @@ const argv = yargs
             process.exit(1);
         }
 
-        const transformOptions = ['jq', 'openalexjq', 'openalexjs', 'scholarlyjq', 'openalexjq-sdgs'];
+        const transformOptions = ['jq','openalexjq', 'openalexjs-sdgs', 'openalexjs', 'scholarlyjq', 'openalexjq-sdgs'];
         if (!transformOptions.includes(args.transform)) {
             console.log('Transformation option is not one of the options');
             process.exit(1);
@@ -218,10 +218,12 @@ async function openalexjs(infile, filterfile) {
     // TODO: Implement this
     // uses utils/openalex-to-zotero.js
     const json = fs.readFileSync(infile, 'utf8');
-    let data = openalexToZotero(json, true);
+    const isSDGS = argv.transform == 'openalexjs-sdgs';
+    let data = openalexToZotero(json, isSDGS);
     console.log(data);
-    fs.writeFileSync("tesst.json", data);
-    process.exit(1);
+    // fs.writeFileSync("tesst.json", data);
+    // process.exit(1);
+    return data;
 }
 
 async function jqfilter(infile, filterfile) {
@@ -232,8 +234,6 @@ async function jqfilter(infile, filterfile) {
     const data = await jq.run(filter,
         infileObject,
         { input: 'json', output: 'pretty' });
-    console.log(data);
-    process.exit(1);
     return data;
 };
 
@@ -250,10 +250,10 @@ async function upload(infile, data) {
     fs.writeFileSync(infile + ".zotero-result-filtered.json", JSON.stringify(zotobject, null, 4));
     const inob = JSON.parse(fs.readFileSync(infile, 'utf8'));
     let openalexobject;
-    if (argv.transform === 'openalexjq') {
+    if (argv.transform === 'openalexjq' || argv.transform === 'openalexjs') {
         openalexobject = await jq.run('.results | [ .[] | { "key": .id, "value": . } ] | from_entries', inob, { input: 'json', output: 'json' });
         fs.writeFileSync(infile + ".oa-object.json", JSON.stringify(openalexobject, null, 4));
-    } else if (argv.transform === 'openalexjq-sdgs') {
+    } else if (argv.transform === 'openalexjq-sdgs' || argv.transform === 'openalexjs-sdgs') {
         openalexobject = await jq.run('[ .[] | { "key": .id, "value": . } ] | from_entries', inob, { input: 'json', output: 'json' });
         fs.writeFileSync(infile + ".oa-object.json", JSON.stringify(openalexobject, null, 4));
     }

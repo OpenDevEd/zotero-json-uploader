@@ -27,7 +27,7 @@ function openalexToZotero(json, isSDGS = false) {
   let returns = [];
   const data = JSON.parse(json);
   if (data.ids) {
-		results.push(parseIndividual(data));
+		returns.push(parseIndividual(data));
 	}
   else if (isSDGS) {
     let results = data;
