@@ -46,8 +46,8 @@ function openalexToZotero(data) {
   }
 
   let results = JSON.parse(data);
-  if (data.results)
-    results = data.results;
+  if (results.results)
+    results = results.results;
 
   const returns = results.map((item) => {
     const zoteroItem = {
