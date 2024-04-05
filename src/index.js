@@ -218,8 +218,7 @@ async function openalexjs(infile, filterfile) {
     // TODO: Implement this
     // uses utils/openalex-to-zotero.js
     const json = fs.readFileSync(infile, 'utf8');
-    const isSDGS = argv.transform == 'openalexjs-sdgs';
-    let data = openalexToZotero(json, isSDGS);
+    let data = openalexToZotero(json);
     return data;
 }
 
