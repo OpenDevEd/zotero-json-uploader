@@ -1,6 +1,13 @@
-# Map types from openalex to zotero
-def typeMap: if . == "article" then "journalArticle" else "report" end;
-#
+# Map types from scholarly to zotero
+def typeMap: 
+  if (.=="" or . == null) 
+  then "report" 
+  else 
+    if . == "article" 
+    then "journalArticle" 
+    else "report" 
+    end
+  end;
 def openalexCode: if ((.!=null) and (. | split("/")[-1]) != "") then ("openalex: "+(. | split("/")[-1])+"\n") else "" end;
 def magCode: if ((. != "") and (. != null)) then ("mag: "+(.)) else "" end;
 # Determine whether the doi should be put into the Zotero extra field
@@ -21,16 +28,19 @@ def extractDOI(url):
 .results | [ .[] | (
 # handle fields common to all zotero record types (journalArticle, report, book ...)
 {
-  "itemType": (.container_type | typeMap),
+  "itemType": (.bib.pub_type | typeMap),
   "title": .bib.title,
-  "creators": [ .bib.author[] | 
+  "creators": (if (.bib.author | type) == "array" then [ .bib.author[] | 
     {
       "creatorType": "author",
       "firstName": (. | split(" ")[0:-1]) | join(" "),
       "lastName": (. | split(" ")[-1])
     }
-  ]
-  ,
+  ] else [.bib.author | split(" and ") | map({ 
+      "creatorType": "author", 
+      "firstName": (split(", ")[1] // ""), 
+      "lastName": (split(", ")[0] // "") 
+    })] end),
   "abstractNote": (.bib.abstract // ""),
   "date": .bib.pub_year,
   "language": "",
@@ -43,7 +53,16 @@ def extractDOI(url):
   # "callNumber": (. | tostring),
   "callNumber": "",
   "rights": "",
-  "extra": (extractDOI(.pub_url)),
+  "extra": ("gsrank: "+ (.gsrank | tostring) + "\n" 
+  + "pub_url:" + .pub_url + "\n"
+  + "author_id:" + (.author_id | join(",") | tostring) + "\n"
+  + "url_scholarbib:" + "https://scholar.google.com"+.url_scholarbib + "\n"
+  + "url_add_sclib:" + .url_add_sclib + "\n"
+  + "num_citations:" + (.num_citations | tostring) + "\n"
+  + "citedby_url:" + .citedby_url + "\n"
+  + "url_related_articles:" + .url_related_articles + "\n"
+  + "eprint_url:" + .eprint_url + "\n"
+  ),
   "tags": [{
       "tag": "scholarly:import"
     }],
