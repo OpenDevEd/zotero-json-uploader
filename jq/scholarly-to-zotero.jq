@@ -16,10 +16,19 @@ def doilean: if (.!="" and . != null) then (.|sub("https://doi.org/";"")) else "
 # Turn abstract_inverted_index into abstract:
 def absInvert: [[ . | to_entries | .[] | { key: .key, value: .value | .[] } ] | sort_by(.value) | .[] | .key] | join(" ");
 # Function to extract DOI from URL
-def extractDOI(url):
-  if url == null then "" else
-    if (url | contains("doi"))
-    then (url | split("&") | map(select(contains("identifierValue"))) | .[0] | split("=") | ("DOI: " +.[1]+ "\n"))
+# def extractDOI(url):
+#   if url == null then "" else
+#     if (url | contains("doi"))
+#     then (url | split("&") | map(select(contains("identifierValue"))) | .[0] | split("=") | ("DOI: " +.[1]+ "\n"))
+#     else ""
+#     end
+#   end;
+def extractDOI:
+  if (.==null or .=="") 
+  then ""
+  else
+    if (. | contains("https://")) 
+    then (. | sub("https://www.science.org/doi/abs/";"")) 
     else ""
     end
   end;
@@ -71,16 +80,17 @@ def extractDOI(url):
 } 
 # Zotero has fields that are only valid for certain types. Handle those specific fields.
 # Extra fields for Zotero-type journalArticle
-+ (if (.container_type | typeMap) == "journalArticle" then {
++ (if (.bib.pub_type | typeMap) == "journalArticle" then {
   "publicationTitle": "",
   "seriesText": "",
-  "volume": "",
+  "volume": (.bib.volume // ""),
   "issue": "",
-  "pages": "",
+  "pages": (.bib.pages // ""),
   "series": "",
   "seriesTitle": "",
   "journalAbbreviation": "",
-  "DOI": ((extractDOI(.pub_url))),
+  # "DOI": ((extractDOI(.pub_url))),
+  "DOI": (.doi | extractDOI),
   "ISSN": "",
 } else 
 # Extra fields for Zotero-type report:
