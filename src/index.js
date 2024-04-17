@@ -261,6 +261,11 @@ async function upload(infile, data) {
         openalexobject = await jq.run('[ .[] | { "key": .id, "value": . } ] | from_entries', inob, { input: 'json', output: 'json' });
         fs.writeFileSync(infile + ".oa-object.json", JSON.stringify(openalexobject, null, 4));
     }
+    let scholarlyobject;
+    if (argv.transform === 'scholarlyjq') {
+        scholarlyobject = await jq.run('.results | [ .[] | { "key": .bib.bib_id, "value": . } ] | from_entries', inob, { input: 'json', output: 'json' });
+        fs.writeFileSync(infile + ".scholarly-object.json", JSON.stringify(scholarlyobject, null, 4));
+    }
     const tempdir = "temp";
     if (!fs.existsSync(tempdir)) {
         fs.mkdirSync(tempdir);
