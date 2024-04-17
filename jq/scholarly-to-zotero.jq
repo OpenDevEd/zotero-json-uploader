@@ -36,11 +36,11 @@ def extractDOI(url):
       "firstName": (. | split(" ")[0:-1]) | join(" "),
       "lastName": (. | split(" ")[-1])
     }
-  ] else [.bib.author | split(" and ") | map({ 
+  ] else .bib.author | split(" and ") | map({ 
       "creatorType": "author", 
       "firstName": (split(", ")[1] // ""), 
       "lastName": (split(", ")[0] // "") 
-    })] end),
+    }) end),
   "abstractNote": (.bib.abstract // ""),
   "date": .bib.pub_year,
   "language": "",
