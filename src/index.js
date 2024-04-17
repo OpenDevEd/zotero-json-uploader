@@ -60,19 +60,6 @@ const argv = yargs
         describe: 'Provide your own jq file',
         type: 'string',
     })
-    .option('openalex', {
-        alias: 'o',
-        describe: 'Wheter the input json is from openalex',
-        type: 'boolean',
-        default: false,
-    })
-    .option('scholarly', {
-        alias: 's',
-        describe: 'Wheter the input json is from scholarly',
-        type: 'boolean',
-        default: false,
-    
-    })
     .command('$0 [files...]', 'Example script', (yargs) => {
         yargs.positional('files', {
             describe: 'One or more files',
@@ -219,6 +206,14 @@ async function main(infile) {
         data = await jqfilter(infile, filterfile);
     } else if (argv.transform === 'openalexjs' || argv.transform === 'openalexjs-sdgs') {
         data = await openalexjs(infile, filterfile);
+    } else if (argv.transform === 'scholarlyjq') {
+        const filterfile = defaultPath + '/jq/scholarly-to-zotero.jq';
+        // check if file exists
+        if (!fs.existsSync(filterfile)) {
+            console.log(`JQ file not found: ${filterfile}`);
+            process.exit(1);
+        }
+        data = await jqfilter(infile, filterfile);
     } else {
         // ...
     }

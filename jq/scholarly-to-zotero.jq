@@ -66,7 +66,7 @@ def extractDOI(url):
   "tags": [{
       "tag": "scholarly:import"
     }],
-  "collections": ["DUMMY_IMPORT_COLLECTION"],
+  "collections": [],
   "relations": {}
 } 
 # Zotero has fields that are only valid for certain types. Handle those specific fields.
