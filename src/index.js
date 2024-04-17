@@ -60,6 +60,11 @@ const argv = yargs
         describe: 'Provide your own jq file',
         type: 'string',
     })
+    .option('tag', {
+        alias: 'T',
+        describe: 'Tag to add to the item',
+        type: 'string',
+    })
     .command('$0 [files...]', 'Example script', (yargs) => {
         yargs.positional('files', {
             describe: 'One or more files',
@@ -217,6 +222,15 @@ async function main(infile) {
     } else {
         // ...
     }
+    data = JSON.parse(data);
+    data = data.map((item) => {
+        if (argv.tag) {
+            item.tags = item.tags || [];
+            item.tags.push({ tag: argv.tag });
+        }
+        return item;
+    });
+    data = JSON.stringify(data, null, 4);
     await upload(infile, data);
 };
 
