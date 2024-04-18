@@ -65,6 +65,11 @@ const argv = yargs
         describe: 'Tag to add to the item',
         type: 'string',
     })
+    .option('collections', {
+        alias: 'c',
+        describe: 'Collection to add the item to, separated with comas. ex: ABC12DEF,GHI34JKL',
+        type: 'string',
+    })
     .command('$0 [files...]', 'Example script', (yargs) => {
         yargs.positional('files', {
             describe: 'One or more files',
@@ -165,6 +170,10 @@ const collectionKey = groupCollection.key;
 const group = groupCollection.group;
 const filterfile = argv.jq;
 const files = argv.files;
+let collections = [];
+if (argv.collections) {
+    collections = argv.collections.split(',');
+}
 
 
 //    .replace(/\"DUMMY_IMPORT_COLLECTION\"/g, '');
@@ -259,7 +268,7 @@ async function upload(infile, data) {
     const outf = infile + ".zotero.json";
     fs.writeFileSync(outf, data);
     // TODO: This needs a collection, collectionKey, and zotero object
-    const result = await zotero.create_item({ files: [outf], collections: [collectionKey] });
+    const result = await zotero.create_item({ files: [outf], collections: [collectionKey, ...collections] });
     fs.writeFileSync(infile + ".zotero-result.json", JSON.stringify(result));
     // if the code below fails, you can resume from here:
     // const result = JSON.parse(fs.readFileSync(infile + ".zotero-result.json", 'utf8'));
