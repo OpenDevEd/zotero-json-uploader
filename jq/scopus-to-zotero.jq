@@ -24,7 +24,12 @@ def showAffiliationInExtra:
     "title": ."dc:title",
     "creators": (if has("author") then 
     # TODO: handle multiple authors when get the access to the data
-    "TODO: handle multiple authors"
+    [ .author | .[] | {
+        "creatorType": "author",
+        "firstName": ."given-name",
+        "lastName": .surname
+      }
+    ]
      else [
       {
         "creatorType": "author",
