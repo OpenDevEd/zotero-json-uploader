@@ -53,7 +53,7 @@ const argv = yargs
     .option('transform', {
         alias: 't',
         describe: 'Chose the transformation to apply to the data. For the option jq, you need to provide a jq file if -j',
-        choices: ['jq','openalexjq', 'openalexjs-sdgs', 'openalexjs', 'scholarlyjq', 'openalexjq-sdgs'] // Define the allowed values
+        choices: ['jq','openalexjq', 'openalexjs-sdgs', 'openalexjs', 'scholarlyjq', 'openalexjq-sdgs', 'scopusjq'] // Define the allowed values
     })
     .option('jq', {
         alias: 'j',
@@ -90,7 +90,7 @@ const argv = yargs
             process.exit(1);
         }
 
-        const transformOptions = ['jq','openalexjq', 'openalexjs-sdgs', 'openalexjs', 'scholarlyjq', 'openalexjq-sdgs'];
+        const transformOptions = ['jq','openalexjq', 'openalexjs-sdgs', 'openalexjs', 'scholarlyjq', 'openalexjq-sdgs', 'scopusjq'];
         if (!transformOptions.includes(args.transform)) {
             console.log('Transformation option is not one of the options');
             process.exit(1);
@@ -228,6 +228,14 @@ async function main(infile) {
             process.exit(1);
         }
         data = await jqfilter(infile, filterfile);
+    } else if (argv.transform === 'scopusjq') {
+        const filterfile = defaultPath + '/jq/scopus-to-zotero.jq';
+        // check if file exists
+        if (!fs.existsSync(filterfile)) {
+            console.log(`JQ file not found: ${filterfile}`);
+            process.exit(1);
+        }
+        data = await jqfilter(infile, filterfile);
     } else {
         // ...
     }
@@ -288,6 +296,11 @@ async function upload(infile, data) {
     if (argv.transform === 'scholarlyjq') {
         scholarlyobject = await jq.run('.results | [ .[] | { "key": .bib.bib_id, "value": . } ] | from_entries', inob, { input: 'json', output: 'json' });
         fs.writeFileSync(infile + ".scholarly-object.json", JSON.stringify(scholarlyobject, null, 4));
+    }
+    let scopusobject;
+    if (argv.transform === 'scopusjq') {
+        scopusobject = await jq.run('."search-results" | .entry | [ .[] | { "key": ."dc:identifier", "value": . } ] | from_entries', inob, { input: 'json', output: 'json' });
+        fs.writeFileSync(infile + ".scopus-object.json", JSON.stringify(scopusobject, null, 4));
     }
     const tempdir = "temp";
     if (!fs.existsSync(tempdir)) {

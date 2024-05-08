@@ -66,7 +66,6 @@ def showAffiliationInExtra:
       "DOI": (."prism:doi" // ""),
       "ISSN": (."prism:issn" // ."prism:eIssn" // ""),
       "journalAbbreviation": "",
-      "journalIssue": (."prism:issueIdentifier" // ""),
       "extra": ("affiliation: " + (.affiliation | showAffiliationInExtra) + "\n"
       + "pubitemid: " + (.pii // "") + "\n"
       + "eid: " + (.eid // "") + "\n"
