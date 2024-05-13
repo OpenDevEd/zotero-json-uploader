@@ -8,6 +8,7 @@ const path = require('path');
 const defaultPath = path.join(__dirname, '..');
 const { input, select } = require('@inquirer/prompts');
 const os = require('os');
+const detectJsonSource = require('./utils/utility');
 // const defaultJQPath = path.join(__dirname, '../jq/openalex-to-zotero.jq');
 
 /*
@@ -108,7 +109,15 @@ const argv = yargs
             .option('transform', {
                 alias: 't',
                 describe: 'Chose the transformation to apply to the data. For the option jq, you need to provide a jq file if -j',
-                choices: ['jq', 'openalexjq', 'openalexjs-sdgs', 'openalexjs', 'scholarlyjq', 'openalexjq-sdgs', 'scopusjq'] // Define the allowed values
+                choices: [
+                    'jq',
+                    'openalexjq',
+                    'openalexjs-sdgs',
+                    'openalexjs',
+                    'scholarlyjq',
+                    'openalexjq-sdgs',
+                    'scopusjq',
+                ] // Define the allowed values
             })
             .option('jq', {
                 alias: 'j',
@@ -135,30 +144,37 @@ const argv = yargs
             process.exit(0);
         }
         if (!args.transform) {
-            console.log('Transformation option is missing');
-            process.exit(1);
-        }
-
-        if (args.transform === 'jq' && !args.jq) {
-            console.log('JQ option is missing');
-            process.exit(1);
-        }
-
-        const transformOptions = ['jq', 'openalexjq', 'openalexjs-sdgs', 'openalexjs', 'scholarlyjq', 'openalexjq-sdgs', 'scopusjq'];
-        if (!transformOptions.includes(args.transform)) {
-            console.log('Transformation option is not one of the options');
-            process.exit(1);
-        }
-
-        if (args.jq) {
-            if (!fs.existsSync(args.jq)) {
-                console.log('JQ file not found');
+            args.transform = 'auto';
+        } else {
+            if (args.transform === 'jq' && !args.jq) {
+                console.log('JQ option is missing');
                 process.exit(1);
             }
-            // if (!fs.accessSync(args.jq, fs.constants.R_OK)) {
-            //     console.log('No access to JQ file');
-            //     process.exit(1);
-            // }
+
+            const transformOptions = [
+                'jq',
+                'openalexjq',
+                'openalexjs-sdgs',
+                'openalexjs',
+                'scholarlyjq',
+                'openalexjq-sdgs',
+                'scopusjq',
+            ];
+            if (!transformOptions.includes(args.transform)) {
+                console.log('Transformation option is not one of the options');
+                process.exit(1);
+            }
+
+            if (args.jq) {
+                if (!fs.existsSync(args.jq)) {
+                    console.log('JQ file not found');
+                    process.exit(1);
+                }
+                // if (!fs.accessSync(args.jq, fs.constants.R_OK)) {
+                //     console.log('No access to JQ file');
+                //     process.exit(1);
+                // }
+            }
         }
         if (args.files) {
             for (file of args.files) {
@@ -257,6 +273,7 @@ async function run(argv) {
      */
     async function main(infile) {
         let data;
+        let source = 'unknown';
         // handle command line arguments...
         if (argv.transform === 'jq') {
             data = await jqfilter(infile, argv.jq);
@@ -295,7 +312,24 @@ async function run(argv) {
             }
             data = await jqfilter(infile, filterfile);
         } else {
-            // ...
+            source = detectJsonSource(JSON.parse(fs.readFileSync(infile, 'utf8')));
+            let filterfile;
+            if (source === 'openalex') {
+                filterfile = defaultPath + '/jq/openalex-to-zotero.jq';
+            } else if (source === 'scholarly') {
+                filterfile = defaultPath + '/jq/scholarly-to-zotero.jq';
+            } else if (source === 'scopus') {
+                filterfile = defaultPath + '/jq/scopus-to-zotero.jq';
+            } else {
+                console.log('unknown source for :' + infile);
+                return;
+            }
+            if (!fs.existsSync(filterfile)) {
+                console.log(`JQ file not found: ${filterfile}`);
+                process.exit(1);
+            }
+            data = await jqfilter(infile, filterfile);
+
         }
         data = JSON.parse(data);
         data = data.map((item) => {
@@ -306,7 +340,7 @@ async function run(argv) {
             return item;
         });
         data = JSON.stringify(data, null, 4);
-        await upload(infile, data);
+        await upload(infile, data, source);
     };
 
     const openalexToZotero = require('./utils/openalex-to-zotero');
@@ -330,7 +364,7 @@ async function run(argv) {
         return data;
     };
 
-    async function upload(infile, data) {
+    async function upload(infile, data, source) {
         const outf = infile + ".zotero.json";
         fs.writeFileSync(outf, data);
         // TODO: This needs a collection, collectionKey, and zotero object
@@ -343,7 +377,7 @@ async function run(argv) {
         fs.writeFileSync(infile + ".zotero-result-filtered.json", JSON.stringify(zotobject, null, 4));
         const inob = JSON.parse(fs.readFileSync(infile, 'utf8'));
         let openalexobject;
-        if (argv.transform === 'openalexjq' || argv.transform === 'openalexjs') {
+        if (argv.transform === 'openalexjq' || argv.transform === 'openalexjs' || source === 'openalex') {
             openalexobject = await jq.run('.results | [ .[] | { "key": .id, "value": . } ] | from_entries', inob, { input: 'json', output: 'json' });
             fs.writeFileSync(infile + ".oa-object.json", JSON.stringify(openalexobject, null, 4));
         } else if (argv.transform === 'openalexjq-sdgs' || argv.transform === 'openalexjs-sdgs') {
@@ -351,12 +385,12 @@ async function run(argv) {
             fs.writeFileSync(infile + ".oa-object.json", JSON.stringify(openalexobject, null, 4));
         }
         let scholarlyobject;
-        if (argv.transform === 'scholarlyjq') {
+        if (argv.transform === 'scholarlyjq' || source === 'scholarly') {
             scholarlyobject = await jq.run('.results | [ .[] | { "key": .bib.bib_id, "value": . } ] | from_entries', inob, { input: 'json', output: 'json' });
             fs.writeFileSync(infile + ".scholarly-object.json", JSON.stringify(scholarlyobject, null, 4));
         }
         let scopusobject;
-        if (argv.transform === 'scopusjq') {
+        if (argv.transform === 'scopusjq' || source === 'scopus') {
             scopusobject = await jq.run('."search-results" | .entry | [ .[] | { "key": ."dc:identifier", "value": . } ] | from_entries', inob, { input: 'json', output: 'json' });
             fs.writeFileSync(infile + ".scopus-object.json", JSON.stringify(scopusobject, null, 4));
         }
