@@ -48,9 +48,13 @@ def showAffiliationInExtra:
     "libraryCatalog": "",
     "callNumber": "",
     "rights": "",
-    "extra": (
-      ""
-    ),
+    "extra": ("affiliation: " + (.affiliation | showAffiliationInExtra) + "\n"
+      + "pubitemid: " + (.pii // "") + "\n"
+      + "eid: " + (.eid // "") + "\n"
+      + "orcid: " + (.orcid // "") + "\n"
+      + "openaccess: " + (.openaccess // "") + "\n"
+      + "id: scopus:" + (."dc:identifier" | split(":")[1] // "") + "\n"
+      ),
     "tags": [{
       "tag": "scopus:import",
     }],
@@ -66,12 +70,9 @@ def showAffiliationInExtra:
       "DOI": (."prism:doi" // ""),
       "ISSN": (."prism:issn" // ."prism:eIssn" // ""),
       "journalAbbreviation": "",
-      "extra": ("affiliation: " + (.affiliation | showAffiliationInExtra) + "\n"
-      + "pubitemid: " + (.pii // "") + "\n"
-      + "eid: " + (.eid // "") + "\n"
-      + "orcid: " + (.orcid // "") + "\n"
-      + "openaccess: " + (.openaccess // "") + "\n"
-      ),
+      "seriesText": "",
+      "series": "",
+      "seriesTitle": "",
     }
   else 
   {

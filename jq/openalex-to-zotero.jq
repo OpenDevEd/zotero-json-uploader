@@ -34,7 +34,9 @@ def absInvert: [[ . | to_entries | .[] | { key: .key, value: .value | .[] } ] | 
   # "callNumber": (. | tostring),
   "callNumber": (.ids.openalex | openalexCode),
   "rights": "",
-  "extra": (({doi: (.doi|doilean), type: .type} | showDOIInExtra)+(.ids.openalex|openalexCode)+(.ids.mag|magCode)+"\n"),
+  "extra": (({doi: (.doi|doilean), type: .type} | showDOIInExtra)+(.ids.openalex|openalexCode)+(.ids.mag|magCode)+"\n"
+    + "id: openalex:" + (.id | sub("https://openalex.org/"; "")) + "\n"
+  ),
   "tags": [{
       "tag": "openalex:import"
     }],

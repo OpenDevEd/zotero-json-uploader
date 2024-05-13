@@ -71,6 +71,7 @@ def extractDOI:
   + "citedby_url:" + .citedby_url + "\n"
   + "url_related_articles:" + .url_related_articles + "\n"
   + "eprint_url:" + .eprint_url + "\n"
+  + "id: googlescholar:" + .bib.bib_id + "\n"
   ),
   "tags": [{
       "tag": "scholarly:import"
