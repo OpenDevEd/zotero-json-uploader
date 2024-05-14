@@ -36,6 +36,7 @@ def absInvert: [[ . | to_entries | .[] | { key: .key, value: .value | .[] } ] | 
   "rights": "",
   "extra": (({doi: (.doi|doilean), type: .type} | showDOIInExtra)+(.ids.openalex|openalexCode)+(.ids.mag|magCode)+"\n"
     + "id: openalex:" + (.id | sub("https://openalex.org/"; "")) + "\n"
+    + "keywords: " + (.keywords | map(.keyword) | join(", ")) + "\n"
   ),
   "tags": [{
       "tag": "openalex:import"
