@@ -375,6 +375,21 @@ async function run(argv) {
         // console.log("data: " + JSON.stringify(result, null, 4));
         const zotobject = await jq.run("[ .[] | .successful | [ to_entries[] | .value.data ] ] | flatten ", result, { input: 'json', output: 'json' });
         fs.writeFileSync(infile + ".zotero-result-filtered.json", JSON.stringify(zotobject, null, 4));
+        const aiscreening = zotobject.map((item) => {
+            const extra = item.extra || '';
+            const lines = extra.split('\n');
+            const id = lines.find((line) => line.startsWith('id:')).split('id:')[1].trim();
+            const keywordsString = lines.find((line) => line.startsWith('keywords:'));
+            const keywords = keywordsString ? keywordsString.split('keywords:')[1].split(',').map((keyword) => keyword.trim()) : [];
+            return {
+                id,
+                title: item.title,
+                abstract: item.abstractNote,
+                keywords,
+            };
+        });
+        console.log("AIScreening: " + JSON.stringify(aiscreening, null, 4));
+        fs.writeFileSync(infile + ".aiscreening.json", JSON.stringify(aiscreening, null, 4));
         const inob = JSON.parse(fs.readFileSync(infile, 'utf8'));
         let openalexobject;
         if (argv.transform === 'openalexjq' || argv.transform === 'openalexjs' || source === 'openalex') {
