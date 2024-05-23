@@ -4,7 +4,7 @@
   "description": "zotero-json-uploader",
   "main": "src/index.js",
   "bin": {
-    "zotero-json-upload": "src/index.js"
+    "zotero-json-uploader": "src/index.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
