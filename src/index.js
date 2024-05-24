@@ -9,6 +9,11 @@ const defaultPath = path.join(__dirname, '..');
 const { input, select } = require('@inquirer/prompts');
 const os = require('os');
 const detectJsonSource = require('./utils/utility');
+const { uploadSearchResults } = require('./utils/db/uploadSearchResults');
+const { parseSearchResults } = require('./utils/parsing/parseSearchResults');
+const { setupZoteroConfig } = require('./utils/config/setupZoteroConfig');
+const openalexToZotero = require('./utils/openalex-to-zotero');
+const { setupDatabase } = require('./utils/config/setupDatabase');
 // const defaultJQPath = path.join(__dirname, '../jq/openalex-to-zotero.jq');
 
 /*
@@ -45,62 +50,27 @@ Issues:
  * 
  */
 
-async function setupConfig() {
-    let config = {
-        api_key: '',
-        group_id: '',
-        library_type: '',
-        indent: 4,
-    };
-
-    config.api_key = await input({ message: 'Enter your api_key?' });
-    config.library_type = await select({
-        message: 'Select your library type?',
-        choices: [
-            {
-                value: 'group',
-                name: 'group',
-            },
-            {
-                value: 'user',
-                name: 'user',
-            },
-        ],
-    });
-    if (config.library_type === 'user') config.user_id = await input({ message: 'Enter your user id?' });
-    else config.group_id = await input({ message: 'Enter your group id?' });
-    const configDir = `${os.homedir()}/.config/zotero-cli`;
-    !fs.existsSync(configDir) ? fs.mkdirSync(configDir, { recursive: true }) : null;
-    let toml = '';
-    if (config.library_type === 'group')
-        toml = `
-api_key = "${config.api_key}"
-group_id = "${config.group_id}"
-library_type = "${config.library_type}"
-indent = ${config.indent}`;
-    else
-        toml = `
-api_key = "${config.api_key}"
-user_id = "${config.user_id}"
-library_type = "${config.library_type}"
-indent = ${config.indent}`;
-
-    fs.writeFileSync(`${configDir}/zotero-cli.toml`, toml);
-}
-
 //TODO: Create middleware
 const argv = yargs
     .command(
-        'config set api-key',
-        'Set the API key to be used for the search',
+        'config',
+        'Setup Zotero configuration or database configuration',
+        (yargs) => {
+            yargs.option('set', {
+                alias: '-s',
+                describe: 'Set the configuration',
+                type: 'string',
+                demandOption: true,
+            });
+        }
     )
-    .command('$0 [files...]', 'Example script', (yargs) => {
+    .command('$0 action [files...]', 'Example script', (yargs) => {
         yargs.positional('files', {
             describe: 'One or more files',
             type: 'string',
             array: true,
         })
-            .option('group', {
+        .option('group', {
                 alias: 'g',
                 describe: 'zotero://-style link to a group (mandatory argument)',
                 type: 'string',
@@ -139,8 +109,10 @@ const argv = yargs
     .alias('help', 'h')
     .middleware(async (args) => {
         if (args._[0] === 'config') {
-            console.log('Config command');
-            await setupConfig();
+            if (args.set === 'api-key') 
+                await setupZoteroConfig();
+            else if (args.set === 'database')
+                await setupDatabase();
             process.exit(0);
         }
         if (!args.transform) {
@@ -191,7 +163,12 @@ const argv = yargs
             console.log('No files provided');
             process.exit(1);
         }
-        await run(args);
+        if (['zotero', 'db-upload'].find(item => args.action === item))
+            await run(args, );
+        else {
+            console.log('Unknown action, please provide a valid action (zotero/db-upload)');
+            process.exit(1);
+        }
     })
     .parse();
 
@@ -339,11 +316,24 @@ async function run(argv) {
             }
             return item;
         });
-        data = JSON.stringify(data, null, 4);
-        await upload(infile, data, source);
+        
+        if (argv.action === 'zotero') {
+            await upload(infile, JSON.stringify(data, null, 4), source);
+        }
+        if (argv.action === 'db-upload') {
+            // upload data to database
+            try {
+               const res =  await uploadSearchResults(parseSearchResults(data, {
+                    sourceDatabase: 'openAlex',
+                }));
+                console.log(`\n${res.count} Items uploaded to the database`);
+                
+    
+            } catch (error) {
+                console.error(error.message)
+            }
+        }
     };
-
-    const openalexToZotero = require('./utils/openalex-to-zotero');
 
     async function openalexjs(infile, filterfile) {
         // TODO: Implement this
@@ -433,7 +423,7 @@ async function run(argv) {
     function show(obj) {
         console.log(JSON.stringify(obj, null, 4));
     }
-
+    
     (async () => {
         for (file of files) {
             await main(file);
