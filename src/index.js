@@ -250,18 +250,22 @@ async function run(argv) {
      */
     async function main(infile) {
         let data;
+        let dbdata;
         let source = 'unknown';
         // handle command line arguments...
         if (argv.transform === 'jq') {
             data = await jqfilter(infile, argv.jq);
+            dbdata = await jqfilter(infile, argv.jq.replace('zotero', 'database'));
         } else if (argv.transform === 'openalexjq') {
             const filterfile = defaultPath + "/jq/openalex-to-zotero.jq";
+            const dbfilterfile = defaultPath + "/jq/openalex-to-database.jq";
             // check if file exists
             if (!fs.existsSync(filterfile)) {
                 console.log(`JQ file not found: ${filterfile}`);
                 process.exit(1);
             }
             data = await jqfilter(infile, filterfile);
+            dbdata = await jqfilter(infile, dbfilterfile);
         } else if (argv.transform === 'openalexjq-sdgs') {
             const filterfile = defaultPath + '/jq/openalex-to-zotero-sdgs.jq';
             // check if file exists
@@ -274,29 +278,37 @@ async function run(argv) {
             data = await openalexjs(infile, filterfile);
         } else if (argv.transform === 'scholarlyjq') {
             const filterfile = defaultPath + '/jq/scholarly-to-zotero.jq';
+            const dbfilterfile = defaultPath + '/jq/scholarly-to-database.jq';
             // check if file exists
             if (!fs.existsSync(filterfile)) {
                 console.log(`JQ file not found: ${filterfile}`);
                 process.exit(1);
             }
             data = await jqfilter(infile, filterfile);
+            dbdata = await jqfilter(infile, dbfilterfile);
         } else if (argv.transform === 'scopusjq') {
             const filterfile = defaultPath + '/jq/scopus-to-zotero.jq';
+            const dbfilterfile = defaultPath + '/jq/scopus-to-database.jq';
             // check if file exists
             if (!fs.existsSync(filterfile)) {
                 console.log(`JQ file not found: ${filterfile}`);
                 process.exit(1);
             }
             data = await jqfilter(infile, filterfile);
+            dbdata = await jqfilter(infile, dbfilterfile);
         } else {
             source = detectJsonSource(JSON.parse(fs.readFileSync(infile, 'utf8')));
             let filterfile;
+            let dbfilterfile;
             if (source === 'openalex') {
                 filterfile = defaultPath + '/jq/openalex-to-zotero.jq';
+                dbfilterfile = defaultPath + '/jq/openalex-to-database.jq';
             } else if (source === 'scholarly') {
                 filterfile = defaultPath + '/jq/scholarly-to-zotero.jq';
+                dbfilterfile = defaultPath + '/jq/scholarly-to-database.jq';
             } else if (source === 'scopus') {
                 filterfile = defaultPath + '/jq/scopus-to-zotero.jq';
+                dbfilterfile = defaultPath + '/jq/scopus-to-database.jq';
             } else {
                 console.log('unknown source for :' + infile);
                 return;
@@ -306,7 +318,7 @@ async function run(argv) {
                 process.exit(1);
             }
             data = await jqfilter(infile, filterfile);
-
+            dbdata = await jqfilter(infile, dbfilterfile);
         }
         data = JSON.parse(data);
         data = data.map((item) => {
@@ -321,6 +333,10 @@ async function run(argv) {
             await upload(infile, JSON.stringify(data, null, 4), source);
         }
         if (argv.action === 'db-upload') {
+            // TODO: remove this todo after you check if this is the right position
+            // generate data for database
+            const outdbf = infile + ".database.json";
+            fs.writeFileSync(outdbf, dbdata);
             // upload data to database
             try {
                const res =  await uploadSearchResults(parseSearchResults(data, {
