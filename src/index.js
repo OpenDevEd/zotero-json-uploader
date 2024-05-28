@@ -70,7 +70,7 @@ const argv = yargs
             type: 'string',
             array: true,
         })
-        .option('group', {
+            .option('group', {
                 alias: 'g',
                 describe: 'zotero://-style link to a group (mandatory argument)',
                 type: 'string',
@@ -109,7 +109,7 @@ const argv = yargs
     .alias('help', 'h')
     .middleware(async (args) => {
         if (args._[0] === 'config') {
-            if (args.set === 'api-key') 
+            if (args.set === 'api-key')
                 await setupZoteroConfig();
             else if (args.set === 'database')
                 await setupDatabase();
@@ -164,7 +164,7 @@ const argv = yargs
             process.exit(1);
         }
         if (['zotero', 'db-upload'].find(item => args.action === item))
-            await run(args, );
+            await run(args);
         else {
             console.log('Unknown action, please provide a valid action (zotero/db-upload)');
             process.exit(1);
@@ -328,7 +328,7 @@ async function run(argv) {
             }
             return item;
         });
-        
+
         if (argv.action === 'zotero') {
             await upload(infile, JSON.stringify(data, null, 4), source);
         }
@@ -339,12 +339,7 @@ async function run(argv) {
             fs.writeFileSync(outdbf, dbdata);
             // upload data to database
             try {
-               const res =  await uploadSearchResults(parseSearchResults(data, {
-                    sourceDatabase: 'openAlex',
-                }));
-                console.log(`\n${res.count} Items uploaded to the database`);
-                
-    
+                await uploadSearchResults(parseSearchResults(dbdata));
             } catch (error) {
                 console.error(error.message)
             }
@@ -439,7 +434,7 @@ async function run(argv) {
     function show(obj) {
         console.log(JSON.stringify(obj, null, 4));
     }
-    
+
     (async () => {
         for (file of files) {
             await main(file);
