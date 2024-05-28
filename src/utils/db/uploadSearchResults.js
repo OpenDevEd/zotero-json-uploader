@@ -49,7 +49,7 @@ async function createManyItems(dataArray) {
     process.stdout.write("\n" + 'Total unique items: ' + dataArray.length + "\n");
 
     // Filter out items with DOIs that already exist in the database
-    console.log('\nChecking for existing items...');
+    console.log('Checking for existing items...');
     const existingDois = await getExistingDoi(dataArray);
     let newItems = dataArray.filter(item =>
       !existingDois.includes(item.doi)

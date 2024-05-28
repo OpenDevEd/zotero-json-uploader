@@ -333,7 +333,6 @@ async function run(argv) {
             await upload(infile, JSON.stringify(data, null, 4), source);
         }
         if (argv.action === 'db-upload') {
-            // TODO: remove this todo after you check if this is the right position
             // generate data for database
             const outdbf = infile + ".database.json";
             fs.writeFileSync(outdbf, dbdata);
