@@ -25,6 +25,7 @@
     "@inquirer/prompts": "^5.0.2",
     "node-jq": "^4.3.0",
     "openalex-sdk": "^1.1.1",
+    "prisma": "^5.14.0",
     "yargs": "^17.7.2",
     "zotero-lib": "^1.0.95"
   }

@@ -9,6 +9,11 @@ const defaultPath = path.join(__dirname, '..');
 const { input, select } = require('@inquirer/prompts');
 const os = require('os');
 const detectJsonSource = require('./utils/utility');
+const { uploadSearchResults } = require('./utils/db/uploadSearchResults');
+const { parseSearchResults } = require('./utils/parsing/parseSearchResults');
+const { setupZoteroConfig } = require('./utils/config/setupZoteroConfig');
+const openalexToZotero = require('./utils/openalex-to-zotero');
+const { setupDatabase } = require('./utils/config/setupDatabase');
 // const defaultJQPath = path.join(__dirname, '../jq/openalex-to-zotero.jq');
 
 /*
@@ -45,56 +50,21 @@ Issues:
  * 
  */
 
-async function setupConfig() {
-    let config = {
-        api_key: '',
-        group_id: '',
-        library_type: '',
-        indent: 4,
-    };
-
-    config.api_key = await input({ message: 'Enter your api_key?' });
-    config.library_type = await select({
-        message: 'Select your library type?',
-        choices: [
-            {
-                value: 'group',
-                name: 'group',
-            },
-            {
-                value: 'user',
-                name: 'user',
-            },
-        ],
-    });
-    if (config.library_type === 'user') config.user_id = await input({ message: 'Enter your user id?' });
-    else config.group_id = await input({ message: 'Enter your group id?' });
-    const configDir = `${os.homedir()}/.config/zotero-cli`;
-    !fs.existsSync(configDir) ? fs.mkdirSync(configDir, { recursive: true }) : null;
-    let toml = '';
-    if (config.library_type === 'group')
-        toml = `
-api_key = "${config.api_key}"
-group_id = "${config.group_id}"
-library_type = "${config.library_type}"
-indent = ${config.indent}`;
-    else
-        toml = `
-api_key = "${config.api_key}"
-user_id = "${config.user_id}"
-library_type = "${config.library_type}"
-indent = ${config.indent}`;
-
-    fs.writeFileSync(`${configDir}/zotero-cli.toml`, toml);
-}
-
 //TODO: Create middleware
 const argv = yargs
     .command(
-        'config set api-key',
-        'Set the API key to be used for the search',
+        'config',
+        'Setup Zotero configuration or database configuration',
+        (yargs) => {
+            yargs.option('set', {
+                alias: '-s',
+                describe: 'Set the configuration',
+                type: 'string',
+                demandOption: true,
+            });
+        }
     )
-    .command('$0 [files...]', 'Example script', (yargs) => {
+    .command('$0 action [files...]', 'Example script', (yargs) => {
         yargs.positional('files', {
             describe: 'One or more files',
             type: 'string',
@@ -139,8 +109,10 @@ const argv = yargs
     .alias('help', 'h')
     .middleware(async (args) => {
         if (args._[0] === 'config') {
-            console.log('Config command');
-            await setupConfig();
+            if (args.set === 'api-key')
+                await setupZoteroConfig();
+            else if (args.set === 'database')
+                await setupDatabase();
             process.exit(0);
         }
         if (!args.transform) {
@@ -191,7 +163,12 @@ const argv = yargs
             console.log('No files provided');
             process.exit(1);
         }
-        await run(args);
+        if (['zotero', 'db-upload'].find(item => args.action === item))
+            await run(args);
+        else {
+            console.log('Unknown action, please provide a valid action (zotero/db-upload)');
+            process.exit(1);
+        }
     })
     .parse();
 
@@ -273,18 +250,22 @@ async function run(argv) {
      */
     async function main(infile) {
         let data;
+        let dbdata;
         let source = 'unknown';
         // handle command line arguments...
         if (argv.transform === 'jq') {
             data = await jqfilter(infile, argv.jq);
+            dbdata = await jqfilter(infile, argv.jq.replace('zotero', 'database'));
         } else if (argv.transform === 'openalexjq') {
             const filterfile = defaultPath + "/jq/openalex-to-zotero.jq";
+            const dbfilterfile = defaultPath + "/jq/openalex-to-database.jq";
             // check if file exists
             if (!fs.existsSync(filterfile)) {
                 console.log(`JQ file not found: ${filterfile}`);
                 process.exit(1);
             }
             data = await jqfilter(infile, filterfile);
+            dbdata = await jqfilter(infile, dbfilterfile);
         } else if (argv.transform === 'openalexjq-sdgs') {
             const filterfile = defaultPath + '/jq/openalex-to-zotero-sdgs.jq';
             // check if file exists
@@ -297,29 +278,37 @@ async function run(argv) {
             data = await openalexjs(infile, filterfile);
         } else if (argv.transform === 'scholarlyjq') {
             const filterfile = defaultPath + '/jq/scholarly-to-zotero.jq';
+            const dbfilterfile = defaultPath + '/jq/scholarly-to-database.jq';
             // check if file exists
             if (!fs.existsSync(filterfile)) {
                 console.log(`JQ file not found: ${filterfile}`);
                 process.exit(1);
             }
             data = await jqfilter(infile, filterfile);
+            dbdata = await jqfilter(infile, dbfilterfile);
         } else if (argv.transform === 'scopusjq') {
             const filterfile = defaultPath + '/jq/scopus-to-zotero.jq';
+            const dbfilterfile = defaultPath + '/jq/scopus-to-database.jq';
             // check if file exists
             if (!fs.existsSync(filterfile)) {
                 console.log(`JQ file not found: ${filterfile}`);
                 process.exit(1);
             }
             data = await jqfilter(infile, filterfile);
+            dbdata = await jqfilter(infile, dbfilterfile);
         } else {
             source = detectJsonSource(JSON.parse(fs.readFileSync(infile, 'utf8')));
             let filterfile;
+            let dbfilterfile;
             if (source === 'openalex') {
                 filterfile = defaultPath + '/jq/openalex-to-zotero.jq';
+                dbfilterfile = defaultPath + '/jq/openalex-to-database.jq';
             } else if (source === 'scholarly') {
                 filterfile = defaultPath + '/jq/scholarly-to-zotero.jq';
+                dbfilterfile = defaultPath + '/jq/scholarly-to-database.jq';
             } else if (source === 'scopus') {
                 filterfile = defaultPath + '/jq/scopus-to-zotero.jq';
+                dbfilterfile = defaultPath + '/jq/scopus-to-database.jq';
             } else {
                 console.log('unknown source for :' + infile);
                 return;
@@ -329,7 +318,7 @@ async function run(argv) {
                 process.exit(1);
             }
             data = await jqfilter(infile, filterfile);
-
+            dbdata = await jqfilter(infile, dbfilterfile);
         }
         data = JSON.parse(data);
         data = data.map((item) => {
@@ -339,11 +328,22 @@ async function run(argv) {
             }
             return item;
         });
-        data = JSON.stringify(data, null, 4);
-        await upload(infile, data, source);
-    };
 
-    const openalexToZotero = require('./utils/openalex-to-zotero');
+        if (argv.action === 'zotero') {
+            await upload(infile, JSON.stringify(data, null, 4), source);
+        }
+        if (argv.action === 'db-upload') {
+            // generate data for database
+            const outdbf = infile + ".database.json";
+            fs.writeFileSync(outdbf, dbdata);
+            // upload data to database
+            try {
+                await uploadSearchResults(parseSearchResults(dbdata));
+            } catch (error) {
+                console.error(error.message)
+            }
+        }
+    };
 
     async function openalexjs(infile, filterfile) {
         // TODO: Implement this

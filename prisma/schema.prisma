@@ -1,0 +1,68 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model SearchResults {
+  id                       Int     @id @default(autoincrement())
+  title                    String?
+  abstract                 String?
+  keywords                 String? // (”;” separated entries)
+  doi                      String?
+  sourceDatabase           String?
+  identifierInSource       String
+  originalJson             Json
+  searchId                 String?
+  itemPositionWithinSearch Int
+
+  deduplicated      Deduplicated[]
+  searchInformation SearchInformation[]
+  screening         Screening[]
+}
+
+model Deduplicated {
+  id              Int     @id @default(autoincrement())
+  title           String?
+  abstract        String?
+  keywords        String?
+  doi             String?
+  otherIdentifier String?
+  flag            String?
+
+  // Relations
+  SearchResults  SearchResults? @relation(fields: [searchResultId], references: [id])
+  searchResultId Int?
+}
+
+model SearchInformation {
+  id                Int     @id @default(autoincrement())
+  searchDescription String?
+  filters           Json?
+  database          String?
+  searchId          String
+
+  // Relations
+  SearchResults  SearchResults? @relation(fields: [searchResultId], references: [id])
+  searchResultId Int?
+}
+
+model Screening {
+  id                       Int     @id @default(autoincrement())
+  resultOfFurtherScreening String?
+  resultOfChatgptScreening String?
+
+  // Relations
+
+  SearchResults   SearchResults? @relation(fields: [searchResultsId], references: [id])
+  searchResultsId Int?
+}

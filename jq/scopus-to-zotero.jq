@@ -18,7 +18,7 @@ def showAffiliationInExtra:
    . | arrayToString;
 
 
-."search-results" | .entry | [ .[] | (
+.results | [ .[] | (
   {
     "itemType": ."subtypeDescription" | typeMap,
     "title": ."dc:title",

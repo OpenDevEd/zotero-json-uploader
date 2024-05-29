@@ -10,11 +10,11 @@ function detectJsonSource(json) {
   ];
 
   if (json) {
-    if (scopusSpecificFields.some((field) => json[field])) {
+    if (json.meta.source == "Scopus") {
       return "scopus";
-    } else if (openalexSpecificFields.some((field) => json[field])) {
+    } else if (json.meta.source == "OpenAlex") {
       return "openalex";
-    } else if (scholarlySpecificFields.some((field) => json[field])) {
+    } else if (json.meta.source == "Google Scholar") {
       return "scholarly";
     }
   }

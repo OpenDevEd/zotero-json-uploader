@@ -1,0 +1,139 @@
+{
+  "meta": {
+      "version": "OpenDevEd_jsonUploaderV01",
+      "query": "EdTech OR \"educational technology\" OR \"education technology\"",
+      "searchTerm": "EdTech OR \"educational technology\" OR \"education technology\"",
+      "totalResults": 94800,
+      "source": "Google Scholar",
+      "sourceFormat": "original",
+      "date": "2024-05-27 17:10:12.137131",
+      "searchsFiled": "title_abstract",
+      "page": "1",
+      "resultsPerPage": 3,
+      "firstItem": "1",
+      "startingPage": "",
+      "endingPage": "",
+      "filters": {
+          "dateFrom": null,
+          "dateTo": null
+      },
+      "sortBy": "relevance",
+      "sortOrder": "desc",
+      "numResults": 3,
+      "searchID": "af72d456-2646-41d9-91db-dae8e05205be",
+      "queryUrl": "https://scholar.google.com/scholar?q=EdTech OR \"educational technology\" OR \"education technology\""
+  },
+  "time_start": 1716826160.624024,
+  "args": {
+      "search": "EdTech OR \"educational technology\" OR \"education technology\"",
+      "results": 3,
+      "count": false,
+      "patents": true,
+      "citations": true,
+      "year_low": null,
+      "year_high": null,
+      "json": true,
+      "ijson": false,
+      "bibtex": false,
+      "fill": true,
+      "out": null,
+      "time": false,
+      "sort_by": "relevance",
+      "sort_order": "desc",
+      "testurllength": false,
+      "chunks": null,
+      "command": null
+  },
+  "timestamp": "2024-05-27 17:10:12.137185",
+  "time_end": "2024-05-27 17:10:12.137198",
+  "results": [
+      {
+          "container_type": "Publication",
+          "source": "PUBLICATION_SEARCH_SNIPPET",
+          "bib": {
+              "title": "Education technology: An evidence-based review",
+              "author": "Escueta, Maya and Quan, Vincent and Nickow, Andre Joshua and Oreopoulos, Philip",
+              "pub_year": "2017",
+              "venue": "NA",
+              "abstract": "As investments in education technology continue to grow, students, parents, and teachers   In particular, we examine RCTs across the following categories of education technology:(1)",
+              "publisher": "National Bureau of Economic Research",
+              "pub_type": "article",
+              "bib_id": "escueta2017education"
+          },
+          "filled": true,
+          "gsrank": 2,
+          "pub_url": "https://www.nber.org/papers/w23744",
+          "author_id": [
+              "b9U6dIcAAAAJ",
+              "",
+              "",
+              "U9eJA3wAAAAJ"
+          ],
+          "url_scholarbib": "/scholar?hl=en&q=info:a3ULdXRkYn0J:scholar.google.com/&output=cite&scirp=1&hl=en",
+          "url_add_sclib": "/citations?hl=en&xsrf=&continue=/scholar%3Fq%3DEdTech%2BOR%2B%2522educational%2Btechnology%2522%2BOR%2B%2522education%2Btechnology%2522%26hl%3Den%26as_sdt%3D0,33&citilm=1&update_op=library_add&info=a3ULdXRkYn0J&ei=QLBUZprrLc6Vy9YPnqWSKA&json=",
+          "num_citations": 421,
+          "citedby_url": "/scholar?cites=9034894253801305451&as_sdt=5,33&sciodt=0,33&hl=en",
+          "url_related_articles": "/scholar?q=related:a3ULdXRkYn0J:scholar.google.com/&scioq=EdTech+OR+%22educational+technology%22+OR+%22education+technology%22&hl=en&as_sdt=0,33",
+          "eprint_url": "https://www.nber.org/system/files/working_papers/w23744/w23744.pdf"
+      },
+      {
+          "container_type": "Publication",
+          "source": "PUBLICATION_SEARCH_SNIPPET",
+          "bib": {
+              "title": "Twenty years of EdTech",
+              "author": "Weller, Martin",
+              "pub_year": "2018",
+              "venue": "Educause Review Online",
+              "abstract": "There are edtech books that often start with a historical chapter to set the current work in  context, and there are edtech books that are now part of history, but there are very few edtech",
+              "pages": "34--48",
+              "number": "4",
+              "volume": "53",
+              "journal": "Educause Review Online",
+              "pub_type": "article",
+              "bib_id": "weller2018twenty"
+          },
+          "filled": true,
+          "gsrank": 1,
+          "pub_url": "https://oro.open.ac.uk/55708/",
+          "author_id": [
+              "mos29XQAAAAJ"
+          ],
+          "url_scholarbib": "/scholar?hl=en&q=info:1_phzItJp4AJ:scholar.google.com/&output=cite&scirp=0&hl=en",
+          "url_add_sclib": "/citations?hl=en&xsrf=&continue=/scholar%3Fq%3DEdTech%2BOR%2B%2522educational%2Btechnology%2522%2BOR%2B%2522education%2Btechnology%2522%26hl%3Den%26as_sdt%3D0,33&citilm=1&update_op=library_add&info=1_phzItJp4AJ&ei=QLBUZprrLc6Vy9YPnqWSKA&json=",
+          "num_citations": 131,
+          "citedby_url": "/scholar?cites=9270459222743710423&as_sdt=5,33&sciodt=0,33&hl=en",
+          "url_related_articles": "/scholar?q=related:1_phzItJp4AJ:scholar.google.com/&scioq=EdTech+OR+%22educational+technology%22+OR+%22education+technology%22&hl=en&as_sdt=0,33",
+          "eprint_url": "https://oro.open.ac.uk/55708/1/ER184101.pdf"
+      },
+      {
+          "container_type": "Publication",
+          "source": "PUBLICATION_SEARCH_SNIPPET",
+          "bib": {
+              "title": "EdTech in developing countries: A review of the evidence",
+              "author": "Rodriguez-Segura, Daniel",
+              "pub_year": "2022",
+              "venue": "The World Bank Research Observer",
+              "abstract": "EdTech interventions centered around self-led learning and improvements to instruction are  the most effective forms of EdTech  EdTech solution to the policy constraints at hand. Finally,",
+              "publisher": "Oxford University Press",
+              "pages": "171--203",
+              "number": "2",
+              "volume": "37",
+              "journal": "The World Bank Research Observer",
+              "pub_type": "article",
+              "bib_id": "rodriguez2022edtech"
+          },
+          "filled": true,
+          "gsrank": 3,
+          "pub_url": "https://academic.oup.com/wbro/article-abstract/37/2/171/6333790",
+          "author_id": [
+              "uUt-s3UAAAAJ"
+          ],
+          "url_scholarbib": "/scholar?hl=en&q=info:rpMOfd3XQbcJ:scholar.google.com/&output=cite&scirp=2&hl=en",
+          "url_add_sclib": "/citations?hl=en&xsrf=&continue=/scholar%3Fq%3DEdTech%2BOR%2B%2522educational%2Btechnology%2522%2BOR%2B%2522education%2Btechnology%2522%26hl%3Den%26as_sdt%3D0,33&citilm=1&update_op=library_add&info=rpMOfd3XQbcJ&ei=QLBUZprrLc6Vy9YPnqWSKA&json=",
+          "num_citations": 66,
+          "citedby_url": "/scholar?cites=13205072928712856494&as_sdt=5,33&sciodt=0,33&hl=en",
+          "url_related_articles": "/scholar?q=related:rpMOfd3XQbcJ:scholar.google.com/&scioq=EdTech+OR+%22educational+technology%22+OR+%22education+technology%22&hl=en&as_sdt=0,33",
+          "eprint_url": "https://openknowledge.worldbank.org/server/api/core/bitstreams/6ac08b1a-d072-4727-8678-d42bbee86a8a/content"
+      }
+  ]
+}
