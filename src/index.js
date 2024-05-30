@@ -6,6 +6,7 @@ const { setupDatabase } = require('./utils/config/setupDatabase');
 const { deduplicate } = require('./utils/db/deduplicate');
 const { uploadToZotero } = require('./utils/zotero/uploadToZotero');
 const { uploadToDatabase } = require('./utils/db/uploadToDatabase');
+const { dump } = require('./utils/db/dump');
 
 /*
 * Issues:
@@ -43,6 +44,24 @@ Issues:
 
 //TODO: Create middleware
 const argv = yargs
+    .command(
+        'db-dump',
+        'Dump the database',
+        (yargs) => {
+            yargs.option('table', {
+                alias: '-t',
+                describe: 'Table to dump',
+                type: 'string',
+                demandOption: true,
+            });
+            yargs.option('output', {
+                alias: '-o',
+                describe: 'Output file',
+                type: 'string',
+                demandOption: true,
+            });
+        }
+    )
     .command(
         'config',
         'Setup Zotero configuration or database configuration',
@@ -204,4 +223,10 @@ const argv = yargs
         await setupDatabase(argValue.url);
         return;
     }
+    if (argValue._[0] === 'db-dump') {
+        dump(argValue.table, argValue.output);
+        return;
+    }
+
+    console.log(argValue);
 })()

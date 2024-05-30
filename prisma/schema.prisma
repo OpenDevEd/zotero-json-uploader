@@ -14,6 +14,9 @@ datasource db {
 }
 
 model SearchResults {
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
   id                       Int     @id @default(autoincrement())
   title                    String?
   abstract                 String?
@@ -25,13 +28,28 @@ model SearchResults {
   searchId                 String?
   itemPositionWithinSearch Int
 
-  duplicateChecked Boolean? @default(false)
+  // Relations
+  searchInformation          SearchInformation[]
+  screening                  Screening[]
+  SearchResults_Deduplicated SearchResults_Deduplicated[]
+}
 
-  searchInformation SearchInformation[]
-  screening         Screening[]
+// Used to store the many-to-many relationship between SearchResults and Deduplicated
+model SearchResults_Deduplicated {
+  id Int @id @default(autoincrement())
+
+  searchResultsId Int?
+  deduplicatedId  Int?
+
+  // Relations
+  SearchResults SearchResults? @relation(fields: [searchResultsId], references: [id])
+  Deduplicated  Deduplicated?  @relation(fields: [deduplicatedId], references: [id])
 }
 
 model Deduplicated {
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
   id              Int     @id @default(autoincrement())
   title           String?
   abstract        String?
@@ -40,7 +58,8 @@ model Deduplicated {
   otherIdentifier String?
   flag            String?
 
-  searchResultsIds Int[]
+  // Relations
+  SearchResults_Deduplicated SearchResults_Deduplicated[]
 }
 
 model SearchInformation {
@@ -61,7 +80,6 @@ model Screening {
   resultOfChatgptScreening String?
 
   // Relations
-
   SearchResults   SearchResults? @relation(fields: [searchResultsId], references: [id])
   searchResultsId Int?
 }
