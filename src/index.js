@@ -5,7 +5,7 @@ const { setupZoteroConfig } = require('./utils/config/setupZoteroConfig');
 const { setupDatabase } = require('./utils/config/setupDatabase');
 const { deduplicate } = require('./utils/db/deduplicate');
 const { uploadToZotero } = require('./utils/zotero/uploadToZotero');
-const { UploadToDatabase } = require('./utils/db/uploadToDatabase');
+const { uploadToDatabase } = require('./utils/db/uploadToDatabase');
 
 /*
 * Issues:
@@ -189,7 +189,7 @@ const argv = yargs
         return;
     }
     if (argValue._[0] === 'db-upload') {
-        await UploadToDatabase(argValue);
+        await uploadToDatabase(argValue);
         return;
     }
     if (argValue._[0] === 'db-deduplicate') {
