@@ -25,7 +25,8 @@ model SearchResults {
   searchId                 String?
   itemPositionWithinSearch Int
 
-  deduplicated      Deduplicated[]
+  duplicateChecked Boolean? @default(false)
+
   searchInformation SearchInformation[]
   screening         Screening[]
 }
@@ -39,9 +40,7 @@ model Deduplicated {
   otherIdentifier String?
   flag            String?
 
-  // Relations
-  SearchResults  SearchResults? @relation(fields: [searchResultId], references: [id])
-  searchResultId Int?
+  searchResultsIds Int[]
 }
 
 model SearchInformation {

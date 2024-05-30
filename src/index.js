@@ -14,6 +14,7 @@ const { parseSearchResults } = require('./utils/parsing/parseSearchResults');
 const { setupZoteroConfig } = require('./utils/config/setupZoteroConfig');
 const openalexToZotero = require('./utils/openalex-to-zotero');
 const { setupDatabase } = require('./utils/config/setupDatabase');
+const { deduplicate } = require('./utils/db/deduplicate');
 // const defaultJQPath = path.join(__dirname, '../jq/openalex-to-zotero.jq');
 
 /*
@@ -64,6 +65,7 @@ const argv = yargs
             });
         }
     )
+    .command('db-deduplicate', '',)
     .command('$0 action [files...]', 'Example script', (yargs) => {
         yargs.positional('files', {
             describe: 'One or more files',
@@ -108,6 +110,10 @@ const argv = yargs
     .help()
     .alias('help', 'h')
     .middleware(async (args) => {
+        if (args._[0] === 'db-deduplicate') {
+            await deduplicate();
+            process.exit(0);
+        }
         if (args._[0] === 'config') {
             if (args.set === 'api-key')
                 await setupZoteroConfig();
@@ -433,7 +439,6 @@ async function run(argv) {
     function show(obj) {
         console.log(JSON.stringify(obj, null, 4));
     }
-
     (async () => {
         for (file of files) {
             await main(file);
