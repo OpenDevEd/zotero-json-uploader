@@ -44,6 +44,7 @@ Issues:
 
 //TODO: Create middleware
 const argv = yargs
+    .command('$0 action [files...]', 'Example script')
     .command(
         'db-dump',
         'Dump the database',
@@ -140,6 +141,21 @@ const argv = yargs
                 alias: 'c',
                 describe: 'Collection to add the item to, separated with comas. ex: ABC12DEF,GHI34JKL',
                 type: 'string',
+            })
+            .option('autocollection', {
+                alias: 'C',
+                describe: 'For each file provided, a new collection is created, using the file name as the collection name',
+                type: 'string',
+            })
+            .option('autotag', {
+                alias: 'A',
+                describe: 'For each file provided, a new tag is created, using the file name as the tag name',
+                type: 'string',
+            }).option('attachoriginalmetadata', {
+                alias: 'O',
+                describe: 'Attach original metadata to the file',
+                type: 'boolean',
+                default: false,
             });
     })
     .help()
@@ -217,14 +233,6 @@ const argv = yargs
     }
     if (argValue._[0] === 'zotero') {
         await uploadToZotero(argValue);
-        return;
-    }
-    if (argValue._[0] === 'db-set-connection') {
-        await setupDatabase(argValue.url);
-        return;
-    }
-    if (argValue._[0] === 'db-dump') {
-        dump(argValue.table, argValue.output);
         return;
     }
 
