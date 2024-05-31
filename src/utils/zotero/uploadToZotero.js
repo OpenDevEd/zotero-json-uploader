@@ -172,9 +172,9 @@ async function uploadToZotero(argv) {
         if (!fs.existsSync(inDirectory + "extra_json/")) {
             fs.mkdirSync(inDirectory + "extra_json/");
         };
-        const inFileExtra = inDirectory + "extra_json/" + inFilename;
+        const inFileExtra = inDirectory + "/extra_json/" + inFilename;
         // Can you change references like this as follows:
-        const outf = inFileExtra + ".zotero.json";
+        const outf = inFilename.split(".")[0] + ".zotero.json";
         fs.writeFileSync(outf, data);
         // TODO: This needs a collection, collectionKey, and zotero object
         let newitems = { files: [outf], collections: [collectionKey, ...collections] };
