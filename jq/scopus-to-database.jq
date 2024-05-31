@@ -24,7 +24,7 @@ def showAffiliationInExtra:
   {
     "itemType": ."subtypeDescription" | typeMap,
     "title": ."dc:title",
-    "creators": (if has("author") then 
+    "creators": (if has("author") and (.author | type) == "array" then 
     # TODO: handle multiple authors when get the access to the data
     [ .author | .[] | {
         "creatorType": "author",
@@ -32,13 +32,17 @@ def showAffiliationInExtra:
         "lastName": .surname
       }
     ]
-     else [
-      {
-        "creatorType": "author",
-        "firstName": ."dc:creator" | split(" ")[0],
-        "lastName": ."dc:creator" | split(" ")[1]
-      }
-    ] end),
+     else
+      (if has("dc:creator") and (."dc:creator" | type) == "string" then
+        [ ."dc:creator" | {
+            "creatorType": "author",
+            "firstName": . | split(" ")[0],
+            "lastName": . | split(" ")[1]
+          }
+        ]
+      else
+        [] end)
+      end),
     "abstractNote": (."dc:description" // ""),
     "date": ."prism:coverDate",
     "language": "",
@@ -50,7 +54,13 @@ def showAffiliationInExtra:
     "libraryCatalog": "",
     "callNumber": "",
     "rights": "",
-    "extra": ("affiliation: " + (.affiliation | showAffiliationInExtra) + "\n"
+    "extra": ((
+      if has("affiliation") and (.affiliation | type) == "array" then
+      "affiliation: " + (.affiliation | showAffiliationInExtra) + "\n"
+      else
+      "affiliation: " + (.affiliation // "") + "\n"
+      end
+      )
       + "pubitemid: " + (.pii // "") + "\n"
       + "eid: " + (.eid // "") + "\n"
       + "orcid: " + (.orcid // "") + "\n"
