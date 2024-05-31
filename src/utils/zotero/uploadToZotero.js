@@ -139,7 +139,7 @@ async function uploadToZotero(argv) {
         });
 
 
-        await upload(infile, JSON.stringify(data, null, 4), source);
+        await zotero_upload(infile, JSON.stringify(data, null, 4), source);
     };
 
     async function openalexjs(infile) {
@@ -161,15 +161,31 @@ async function uploadToZotero(argv) {
         return data;
     };
 
-    async function upload(infile, data, source) {
-        const outf = infile + ".zotero.json";
+    async function zotero_upload(infile, data, source) {
+        const inDirectory = path.dirname(infile);
+        const inFilename = path.basename(infile);
+        // make inDirectory + "extra_json/" if it doesn't exist:
+        if (!fs.existsSync(inDirectory + "extra_json/")) {
+            fs.mkdirSync(inDirectory + "extra_json/");
+        };
+        const inFileExtra = inDirectory + "extra_json/" + inFilename;
+        // Can you change references like this as follows:
+        const outf = inFileExtra + ".zotero.json";
         fs.writeFileSync(outf, data);
         // TODO: This needs a collection, collectionKey, and zotero object
-        const result = await zotero.create_item({ files: [outf], collections: [collectionKey, ...collections] });
-        fs.writeFileSync(infile + ".zotero-result.json", JSON.stringify(result));
+        let mycollections = [collectionKey, ...collections];
+        if (argv.autocollections) {
+            mycollections = [...mycollections, infile];
+        };
+        const mytags = argv.autotags ? [infile] : [];
+        const result = await zotero.create_item({ files: [outf], collections: mycollections, tags: mytags });
+        fs.writeFileSync(inFileExtra + ".zotero-result.json", JSON.stringify(result));
         // if the code below fails, you can resume from here:
         const zotobject = await jq.run("[ .[] | .successful | [ to_entries[] | .value.data ] ] | flatten ", result, { input: 'json', output: 'json' });
-        fs.writeFileSync(infile + ".zotero-result-filtered.json", JSON.stringify(zotobject, null, 4));
+        fs.writeFileSync(inFileExtra + ".zotero-result-filtered.json", JSON.stringify(zotobject, null, 4));
+        // This object is what you need for the database (Table 2, deduplicated).
+        // So no separate transform is needed: The correct data is already generated.
+        // The only difference is the ID. I'm not sure what this ID is here... 
         const aiscreening = zotobject.map((item) => {
             const extra = item.extra || '';
             const lines = extra.split('\n');
@@ -184,7 +200,7 @@ async function uploadToZotero(argv) {
             };
         });
         console.log("AIScreening: " + JSON.stringify(aiscreening, null, 4));
-        fs.writeFileSync(infile + ".aiscreening.json", JSON.stringify(aiscreening, null, 4));
+        fs.writeFileSync(inFileExtra + ".aiscreening.json", JSON.stringify(aiscreening, null, 4));
         const inob = JSON.parse(fs.readFileSync(infile, 'utf8'));
         let openalexobject;
         if (argv.transform === 'openalexjq' || argv.transform === 'openalexjs' || source === 'openalex') {
@@ -208,20 +224,27 @@ async function uploadToZotero(argv) {
         if (!fs.existsSync(tempdir)) {
             fs.mkdirSync(tempdir);
         };
-        for (s of zotobject) {
-            console.log("Upload: " + s.key);
-            show(s);
-            if (s.callNumber != "" && s.callNumber.startsWith("openalex:")) {
-                const oakey = s.callNumber.replace(/openalex\:\s+/g, '');
-                const writefile = tempdir + "/" + oakey + ".json";
-                console.log(writefile);
-                fs.writeFileSync(writefile, JSON.stringify(openalexobject["https://openalex.org/" + oakey], null, 4));
-                const result = await zotero.item({ key: s.key, addfiles: [writefile], addtags: ["openalex:yes"] });
-            } else {
-                console.log("did not find call number with oa key: " + s.key + " " + s.callNumber);
+        if (argv.attachoriginalmetadata) {
+            // TODO: This option will not work if other sources are used. The code needs to be changed to allow attachment of metadata from any source.
+            if (source != 'openalex') {
+                console.log("Attachment of original metadata only works with openalex source.");
+                process.exit(1);
+            };
+            for (s of zotobject) {
+                console.log("Upload: " + s.key);
+                show(s);
+                if (s.callNumber != "" && s.callNumber.startsWith("openalex:")) {
+                    const oakey = s.callNumber.replace(/openalex\:\s+/g, '');
+                    const writefile = tempdir + "/" + oakey + ".json";
+                    console.log(writefile);
+                    fs.writeFileSync(writefile, JSON.stringify(openalexobject["https://openalex.org/" + oakey], null, 4));
+                    // Now attach the file to the zotero record using 'addfiles':
+                    await zotero.item({ key: s.key, addfiles: [writefile], addtags: ["openalex:yes"] });
+                } else {
+                    console.log("did not find call number with oa key: " + s.key + " " + s.callNumber);
+                };
             };
         };
-
     };
 
     function show(obj) {
