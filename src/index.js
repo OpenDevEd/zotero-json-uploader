@@ -416,7 +416,7 @@ async function run(argv) {
         }
         let scopusobject;
         if (argv.transform === 'scopusjq' || source === 'scopus') {
-            scopusobject = await jq.run('."search-results" | .entry | [ .[] | { "key": ."dc:identifier", "value": . } ] | from_entries', inob, { input: 'json', output: 'json' });
+            scopusobject = await jq.run('.results | [ .[] | { "key": ."dc:identifier", "value": . } ] | from_entries', inob, { input: 'json', output: 'json' });
             fs.writeFileSync(infile + ".scopus-object.json", JSON.stringify(scopusobject, null, 4));
         }
         const tempdir = "temp";
