@@ -10,7 +10,7 @@ const prisma = new PrismaClient();
 async function uploadSearchResults({ meta, results }) {
   try {
     if (results?.length === 0) throw new Error('No search results to upload');
-    console.log(`\nIn progress...`);
+    console.log(`In progress...`);
     // check if the meta.searchID already exists in the database
     const search = await prisma.searchResults.findFirst({
       where: { searchId: meta.searchID },
@@ -18,13 +18,14 @@ async function uploadSearchResults({ meta, results }) {
     });
     if (search === null) {
       // create a new search results
+      console.log(`Uploading data to the database...`);
       const createdSearchResults = await prisma.searchResults.createMany({
         data: results,
       });
-      console.log(`\n${createdSearchResults.count} Items uploaded to the database.`);
+      console.log(`${createdSearchResults.count} Items uploaded to the database.`);
       return;
     }
-    console.log(`\nSearch ID already exists in the database.`);
+    console.log(`Search ID already exists in the database.`);
 
   } catch (error) {
     throw new Error(error);
