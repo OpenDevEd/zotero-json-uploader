@@ -135,10 +135,14 @@ async function uploadToZotero(argv) {
                 item.tags = item.tags || [];
                 item.tags.push({ tag: argv.tag });
             }
+            if (argv.autotag) {
+                item.tags = item.tags || [];
+                item.tags.push({ tag: infile.replace(/\.json$/, '') });
+            };
             return item;
         });
 
-
+        // TODO: It's unclear why JSON.stringify is needed here? In the zotero_upload function, we can use the object.
         await zotero_upload(infile, JSON.stringify(data, null, 4), source);
     };
 
@@ -173,12 +177,12 @@ async function uploadToZotero(argv) {
         const outf = inFileExtra + ".zotero.json";
         fs.writeFileSync(outf, data);
         // TODO: This needs a collection, collectionKey, and zotero object
-        let mycollections = [collectionKey, ...collections];
+        let newitems = { files: [outf], collections: [collectionKey, ...collections] };
         if (argv.autocollections) {
-            mycollections = [...mycollections, infile];
+            newitems["newcollection"] = inFilename.replace(/\.json$/, '');
         };
-        const mytags = argv.autotags ? [infile] : [];
-        const result = await zotero.create_item({ files: [outf], collections: mycollections, tags: mytags });
+        // const mytags = argv.autotags ? [infile] : [];
+        const result = await zotero.create_item(newitems);
         fs.writeFileSync(inFileExtra + ".zotero-result.json", JSON.stringify(result));
         // if the code below fails, you can resume from here:
         const zotobject = await jq.run("[ .[] | .successful | [ to_entries[] | .value.data ] ] | flatten ", result, { input: 'json', output: 'json' });
