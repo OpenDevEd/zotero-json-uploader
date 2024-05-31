@@ -106,12 +106,12 @@ const argv = yargs
             })
             .option('autocollection', {
                 alias: 'C',
-                describe: 'Collection to add the item to, separated with comas. ex: ABC12DEF,GHI34JKL',
+                describe: 'For each file provided, a new collection is created, using the file name as the collection name',
                 type: 'string',
             })
             .option('autotag', {
                 alias: 'A',
-                describe: 'Collection to add the item to, separated with comas. ex: ABC12DEF,GHI34JKL',
+                describe: 'For each file provided, a new tag is created, using the file name as the tag name',
                 type: 'string',
             });
     })
