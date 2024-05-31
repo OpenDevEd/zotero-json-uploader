@@ -3,16 +3,21 @@ const prisma = new PrismaClient();
 
 const ObjectsToCsv = require('objects-to-csv');
 
-async function dump(table, output) {
+async function dump(tableArg, output) {
     const tables = ['SearchResults', "Deduplicated"];
     try {
-        // check the output file name that is .csv
-        if (!output.endsWith('.csv'))
+        // Check if the table exists
+        const table = isNaN(Number(tableArg)) ? tables.find(t => t.toLowerCase() === tableArg.toLowerCase()) : tables[Number(tableArg) - 1];
+        if (!table) throw new Error('Table not found');
+        const nameWithExtension = output.includes('.')
+        if (nameWithExtension && !output.endsWith('.csv'))
             throw new Error('Output file must be a .csv file');
-        console.log(`Dumping ${tables[Number(table) + 1]} table to ${output}`);
-        const data = await prisma[tables[table]].findMany();
+
+        // Dump the table
+        console.log(`Dumping ${table} table to ${output}`);
+        const data = await prisma[table].findMany();
         const csv = new ObjectsToCsv(data);
-        await csv.toDisk(output);
+        await csv.toDisk(nameWithExtension ? output : `${output}.csv`);
     } catch (error) {
         console.error('Error dumping table:', error.message);
     }
