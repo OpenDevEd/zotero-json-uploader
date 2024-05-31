@@ -52,6 +52,7 @@ Issues:
 
 //TODO: Create middleware
 const argv = yargs
+    .command('$0 action [files...]', 'Example script')
     .command(
         'config',
         'Setup Zotero configuration or database configuration',
@@ -64,7 +65,7 @@ const argv = yargs
             });
         }
     )
-    .command('$0 action [files...]', 'Example script', (yargs) => {
+    .command('zotero [files...]', 'Upload to Zotero', (yargs) => {
         yargs.positional('files', {
             describe: 'One or more files',
             type: 'string',
@@ -113,6 +114,11 @@ const argv = yargs
                 alias: 'A',
                 describe: 'For each file provided, a new tag is created, using the file name as the tag name',
                 type: 'string',
+            }).option('attachoriginalmetadata', {
+                alias: 'O',
+                describe: 'Attach original metadata to the file',
+                type: 'boolean',
+                default: false,
             });
     })
     .help()
@@ -419,24 +425,29 @@ async function run(argv) {
             scopusobject = await jq.run('.results | [ .[] | { "key": ."dc:identifier", "value": . } ] | from_entries', inob, { input: 'json', output: 'json' });
             fs.writeFileSync(infile + ".scopus-object.json", JSON.stringify(scopusobject, null, 4));
         }
-        const tempdir = "temp";
-        if (!fs.existsSync(tempdir)) {
-            fs.mkdirSync(tempdir);
-        };
-        for (s of zotobject) {
-            console.log("Upload: " + s.key);
-            show(s);
-            if (s.callNumber != "" && s.callNumber.startsWith("openalex:")) {
-                const oakey = s.callNumber.replace(/openalex\:\s+/g, '');
-                // console.log(s.key + " => " + JSON.stringify("https://openalex.org/" + oaob[oakey], null, 4));
-                const writefile = tempdir + "/" + oakey + ".json";
-                console.log(writefile);
-                fs.writeFileSync(writefile, JSON.stringify(openalexobject["https://openalex.org/" + oakey], null, 4));
-                const result = await zotero.item({ key: s.key, addfiles: [writefile], addtags: ["openalex:yes"] });
-            } else {
-                console.log("did not find call number with oa key: " + s.key + " " + s.callNumber);
+        // Phase 2 (I think)
+        // TODO: implement this option in yargs
+        if (argv.attachoriginalmetadata === true) {
+            const tempdir = "temp";
+            if (!fs.existsSync(tempdir)) {
+                fs.mkdirSync(tempdir);
             };
-        };
+            for (s of zotobject) {
+                console.log("Upload: " + s.key);
+                show(s);
+                if (s.callNumber != "" && s.callNumber.startsWith("openalex:")) {
+                    const oakey = s.callNumber.replace(/openalex\:\s+/g, '');
+                    // console.log(s.key + " => " + JSON.stringify("https://openalex.org/" + oaob[oakey], null, 4));
+                    const writefile = tempdir + "/" + oakey + ".json";
+                    console.log(writefile);
+                    fs.writeFileSync(writefile, JSON.stringify(openalexobject["https://openalex.org/" + oakey], null, 4));
+                    const result = await zotero.item({ key: s.key, addfiles: [writefile], addtags: ["openalex:yes"] });
+                } else {
+                    console.log("did not find call number with oa key: " + s.key + " " + s.callNumber);
+                };
+            };
+        }
+
 
     };
 
