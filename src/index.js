@@ -103,6 +103,16 @@ const argv = yargs
                 alias: 'c',
                 describe: 'Collection to add the item to, separated with comas. ex: ABC12DEF,GHI34JKL',
                 type: 'string',
+            })
+            .option('autocollection', {
+                alias: 'C',
+                describe: 'Collection to add the item to, separated with comas. ex: ABC12DEF,GHI34JKL',
+                type: 'string',
+            })
+            .option('autotag', {
+                alias: 'A',
+                describe: 'Collection to add the item to, separated with comas. ex: ABC12DEF,GHI34JKL',
+                type: 'string',
             });
     })
     .help()
