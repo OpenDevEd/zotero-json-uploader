@@ -34,9 +34,9 @@ def extractDOI:
   end;
 
 def makeScholarlyId:
-    if ((.!=null) and (. | split("/")[-1]) != "")
+    if has("url_scholarbib") and has("citedby_url")
     then
-	. | "GoogleScholar" + ([ (.url_scholarbib|capture("info:(?<id>[^:]+):")), (.citedby_url|capture("cites=(?<id>\\d+)"))]| map(.id) | join(":"))
+	. | "GoogleScholar:" + ([ (.url_scholarbib|capture("info:(?<id>[^:]+):")), (.citedby_url|capture("cites=(?<id>\\d+)"))]| map(.id) | join(":"))
 	else ""
     end;
 
