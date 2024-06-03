@@ -1,0 +1,26 @@
+#!/bin/bash
+echo "Running this script from the root as\nbash tests/test1.sh"
+echo "Zotero library: 2024 API Test, https://www.zotero.org/groups/5478983/2024_api_test"
+apitest_scholarly="zotero://select/groups/5478983/collections/KZYITWV8"
+apitest_scite="zotero://select/groups/5478983/collections/T9JC48TW"
+apitest_scopus="zotero://select/groups/5478983/collections/QMNKU727"
+apitest_oa="zotero://select/groups/5478983/collections/AEYWRXKN"
+
+case $1 in
+    scholarly)
+        npm start -- zotero -g ${apitest_scholarly} "./testdata/scholarly.json"
+        ;;
+    scite)
+        npm start -- zotero -g ${apitest_scite} "./testdata/scite.json"
+        ;;
+    scopus)
+        npm start -- zotero -g ${apitest_scopus} "./testdata/scopus.json"
+        ;;
+    openalex)
+        npm start -- zotero -g ${apitest_oa} "./testdata/openalex.json"
+        ;;
+    *)
+        echo "Invalid argument. Please use one of the following: scholarly, scite, scopus, openalex."
+        ;;
+esac
+
