@@ -9,6 +9,7 @@ apitest_openalex="zotero://select/groups/5478983/collections/AEYWRXKN"
 case $1 in
     scholarly)
         npm start -- zotero -A -g ${apitest_scholarly} "./testdata/scholarly_10.json"
+        npm start -- zotero -A -g ${apitest_scholarly} "./testdata/scholarly-filled_10.json"
         ;;
     scite)
         npm start -- zotero -A -g ${apitest_scite} "./testdata/scite_10.json"
