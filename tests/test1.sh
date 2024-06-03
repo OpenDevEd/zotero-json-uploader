@@ -9,6 +9,8 @@ apitest_openalex="zotero://select/groups/5478983/collections/AEYWRXKN"
 case $1 in
     scholarly)
         npm start -- zotero -A -g ${apitest_scholarly} "./testdata/scholarly_10.json"
+        ;;
+    scholarly2)
         npm start -- zotero -A -g ${apitest_scholarly} "./testdata/scholarly-filled_10.json"
         ;;
     scite)
@@ -16,13 +18,15 @@ case $1 in
         ;;
     scopus)
         npm start -- zotero -A -g ${apitest_scopus} "./testdata/scopus_10.json"
+        ;;
+    scopus2)
         npm start -- zotero -A -g ${apitest_scopus} "./testdata/scopus-inst_10.json"
         ;;
     openalex)
         npm start -- zotero -A -g ${apitest_openalex} "./testdata/openalex_10.json"
         ;;
     *)
-        echo "Invalid argument. Please use one of the following: scholarly, scite, scopus, openalex."
+        echo "Invalid argument. Please use one of the following: scholarly, scholarly2, scite, scopus, scopus2, openalex."
         ;;
 esac
 
