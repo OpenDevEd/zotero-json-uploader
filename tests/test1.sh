@@ -16,6 +16,7 @@ case $1 in
         ;;
     scopus)
         npm start -- zotero -A -g ${apitest_scopus} "./testdata/scopus_10.json"
+        npm start -- zotero -A -g ${apitest_scopus} "./testdata/scopus-inst_10.json"
         ;;
     openalex)
         npm start -- zotero -A -g ${apitest_openalex} "./testdata/openalex_10.json"
