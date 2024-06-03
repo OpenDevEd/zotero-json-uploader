@@ -4,20 +4,20 @@ echo "Zotero library: 2024 API Test, https://www.zotero.org/groups/5478983/2024_
 apitest_scholarly="zotero://select/groups/5478983/collections/KZYITWV8"
 apitest_scite="zotero://select/groups/5478983/collections/T9JC48TW"
 apitest_scopus="zotero://select/groups/5478983/collections/QMNKU727"
-apitest_oa="zotero://select/groups/5478983/collections/AEYWRXKN"
+apitest_openalex="zotero://select/groups/5478983/collections/AEYWRXKN"
 
 case $1 in
     scholarly)
-        npm start -- zotero -g ${apitest_scholarly} "./testdata/scholarly.json"
+        npm start -- zotero -A -g ${apitest_scholarly} "./testdata/scholarly.json"
         ;;
     scite)
-        npm start -- zotero -g ${apitest_scite} "./testdata/scite.json"
+        npm start -- zotero -A -g ${apitest_scite} "./testdata/scite.json"
         ;;
     scopus)
-        npm start -- zotero -g ${apitest_scopus} "./testdata/scopus.json"
+        npm start -- zotero -A -g ${apitest_scopus} "./testdata/scopus.json"
         ;;
     openalex)
-        npm start -- zotero -g ${apitest_oa} "./testdata/openalex.json"
+        npm start -- zotero -A -g ${apitest_openalex} "./testdata/openalex.json"
         ;;
     *)
         echo "Invalid argument. Please use one of the following: scholarly, scite, scopus, openalex."
