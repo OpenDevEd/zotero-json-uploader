@@ -184,7 +184,7 @@ const argv = yargs
             process.exit(1);
         };
 
-        if (!transformOptions.includes(args.transform)) {
+        if (args.transform && !transformOptions.includes(args.transform)) {
             console.log('Transformation option is not one of the options');
             process.exit(1);
         }
