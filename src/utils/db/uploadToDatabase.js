@@ -30,11 +30,6 @@ async function uploadToDatabase(argv) {
             'openalexjs': null
         };
 
-        if (argv.transform == "openalexjs") {
-            // TODO: openalexjs transform option not implemented yet
-            console.log('openalexjs transform option not implemented yet');
-            process.exit(1);
-        };
         let mytransform = '';
         if (argv.transform) {
             if (Object.keys(argvTransformOptionsAndSourceMapping).includes(argv.transform)) {
@@ -59,7 +54,14 @@ async function uploadToDatabase(argv) {
         }
         dbdata = await jqfilter(infile, mytransform);
         try {
-            const outdbf = infile + ".database.json";
+            // TODO: There's similar code in uploadZotero.js -> extract to a function
+            const inDirectory = path.dirname(infile);
+            const inFilename = path.basename(infile);
+            if (!fs.existsSync(inDirectory + "/extra_json/")) {
+                fs.mkdirSync(inDirectory + "/extra_json/");
+            };
+            const inFileExtra = inDirectory + "/extra_json/" + inFilename;
+            const outdbf = inFileExtra + ".database.json";
             fs.writeFileSync(outdbf, dbdata);
             // Upload to database 
             await uploadSearchResults(parseSearchResults(dbdata));

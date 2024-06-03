@@ -177,6 +177,13 @@ const argv = yargs
             'scopus',
             'scite',
         ];
+
+        if (argv.transform == "openalexjs") {
+            // TODO: openalexjs transform option not implemented yet
+            console.log('openalexjs transform option not implemented yet');
+            process.exit(1);
+        };
+        
         if (!transformOptions.includes(args.transform)) {
             console.log('Transformation option is not one of the options');
             process.exit(1);
