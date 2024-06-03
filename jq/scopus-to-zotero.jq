@@ -50,7 +50,7 @@ def showAffiliationInExtra:
     "archive": "",
     "archiveLocation": "",
     "libraryCatalog": "",
-    "callNumber": "",
+    "callNumber": ("scopus:" + (."dc:identifier" | split(":")[1] // "")),
     "rights": "",
     "extra": ((
       if has("affiliation") and (.affiliation | type) == "array" then

@@ -8,7 +8,7 @@ def typeMap:
     else "report" 
     end
   end;
-def openalexCode: if ((.!=null) and (. | split("/")[-1]) != "") then ("openalex: "+(. | split("/")[-1])+"\n") else "" end;
+def makeScholarlyId: if ((.!=null) and (. | split("/")[-1]) != "") then ("openalex: "+(. | split("/")[-1])+"\n") else "" end;
 def magCode: if ((. != "") and (. != null)) then ("mag: "+(.)) else "" end;
 # Determine whether the doi should be put into the Zotero extra field
 def showDOIInExtra: if ((.type != "Publication") and (.doi != "") and (.doi != null)) then ("DOI: "+ .doi + "\n") else "" end;
@@ -59,7 +59,7 @@ def extractDOI:
   "archive": "",
   "archiveLocation": "",
   "libraryCatalog": "",
-  # "callNumber": (. | tostring),
+  # "callNumber": ([.url_scholarbib, .citedby_url] | makeScholarlyId),
   "callNumber": "",
   "rights": "",
   "extra": ("gsrank: "+ (.gsrank | tostring) + "\n" 

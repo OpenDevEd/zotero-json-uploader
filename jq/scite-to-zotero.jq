@@ -36,7 +36,7 @@ def showAffiliationInExtra:
     "archive": "",
     "archiveLocation": "",
     "libraryCatalog": "",
-    "callNumber": "",
+    "callNumber": "scite:...",
     "rights": "",
     "extra": "",
     "tags": [{
