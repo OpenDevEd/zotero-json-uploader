@@ -8,7 +8,7 @@ def typeMap:
     else "report" 
     end
   end;
-def makeScholarlyId: if ((.!=null) and (. | split("/")[-1]) != "") then ("openalex: "+(. | split("/")[-1])+"\n") else "" end;
+
 def magCode: if ((. != "") and (. != null)) then ("mag: "+(.)) else "" end;
 # Determine whether the doi should be put into the Zotero extra field
 def showDOIInExtra: if ((.type != "Publication") and (.doi != "") and (.doi != null)) then ("DOI: "+ .doi + "\n") else "" end;
@@ -32,6 +32,14 @@ def extractDOI:
     else ""
     end
   end;
+
+def makeScholarlyId:
+    if ((.!=null) and (. | split("/")[-1]) != "")
+    then
+	. | "GoogleScholar" + ([ (.url_scholarbib|capture("info:(?<id>[^:]+):")), (.citedby_url|capture("cites=(?<id>\\d+)"))]| map(.id) | join(":"))
+	else ""
+    end;
+
 
 
 .results | [ .[] | (
@@ -59,8 +67,7 @@ def extractDOI:
   "archive": "",
   "archiveLocation": "",
   "libraryCatalog": "",
-  # "callNumber": ([.url_scholarbib, .citedby_url] | makeScholarlyId),
-  "callNumber": "",
+  "callNumber": (. | makeScholarlyId),
   "rights": "",
   "extra": ("gsrank: "+ (.gsrank | tostring) + "\n" 
   + "pub_url:" + .pub_url + "\n"
@@ -71,7 +78,7 @@ def extractDOI:
   + "citedby_url:" + .citedby_url + "\n"
   + "url_related_articles:" + .url_related_articles + "\n"
   + "eprint_url:" + .eprint_url + "\n"
-  + "id: googlescholar:" + .bib.bib_id + "\n"
+  + "id: " + (. | makeScholarlyId) + "\n"
   ),
   "tags": [{
       "tag": "scholarly:import"
