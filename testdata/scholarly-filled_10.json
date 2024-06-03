@@ -1,0 +1,348 @@
+{
+    "meta": {
+        "version": "OpenDevEd_jsonUploaderV01",
+        "query": "'climate change' AND buildings",
+        "searchTerm": "'climate change' AND buildings",
+        "totalResultsRetrieved": 10,
+        "resultsAvailable": 4300000,
+        "source": "Google Scholar",
+        "sourceFormat": "original",
+        "date": "2024-06-03 13:22:19.358832",
+        "searchsFiled": "title_abstract",
+        "resultsPerPage": 10,
+        "firstItem": 1,
+        "startingPage": "",
+        "endingPage": "",
+        "filters": {
+            "dateFrom": null,
+            "dateTo": null
+        },
+        "sortBy": "relevance",
+        "sortOrder": "desc",
+        "numResults": 10,
+        "searchID": "bd056be0-b685-41a0-952a-441b4c54663e",
+        "queryUrl": "https://scholar.google.com/scholar?q='climate change' AND buildings",
+        "start_time": "2024-06-03 13:20:03",
+        "end_time": "2024-06-03 13:22:19.358842",
+        "args": {
+            "search": "'climate change' AND buildings",
+            "limit": 10,
+            "count": false,
+            "patents": false,
+            "citations": false,
+            "date": null,
+            "sort_by": "relevance",
+            "sort_order": "desc",
+            "json": true,
+            "ijson": false,
+            "bibtex": false,
+            "fill": true,
+            "save": "scholarly-filled_10",
+            "time": false,
+            "testurllength": false,
+            "chunksize": null,
+            "command": null
+        }
+    },
+    "results": [
+        {
+            "container_type": "Publication",
+            "source": "PUBLICATION_SEARCH_SNIPPET",
+            "bib": {
+                "title": "Future energy-optimised buildings—Addressing the impact of climate change on buildings",
+                "author": "Bamdad, Keivan and Cholette, Michael E and Omrani, Sara and Bell, John",
+                "pub_year": "2021",
+                "venue": "Energy and Buildings",
+                "abstract": "buildings and climate change as building energy use contributes to climate change, and the  changing climate  Many studies have examined the effect of climate change on buildings’",
+                "publisher": "Elsevier",
+                "pages": "110610",
+                "volume": "231",
+                "journal": "Energy and Buildings",
+                "pub_type": "article",
+                "bib_id": "bamdad2021future"
+            },
+            "filled": true,
+            "gsrank": 1,
+            "pub_url": "https://www.sciencedirect.com/science/article/pii/S037877882033396X",
+            "author_id": [
+                "rH_icssAAAAJ",
+                "-TIEjPAAAAAJ",
+                "AQbP8QIAAAAJ",
+                "Ok8C0FwAAAAJ"
+            ],
+            "url_scholarbib": "/scholar?hl=en&q=info:PCYHGICrTqAJ:scholar.google.com/&output=cite&scirp=0&hl=en",
+            "url_add_sclib": "/citations?hl=en&xsrf=&continue=/scholar%3Fq%3D%2527climate%2Bchange%2527%2BAND%2Bbuildings%26hl%3Den%26as_sdt%3D1,33%26as_vis%3D1&citilm=1&update_op=library_add&info=PCYHGICrTqAJ&ei=-bRdZo7bB6OZy9YPhZ6Y8A0&json=",
+            "num_citations": 80,
+            "citedby_url": "/scholar?cites=11551358660899186236&as_sdt=5,33&sciodt=1,33&hl=en",
+            "url_related_articles": "/scholar?q=related:PCYHGICrTqAJ:scholar.google.com/&scioq=%27climate+change%27+AND+buildings&hl=en&as_sdt=1,33&as_vis=1"
+        },
+        {
+            "container_type": "Publication",
+            "source": "PUBLICATION_SEARCH_SNIPPET",
+            "bib": {
+                "title": "Buildings and climate change: status, challenges, and opportunities",
+                "author": "Huovila, Pekka",
+                "pub_year": "2007",
+                "venue": "NA",
+                "abstract": "the use of energy in five phases of the building's life cycle: (i) the manufacturing of building  products and components; (ii) the transportation of building products and components to the",
+                "publisher": "UNEP/Earthprint",
+                "pub_type": "article",
+                "bib_id": "huovila2007buildings"
+            },
+            "filled": true,
+            "gsrank": 2,
+            "pub_url": "https://books.google.com/books?hl=en&lr=&id=-lgab8igWgcC&oi=fnd&pg=PP5&dq=%27climate+change%27+AND+buildings&ots=E0YjfaKla3&sig=5Qzmuzs7rx-8AYB5-qoGzVEcXwI",
+            "author_id": [
+                ""
+            ],
+            "url_scholarbib": "/scholar?hl=en&q=info:itXCAGzGvtwJ:scholar.google.com/&output=cite&scirp=1&hl=en",
+            "url_add_sclib": "/citations?hl=en&xsrf=&continue=/scholar%3Fq%3D%2527climate%2Bchange%2527%2BAND%2Bbuildings%26hl%3Den%26as_sdt%3D1,33%26as_vis%3D1&citilm=1&update_op=library_add&info=itXCAGzGvtwJ&ei=-bRdZo7bB6OZy9YPhZ6Y8A0&json=",
+            "num_citations": 248,
+            "citedby_url": "/scholar?cites=15906369101090706826&as_sdt=5,33&sciodt=1,33&hl=en",
+            "url_related_articles": "/scholar?q=related:itXCAGzGvtwJ:scholar.google.com/&scioq=%27climate+change%27+AND+buildings&hl=en&as_sdt=1,33&as_vis=1"
+        },
+        {
+            "container_type": "Publication",
+            "source": "PUBLICATION_SEARCH_SNIPPET",
+            "bib": {
+                "title": "Buildings and climate change",
+                "author": "Hirst, Neil",
+                "pub_year": "2013",
+                "venue": "Design and management of sustainable built …",
+                "abstract": "measures available for addressing climate change. In spite of the great opportunities it  presents, the buildings sector often appears as a poor relation in the climate change debate and",
+                "publisher": "Springer",
+                "pages": "23--30",
+                "journal": "Design and management of sustainable built environments",
+                "pub_type": "article",
+                "bib_id": "hirst2013buildings"
+            },
+            "filled": true,
+            "gsrank": 3,
+            "pub_url": "https://link.springer.com/chapter/10.1007/978-1-4471-4781-7_2",
+            "author_id": [
+                ""
+            ],
+            "url_scholarbib": "/scholar?hl=en&q=info:fpMBMveUOn4J:scholar.google.com/&output=cite&scirp=2&hl=en",
+            "url_add_sclib": "/citations?hl=en&xsrf=&continue=/scholar%3Fq%3D%2527climate%2Bchange%2527%2BAND%2Bbuildings%26hl%3Den%26as_sdt%3D1,33%26as_vis%3D1&citilm=1&update_op=library_add&info=fpMBMveUOn4J&ei=-bRdZo7bB6OZy9YPhZ6Y8A0&json=",
+            "num_citations": 26,
+            "citedby_url": "/scholar?cites=9095746186844935038&as_sdt=5,33&sciodt=1,33&hl=en",
+            "url_related_articles": "/scholar?q=related:fpMBMveUOn4J:scholar.google.com/&scioq=%27climate+change%27+AND+buildings&hl=en&as_sdt=1,33&as_vis=1",
+            "eprint_url": "http://ndl.ethernet.edu.et/bitstream/123456789/10976/1/Design%20and%20Management%20of%20Sustainable%20Built%20Environments.pdf#page=41"
+        },
+        {
+            "container_type": "Publication",
+            "source": "PUBLICATION_SEARCH_SNIPPET",
+            "bib": {
+                "title": "Adapting buildings and cities for climate change: a 21st century survival guide",
+                "author": "Roaf, Susan and Crichton, David and Nicol, Fergus",
+                "pub_year": "2009",
+                "venue": "NA",
+                "abstract": "that first alerted me to the scale of the potential impacts of climate change on our lives in  the more temperate lands was one, not on buildings in hot deserts, but on the ice-houses of",
+                "publisher": "Routledge",
+                "pub_type": "book",
+                "bib_id": "roaf2009adapting"
+            },
+            "filled": true,
+            "gsrank": 4,
+            "pub_url": "https://books.google.com/books?hl=en&lr=&id=wiqZbEy7-E8C&oi=fnd&pg=PR1&dq=%27climate+change%27+AND+buildings&ots=1Og6fn8yZo&sig=F9dJ4snLumvrk8yBc9xjs2IGK8g",
+            "author_id": [
+                "",
+                "",
+                ""
+            ],
+            "url_scholarbib": "/scholar?hl=en&q=info:4KUYM5jTUwEJ:scholar.google.com/&output=cite&scirp=3&hl=en",
+            "url_add_sclib": "/citations?hl=en&xsrf=&continue=/scholar%3Fq%3D%2527climate%2Bchange%2527%2BAND%2Bbuildings%26hl%3Den%26as_sdt%3D1,33%26as_vis%3D1&citilm=1&update_op=library_add&info=4KUYM5jTUwEJ&ei=-bRdZo7bB6OZy9YPhZ6Y8A0&json=",
+            "num_citations": 687,
+            "citedby_url": "/scholar?cites=95652667750655456&as_sdt=5,33&sciodt=1,33&hl=en",
+            "url_related_articles": "/scholar?q=related:4KUYM5jTUwEJ:scholar.google.com/&scioq=%27climate+change%27+AND+buildings&hl=en&as_sdt=1,33&as_vis=1",
+            "eprint_url": "http://llrc.mcast.edu.mt/digitalversion/table_of_contents_134820.pdf"
+        },
+        {
+            "container_type": "Publication",
+            "source": "PUBLICATION_SEARCH_SNIPPET",
+            "bib": {
+                "title": "UK adaptation strategy and technical measures: the impacts of climate change on buildings",
+                "author": "Sanders, CH and Phillipson, MC",
+                "pub_year": "2003",
+                "venue": "Building Research & Information",
+                "abstract": "affects of future climate change This paper discusses the expected changes in future climate  that are of importance to buildings in the UK, looks at specific climate change impacts and",
+                "publisher": "Taylor \\& Francis",
+                "pages": "210--221",
+                "number": "3-4",
+                "volume": "31",
+                "journal": "Building Research \\& Information",
+                "pub_type": "article",
+                "bib_id": "sanders2003uk"
+            },
+            "filled": true,
+            "gsrank": 5,
+            "pub_url": "https://www.tandfonline.com/doi/abs/10.1080/0961321032000097638",
+            "author_id": [
+                "",
+                ""
+            ],
+            "url_scholarbib": "/scholar?hl=en&q=info:cklLVLNaoB0J:scholar.google.com/&output=cite&scirp=4&hl=en",
+            "url_add_sclib": "/citations?hl=en&xsrf=&continue=/scholar%3Fq%3D%2527climate%2Bchange%2527%2BAND%2Bbuildings%26hl%3Den%26as_sdt%3D1,33%26as_vis%3D1&citilm=1&update_op=library_add&info=cklLVLNaoB0J&ei=-bRdZo7bB6OZy9YPhZ6Y8A0&json=",
+            "num_citations": 166,
+            "citedby_url": "/scholar?cites=2134805949633481074&as_sdt=5,33&sciodt=1,33&hl=en",
+            "url_related_articles": "/scholar?q=related:cklLVLNaoB0J:scholar.google.com/&scioq=%27climate+change%27+AND+buildings&hl=en&as_sdt=1,33&as_vis=1"
+        },
+        {
+            "container_type": "Publication",
+            "source": "PUBLICATION_SEARCH_SNIPPET",
+            "bib": {
+                "title": "Climate change and buildings energy efficiency--the key role of residents",
+                "author": "Miezis, Martins and Zvaigznitis, Kristaps and Stancioff, Nicholas and Soeftestad, Lars",
+                "pub_year": "2016",
+                "venue": "… and Climate …",
+                "abstract": "buildings. This paper summarizes the first findings of a comprehensive and in-depth study of  apartment buildings -family buildings in Eastern Europe understand their buildings and then",
+                "pages": "30--43",
+                "number": "1",
+                "volume": "17",
+                "journal": "Environmental and Climate Technologies",
+                "pub_type": "article",
+                "bib_id": "miezis2016climate"
+            },
+            "filled": true,
+            "gsrank": 6,
+            "pub_url": "https://sciendo.com/article/10.1515/rtuect-2016-0004?content-tab=abstract",
+            "author_id": [
+                "",
+                "",
+                ""
+            ],
+            "url_scholarbib": "/scholar?hl=en&q=info:Ys16lKWrZxMJ:scholar.google.com/&output=cite&scirp=5&hl=en",
+            "url_add_sclib": "/citations?hl=en&xsrf=&continue=/scholar%3Fq%3D%2527climate%2Bchange%2527%2BAND%2Bbuildings%26hl%3Den%26as_sdt%3D1,33%26as_vis%3D1&citilm=1&update_op=library_add&info=Ys16lKWrZxMJ&ei=-bRdZo7bB6OZy9YPhZ6Y8A0&json=",
+            "num_citations": 60,
+            "citedby_url": "/scholar?cites=1398274936970857826&as_sdt=5,33&sciodt=1,33&hl=en",
+            "url_related_articles": "/scholar?q=related:Ys16lKWrZxMJ:scholar.google.com/&scioq=%27climate+change%27+AND+buildings&hl=en&as_sdt=1,33&as_vis=1",
+            "eprint_url": "https://sciendo.com/pdf/10.1515/rtuect-2016-0004"
+        },
+        {
+            "container_type": "Publication",
+            "source": "PUBLICATION_SEARCH_SNIPPET",
+            "bib": {
+                "title": "A review of climate change impacts on commercial buildings and their technical services in the tropics",
+                "author": "Yau, Yat Huang and Hasbi, Syafawati",
+                "pub_year": "2013",
+                "venue": "Renewable and Sustainable Energy Reviews",
+                "abstract": "buildings’ contributions towards climate change as well as  concentrate on climate change  impacts on buildings and their  Recently, the effects of erratic weather patterns on building",
+                "publisher": "Elsevier",
+                "pages": "430--441",
+                "volume": "18",
+                "journal": "Renewable and Sustainable Energy Reviews",
+                "pub_type": "article",
+                "bib_id": "yau2013review"
+            },
+            "filled": true,
+            "gsrank": 7,
+            "pub_url": "https://www.sciencedirect.com/science/article/pii/S1364032112005862",
+            "author_id": [
+                "FEcwd_8AAAAJ",
+                "NtuW9Q8AAAAJ"
+            ],
+            "url_scholarbib": "/scholar?hl=en&q=info:5cRk4Sq8_yAJ:scholar.google.com/&output=cite&scirp=6&hl=en",
+            "url_add_sclib": "/citations?hl=en&xsrf=&continue=/scholar%3Fq%3D%2527climate%2Bchange%2527%2BAND%2Bbuildings%26hl%3Den%26as_sdt%3D1,33%26as_vis%3D1&citilm=1&update_op=library_add&info=5cRk4Sq8_yAJ&ei=-bRdZo7bB6OZy9YPhZ6Y8A0&json=",
+            "num_citations": 197,
+            "citedby_url": "/scholar?cites=2377826020631037157&as_sdt=5,33&sciodt=1,33&hl=en",
+            "url_related_articles": "/scholar?q=related:5cRk4Sq8_yAJ:scholar.google.com/&scioq=%27climate+change%27+AND+buildings&hl=en&as_sdt=1,33&as_vis=1"
+        },
+        {
+            "container_type": "Publication",
+            "source": "PUBLICATION_SEARCH_SNIPPET",
+            "bib": {
+                "title": "Climate change adaptation measures for buildings—A scoping review",
+                "author": "Stagrum, Anna Eknes and Anden{\\ae}s, Erlend and Kvande, Tore and Lohne, Jardar",
+                "pub_year": "2020",
+                "venue": "Sustainability",
+                "abstract": "Articles which concern climate change and buildings, but where the impact of climate  change on buildings and adaptation measures is not the main focus, were discharged.",
+                "publisher": "MDPI",
+                "pages": "1721",
+                "number": "5",
+                "volume": "12",
+                "journal": "Sustainability",
+                "pub_type": "article",
+                "bib_id": "stagrum2020climate"
+            },
+            "filled": true,
+            "gsrank": 8,
+            "pub_url": "https://www.mdpi.com/2071-1050/12/5/1721",
+            "author_id": [
+                "",
+                "",
+                "Ju9GZW0AAAAJ",
+                "sGW3w9YAAAAJ"
+            ],
+            "url_scholarbib": "/scholar?hl=en&q=info:l-wTMgmVeO8J:scholar.google.com/&output=cite&scirp=7&hl=en",
+            "url_add_sclib": "/citations?hl=en&xsrf=&continue=/scholar%3Fq%3D%2527climate%2Bchange%2527%2BAND%2Bbuildings%26hl%3Den%26as_sdt%3D1,33%26as_vis%3D1&citilm=1&update_op=library_add&info=l-wTMgmVeO8J&ei=-bRdZo7bB6OZy9YPhZ6Y8A0&json=",
+            "num_citations": 62,
+            "citedby_url": "/scholar?cites=17255705838997466263&as_sdt=5,33&sciodt=1,33&hl=en",
+            "url_related_articles": "/scholar?q=related:l-wTMgmVeO8J:scholar.google.com/&scioq=%27climate+change%27+AND+buildings&hl=en&as_sdt=1,33&as_vis=1",
+            "eprint_url": "https://www.mdpi.com/2071-1050/12/5/1721/pdf"
+        },
+        {
+            "container_type": "Publication",
+            "source": "PUBLICATION_SEARCH_SNIPPET",
+            "bib": {
+                "title": "Towards climate robust buildings: An innovative method for designing buildings with robust energy performance under climate change",
+                "author": "Moazami, Amin and Carlucci, Salvatore and Nik, Vahid M and Geving, Stig",
+                "pub_year": "2019",
+                "venue": "Energy and Buildings",
+                "abstract": "Neglecting extremes and designing buildings for the past or most likely weather conditions   in the design of buildings with robust energy performance under climate change and extreme",
+                "publisher": "Elsevier",
+                "pages": "109378",
+                "volume": "202",
+                "journal": "Energy and Buildings",
+                "pub_type": "article",
+                "bib_id": "moazami2019towards"
+            },
+            "filled": true,
+            "gsrank": 9,
+            "pub_url": "https://www.sciencedirect.com/science/article/pii/S0378778819311648",
+            "author_id": [
+                "k7l6HWEAAAAJ",
+                "aiFmMs4AAAAJ",
+                "Xfylxc8AAAAJ",
+                "XEI3ZkwAAAAJ"
+            ],
+            "url_scholarbib": "/scholar?hl=en&q=info:gN3LRqBPKaAJ:scholar.google.com/&output=cite&scirp=8&hl=en",
+            "url_add_sclib": "/citations?hl=en&xsrf=&continue=/scholar%3Fq%3D%2527climate%2Bchange%2527%2BAND%2Bbuildings%26hl%3Den%26as_sdt%3D1,33%26as_vis%3D1&citilm=1&update_op=library_add&info=gN3LRqBPKaAJ&ei=-bRdZo7bB6OZy9YPhZ6Y8A0&json=",
+            "num_citations": 55,
+            "citedby_url": "/scholar?cites=11540843069914733952&as_sdt=5,33&sciodt=1,33&hl=en",
+            "url_related_articles": "/scholar?q=related:gN3LRqBPKaAJ:scholar.google.com/&scioq=%27climate+change%27+AND+buildings&hl=en&as_sdt=1,33&as_vis=1",
+            "eprint_url": "https://www.sciencedirect.com/science/article/pii/S0378778819311648"
+        },
+        {
+            "container_type": "Publication",
+            "source": "PUBLICATION_SEARCH_SNIPPET",
+            "bib": {
+                "title": "Effects of climate change on the future of heritage buildings: Case study and applied methodology",
+                "author": "Huerto-Cardenas, Harold Enrique and Aste, Niccol{\\`o} and Del Pero, Claudio and Della Torre, Stefano and Leonforte, Fabrizio",
+                "pub_year": "2021",
+                "venue": "Climate",
+                "abstract": "climate change  buildings in Italy. This method could assist professionals and researchers  involved in the conservation of a building heritage to evaluate the risks due to climate change.",
+                "publisher": "MDPI",
+                "pages": "132",
+                "number": "8",
+                "volume": "9",
+                "journal": "Climate",
+                "pub_type": "article",
+                "bib_id": "huerto2021effects"
+            },
+            "filled": true,
+            "gsrank": 10,
+            "pub_url": "https://www.mdpi.com/2225-1154/9/8/132",
+            "author_id": [
+                "",
+                "",
+                "KWoRx-QAAAAJ"
+            ],
+            "url_scholarbib": "/scholar?hl=en&q=info:G5YgrlMbMQUJ:scholar.google.com/&output=cite&scirp=9&hl=en",
+            "url_add_sclib": "/citations?hl=en&xsrf=&continue=/scholar%3Fq%3D%2527climate%2Bchange%2527%2BAND%2Bbuildings%26hl%3Den%26as_sdt%3D1,33%26as_vis%3D1&citilm=1&update_op=library_add&info=G5YgrlMbMQUJ&ei=-bRdZo7bB6OZy9YPhZ6Y8A0&json=",
+            "num_citations": 29,
+            "citedby_url": "/scholar?cites=374110290266068507&as_sdt=5,33&sciodt=1,33&hl=en",
+            "url_related_articles": "/scholar?q=related:G5YgrlMbMQUJ:scholar.google.com/&scioq=%27climate+change%27+AND+buildings&hl=en&as_sdt=1,33&as_vis=1",
+            "eprint_url": "https://www.mdpi.com/2225-1154/9/8/132/pdf"
+        }
+    ]
+}

@@ -1,0 +1,895 @@
+{
+  "meta": {
+    "version": "OpenDevEd_jsonUploaderV01",
+    "searchID": "b2e12ba4-9a63-442f-a32b-d4cbb34761a5",
+    "query": " \"'climate change' AND buildings\" ",
+    "queryUrl": "https://api.scite.ai/search?term=%20%22%27climate%20change%27%20AND%20buildings%22%20&limit=100&offset=0&sortOrder=desc",
+    "searchTerm": "'climate change' AND buildings",
+    "totalResults": 11,
+    "source": "Scite",
+    "sourceFormat": "original",
+    "date": "2024-06-03T12:22:02.284Z",
+    "searchField": "fulltext",
+    "page": 1,
+    "resultsPerPage": 100,
+    "firstItem": 1,
+    "startingPage": 1,
+    "endingPage": 1,
+    "filters": {},
+    "groupBy": "",
+    "sortBy": {
+      "field": "relevance",
+      "order": "desc"
+    }
+  },
+  "results": [
+    {
+      "id": "10.1201/9780429001055-20",
+      "doi": "10.1201/9780429001055-20",
+      "title": "<strong class=\"highlight\">Climate change and buildings</strong>",
+      "slug": "climate-change-and-buildings-vJkZPX4",
+      "authors": [
+        {
+          "authorName": "Evelyn L. A. Allu",
+          "authorSlug": "evelyn-l-a-allu-8G6ReM",
+          "authorSequenceNumber": "1"
+        }
+      ],
+      "journal": "",
+      "shortJournal": "",
+      "publisher": "Routledge",
+      "memberId": 301,
+      "year": 2019,
+      "date": "2019-05-28T00:00:00.000Z",
+      "lastUpdate": 1614211404,
+      "page": "55-56",
+      "issns": [],
+      "editorialNotices": [],
+      "normalizedTypes": [
+        "book"
+      ],
+      "isOa": false,
+      "oaStatus": "closed",
+      "meshTypes": [],
+      "citations": [],
+      "highlightedFields": [
+        "title"
+      ]
+    },
+    {
+      "id": "10.1201/9780429001055-38",
+      "doi": "10.1201/9780429001055-38",
+      "title": "<strong class=\"highlight\">Climate change and buildings</strong>",
+      "slug": "climate-change-and-buildings-0GvEeL8",
+      "authors": [
+        {
+          "authorName": "Rimante Andrasiunaite Cox",
+          "authorSlug": "rimante-andrasiunaite-cox-zLkMV5",
+          "authorSequenceNumber": "1"
+        }
+      ],
+      "journal": "",
+      "shortJournal": "",
+      "publisher": "Routledge",
+      "memberId": 301,
+      "year": 2019,
+      "date": "2019-05-28T00:00:00.000Z",
+      "lastUpdate": 1614211404,
+      "page": "138-143",
+      "issns": [],
+      "editorialNotices": [],
+      "normalizedTypes": [
+        "book"
+      ],
+      "isOa": false,
+      "oaStatus": "closed",
+      "meshTypes": [],
+      "citations": [],
+      "highlightedFields": [
+        "title"
+      ]
+    },
+    {
+      "id": "10.4337/9781849805834.00018",
+      "doi": "10.4337/9781849805834.00018",
+      "title": "<strong class=\"highlight\">Climate change and buildings</strong> – an Asia-Pacific primer",
+      "slug": "climate-change-and-buildings-66Kb8M",
+      "authors": [
+        {
+          "authorName": "Abhishek Rohatgi",
+          "authorSlug": "abhishek-rohatgi-dWn4RM",
+          "authorSequenceNumber": "1"
+        },
+        {
+          "authorName": "Tian Sheng Allan Loi",
+          "authorSlug": "tian-sheng-allan-loi-NY2Jy9",
+          "authorSequenceNumber": "2"
+        },
+        {
+          "authorName": "Nahim Bin Zahur",
+          "authorSlug": "nahim-bin-zahur-g9Wnz",
+          "authorSequenceNumber": "3"
+        }
+      ],
+      "journal": "",
+      "shortJournal": "",
+      "publisher": "Edward Elgar Publishing",
+      "memberId": 2918,
+      "year": 2015,
+      "date": "2015-01-30T00:00:00.000Z",
+      "lastUpdate": 1682558477,
+      "issns": [],
+      "editorialNotices": [],
+      "normalizedTypes": [
+        "book"
+      ],
+      "isOa": false,
+      "oaStatus": "closed",
+      "meshTypes": [],
+      "citations": [],
+      "highlightedFields": [
+        "title"
+      ]
+    },
+    {
+      "id": "10.1515/rtuect-2016-0004",
+      "doi": "10.1515/rtuect-2016-0004",
+      "title": "<strong class=\"highlight\">Climate Change and Buildings</strong> Energy Efficiency – the Key Role of Residents",
+      "slug": "climate-change-and-buildings-energy-PMaRjb",
+      "authors": [
+        {
+          "authorName": "Martins Miezis",
+          "authorSlug": "martins-miezis-6JOvEX",
+          "authorSequenceNumber": "1"
+        },
+        {
+          "authorName": "Kristaps Zvaigznītis",
+          "authorSlug": "kristaps-zvaigznitis-2lxOdL",
+          "authorSequenceNumber": "2"
+        },
+        {
+          "authorName": "Nicholas Stancioff",
+          "authorSlug": "nicholas-stancioff-xGLGkQ",
+          "authorSequenceNumber": "3"
+        },
+        {
+          "authorName": "Lars T. Soeftestad",
+          "authorSlug": "lars-t-soeftestad-ajdVd1",
+          "authorSequenceNumber": "4"
+        }
+      ],
+      "journal": "Environmental and Climate Technologies",
+      "shortJournal": "",
+      "publisher": "Walter de Gruyter GmbH",
+      "memberId": 374,
+      "year": 2016,
+      "date": "2016-05-01T00:00:00.000Z",
+      "lastUpdate": 1624333595,
+      "volume": "17",
+      "issue": "1",
+      "page": "30-43",
+      "tally": {
+        "total": 23,
+        "supporting": 0,
+        "contradicting": 0,
+        "mentioning": 23,
+        "unclassified": 0,
+        "citingPublications": 39
+      },
+      "issns": [
+        "2255-8837"
+      ],
+      "editorialNotices": [],
+      "normalizedTypes": [
+        "article"
+      ],
+      "isOa": true,
+      "oaStatus": "gold",
+      "meshTypes": [],
+      "citations": [
+        {
+          "id": 915145554,
+          "source": "10.1515/rtuect-2016-0004",
+          "target": "10.3846/enviro.2014.279",
+          "negative": 0.00028285053558647634,
+          "positive": 0.0006686894048471004,
+          "neutral": 1.09861598610878,
+          "section": "introduction",
+          "type": "mentioning",
+          "typeConfidence": 1.09861598610878,
+          "snippet": "",
+          "lang": "en",
+          "langConfidence": "0.9700000286102295",
+          "refLocation": "b2/3",
+          "selfCites": [],
+          "snippetHidden": true
+        },
+        {
+          "id": 915145530,
+          "source": "10.1515/rtuect-2016-0004",
+          "target": "10.3846/enviro.2014.279",
+          "negative": 0.0006590745644643902,
+          "positive": 0.0016544603160582483,
+          "neutral": 1.0966505408287048,
+          "section": "introduction",
+          "type": "mentioning",
+          "typeConfidence": 1.0966505408287048,
+          "snippet": "",
+          "lang": "en",
+          "langConfidence": "0.9800000190734863",
+          "refLocation": "b2/1",
+          "selfCites": [],
+          "snippetHidden": true
+        },
+        {
+          "id": 915145545,
+          "source": "10.1515/rtuect-2016-0004",
+          "target": "10.3846/enviro.2014.279",
+          "negative": 0.0010346689727157353,
+          "positive": 0.002771908906288445,
+          "neutral": 1.0945159375667572,
+          "section": "introduction",
+          "type": "mentioning",
+          "typeConfidence": 1.0945159375667572,
+          "snippet": "",
+          "lang": "en",
+          "langConfidence": "0.949999988079071",
+          "refLocation": "b2/2",
+          "selfCites": [],
+          "snippetHidden": true
+        }
+      ],
+      "highlightedFields": [
+        "title"
+      ],
+      "abstract": "Abstract -Eastern Europe today is confronted with an unavoidable problem -the multifamily apartment building stock is deteriorating but apartment owners do not have sufficient access to resources be they organizational, financial, technical or legal. In addition, destructive myths have grown about the Soviet era buildings despite their continued resilience or the ex-GDR experience in the 90s with the same buildings. Further, without resources, decision making in residential apartments is seen as a major obstacle and used as an explanation why renovation has not taken place in Latvia. This is important not only in the context of a potential housing crisis but also because the renovation of the apartment buildings is an effective solution to significantly reduce the energy consumption and greenhouse gas emissions. It has a proven potential to effectively finance the long term renovation of these buildings. This paper summarizes the first findings of a comprehensive and in-depth study of apartment buildings, their owners and the processes relating to renovation, combining social and environmental engineering research methods. It seeks to understand how owners of multi-family buildings in Eastern Europe understand their buildings and then to answer two questions -how to motivate owners to renovate their homes and increase energy efficiency and what business models should be used to implement economically viable and high quality projects."
+    },
+    {
+      "id": "10.1016/j.buildenv.2012.03.014",
+      "doi": "10.1016/j.buildenv.2012.03.014",
+      "title": "The implications of a changing climate for buildings",
+      "slug": "the-implications-of-a-changing-QKdpGM",
+      "authors": [
+        {
+          "authorName": "Pieter de Wilde",
+          "authorSlug": "pieter-de-wilde-3nw9yK",
+          "authorSequenceNumber": "1"
+        },
+        {
+          "authorName": "David Coley",
+          "authorSlug": "david-coley-OVgyma",
+          "authorSequenceNumber": "2"
+        }
+      ],
+      "journal": "Building and Environment",
+      "shortJournal": "Building and Environment",
+      "publisher": "Elsevier BV",
+      "memberId": 78,
+      "year": 2012,
+      "date": "2012-09-01T00:00:00.000Z",
+      "lastUpdate": 1614218634,
+      "volume": "55",
+      "page": "1-7",
+      "tally": {
+        "total": 88,
+        "supporting": 0,
+        "contradicting": 0,
+        "mentioning": 86,
+        "unclassified": 2,
+        "citingPublications": 211
+      },
+      "issns": [
+        "0360-1323"
+      ],
+      "editorialNotices": [],
+      "normalizedTypes": [
+        "article"
+      ],
+      "isOa": true,
+      "oaStatus": "green",
+      "meshTypes": [],
+      "citations": [
+        {
+          "id": 2078623670,
+          "source": "10.1016/j.buildenv.2012.03.014",
+          "target": "10.1007/s12273-009-9116-1",
+          "negative": 0.018889841437339783,
+          "positive": 0.01225659716874361,
+          "neutral": 1,
+          "section": "further work",
+          "type": "mentioning",
+          "typeConfidence": 1,
+          "snippet": "",
+          "lang": "en",
+          "langConfidence": "0.9599999785423279",
+          "refLocation": "b65/1",
+          "selfCites": [],
+          "snippetHidden": true
+        },
+        {
+          "id": 2078623652,
+          "source": "10.1016/j.buildenv.2012.03.014",
+          "target": "10.1016/j.apenergy.2011.05.024",
+          "negative": 0.020187816023826598,
+          "positive": 0.012737426906824112,
+          "neutral": 1,
+          "section": "climate change impact studies for the built environment",
+          "type": "mentioning",
+          "typeConfidence": 1,
+          "snippet": "",
+          "lang": "en",
+          "langConfidence": "0.949999988079071",
+          "refLocation": "b55/1",
+          "selfCites": [],
+          "snippetHidden": true
+        },
+        {
+          "id": 2078623649,
+          "source": "10.1016/j.buildenv.2012.03.014",
+          "target": "10.1016/j.buildenv.2010.01.022",
+          "negative": 0.05813198089599609,
+          "positive": 0.009114699438214302,
+          "neutral": 1,
+          "section": "climate change impact studies for the built environment",
+          "type": "mentioning",
+          "typeConfidence": 1,
+          "snippet": "",
+          "lang": "en",
+          "langConfidence": "0.949999988079071",
+          "refLocation": "b39/2",
+          "selfCites": [],
+          "snippetHidden": true
+        }
+      ],
+      "highlightedFields": [
+        "abstract"
+      ],
+      "abstract": "With a growing global concern about climate change, the building industry is facing the question of how predicted changes in climate will impact on the performance of buildings around the world. This is resulting in a fast-growing field of research that focuses on the adaptation and resilience of buildings to a changing climate. This review paper sets the scene for a special issue of Building and Environment on this subject. It discusses the relationship between <strong class=\"highlight\">climate change and buildings</strong> and the emerging body of knowledge on the subject, as well as classifying and summarizing the contributions to this special issue."
+    },
+    {
+      "id": "10.3390/buildings5030985",
+      "doi": "10.3390/buildings5030985",
+      "title": "Quantifying Change in Buildings in a Future Climate and Their Effect on Energy Systems",
+      "slug": "quantifying-change-in-buildings-in-vWQb2J",
+      "authors": [
+        {
+          "authorName": "David Jenkins",
+          "authorSlug": "david-jenkins-9Kv0A",
+          "authorSequenceNumber": "1"
+        },
+        {
+          "authorName": "Sandhya Patidar",
+          "authorSlug": "sandhya-patidar-R5jX0p",
+          "authorSequenceNumber": "2"
+        },
+        {
+          "authorName": "Sophie Ann Simpson",
+          "authorSlug": "sophie-ann-simpson-kve5vX",
+          "authorSequenceNumber": "3"
+        }
+      ],
+      "journal": "Buildings",
+      "shortJournal": "Buildings",
+      "publisher": "MDPI AG",
+      "memberId": 1968,
+      "year": 2015,
+      "date": "2015-08-28T00:00:00.000Z",
+      "lastUpdate": 1614200865,
+      "volume": "5",
+      "issue": "3",
+      "page": "985-1002",
+      "tally": {
+        "total": 4,
+        "supporting": 0,
+        "contradicting": 0,
+        "mentioning": 4,
+        "unclassified": 0,
+        "citingPublications": 10
+      },
+      "issns": [
+        "2075-5309"
+      ],
+      "editorialNotices": [],
+      "normalizedTypes": [
+        "article"
+      ],
+      "isOa": true,
+      "oaStatus": "gold",
+      "meshTypes": [],
+      "citations": [
+        {
+          "id": 1888502289,
+          "source": "10.3390/buildings5030985",
+          "target": "10.1016/j.applthermaleng.2005.03.015",
+          "negative": 0.00515701174736023,
+          "positive": 0.004434617236256599,
+          "neutral": 1,
+          "type": "mentioning",
+          "typeConfidence": 1,
+          "snippet": "",
+          "lang": "en",
+          "langConfidence": "0.8199999928474426",
+          "refLocation": "b23/2",
+          "selfCites": [],
+          "snippetHidden": true
+        },
+        {
+          "id": 1888502262,
+          "source": "10.3390/buildings5030985",
+          "target": "10.1016/j.buildenv.2009.05.009",
+          "negative": 0.05629730969667435,
+          "positive": 0.011636404320597649,
+          "neutral": 1,
+          "section": "introduction",
+          "type": "mentioning",
+          "typeConfidence": 1,
+          "snippet": "",
+          "lang": "en",
+          "langConfidence": "0.9599999785423279",
+          "refLocation": "b2/1",
+          "selfCites": [],
+          "snippetHidden": true
+        },
+        {
+          "id": 1888502284,
+          "source": "10.3390/buildings5030985",
+          "target": "10.1016/j.enbuild.2011.03.016",
+          "negative": 0.008037677966058254,
+          "positive": 0.01749747060239315,
+          "neutral": 1,
+          "section": "using climate change projections in building and systems design",
+          "type": "mentioning",
+          "typeConfidence": 1,
+          "snippet": "",
+          "lang": "en",
+          "langConfidence": "0.9100000262260437",
+          "refLocation": "b7/2",
+          "selfCites": [],
+          "snippetHidden": true
+        }
+      ],
+      "highlightedFields": [],
+      "abstract": "Projected climate change is likely to have a significant impact on a range of energy systems. When a building is the centre of that system, a changing climate will affect the energy system in several ways. Firstly, the energy demand of the building will be altered. Taken across the entire building stock, and placed in context of technological and behavioural changes over the same timescale, this can have implications for important parameters such as peak demand and load factors of energy requirement. The performance of demand-side, distribution/transmission and supply-side technologies can also alter as a result of changing temperatures. With such uncertainty, a flexible approach is required for ensuring that this whole energy system is robust for a wide range of future scenarios. Therefore, building design must have a standardised and systematic approach for integrating climate change into the overall energy assessment of a building (or buildings), understanding the implications for the larger energy network. Based on the work of the Low Carbon Futures (LCF) and Adaptation and Resilience In Energy Systems (ARIES) projects, this paper overviews some of the risks that might be linked to a changing climate in relation to provision and use of energy in buildings. The UK is used as a case-study but the outputs are demonstrated to be of relevance, and the tools applicable, to other countries."
+    },
+    {
+      "id": "10.1109/chuser.2012.6504345",
+      "doi": "10.1109/chuser.2012.6504345",
+      "title": "The repercussions linked with a changing macroclimate for green building",
+      "slug": "the-repercussions-linked-with-a-lw3rgm",
+      "authors": [
+        {
+          "authorName": "Usman Aminu Umar",
+          "authorSlug": "usman-aminu-umar-wbPX22",
+          "authorSequenceNumber": "1"
+        },
+        {
+          "authorName": "Mohd Faris Khamidi",
+          "authorSlug": "mohd-faris-khamidi-M20QyY",
+          "authorSequenceNumber": "2"
+        },
+        {
+          "authorName": "Adam Umar Alkali",
+          "authorSlug": "adam-umar-alkali-zLQK3b",
+          "authorSequenceNumber": "3"
+        }
+      ],
+      "journal": "",
+      "shortJournal": "",
+      "publisher": "IEEE",
+      "memberId": 263,
+      "year": 2012,
+      "date": "2012-12-01T00:00:00.000Z",
+      "lastUpdate": 1614195438,
+      "tally": {
+        "total": 1,
+        "supporting": 0,
+        "contradicting": 0,
+        "mentioning": 1,
+        "unclassified": 0,
+        "citingPublications": 1
+      },
+      "issns": [],
+      "editorialNotices": [],
+      "normalizedTypes": [
+        "other"
+      ],
+      "isOa": false,
+      "oaStatus": "closed",
+      "meshTypes": [],
+      "citations": [
+        {
+          "id": 1173213676,
+          "source": "10.1109/chuser.2012.6504345",
+          "target": "10.1016/j.gloenvcha.2011.04.005",
+          "negative": 0.026519887894392014,
+          "positive": 0.015480832196772099,
+          "neutral": 1,
+          "section": "a climate transformation and building",
+          "type": "mentioning",
+          "typeConfidence": 1,
+          "snippet": "",
+          "lang": "en",
+          "langConfidence": "0.9599999785423279",
+          "refLocation": "b7/1",
+          "selfCites": [],
+          "snippetHidden": true
+        },
+        {
+          "id": 1173213732,
+          "source": "10.1109/chuser.2012.6504345",
+          "target": "10.1016/j.resconrec.2008.09.008",
+          "negative": 0.03758689910173416,
+          "positive": 0.009549731388688087,
+          "neutral": 1,
+          "section": "a further work",
+          "type": "mentioning",
+          "typeConfidence": 1,
+          "snippet": "",
+          "lang": "en",
+          "langConfidence": "0.9700000286102295",
+          "refLocation": "b5/2",
+          "selfCites": [],
+          "snippetHidden": true
+        },
+        {
+          "id": 1173213681,
+          "source": "10.1109/chuser.2012.6504345",
+          "target": "10.1016/j.renene.2009.02.002",
+          "negative": 0.016017345339059828,
+          "positive": 0.006824736949056387,
+          "neutral": 1,
+          "section": "b exploration into the effect of global warming on building",
+          "type": "mentioning",
+          "typeConfidence": 1,
+          "snippet": "",
+          "lang": "en",
+          "langConfidence": "0.9599999785423279",
+          "refLocation": "b12/1",
+          "selfCites": [],
+          "snippetHidden": true
+        }
+      ],
+      "highlightedFields": [
+        "abstract"
+      ],
+      "abstract": "there is substantial proof that the world is warming. The International Panel of Climate Change reported that there might be a continuous rise in the ambient temperature throughout the end of the 21st century. With a rising international worry about global warming, the construction sector is confronting the question of how forecasted changes in climate will affect the overall performance of buildings all over the world. This is resulting in a fast-growing field of study that concentrates on the adaptation and strength of buildings to a varying climate. Global warming can tremendously result on the overall energy consumption and greenhouse gas emissions of residential buildings. Hence, climate adaptation must be effectively regarded both in design and operation phases to eliminate impact. This paper examines (or reviews) the connection between <strong class=\"highlight\">climate change and buildings</strong> and the growing body of knowledge on the issue, and also classifying and reviewing the contributions of other researcher."
+    },
+    {
+      "id": "10.1016/j.buildenv.2011.12.011",
+      "doi": "10.1016/j.buildenv.2011.12.011",
+      "title": "A comparison of structural and behavioural adaptations to future proofing buildings against higher temperatures",
+      "slug": "a-comparison-of-structural-and-nVvKbP",
+      "authors": [
+        {
+          "authorName": "David Coley",
+          "authorSlug": "david-coley-OVgyma",
+          "authorSequenceNumber": "1"
+        },
+        {
+          "authorName": "Tristan Kershaw",
+          "authorSlug": "tristan-kershaw-zRMeRY",
+          "authorSequenceNumber": "2"
+        },
+        {
+          "authorName": "Matthew E. Eames",
+          "authorSlug": "matthew-e-eames-A39mmO",
+          "authorSequenceNumber": "3"
+        }
+      ],
+      "journal": "Building and Environment",
+      "shortJournal": "Building and Environment",
+      "publisher": "Elsevier BV",
+      "memberId": 78,
+      "year": 2012,
+      "date": "2012-09-01T00:00:00.000Z",
+      "lastUpdate": 1614218633,
+      "volume": "55",
+      "page": "159-166",
+      "tally": {
+        "total": 41,
+        "supporting": 1,
+        "contradicting": 0,
+        "mentioning": 39,
+        "unclassified": 1,
+        "citingPublications": 65
+      },
+      "issns": [
+        "0360-1323"
+      ],
+      "editorialNotices": [],
+      "normalizedTypes": [
+        "article"
+      ],
+      "isOa": true,
+      "oaStatus": "green",
+      "meshTypes": [],
+      "citations": [
+        {
+          "id": 2059302905,
+          "source": "10.1016/j.buildenv.2011.12.011",
+          "target": "10.1007/bf01711537",
+          "negative": 0.0406845286488533,
+          "positive": 0.0231003575026989,
+          "neutral": 1,
+          "section": "introduction",
+          "type": "mentioning",
+          "typeConfidence": 1,
+          "snippet": "",
+          "lang": "en",
+          "langConfidence": "0.949999988079071",
+          "refLocation": "b4/1",
+          "selfCites": [],
+          "snippetHidden": true
+        },
+        {
+          "id": 2059302908,
+          "source": "10.1016/j.buildenv.2011.12.011",
+          "target": "10.1016/j.buildenv.2009.02.005",
+          "negative": 0.005395220965147018,
+          "positive": 0.009141460992395878,
+          "neutral": 1,
+          "section": "introduction",
+          "type": "mentioning",
+          "typeConfidence": 1,
+          "snippet": "",
+          "lang": "en",
+          "langConfidence": "0.9700000286102295",
+          "refLocation": "b10/1",
+          "selfCites": [],
+          "snippetHidden": true
+        },
+        {
+          "id": 2059302907,
+          "source": "10.1016/j.buildenv.2011.12.011",
+          "target": "10.1016/j.gloenvcha.2004.04.008",
+          "negative": 0.001681644469499588,
+          "positive": 0.001732961623929441,
+          "neutral": 1,
+          "section": "introduction",
+          "type": "mentioning",
+          "typeConfidence": 1,
+          "snippet": "",
+          "lang": "en",
+          "langConfidence": "0.949999988079071",
+          "refLocation": "b9/1",
+          "selfCites": [],
+          "snippetHidden": true
+        }
+      ],
+      "highlightedFields": [],
+      "abstract": "The uncertainty surrounding projections of climate change has left the building design community in a quandary. Should they assume a worst case scenario, and recommend adaptations to designs that might prove to be unnecessary and quite possibly costly? Or should they increase the risk to the occupants by selecting a less pessimistic vision of the future? It is well known that structural adaptations, such as additional thermal mass, can help moderate internal conditions as can behavioural adaptations, such as opening windows. Here the relative magnitudes of structural and non-structural (behavioural) adaptations are reflected upon, with the specific intent of discovering whether nonstructural adaptations might have a great enough effect to offset any errors from selecting what proves to be (in 40 years time) an erroneous choice of climate change projection. It is found that an alteration to how a building is used is as equally important as common structural adaptations, and that the risk of choosing what turns out to be an incorrect climate change projection can be dealt with by seeing non-structural adaptations as a way of nullifying this risk."
+    },
+    {
+      "id": "10.3389/fclim.2023.1130365",
+      "doi": "10.3389/fclim.2023.1130365",
+      "title": "Urban climate forecasts: From risk to resilience. Milan Innovation District's key design aspects for buildings and infrastructures",
+      "slug": "urban-climate-forecasts-from-risk-n6Wjpd54",
+      "authors": [
+        {
+          "authorName": "N. Boschi",
+          "authorSlug": "n-boschi-xGDrkg",
+          "authorSequenceNumber": "1"
+        }
+      ],
+      "journal": "Frontiers in Climate",
+      "shortJournal": "Front. Clim.",
+      "publisher": "Frontiers Media SA",
+      "memberId": 1965,
+      "year": 2023,
+      "date": "2023-03-01T00:00:00.000Z",
+      "lastUpdate": 1679293812,
+      "volume": "5",
+      "issns": [
+        "2624-9553"
+      ],
+      "editorialNotices": [],
+      "normalizedTypes": [
+        "article"
+      ],
+      "isOa": true,
+      "oaStatus": "gold",
+      "meshTypes": [],
+      "citations": [
+        {
+          "id": 3170813391,
+          "source": "10.3389/fclim.2023.1130365",
+          "target": "10.1080/19401493.2020.1727954",
+          "negative": 0.00440177321434021,
+          "positive": 0.0062358989380300045,
+          "neutral": 1,
+          "section": "figure",
+          "type": "mentioning",
+          "typeConfidence": 1,
+          "snippet": "",
+          "lang": "en",
+          "langConfidence": "0.9300000071525574",
+          "refLocation": "b7/1",
+          "selfCites": [],
+          "snippetHidden": true
+        },
+        {
+          "id": 3170813389,
+          "source": "10.3389/fclim.2023.1130365",
+          "target": "10.2139/ssrn.4154034",
+          "negative": 0.008117363601922988,
+          "positive": 0.005358054768294096,
+          "neutral": 1,
+          "section": "introduction concerning climate risk and the built environment",
+          "type": "mentioning",
+          "typeConfidence": 1,
+          "snippet": "",
+          "lang": "en",
+          "langConfidence": "0.9100000262260437",
+          "refLocation": "b3/1",
+          "selfCites": [],
+          "snippetHidden": true
+        },
+        {
+          "id": 3170813390,
+          "source": "10.3389/fclim.2023.1130365",
+          "target": "10.1016/j.egypro.2014.11.1048",
+          "negative": 0.0032289549708366394,
+          "positive": 0.0028741511050611734,
+          "neutral": 1,
+          "section": "introduction concerning climate risk and the built environment",
+          "type": "mentioning",
+          "typeConfidence": 1,
+          "snippet": "",
+          "lang": "en",
+          "langConfidence": "0.8999999761581421",
+          "refLocation": "b5/1",
+          "selfCites": [],
+          "snippetHidden": true
+        }
+      ],
+      "highlightedFields": [],
+      "abstract": "Climate-related transitional and physical risks are relevant to the building industry. This paper focuses on the physical risk as mitigated and embedded into the design of buildings and infrastructures at the Milan Innovation District (MIND). MIND is an Italian development piloting the transition to resilient green urban planning. This paper discusses the methodology adopted at the early stages of urban and building design to assess the local climate change risks and impacts to be mitigated. As per the Intergovernmental Panel on Climate Change (IPCC) and the climate change scenarios are based on projected temperature changes under representative concentration pathways (RCPs). The scenarios considered are 4.5 and 8.5. Climate projections are from the World Bank Change Knowledge Portal and the projected epw Weatherfiles for Milano Linate. These were generated using IES and Weathershift™ tool. The analysis focused on the temperature raise including the masterplan sunlight analysis, the spatial thermal comfort analysis, and the climate change visualization. Results show that the risk of overheating increases. These were discussed in climate change adaptation and resilience planning workshops with a broad range of stakeholders to identify key strategies and functional distribution de-risking strategies. Climate change poses a significant risk to society and resiliency and decarbonization priorities may differ by region. Although, This paper proposes a replicable high-level assessment that can help developers and business leaders in mapping and mitigate the climate capital-related downside risks that have a material impact on their business overall risk profile and capital adequacy."
+    },
+    {
+      "id": "10.1108/ijshe-12-2022-0409",
+      "doi": "10.1108/ijshe-12-2022-0409",
+      "title": "Fostering the use of sustainable design to reduce energy use and GHG emissions at Canadian universities: a life cycle cost analysis approach",
+      "slug": "fostering-the-use-of-sustainable-9OX3AONA",
+      "authors": [
+        {
+          "authorName": "Philip R. Walsh",
+          "authorSlug": "Philip R. Walsh"
+        }
+      ],
+      "journal": "International Journal of Sustainability in Higher Education",
+      "shortJournal": "IJSHE",
+      "publisher": "Emerald",
+      "memberId": 140,
+      "year": 2023,
+      "date": "2023-10-17T00:00:00.000Z",
+      "lastUpdate": 1697651158,
+      "issns": [
+        "1467-6370",
+        "1467-6370"
+      ],
+      "editorialNotices": [],
+      "normalizedTypes": [
+        "article"
+      ],
+      "isOa": false,
+      "oaStatus": "closed",
+      "meshTypes": [],
+      "citations": [],
+      "highlightedFields": [
+        "abstract"
+      ],
+      "abstract": "Purpose\nThe purpose of this study is to examine the application of sustainable building design and operation within a university setting to determine its economic efficacy and potential for further university investment.\n\n\nDesign/methodology/approach\nThis study incorporated a life cycle cost analysis (LCCA), simple payback period and discounted payback period calculations to determine the return on investment, including a sensitivity analysis when comparing the energy use and financial benefits of the sustainable design of a multi-use facility at Toronto Metropolitan University with buildings of similar size and use-type.\n\n\nFindings\nIt was found that there is a positive business argument for Canadian Universities to consider the use of sustainable design to reduce energy use and greenhouse gas (GHG) emissions. A reasonable payback period and net present value within an institutional context were determined using a life-cycle cost assessment approach.\n\n\nResearch limitations/implications\nThis study was limited to the measure of only a single location. Certain assumptions regarding energy pricing and interest rates and the related sensitivities were anchored on a single year of time, and the results of this study may be subject to change should those prices or rates become significantly different over time. Considerations for future research include a longitudinal approach combined with a more detailed analysis of the effect of use-type on the variables discussed.\n\n\nPractical implications\nFor university administrators, the results of this study may encourage institutions such as universities to approach new building projects through the lens of energy efficiency and environmental sustainability.\n\n\nSocial implications\nGHG emissions are a well-proven contributor to global <strong class=\"highlight\">climate change, and buildings</strong> remain a significant source of GHG emissions in Canada due to their winter heating and summer cooling loads. As a result, sustainable building design on university campuses can mitigate this impact by optimizing and reducing energy consumption.\n\n\nOriginality/value\nResearch related to the economic evaluation of sustainable building design on university campuses is generally limited, and this study represents the first of its kind in regard to an LCCA of a sustainably designed building on a Canadian University campus."
+    },
+    {
+      "id": "10.3390/su12051721",
+      "doi": "10.3390/su12051721",
+      "title": "Climate Change Adaptation Measures for Buildings—A Scoping Review",
+      "slug": "climate-change-adaptation-measures-for-NlPbMwjN",
+      "authors": [
+        {
+          "authorName": "A E Stagrum",
+          "authorSlug": "a-e-stagrum-xGLMLW",
+          "authorSequenceNumber": "1"
+        },
+        {
+          "authorName": "Erlend Andenæs",
+          "authorSlug": "erlend-andenaes-NMVvYN",
+          "authorSequenceNumber": "2"
+        },
+        {
+          "authorName": "Tore Kvande",
+          "authorSlug": "tore-kvande-ZGWnO2",
+          "authorSequenceNumber": "3"
+        },
+        {
+          "authorName": "Jardar Lohne",
+          "authorSlug": "jardar-lohne-3nk3eO",
+          "authorSequenceNumber": "4"
+        }
+      ],
+      "journal": "Sustainability",
+      "shortJournal": "Sustainability",
+      "publisher": "MDPI AG",
+      "memberId": 1968,
+      "year": 2020,
+      "date": "2020-02-25T00:00:00.000Z",
+      "lastUpdate": 1614189453,
+      "volume": "12",
+      "issue": "5",
+      "page": "1721",
+      "tally": {
+        "total": 17,
+        "supporting": 0,
+        "contradicting": 0,
+        "mentioning": 17,
+        "unclassified": 0,
+        "citingPublications": 49
+      },
+      "issns": [
+        "2071-1050"
+      ],
+      "editorialNotices": [],
+      "normalizedTypes": [
+        "article"
+      ],
+      "isOa": true,
+      "oaStatus": "gold",
+      "meshTypes": [],
+      "citations": [
+        {
+          "id": 2051467179,
+          "source": "10.3390/su12051721",
+          "target": "10.1007/bf00988593",
+          "negative": 0.023267783224582672,
+          "positive": 0.014068634249269962,
+          "neutral": 1,
+          "section": "charting and reporting the results",
+          "type": "mentioning",
+          "typeConfidence": 1,
+          "snippet": "",
+          "lang": "en",
+          "langConfidence": "0.9800000190734863",
+          "refLocation": "b9/1",
+          "selfCites": [],
+          "snippetHidden": true
+        },
+        {
+          "id": 2051467169,
+          "source": "10.3390/su12051721",
+          "target": "10.1007/s10584-011-0148-z",
+          "negative": 0.001346855331212282,
+          "positive": 0.0013164096744731069,
+          "neutral": 1,
+          "section": "introduction",
+          "type": "mentioning",
+          "typeConfidence": 1,
+          "snippet": "",
+          "lang": "en",
+          "langConfidence": "0.9200000166893005",
+          "refLocation": "b2/1",
+          "selfCites": [],
+          "snippetHidden": true
+        },
+        {
+          "id": 2051467241,
+          "source": "10.3390/su12051721",
+          "target": "10.1007/s12273-017-0385-9",
+          "negative": 0.019363047927618025,
+          "positive": 0.015388819389045238,
+          "neutral": 1,
+          "section": "sustainability and resilience",
+          "type": "mentioning",
+          "typeConfidence": 1,
+          "snippet": "",
+          "lang": "en",
+          "langConfidence": "0.9300000071525574",
+          "refLocation": "b75/1",
+          "selfCites": [],
+          "snippetHidden": true
+        }
+      ],
+      "highlightedFields": [],
+      "abstract": "As the climate changes globally and locally, the built environment will be subject to different climatic exposure than in the past. Adaptation measures are required to ensure the long-term integrity and successful operation of the built environment. This study examines literature on climate adaptation measures for buildings through a scoping literature review. It is centered around the main journals in the field of climate adaptation of the built environment, then expanded to map the extent of scientific publications about climate adaptation in general. Studies that regard future climate scenarios have been of particular interest. The majority of the identified literature concerns climate change impacts on buildings in warm climates, with overheating being seen as the greatest challenge. Additionally, few empirical studies are found; most identified research is based on computer simulations or literature reviews. The volume of research on the consequences of climate change on buildings in cold regions is surprisingly small, considering the pecuniary stakes involved. The predictions of climate scenarios suggest regulatory/policy measures on climate adaptation should be taken as quickly as possible to avoid greater costs in the future. However, further research into future scenarios is also essential."
+    }
+  ]
+}

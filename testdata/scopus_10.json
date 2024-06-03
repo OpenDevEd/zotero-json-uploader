@@ -1,0 +1,1717 @@
+{
+  "meta": {
+    "version": "OpenDevEd_jsonUploaderV01",
+    "query": " \"'climate change' AND buildings\"",
+    "queryUrl": "https://api.elsevier.com/content/search/scopus?query=%22'climate+change'+AND+buildings%22&view=STANDARD&start=0&count=25&sort=-relevancy",
+    "searchTerm": "'climate change' AND buildings",
+    "totalResults": "346",
+    "source": "Scopus",
+    "sourceFormat": "original",
+    "date": "2024-06-03 12:21:45",
+    "searchField": "all",
+    "page": 1,
+    "resultsPerPage": "25",
+    "firstItem": "0",
+    "startingPage": "",
+    "endingPage": "",
+    "filters": {
+      "view": "STANDARD",
+      "date": ""
+    },
+    "groupBy": "",
+    "sortBy": {
+      "field": "relevance",
+      "order": "desc"
+    }
+  },
+  "results": [
+    {
+      "@_fa": "true",
+      "link": [
+        {
+          "@_fa": "true",
+          "@ref": "self",
+          "@href": "https://api.elsevier.com/content/abstract/scopus_id/85192196481"
+        },
+        {
+          "@_fa": "true",
+          "@ref": "author-affiliation",
+          "@href": "https://api.elsevier.com/content/abstract/scopus_id/85192196481?field=author,affiliation"
+        },
+        {
+          "@_fa": "true",
+          "@ref": "scopus",
+          "@href": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85192196481&origin=inward"
+        },
+        {
+          "@_fa": "true",
+          "@ref": "scopus-citedby",
+          "@href": "https://www.scopus.com/inward/citedby.uri?partnerID=HzOxMe3b&scp=85192196481&origin=inward"
+        },
+        {
+          "@_fa": "true",
+          "@ref": "full-text",
+          "@href": "https://api.elsevier.com/content/article/eid/1-s2.0-S235271022401074X"
+        }
+      ],
+      "prism:url": "https://api.elsevier.com/content/abstract/scopus_id/85192196481",
+      "dc:identifier": "SCOPUS_ID:85192196481",
+      "eid": "2-s2.0-85192196481",
+      "dc:title": "Analyzing energy consumption due to occupant interaction with manual and automatic window blinds in multiple climates",
+      "dc:creator": "Niknia S.",
+      "prism:publicationName": "Journal of Building Engineering",
+      "prism:eIssn": "23527102",
+      "prism:volume": "90",
+      "prism:pageRange": null,
+      "prism:coverDate": "2024-08-01",
+      "prism:coverDisplayDate": "1 August 2024",
+      "prism:doi": "10.1016/j.jobe.2024.109506",
+      "pii": "S235271022401074X",
+      "citedby-count": "0",
+      "affiliation": [
+        {
+          "@_fa": "true",
+          "affilname": "Texas Tech University",
+          "affiliation-city": "Lubbock",
+          "affiliation-country": "United States"
+        }
+      ],
+      "prism:aggregationType": "Journal",
+      "subtype": "ar",
+      "subtypeDescription": "Article",
+      "article-number": "109506",
+      "source-id": "21100389518",
+      "openaccess": "0",
+      "openaccessFlag": false
+    },
+    {
+      "@_fa": "true",
+      "link": [
+        {
+          "@_fa": "true",
+          "@ref": "self",
+          "@href": "https://api.elsevier.com/content/abstract/scopus_id/85190838366"
+        },
+        {
+          "@_fa": "true",
+          "@ref": "author-affiliation",
+          "@href": "https://api.elsevier.com/content/abstract/scopus_id/85190838366?field=author,affiliation"
+        },
+        {
+          "@_fa": "true",
+          "@ref": "scopus",
+          "@href": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85190838366&origin=inward"
+        },
+        {
+          "@_fa": "true",
+          "@ref": "scopus-citedby",
+          "@href": "https://www.scopus.com/inward/citedby.uri?partnerID=HzOxMe3b&scp=85190838366&origin=inward"
+        },
+        {
+          "@_fa": "true",
+          "@ref": "full-text",
+          "@href": "https://api.elsevier.com/content/article/eid/1-s2.0-S2352710224009653"
+        }
+      ],
+      "prism:url": "https://api.elsevier.com/content/abstract/scopus_id/85190838366",
+      "dc:identifier": "SCOPUS_ID:85190838366",
+      "eid": "2-s2.0-85190838366",
+      "dc:title": "Optimizing HVAC systems for semiconductor fabrication: A data-intensive framework for energy efficiency and sustainability",
+      "dc:creator": "Ni H.P.",
+      "prism:publicationName": "Journal of Building Engineering",
+      "prism:eIssn": "23527102",
+      "prism:volume": "89",
+      "prism:pageRange": null,
+      "prism:coverDate": "2024-07-15",
+      "prism:coverDisplayDate": "15 July 2024",
+      "prism:doi": "10.1016/j.jobe.2024.109397",
+      "pii": "S2352710224009653",
+      "citedby-count": "0",
+      "affiliation": [
+        {
+          "@_fa": "true",
+          "affilname": "Ira A. Fulton Schools of Engineering",
+          "affiliation-city": "Tempe",
+          "affiliation-country": "United States"
+        }
+      ],
+      "prism:aggregationType": "Journal",
+      "subtype": "re",
+      "subtypeDescription": "Review",
+      "article-number": "109397",
+      "source-id": "21100389518",
+      "openaccess": "0",
+      "openaccessFlag": false
+    },
+    {
+      "@_fa": "true",
+      "link": [
+        {
+          "@_fa": "true",
+          "@ref": "self",
+          "@href": "https://api.elsevier.com/content/abstract/scopus_id/85193058179"
+        },
+        {
+          "@_fa": "true",
+          "@ref": "author-affiliation",
+          "@href": "https://api.elsevier.com/content/abstract/scopus_id/85193058179?field=author,affiliation"
+        },
+        {
+          "@_fa": "true",
+          "@ref": "scopus",
+          "@href": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85193058179&origin=inward"
+        },
+        {
+          "@_fa": "true",
+          "@ref": "scopus-citedby",
+          "@href": "https://www.scopus.com/inward/citedby.uri?partnerID=HzOxMe3b&scp=85193058179&origin=inward"
+        },
+        {
+          "@_fa": "true",
+          "@ref": "full-text",
+          "@href": "https://api.elsevier.com/content/article/eid/1-s2.0-S266678942400031X"
+        }
+      ],
+      "prism:url": "https://api.elsevier.com/content/abstract/scopus_id/85193058179",
+      "dc:identifier": "SCOPUS_ID:85193058179",
+      "eid": "2-s2.0-85193058179",
+      "dc:title": "Advancing urban water autonomy: A Social Life Cycle Assessment of rainwater harvesting systems in Mexico City",
+      "dc:creator": "Castelán-Cabañas R.",
+      "prism:publicationName": "Cleaner Environmental Systems",
+      "prism:eIssn": "26667894",
+      "prism:volume": "13",
+      "prism:pageRange": null,
+      "prism:coverDate": "2024-06-01",
+      "prism:coverDisplayDate": "June 2024",
+      "prism:doi": "10.1016/j.cesys.2024.100193",
+      "pii": "S266678942400031X",
+      "citedby-count": "0",
+      "affiliation": [
+        {
+          "@_fa": "true",
+          "affilname": "Universidad Autónoma Metropolitana Unidad Xochimilco",
+          "affiliation-city": "Mexico",
+          "affiliation-country": "Mexico"
+        }
+      ],
+      "prism:aggregationType": "Journal",
+      "subtype": "ar",
+      "subtypeDescription": "Article",
+      "article-number": "100193",
+      "source-id": "21101079225",
+      "openaccess": "1",
+      "openaccessFlag": true,
+      "freetoread": {
+        "value": [
+          {
+            "$": "all"
+          },
+          {
+            "$": "publisherfullgold"
+          }
+        ]
+      },
+      "freetoreadLabel": {
+        "value": [
+          {
+            "$": "All Open Access"
+          },
+          {
+            "$": "Gold"
+          }
+        ]
+      }
+    },
+    {
+      "@_fa": "true",
+      "link": [
+        {
+          "@_fa": "true",
+          "@ref": "self",
+          "@href": "https://api.elsevier.com/content/abstract/scopus_id/85194160190"
+        },
+        {
+          "@_fa": "true",
+          "@ref": "author-affiliation",
+          "@href": "https://api.elsevier.com/content/abstract/scopus_id/85194160190?field=author,affiliation"
+        },
+        {
+          "@_fa": "true",
+          "@ref": "scopus",
+          "@href": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85194160190&origin=inward"
+        },
+        {
+          "@_fa": "true",
+          "@ref": "scopus-citedby",
+          "@href": "https://www.scopus.com/inward/citedby.uri?partnerID=HzOxMe3b&scp=85194160190&origin=inward"
+        }
+      ],
+      "prism:url": "https://api.elsevier.com/content/abstract/scopus_id/85194160190",
+      "dc:identifier": "SCOPUS_ID:85194160190",
+      "eid": "2-s2.0-85194160190",
+      "dc:title": "Elicitation of Rank Correlations with Probabilities of Concordance: Method and Application to Building Management",
+      "dc:creator": "Ramousse B.",
+      "prism:publicationName": "Entropy",
+      "prism:eIssn": "10994300",
+      "prism:volume": "26",
+      "prism:issueIdentifier": "5",
+      "prism:pageRange": null,
+      "prism:coverDate": "2024-05-01",
+      "prism:coverDisplayDate": "May 2024",
+      "prism:doi": "10.3390/e26050360",
+      "citedby-count": "0",
+      "affiliation": [
+        {
+          "@_fa": "true",
+          "affilname": "Department of Hydraulic Engineering, TU Delft",
+          "affiliation-city": "Delft",
+          "affiliation-country": "Netherlands"
+        },
+        {
+          "@_fa": "true",
+          "affilname": "Linesight",
+          "affiliation-city": "Paris",
+          "affiliation-country": "France"
+        }
+      ],
+      "prism:aggregationType": "Journal",
+      "subtype": "ar",
+      "subtypeDescription": "Article",
+      "article-number": "360",
+      "source-id": "13715",
+      "openaccess": "1",
+      "openaccessFlag": true,
+      "freetoread": {
+        "value": [
+          {
+            "$": "all"
+          },
+          {
+            "$": "publisherfullgold"
+          }
+        ]
+      },
+      "freetoreadLabel": {
+        "value": [
+          {
+            "$": "All Open Access"
+          },
+          {
+            "$": "Gold"
+          }
+        ]
+      }
+    },
+    {
+      "@_fa": "true",
+      "link": [
+        {
+          "@_fa": "true",
+          "@ref": "self",
+          "@href": "https://api.elsevier.com/content/abstract/scopus_id/85191026609"
+        },
+        {
+          "@_fa": "true",
+          "@ref": "author-affiliation",
+          "@href": "https://api.elsevier.com/content/abstract/scopus_id/85191026609?field=author,affiliation"
+        },
+        {
+          "@_fa": "true",
+          "@ref": "scopus",
+          "@href": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85191026609&origin=inward"
+        },
+        {
+          "@_fa": "true",
+          "@ref": "scopus-citedby",
+          "@href": "https://www.scopus.com/inward/citedby.uri?partnerID=HzOxMe3b&scp=85191026609&origin=inward"
+        },
+        {
+          "@_fa": "true",
+          "@ref": "full-text",
+          "@href": "https://api.elsevier.com/content/article/eid/1-s2.0-S2212095524001263"
+        }
+      ],
+      "prism:url": "https://api.elsevier.com/content/abstract/scopus_id/85191026609",
+      "dc:identifier": "SCOPUS_ID:85191026609",
+      "eid": "2-s2.0-85191026609",
+      "dc:title": "Pollutants and weathering compounds on medieval bricks of historic buildings from Brasov (Transylvania, Romania)",
+      "dc:creator": "Bogdan A.",
+      "prism:publicationName": "Urban Climate",
+      "prism:issn": "22120955",
+      "prism:volume": "55",
+      "prism:pageRange": null,
+      "prism:coverDate": "2024-05-01",
+      "prism:coverDisplayDate": "May 2024",
+      "prism:doi": "10.1016/j.uclim.2024.101930",
+      "pii": "S2212095524001263",
+      "citedby-count": "0",
+      "affiliation": [
+        {
+          "@_fa": "true",
+          "affilname": "Aurel Vlaicu University",
+          "affiliation-city": "Arad",
+          "affiliation-country": "Romania"
+        }
+      ],
+      "prism:aggregationType": "Journal",
+      "subtype": "ar",
+      "subtypeDescription": "Article",
+      "article-number": "101930",
+      "source-id": "21100220478",
+      "openaccess": "0",
+      "openaccessFlag": false
+    },
+    {
+      "@_fa": "true",
+      "link": [
+        {
+          "@_fa": "true",
+          "@ref": "self",
+          "@href": "https://api.elsevier.com/content/abstract/scopus_id/85183470292"
+        },
+        {
+          "@_fa": "true",
+          "@ref": "author-affiliation",
+          "@href": "https://api.elsevier.com/content/abstract/scopus_id/85183470292?field=author,affiliation"
+        },
+        {
+          "@_fa": "true",
+          "@ref": "scopus",
+          "@href": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85183470292&origin=inward"
+        },
+        {
+          "@_fa": "true",
+          "@ref": "scopus-citedby",
+          "@href": "https://www.scopus.com/inward/citedby.uri?partnerID=HzOxMe3b&scp=85183470292&origin=inward"
+        },
+        {
+          "@_fa": "true",
+          "@ref": "full-text",
+          "@href": "https://api.elsevier.com/content/article/eid/1-s2.0-S2352710224001128"
+        }
+      ],
+      "prism:url": "https://api.elsevier.com/content/abstract/scopus_id/85183470292",
+      "dc:identifier": "SCOPUS_ID:85183470292",
+      "eid": "2-s2.0-85183470292",
+      "dc:title": "Relationship between shape and energy performance of buildings under long-term climate change",
+      "dc:creator": "Baglivo C.",
+      "prism:publicationName": "Journal of Building Engineering",
+      "prism:eIssn": "23527102",
+      "prism:volume": "84",
+      "prism:pageRange": null,
+      "prism:coverDate": "2024-05-01",
+      "prism:coverDisplayDate": "1 May 2024",
+      "prism:doi": "10.1016/j.jobe.2024.108544",
+      "pii": "S2352710224001128",
+      "citedby-count": "2",
+      "affiliation": [
+        {
+          "@_fa": "true",
+          "affilname": "Università del Salento",
+          "affiliation-city": "Lecce",
+          "affiliation-country": "Italy"
+        }
+      ],
+      "prism:aggregationType": "Journal",
+      "subtype": "ar",
+      "subtypeDescription": "Article",
+      "article-number": "108544",
+      "source-id": "21100389518",
+      "openaccess": "1",
+      "openaccessFlag": true,
+      "freetoread": {
+        "value": [
+          {
+            "$": "all"
+          },
+          {
+            "$": "publisherhybridgold"
+          }
+        ]
+      },
+      "freetoreadLabel": {
+        "value": [
+          {
+            "$": "All Open Access"
+          },
+          {
+            "$": "Hybrid Gold"
+          }
+        ]
+      }
+    },
+    {
+      "@_fa": "true",
+      "link": [
+        {
+          "@_fa": "true",
+          "@ref": "self",
+          "@href": "https://api.elsevier.com/content/abstract/scopus_id/85187222290"
+        },
+        {
+          "@_fa": "true",
+          "@ref": "author-affiliation",
+          "@href": "https://api.elsevier.com/content/abstract/scopus_id/85187222290?field=author,affiliation"
+        },
+        {
+          "@_fa": "true",
+          "@ref": "scopus",
+          "@href": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85187222290&origin=inward"
+        },
+        {
+          "@_fa": "true",
+          "@ref": "scopus-citedby",
+          "@href": "https://www.scopus.com/inward/citedby.uri?partnerID=HzOxMe3b&scp=85187222290&origin=inward"
+        },
+        {
+          "@_fa": "true",
+          "@ref": "full-text",
+          "@href": "https://api.elsevier.com/content/article/eid/1-s2.0-S0959652624007029"
+        }
+      ],
+      "prism:url": "https://api.elsevier.com/content/abstract/scopus_id/85187222290",
+      "dc:identifier": "SCOPUS_ID:85187222290",
+      "eid": "2-s2.0-85187222290",
+      "dc:title": "The impact of climate change on an office building in Portugal: Measures for a higher energy performance",
+      "dc:creator": "Fernandes M.S.",
+      "prism:publicationName": "Journal of Cleaner Production",
+      "prism:issn": "09596526",
+      "prism:volume": "445",
+      "prism:pageRange": null,
+      "prism:coverDate": "2024-03-15",
+      "prism:coverDisplayDate": "15 March 2024",
+      "prism:doi": "10.1016/j.jclepro.2024.141255",
+      "pii": "S0959652624007029",
+      "citedby-count": "0",
+      "affiliation": [
+        {
+          "@_fa": "true",
+          "affilname": "Association for the Development of Industrial Aerodynamic",
+          "affiliation-city": "Coimbra",
+          "affiliation-country": "Portugal"
+        }
+      ],
+      "prism:aggregationType": "Journal",
+      "subtype": "ar",
+      "subtypeDescription": "Article",
+      "article-number": "141255",
+      "source-id": "19167",
+      "openaccess": "1",
+      "openaccessFlag": true
+    },
+    {
+      "@_fa": "true",
+      "link": [
+        {
+          "@_fa": "true",
+          "@ref": "self",
+          "@href": "https://api.elsevier.com/content/abstract/scopus_id/85184053931"
+        },
+        {
+          "@_fa": "true",
+          "@ref": "author-affiliation",
+          "@href": "https://api.elsevier.com/content/abstract/scopus_id/85184053931?field=author,affiliation"
+        },
+        {
+          "@_fa": "true",
+          "@ref": "scopus",
+          "@href": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85184053931&origin=inward"
+        },
+        {
+          "@_fa": "true",
+          "@ref": "scopus-citedby",
+          "@href": "https://www.scopus.com/inward/citedby.uri?partnerID=HzOxMe3b&scp=85184053931&origin=inward"
+        },
+        {
+          "@_fa": "true",
+          "@ref": "full-text",
+          "@href": "https://api.elsevier.com/content/article/eid/1-s2.0-S0378778824000604"
+        }
+      ],
+      "prism:url": "https://api.elsevier.com/content/abstract/scopus_id/85184053931",
+      "dc:identifier": "SCOPUS_ID:85184053931",
+      "eid": "2-s2.0-85184053931",
+      "dc:title": "The role of total solar energy transmittance for normal incidence of the glazed system in climate change adaptation under Italy energy efficiency policies",
+      "dc:creator": "Congedo P.M.",
+      "prism:publicationName": "Energy and Buildings",
+      "prism:issn": "03787788",
+      "prism:volume": "307",
+      "prism:pageRange": null,
+      "prism:coverDate": "2024-03-15",
+      "prism:coverDisplayDate": "15 March 2024",
+      "prism:doi": "10.1016/j.enbuild.2024.113944",
+      "pii": "S0378778824000604",
+      "citedby-count": "1",
+      "affiliation": [
+        {
+          "@_fa": "true",
+          "affilname": "Università del Salento",
+          "affiliation-city": "Lecce",
+          "affiliation-country": "Italy"
+        }
+      ],
+      "prism:aggregationType": "Journal",
+      "subtype": "ar",
+      "subtypeDescription": "Article",
+      "article-number": "113944",
+      "source-id": "29359",
+      "openaccess": "1",
+      "openaccessFlag": true,
+      "freetoread": {
+        "value": [
+          {
+            "$": "all"
+          },
+          {
+            "$": "publisherhybridgold"
+          }
+        ]
+      },
+      "freetoreadLabel": {
+        "value": [
+          {
+            "$": "All Open Access"
+          },
+          {
+            "$": "Hybrid Gold"
+          }
+        ]
+      }
+    },
+    {
+      "@_fa": "true",
+      "link": [
+        {
+          "@_fa": "true",
+          "@ref": "self",
+          "@href": "https://api.elsevier.com/content/abstract/scopus_id/85183777351"
+        },
+        {
+          "@_fa": "true",
+          "@ref": "author-affiliation",
+          "@href": "https://api.elsevier.com/content/abstract/scopus_id/85183777351?field=author,affiliation"
+        },
+        {
+          "@_fa": "true",
+          "@ref": "scopus",
+          "@href": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85183777351&origin=inward"
+        },
+        {
+          "@_fa": "true",
+          "@ref": "scopus-citedby",
+          "@href": "https://www.scopus.com/inward/citedby.uri?partnerID=HzOxMe3b&scp=85183777351&origin=inward"
+        },
+        {
+          "@_fa": "true",
+          "@ref": "full-text",
+          "@href": "https://api.elsevier.com/content/article/eid/1-s2.0-S1364032123008985"
+        }
+      ],
+      "prism:url": "https://api.elsevier.com/content/abstract/scopus_id/85183777351",
+      "dc:identifier": "SCOPUS_ID:85183777351",
+      "eid": "2-s2.0-85183777351",
+      "dc:title": "Resilience of the higher education sector to future climates: A systematic review of predicted building energy performance and modelling approaches",
+      "dc:creator": "Davidson E.",
+      "prism:publicationName": "Renewable and Sustainable Energy Reviews",
+      "prism:issn": "13640321",
+      "prism:eIssn": "18790690",
+      "prism:volume": "191",
+      "prism:pageRange": null,
+      "prism:coverDate": "2024-03-01",
+      "prism:coverDisplayDate": "March 2024",
+      "prism:doi": "10.1016/j.rser.2023.114040",
+      "pii": "S1364032123008985",
+      "citedby-count": "0",
+      "affiliation": [
+        {
+          "@_fa": "true",
+          "affilname": "University College London",
+          "affiliation-city": "London",
+          "affiliation-country": "United Kingdom"
+        }
+      ],
+      "prism:aggregationType": "Journal",
+      "subtype": "re",
+      "subtypeDescription": "Review",
+      "article-number": "114040",
+      "source-id": "27567",
+      "openaccess": "1",
+      "openaccessFlag": true,
+      "freetoread": {
+        "value": [
+          {
+            "$": "all"
+          },
+          {
+            "$": "publisherhybridgold"
+          }
+        ]
+      },
+      "freetoreadLabel": {
+        "value": [
+          {
+            "$": "All Open Access"
+          },
+          {
+            "$": "Hybrid Gold"
+          }
+        ]
+      }
+    },
+    {
+      "@_fa": "true",
+      "link": [
+        {
+          "@_fa": "true",
+          "@ref": "self",
+          "@href": "https://api.elsevier.com/content/abstract/scopus_id/85192690474"
+        },
+        {
+          "@_fa": "true",
+          "@ref": "author-affiliation",
+          "@href": "https://api.elsevier.com/content/abstract/scopus_id/85192690474?field=author,affiliation"
+        },
+        {
+          "@_fa": "true",
+          "@ref": "scopus",
+          "@href": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85192690474&origin=inward"
+        },
+        {
+          "@_fa": "true",
+          "@ref": "scopus-citedby",
+          "@href": "https://www.scopus.com/inward/citedby.uri?partnerID=HzOxMe3b&scp=85192690474&origin=inward"
+        }
+      ],
+      "prism:url": "https://api.elsevier.com/content/abstract/scopus_id/85192690474",
+      "dc:identifier": "SCOPUS_ID:85192690474",
+      "eid": "2-s2.0-85192690474",
+      "dc:title": "Intersectionality: A philosophical framework",
+      "dc:creator": "Zack N.",
+      "prism:publicationName": "Intersectionality: A Philosophical Framework",
+      "prism:isbn": [
+        {
+          "@_fa": "true",
+          "$": "9780197693100"
+        },
+        {
+          "@_fa": "true",
+          "$": "9780197693070"
+        }
+      ],
+      "prism:pageRange": "1-201",
+      "prism:coverDate": "2024-02-22",
+      "prism:coverDisplayDate": "22 February 2024",
+      "prism:doi": "10.1093/oso/9780197693070.001.0001",
+      "citedby-count": "0",
+      "affiliation": [
+        {
+          "@_fa": "true",
+          "affilname": "Lehman College",
+          "affiliation-city": "New York",
+          "affiliation-country": "United States"
+        }
+      ],
+      "prism:aggregationType": "Book",
+      "subtype": "bk",
+      "subtypeDescription": "Book",
+      "source-id": "21101221587",
+      "openaccess": "0",
+      "openaccessFlag": false
+    },
+    {
+      "@_fa": "true",
+      "link": [
+        {
+          "@_fa": "true",
+          "@ref": "self",
+          "@href": "https://api.elsevier.com/content/abstract/scopus_id/85185209763"
+        },
+        {
+          "@_fa": "true",
+          "@ref": "author-affiliation",
+          "@href": "https://api.elsevier.com/content/abstract/scopus_id/85185209763?field=author,affiliation"
+        },
+        {
+          "@_fa": "true",
+          "@ref": "scopus",
+          "@href": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85185209763&origin=inward"
+        },
+        {
+          "@_fa": "true",
+          "@ref": "scopus-citedby",
+          "@href": "https://www.scopus.com/inward/citedby.uri?partnerID=HzOxMe3b&scp=85185209763&origin=inward"
+        }
+      ],
+      "prism:url": "https://api.elsevier.com/content/abstract/scopus_id/85185209763",
+      "dc:identifier": "SCOPUS_ID:85185209763",
+      "eid": "2-s2.0-85185209763",
+      "dc:title": "Strengthening the transformational implementation of national climate change adaptation plans to enhance agricultural resilience",
+      "dc:creator": "Nhemachena C.",
+      "prism:publicationName": "Circular and Transformative Economy: Advances towards Sustainable Socio-economic Transformation",
+      "prism:isbn": [
+        {
+          "@_fa": "true",
+          "$": "9781040000199"
+        },
+        {
+          "@_fa": "true",
+          "$": "9781032356013"
+        }
+      ],
+      "prism:pageRange": "78-100",
+      "prism:coverDate": "2024-02-09",
+      "prism:coverDisplayDate": "9 February 2024",
+      "prism:doi": "10.1201/9781003327615-5",
+      "citedby-count": "0",
+      "affiliation": [
+        {
+          "@_fa": "true",
+          "affilname": "Á propos de lAlliance pour une révolution verte en Afrique",
+          "affiliation-city": "Nairobi",
+          "affiliation-country": "Kenya"
+        }
+      ],
+      "prism:aggregationType": "Book",
+      "subtype": "ch",
+      "subtypeDescription": "Book Chapter",
+      "source-id": "21101201559",
+      "openaccess": "1",
+      "openaccessFlag": true,
+      "freetoread": {
+        "value": [
+          {
+            "$": "all"
+          },
+          {
+            "$": "publisherhybridgold"
+          }
+        ]
+      },
+      "freetoreadLabel": {
+        "value": [
+          {
+            "$": "All Open Access"
+          },
+          {
+            "$": "Hybrid Gold"
+          }
+        ]
+      }
+    },
+    {
+      "@_fa": "true",
+      "link": [
+        {
+          "@_fa": "true",
+          "@ref": "self",
+          "@href": "https://api.elsevier.com/content/abstract/scopus_id/85185723676"
+        },
+        {
+          "@_fa": "true",
+          "@ref": "author-affiliation",
+          "@href": "https://api.elsevier.com/content/abstract/scopus_id/85185723676?field=author,affiliation"
+        },
+        {
+          "@_fa": "true",
+          "@ref": "scopus",
+          "@href": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85185723676&origin=inward"
+        },
+        {
+          "@_fa": "true",
+          "@ref": "scopus-citedby",
+          "@href": "https://www.scopus.com/inward/citedby.uri?partnerID=HzOxMe3b&scp=85185723676&origin=inward"
+        }
+      ],
+      "prism:url": "https://api.elsevier.com/content/abstract/scopus_id/85185723676",
+      "dc:identifier": "SCOPUS_ID:85185723676",
+      "eid": "2-s2.0-85185723676",
+      "dc:title": "Optimization Analysis of an Energy-Saving Renovation Scheme for Building Envelopes of Existing Rural Houses Based on a Comprehensive Benefit Evaluation",
+      "dc:creator": "Cao P.",
+      "prism:publicationName": "Buildings",
+      "prism:eIssn": "20755309",
+      "prism:volume": "14",
+      "prism:issueIdentifier": "2",
+      "prism:pageRange": null,
+      "prism:coverDate": "2024-02-01",
+      "prism:coverDisplayDate": "February 2024",
+      "prism:doi": "10.3390/buildings14020454",
+      "citedby-count": "0",
+      "affiliation": [
+        {
+          "@_fa": "true",
+          "affilname": "Xi'an University of Science and Technology",
+          "affiliation-city": "Xi'an",
+          "affiliation-country": "China"
+        }
+      ],
+      "prism:aggregationType": "Journal",
+      "subtype": "ar",
+      "subtypeDescription": "Article",
+      "article-number": "454",
+      "source-id": "26980",
+      "openaccess": "1",
+      "openaccessFlag": true,
+      "freetoread": {
+        "value": [
+          {
+            "$": "all"
+          },
+          {
+            "$": "publisherfullgold"
+          }
+        ]
+      },
+      "freetoreadLabel": {
+        "value": [
+          {
+            "$": "All Open Access"
+          },
+          {
+            "$": "Gold"
+          }
+        ]
+      }
+    },
+    {
+      "@_fa": "true",
+      "link": [
+        {
+          "@_fa": "true",
+          "@ref": "self",
+          "@href": "https://api.elsevier.com/content/abstract/scopus_id/85181072323"
+        },
+        {
+          "@_fa": "true",
+          "@ref": "author-affiliation",
+          "@href": "https://api.elsevier.com/content/abstract/scopus_id/85181072323?field=author,affiliation"
+        },
+        {
+          "@_fa": "true",
+          "@ref": "scopus",
+          "@href": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85181072323&origin=inward"
+        },
+        {
+          "@_fa": "true",
+          "@ref": "scopus-citedby",
+          "@href": "https://www.scopus.com/inward/citedby.uri?partnerID=HzOxMe3b&scp=85181072323&origin=inward"
+        },
+        {
+          "@_fa": "true",
+          "@ref": "full-text",
+          "@href": "https://api.elsevier.com/content/article/eid/1-s2.0-S0378778823010678"
+        }
+      ],
+      "prism:url": "https://api.elsevier.com/content/abstract/scopus_id/85181072323",
+      "dc:identifier": "SCOPUS_ID:85181072323",
+      "eid": "2-s2.0-85181072323",
+      "dc:title": "Integrated climate-responsive thermal load ML model and cost/embodied energy estimate from a preliminary building design",
+      "dc:creator": "Abdolvand M.",
+      "prism:publicationName": "Energy and Buildings",
+      "prism:issn": "03787788",
+      "prism:volume": "304",
+      "prism:pageRange": null,
+      "prism:coverDate": "2024-02-01",
+      "prism:coverDisplayDate": "1 February 2024",
+      "prism:doi": "10.1016/j.enbuild.2023.113837",
+      "pii": "S0378778823010678",
+      "citedby-count": "0",
+      "affiliation": [
+        {
+          "@_fa": "true",
+          "affilname": "Faculty of Engineering",
+          "affiliation-city": "Sydney",
+          "affiliation-country": "Australia"
+        }
+      ],
+      "prism:aggregationType": "Journal",
+      "subtype": "ar",
+      "subtypeDescription": "Article",
+      "article-number": "113837",
+      "source-id": "29359",
+      "openaccess": "1",
+      "openaccessFlag": true,
+      "freetoread": {
+        "value": [
+          {
+            "$": "all"
+          },
+          {
+            "$": "publisherhybridgold"
+          }
+        ]
+      },
+      "freetoreadLabel": {
+        "value": [
+          {
+            "$": "All Open Access"
+          },
+          {
+            "$": "Hybrid Gold"
+          }
+        ]
+      }
+    },
+    {
+      "@_fa": "true",
+      "link": [
+        {
+          "@_fa": "true",
+          "@ref": "self",
+          "@href": "https://api.elsevier.com/content/abstract/scopus_id/85153768676"
+        },
+        {
+          "@_fa": "true",
+          "@ref": "author-affiliation",
+          "@href": "https://api.elsevier.com/content/abstract/scopus_id/85153768676?field=author,affiliation"
+        },
+        {
+          "@_fa": "true",
+          "@ref": "scopus",
+          "@href": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85153768676&origin=inward"
+        },
+        {
+          "@_fa": "true",
+          "@ref": "scopus-citedby",
+          "@href": "https://www.scopus.com/inward/citedby.uri?partnerID=HzOxMe3b&scp=85153768676&origin=inward"
+        }
+      ],
+      "prism:url": "https://api.elsevier.com/content/abstract/scopus_id/85153768676",
+      "dc:identifier": "SCOPUS_ID:85153768676",
+      "eid": "2-s2.0-85153768676",
+      "dc:title": "Electrical resistivity analysis for the internal capillary water migration mechanism of porous stone",
+      "dc:creator": "Yang H.",
+      "prism:publicationName": "Acta Geophysica",
+      "prism:issn": "18956572",
+      "prism:eIssn": "18957455",
+      "prism:volume": "72",
+      "prism:issueIdentifier": "1",
+      "prism:pageRange": "213-231",
+      "prism:coverDate": "2024-02-01",
+      "prism:coverDisplayDate": "February 2024",
+      "prism:doi": "10.1007/s11600-023-01081-w",
+      "citedby-count": "1",
+      "affiliation": [
+        {
+          "@_fa": "true",
+          "affilname": "Chongqing University",
+          "affiliation-city": "Chongqing",
+          "affiliation-country": "China"
+        },
+        {
+          "@_fa": "true",
+          "affilname": "National Joint Engineering Research Center of Geohazards Prevention in the Reservoir Areas",
+          "affiliation-city": "Chongqing",
+          "affiliation-country": "China"
+        }
+      ],
+      "prism:aggregationType": "Journal",
+      "subtype": "ar",
+      "subtypeDescription": "Article",
+      "source-id": "4700152838",
+      "openaccess": "0",
+      "openaccessFlag": false
+    },
+    {
+      "@_fa": "true",
+      "link": [
+        {
+          "@_fa": "true",
+          "@ref": "self",
+          "@href": "https://api.elsevier.com/content/abstract/scopus_id/85192222332"
+        },
+        {
+          "@_fa": "true",
+          "@ref": "author-affiliation",
+          "@href": "https://api.elsevier.com/content/abstract/scopus_id/85192222332?field=author,affiliation"
+        },
+        {
+          "@_fa": "true",
+          "@ref": "scopus",
+          "@href": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85192222332&origin=inward"
+        },
+        {
+          "@_fa": "true",
+          "@ref": "scopus-citedby",
+          "@href": "https://www.scopus.com/inward/citedby.uri?partnerID=HzOxMe3b&scp=85192222332&origin=inward"
+        }
+      ],
+      "prism:url": "https://api.elsevier.com/content/abstract/scopus_id/85192222332",
+      "dc:identifier": "SCOPUS_ID:85192222332",
+      "eid": "2-s2.0-85192222332",
+      "dc:title": "Love it or hate it? Deconstructing consumers' attitudes towards AI enabled voice shopping",
+      "dc:creator": "Kamoonpuri S.Z.",
+      "prism:publicationName": "Journal of Consumer Behaviour",
+      "prism:issn": "14720817",
+      "prism:eIssn": "14791838",
+      "prism:pageRange": null,
+      "prism:coverDate": "2024-01-01",
+      "prism:coverDisplayDate": "2024",
+      "prism:doi": "10.1002/cb.2347",
+      "citedby-count": "0",
+      "affiliation": [
+        {
+          "@_fa": "true",
+          "affilname": "University of Petroleum and Energy Studies",
+          "affiliation-city": "Dehradun",
+          "affiliation-country": "India"
+        }
+      ],
+      "prism:aggregationType": "Journal",
+      "subtype": "ar",
+      "subtypeDescription": "Article",
+      "source-id": "17700156733",
+      "openaccess": "0",
+      "openaccessFlag": false
+    },
+    {
+      "@_fa": "true",
+      "link": [
+        {
+          "@_fa": "true",
+          "@ref": "self",
+          "@href": "https://api.elsevier.com/content/abstract/scopus_id/85191337183"
+        },
+        {
+          "@_fa": "true",
+          "@ref": "author-affiliation",
+          "@href": "https://api.elsevier.com/content/abstract/scopus_id/85191337183?field=author,affiliation"
+        },
+        {
+          "@_fa": "true",
+          "@ref": "scopus",
+          "@href": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85191337183&origin=inward"
+        },
+        {
+          "@_fa": "true",
+          "@ref": "scopus-citedby",
+          "@href": "https://www.scopus.com/inward/citedby.uri?partnerID=HzOxMe3b&scp=85191337183&origin=inward"
+        }
+      ],
+      "prism:url": "https://api.elsevier.com/content/abstract/scopus_id/85191337183",
+      "dc:identifier": "SCOPUS_ID:85191337183",
+      "eid": "2-s2.0-85191337183",
+      "dc:title": "Environmental Sustainability in Traditional University Libraries: Contributions from BIM/BES Integration to the Thermal Performance and Books Conservation",
+      "dc:creator": "Vaz C.F.",
+      "prism:publicationName": "World Sustainability Series",
+      "prism:issn": "21997373",
+      "prism:eIssn": "21997381",
+      "prism:volume": "Part F2517",
+      "prism:pageRange": "145-167",
+      "prism:coverDate": "2024-01-01",
+      "prism:coverDisplayDate": "2024",
+      "prism:doi": "10.1007/978-3-031-49853-4_10",
+      "citedby-count": "0",
+      "affiliation": [
+        {
+          "@_fa": "true",
+          "affilname": "Universidade Federal de Uberlândia",
+          "affiliation-city": "Uberlandia",
+          "affiliation-country": "Brazil"
+        }
+      ],
+      "prism:aggregationType": "Book Series",
+      "subtype": "ch",
+      "subtypeDescription": "Book Chapter",
+      "source-id": "21100925886",
+      "openaccess": "0",
+      "openaccessFlag": false
+    },
+    {
+      "@_fa": "true",
+      "link": [
+        {
+          "@_fa": "true",
+          "@ref": "self",
+          "@href": "https://api.elsevier.com/content/abstract/scopus_id/85190287145"
+        },
+        {
+          "@_fa": "true",
+          "@ref": "author-affiliation",
+          "@href": "https://api.elsevier.com/content/abstract/scopus_id/85190287145?field=author,affiliation"
+        },
+        {
+          "@_fa": "true",
+          "@ref": "scopus",
+          "@href": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85190287145&origin=inward"
+        },
+        {
+          "@_fa": "true",
+          "@ref": "scopus-citedby",
+          "@href": "https://www.scopus.com/inward/citedby.uri?partnerID=HzOxMe3b&scp=85190287145&origin=inward"
+        }
+      ],
+      "prism:url": "https://api.elsevier.com/content/abstract/scopus_id/85190287145",
+      "dc:identifier": "SCOPUS_ID:85190287145",
+      "eid": "2-s2.0-85190287145",
+      "dc:title": "Framework for the UK construction industry transition to net zero design: a Delphi techniques and structural equation model approach",
+      "dc:creator": "Osunsanmi T.O.",
+      "prism:publicationName": "International Journal of Construction Management",
+      "prism:eIssn": "15623599",
+      "prism:pageRange": null,
+      "prism:coverDate": "2024-01-01",
+      "prism:coverDisplayDate": "2024",
+      "prism:doi": "10.1080/15623599.2024.2337143",
+      "citedby-count": "0",
+      "affiliation": [
+        {
+          "@_fa": "true",
+          "affilname": "Edinburgh Napier University",
+          "affiliation-city": "Edinburgh",
+          "affiliation-country": "United Kingdom"
+        }
+      ],
+      "prism:aggregationType": "Journal",
+      "subtype": "ar",
+      "subtypeDescription": "Article",
+      "source-id": "18800156713",
+      "openaccess": "1",
+      "openaccessFlag": true,
+      "freetoread": {
+        "value": [
+          {
+            "$": "all"
+          },
+          {
+            "$": "publisherhybridgold"
+          }
+        ]
+      },
+      "freetoreadLabel": {
+        "value": [
+          {
+            "$": "All Open Access"
+          },
+          {
+            "$": "Hybrid Gold"
+          }
+        ]
+      }
+    },
+    {
+      "@_fa": "true",
+      "link": [
+        {
+          "@_fa": "true",
+          "@ref": "self",
+          "@href": "https://api.elsevier.com/content/abstract/scopus_id/85189897672"
+        },
+        {
+          "@_fa": "true",
+          "@ref": "author-affiliation",
+          "@href": "https://api.elsevier.com/content/abstract/scopus_id/85189897672?field=author,affiliation"
+        },
+        {
+          "@_fa": "true",
+          "@ref": "scopus",
+          "@href": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85189897672&origin=inward"
+        },
+        {
+          "@_fa": "true",
+          "@ref": "scopus-citedby",
+          "@href": "https://www.scopus.com/inward/citedby.uri?partnerID=HzOxMe3b&scp=85189897672&origin=inward"
+        },
+        {
+          "@_fa": "true",
+          "@ref": "full-text",
+          "@href": "https://api.elsevier.com/content/article/eid/1-s2.0-S2307187724000853"
+        }
+      ],
+      "prism:url": "https://api.elsevier.com/content/abstract/scopus_id/85189897672",
+      "dc:identifier": "SCOPUS_ID:85189897672",
+      "eid": "2-s2.0-85189897672",
+      "dc:title": "The impacts of residential buildings’ energy compliance standards on Iran's GHG emissions toward achieving the Paris Agreement",
+      "dc:creator": "Soltan Ahmadi P.",
+      "prism:publicationName": "Journal of Engineering Research (Kuwait)",
+      "prism:issn": "23071877",
+      "prism:eIssn": "23071885",
+      "prism:pageRange": null,
+      "prism:coverDate": "2024-01-01",
+      "prism:coverDisplayDate": "2024",
+      "prism:doi": "10.1016/j.jer.2024.03.017",
+      "pii": "S2307187724000853",
+      "citedby-count": "0",
+      "affiliation": [
+        {
+          "@_fa": "true",
+          "affilname": "Islamic Azad University, South Tehran Branch",
+          "affiliation-city": "Tehran",
+          "affiliation-country": "Iran"
+        }
+      ],
+      "prism:aggregationType": "Journal",
+      "subtype": "ar",
+      "subtypeDescription": "Article",
+      "source-id": "21100293700",
+      "openaccess": "1",
+      "openaccessFlag": true
+    },
+    {
+      "@_fa": "true",
+      "link": [
+        {
+          "@_fa": "true",
+          "@ref": "self",
+          "@href": "https://api.elsevier.com/content/abstract/scopus_id/85188664140"
+        },
+        {
+          "@_fa": "true",
+          "@ref": "author-affiliation",
+          "@href": "https://api.elsevier.com/content/abstract/scopus_id/85188664140?field=author,affiliation"
+        },
+        {
+          "@_fa": "true",
+          "@ref": "scopus",
+          "@href": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85188664140&origin=inward"
+        },
+        {
+          "@_fa": "true",
+          "@ref": "scopus-citedby",
+          "@href": "https://www.scopus.com/inward/citedby.uri?partnerID=HzOxMe3b&scp=85188664140&origin=inward"
+        }
+      ],
+      "prism:url": "https://api.elsevier.com/content/abstract/scopus_id/85188664140",
+      "dc:identifier": "SCOPUS_ID:85188664140",
+      "eid": "2-s2.0-85188664140",
+      "dc:title": "A Review of Climate and Resident-Oriented Renovation Processes: A Framework for Just Decision Support Systems",
+      "dc:creator": "Ricci D.",
+      "prism:publicationName": "Smart Innovation, Systems and Technologies",
+      "prism:issn": "21903018",
+      "prism:eIssn": "21903026",
+      "prism:isbn": [
+        {
+          "@_fa": "true",
+          "$": "9789819985005"
+        }
+      ],
+      "prism:volume": "378",
+      "prism:pageRange": "627-637",
+      "prism:coverDate": "2024-01-01",
+      "prism:coverDisplayDate": "2024",
+      "prism:doi": "10.1007/978-981-99-8501-2_54",
+      "citedby-count": "0",
+      "affiliation": [
+        {
+          "@_fa": "true",
+          "affilname": "Faculteit Bouwkunde van de TU Delft",
+          "affiliation-city": "Delft",
+          "affiliation-country": "Netherlands"
+        }
+      ],
+      "prism:aggregationType": "Book Series",
+      "subtype": "cp",
+      "subtypeDescription": "Conference Paper",
+      "source-id": "21100204111",
+      "openaccess": "0",
+      "openaccessFlag": false
+    },
+    {
+      "@_fa": "true",
+      "link": [
+        {
+          "@_fa": "true",
+          "@ref": "self",
+          "@href": "https://api.elsevier.com/content/abstract/scopus_id/85188268708"
+        },
+        {
+          "@_fa": "true",
+          "@ref": "author-affiliation",
+          "@href": "https://api.elsevier.com/content/abstract/scopus_id/85188268708?field=author,affiliation"
+        },
+        {
+          "@_fa": "true",
+          "@ref": "scopus",
+          "@href": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85188268708&origin=inward"
+        },
+        {
+          "@_fa": "true",
+          "@ref": "scopus-citedby",
+          "@href": "https://www.scopus.com/inward/citedby.uri?partnerID=HzOxMe3b&scp=85188268708&origin=inward"
+        }
+      ],
+      "prism:url": "https://api.elsevier.com/content/abstract/scopus_id/85188268708",
+      "dc:identifier": "SCOPUS_ID:85188268708",
+      "eid": "2-s2.0-85188268708",
+      "dc:title": "Addressing Climate Change and Building Resilience in the Draa-Tafilalet Region",
+      "dc:creator": "Ben Salem A.",
+      "prism:publicationName": "Lecture Notes in Networks and Systems",
+      "prism:issn": "23673370",
+      "prism:eIssn": "23673389",
+      "prism:isbn": [
+        {
+          "@_fa": "true",
+          "$": "9783031543173"
+        }
+      ],
+      "prism:volume": "930 LNNS",
+      "prism:pageRange": "26-38",
+      "prism:coverDate": "2024-01-01",
+      "prism:coverDisplayDate": "2024",
+      "prism:doi": "10.1007/978-3-031-54318-0_4",
+      "citedby-count": "0",
+      "affiliation": [
+        {
+          "@_fa": "true",
+          "affilname": "Université Moulay Ismaïl",
+          "affiliation-city": "Meknes",
+          "affiliation-country": "Morocco"
+        },
+        {
+          "@_fa": "true",
+          "affilname": "Faculté des Sciences Rabat",
+          "affiliation-city": "Rabat",
+          "affiliation-country": "Morocco"
+        }
+      ],
+      "prism:aggregationType": "Book Series",
+      "subtype": "cp",
+      "subtypeDescription": "Conference Paper",
+      "source-id": "21100901469",
+      "openaccess": "0",
+      "openaccessFlag": false
+    },
+    {
+      "@_fa": "true",
+      "link": [
+        {
+          "@_fa": "true",
+          "@ref": "self",
+          "@href": "https://api.elsevier.com/content/abstract/scopus_id/85187805472"
+        },
+        {
+          "@_fa": "true",
+          "@ref": "author-affiliation",
+          "@href": "https://api.elsevier.com/content/abstract/scopus_id/85187805472?field=author,affiliation"
+        },
+        {
+          "@_fa": "true",
+          "@ref": "scopus",
+          "@href": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85187805472&origin=inward"
+        },
+        {
+          "@_fa": "true",
+          "@ref": "scopus-citedby",
+          "@href": "https://www.scopus.com/inward/citedby.uri?partnerID=HzOxMe3b&scp=85187805472&origin=inward"
+        }
+      ],
+      "prism:url": "https://api.elsevier.com/content/abstract/scopus_id/85187805472",
+      "dc:identifier": "SCOPUS_ID:85187805472",
+      "eid": "2-s2.0-85187805472",
+      "dc:title": "Innovative Power Smoothing Technique for Enhancing Renewable Integration in Insular Power Systems Using Electric Vehicle Charging Stations",
+      "dc:creator": "Villa-Ávila E.",
+      "prism:publicationName": "Applied Sciences (Switzerland)",
+      "prism:eIssn": "20763417",
+      "prism:volume": "14",
+      "prism:issueIdentifier": "1",
+      "prism:pageRange": null,
+      "prism:coverDate": "2024-01-01",
+      "prism:coverDisplayDate": "January 2024",
+      "prism:doi": "10.3390/app14010375",
+      "citedby-count": "2",
+      "affiliation": [
+        {
+          "@_fa": "true",
+          "affilname": "University of Cuenca",
+          "affiliation-city": "Cuenca",
+          "affiliation-country": "Ecuador"
+        },
+        {
+          "@_fa": "true",
+          "affilname": "Universidad de Jaén",
+          "affiliation-city": "Jaen",
+          "affiliation-country": "Spain"
+        }
+      ],
+      "prism:aggregationType": "Journal",
+      "subtype": "ar",
+      "subtypeDescription": "Article",
+      "article-number": "375",
+      "source-id": "21100829268",
+      "openaccess": "1",
+      "openaccessFlag": true,
+      "freetoread": {
+        "value": [
+          {
+            "$": "all"
+          },
+          {
+            "$": "publisherfullgold"
+          }
+        ]
+      },
+      "freetoreadLabel": {
+        "value": [
+          {
+            "$": "All Open Access"
+          },
+          {
+            "$": "Gold"
+          }
+        ]
+      }
+    },
+    {
+      "@_fa": "true",
+      "link": [
+        {
+          "@_fa": "true",
+          "@ref": "self",
+          "@href": "https://api.elsevier.com/content/abstract/scopus_id/85186480331"
+        },
+        {
+          "@_fa": "true",
+          "@ref": "author-affiliation",
+          "@href": "https://api.elsevier.com/content/abstract/scopus_id/85186480331?field=author,affiliation"
+        },
+        {
+          "@_fa": "true",
+          "@ref": "scopus",
+          "@href": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85186480331&origin=inward"
+        },
+        {
+          "@_fa": "true",
+          "@ref": "scopus-citedby",
+          "@href": "https://www.scopus.com/inward/citedby.uri?partnerID=HzOxMe3b&scp=85186480331&origin=inward"
+        }
+      ],
+      "prism:url": "https://api.elsevier.com/content/abstract/scopus_id/85186480331",
+      "dc:identifier": "SCOPUS_ID:85186480331",
+      "eid": "2-s2.0-85186480331",
+      "dc:title": "Biogeographic distribution of five Antarctic cyanobacteria using large-scale k-mer searching with sourmash branchwater",
+      "dc:creator": "Lumian J.",
+      "prism:publicationName": "Frontiers in Microbiology",
+      "prism:eIssn": "1664302X",
+      "prism:volume": "15",
+      "prism:pageRange": null,
+      "prism:coverDate": "2024-01-01",
+      "prism:coverDisplayDate": "2024",
+      "prism:doi": "10.3389/fmicb.2024.1328083",
+      "citedby-count": "0",
+      "affiliation": [
+        {
+          "@_fa": "true",
+          "affilname": "University of California, Davis",
+          "affiliation-city": "Davis",
+          "affiliation-country": "United States"
+        }
+      ],
+      "prism:aggregationType": "Journal",
+      "subtype": "ar",
+      "subtypeDescription": "Article",
+      "article-number": "1328083",
+      "source-id": "21100226442",
+      "openaccess": "1",
+      "openaccessFlag": true,
+      "freetoread": {
+        "value": [
+          {
+            "$": "all"
+          },
+          {
+            "$": "publisherfullgold"
+          }
+        ]
+      },
+      "freetoreadLabel": {
+        "value": [
+          {
+            "$": "All Open Access"
+          },
+          {
+            "$": "Gold"
+          }
+        ]
+      }
+    },
+    {
+      "@_fa": "true",
+      "link": [
+        {
+          "@_fa": "true",
+          "@ref": "self",
+          "@href": "https://api.elsevier.com/content/abstract/scopus_id/85186051567"
+        },
+        {
+          "@_fa": "true",
+          "@ref": "author-affiliation",
+          "@href": "https://api.elsevier.com/content/abstract/scopus_id/85186051567?field=author,affiliation"
+        },
+        {
+          "@_fa": "true",
+          "@ref": "scopus",
+          "@href": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85186051567&origin=inward"
+        },
+        {
+          "@_fa": "true",
+          "@ref": "scopus-citedby",
+          "@href": "https://www.scopus.com/inward/citedby.uri?partnerID=HzOxMe3b&scp=85186051567&origin=inward"
+        },
+        {
+          "@_fa": "true",
+          "@ref": "full-text",
+          "@href": "https://api.elsevier.com/content/article/eid/3-s2.0-B9780443185151000034"
+        }
+      ],
+      "prism:url": "https://api.elsevier.com/content/abstract/scopus_id/85186051567",
+      "dc:identifier": "SCOPUS_ID:85186051567",
+      "eid": "2-s2.0-85186051567",
+      "dc:title": "Adobe houses for a climate changing world",
+      "dc:creator": "Marais P.",
+      "prism:publicationName": "Living With Climate Change",
+      "prism:isbn": [
+        {
+          "@_fa": "true",
+          "$": "9780443185151"
+        },
+        {
+          "@_fa": "true",
+          "$": "9780443185144"
+        }
+      ],
+      "prism:pageRange": "89-100",
+      "prism:coverDate": "2024-01-01",
+      "prism:coverDisplayDate": "1 January 2024",
+      "prism:doi": "10.1016/B978-0-443-18515-1.00003-4",
+      "citedby-count": "0",
+      "affiliation": [
+        {
+          "@_fa": "true",
+          "affilname": "Simply Sustainable",
+          "affiliation-city": "Magaliesburg",
+          "affiliation-country": "South Africa"
+        }
+      ],
+      "prism:aggregationType": "Book",
+      "subtype": "ch",
+      "subtypeDescription": "Book Chapter",
+      "source-id": "21101202345",
+      "openaccess": "0",
+      "openaccessFlag": false
+    },
+    {
+      "@_fa": "true",
+      "link": [
+        {
+          "@_fa": "true",
+          "@ref": "self",
+          "@href": "https://api.elsevier.com/content/abstract/scopus_id/85184276492"
+        },
+        {
+          "@_fa": "true",
+          "@ref": "author-affiliation",
+          "@href": "https://api.elsevier.com/content/abstract/scopus_id/85184276492?field=author,affiliation"
+        },
+        {
+          "@_fa": "true",
+          "@ref": "scopus",
+          "@href": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85184276492&origin=inward"
+        },
+        {
+          "@_fa": "true",
+          "@ref": "scopus-citedby",
+          "@href": "https://www.scopus.com/inward/citedby.uri?partnerID=HzOxMe3b&scp=85184276492&origin=inward"
+        }
+      ],
+      "prism:url": "https://api.elsevier.com/content/abstract/scopus_id/85184276492",
+      "dc:identifier": "SCOPUS_ID:85184276492",
+      "eid": "2-s2.0-85184276492",
+      "dc:title": "Analysis and future projections of the electricity demands of the Jordanian household sector using artificial neural networks",
+      "dc:creator": "Gharaibeh M.A.",
+      "prism:publicationName": "Journal of Science and Technology Policy Management",
+      "prism:issn": "20534620",
+      "prism:eIssn": "20534639",
+      "prism:pageRange": null,
+      "prism:coverDate": "2024-01-01",
+      "prism:coverDisplayDate": "2024",
+      "prism:doi": "10.1108/JSTPM-06-2023-0090",
+      "citedby-count": "1",
+      "affiliation": [
+        {
+          "@_fa": "true",
+          "affilname": "Hashemite University",
+          "affiliation-city": "Zarqa",
+          "affiliation-country": "Jordan"
+        }
+      ],
+      "prism:aggregationType": "Journal",
+      "subtype": "ar",
+      "subtypeDescription": "Article",
+      "source-id": "21100374809",
+      "openaccess": "0",
+      "openaccessFlag": false
+    },
+    {
+      "@_fa": "true",
+      "link": [
+        {
+          "@_fa": "true",
+          "@ref": "self",
+          "@href": "https://api.elsevier.com/content/abstract/scopus_id/85183437900"
+        },
+        {
+          "@_fa": "true",
+          "@ref": "author-affiliation",
+          "@href": "https://api.elsevier.com/content/abstract/scopus_id/85183437900?field=author,affiliation"
+        },
+        {
+          "@_fa": "true",
+          "@ref": "scopus",
+          "@href": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85183437900&origin=inward"
+        },
+        {
+          "@_fa": "true",
+          "@ref": "scopus-citedby",
+          "@href": "https://www.scopus.com/inward/citedby.uri?partnerID=HzOxMe3b&scp=85183437900&origin=inward"
+        }
+      ],
+      "prism:url": "https://api.elsevier.com/content/abstract/scopus_id/85183437900",
+      "dc:identifier": "SCOPUS_ID:85183437900",
+      "eid": "2-s2.0-85183437900",
+      "dc:title": "A Systematic Review of Climate Change Implications on Building Energy Consumption: Impacts and Adaptation Measures in Hot Urban Desert Climates",
+      "dc:creator": "Kutty N.A.",
+      "prism:publicationName": "Buildings",
+      "prism:eIssn": "20755309",
+      "prism:volume": "14",
+      "prism:issueIdentifier": "1",
+      "prism:pageRange": null,
+      "prism:coverDate": "2024-01-01",
+      "prism:coverDisplayDate": "January 2024",
+      "prism:doi": "10.3390/buildings14010013",
+      "citedby-count": "2",
+      "affiliation": [
+        {
+          "@_fa": "true",
+          "affilname": "United Arab Emirates University",
+          "affiliation-city": "Al Ain",
+          "affiliation-country": "United Arab Emirates"
+        }
+      ],
+      "prism:aggregationType": "Journal",
+      "subtype": "re",
+      "subtypeDescription": "Review",
+      "article-number": "13",
+      "source-id": "26980",
+      "openaccess": "1",
+      "openaccessFlag": true,
+      "freetoread": {
+        "value": [
+          {
+            "$": "all"
+          },
+          {
+            "$": "publisherfullgold"
+          }
+        ]
+      },
+      "freetoreadLabel": {
+        "value": [
+          {
+            "$": "All Open Access"
+          },
+          {
+            "$": "Gold"
+          }
+        ]
+      }
+    }
+  ]
+}
