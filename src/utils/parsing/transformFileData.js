@@ -94,10 +94,15 @@ async function openalexjs(infile) {
 async function jqfilter(infile, filterfile) {
     const filter = fs.readFileSync(filterfile, 'utf8');
     const infileObject = JSON.parse(fs.readFileSync(infile, 'utf8'));
-    const data = await jq.run(filter,
-        infileObject,
-        { input: 'json', output: 'pretty' });
-    return data;
+    try {
+        const data = await jq.run(filter,
+            infileObject,
+            { input: 'json', output: 'pretty' });
+        return data;
+    } catch (error){
+        console.log(error.message);
+        process.exit(1);
+    }
 };
 
 module.exports = { transformFileData };

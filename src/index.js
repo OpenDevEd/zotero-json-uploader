@@ -178,12 +178,12 @@ const argv = yargs
             'scite',
         ];
 
-        if (argv.transform == "openalexjs") {
+        if (args.transform == "openalexjs") {
             // TODO: openalexjs transform option not implemented yet
             console.log('openalexjs transform option not implemented yet');
             process.exit(1);
         };
-        
+
         if (!transformOptions.includes(args.transform)) {
             console.log('Transformation option is not one of the options');
             process.exit(1);
@@ -196,16 +196,16 @@ const argv = yargs
             }
         }
 
-        if (argv.jq && !argv.transform) {
+        if (args.jq && !args.transform) {
             // Allow both `--jq abc.jq --transform jq` and just `--jq abc.jq`.
             /* 
             If these conditions are met, the code sets the transform argument to "jq". 
             This allows the user to either provide both --jq abc.jq --transform jq or just --jq abc.jq when running the script. 
             In the latter case, the transform argument is automatically set to "jq".
             */
-            argv.transform = "jq";
+            args.transform = "jq";
         };
-        if (argv.jq && argv.transform != 'jq') {
+        if (args.jq && args.transform != 'jq') {
             // If jq file is provided, transform option must be jq
             // Disallow, e.g. `--jq abc.jq --transform openalexjq`
             console.log('JQ file provided but transform option is not jq: Remove --jq or change transform option (--transform) to jq');
