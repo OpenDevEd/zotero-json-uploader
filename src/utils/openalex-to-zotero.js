@@ -105,4 +105,4 @@ function openalexToZotero(data) {
   return JSON.stringify(returns);
 }
 
-module.exports = openalexToZotero;
+module.exports = { openalexToZotero };

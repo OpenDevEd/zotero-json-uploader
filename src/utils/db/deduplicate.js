@@ -90,10 +90,7 @@ async function deduplicate_DOI() {
 
 async function deduplicate_identifier() {
     console.log('Checking for duplicates using [identifiers]...');
-    const total = {
-        linked: 0,
-        created: 0,
-    }
+    const total = { linked: 0, created: 0 }
     // get all the searchResults with DOI
     const duplicates = await prisma.searchResults.findMany({
         where: { doi: "", SearchResults_Deduplicated: { none: {} } },

@@ -4,9 +4,9 @@ const yargs = require('yargs');
 const { setupZoteroConfig } = require('./utils/config/setupZoteroConfig');
 const { setupDatabase } = require('./utils/config/setupDatabase');
 const { deduplicate } = require('./utils/db/deduplicate');
-const { uploadToZotero } = require('./utils/zotero/uploadToZotero');
 const { uploadToDatabase } = require('./utils/db/uploadToDatabase');
 const { dump } = require('./utils/db/dump');
+const { init } = require('./utils/init');
 
 /*
 * Issues:
@@ -234,9 +234,14 @@ const argv = yargs
         return;
     }
     if (argValue._[0] === 'zotero') {
-        await uploadToZotero(argValue);
+        await init(argValue);
+        return;
+    }
+    if (argValue._[0] === 'db-dump') {
+        await dump(argValue.table, argValue.output);
         return;
     }
 
     console.log(argValue);
 })()
+
