@@ -23,7 +23,7 @@ async function uploadToDatabase(argv) {
         let source = 'unknown';
         // handle command line arguments...
         const transformMapping = {
-            'jq': argv.jq.replace('zotero', 'database'),
+            // 'jq': argv.jq.replace('zotero', 'database'),
             'openalexjq': defaultPath + "/jq/openalex-to-zotero.jq",
             'scholarlyjq': defaultPath + '/jq/scholarly-to-zotero.jq',
             'scopusjq': defaultPath + '/jq/scopus-to-zotero.jq'
@@ -60,8 +60,7 @@ async function uploadToDatabase(argv) {
         try {
             const outdbf = infile + ".database.json";
             fs.writeFileSync(outdbf, dbdata);
-            console.log(`Database JSON written to: ${outdbf}`);
-            // Upload to database
+            // Upload to database 
             await uploadSearchResults(parseSearchResults(dbdata));
         } catch (error) {
             console.error(error.message)
@@ -75,12 +74,13 @@ async function uploadToDatabase(argv) {
         const infileObject = JSON.parse(fs.readFileSync(infile, 'utf8'));
         const data = await jq.run(filter,
             infileObject,
-            { input: 'json', output: 'pretty' });
-        
-        return {
+            { input: 'json', output: 'pretty' }
+        );
+
+        return JSON.stringify({
             meta: infileObject.meta,
-            results: data
-        };
+            results: JSON.parse(data),
+        });
     };
 
     (async () => {
