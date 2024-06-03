@@ -1,11 +1,11 @@
 # Map types from scholarly to zotero
 def typeMap: 
   if (.=="" or . == null) 
-  then "report" 
+  then "publication" 
   else 
     if . == "article" 
     then "journalArticle" 
-    else "report" 
+    else "publication" 
     end
   end;
 
