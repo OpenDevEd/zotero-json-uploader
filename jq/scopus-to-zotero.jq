@@ -34,8 +34,8 @@ def showAffiliationInExtra:
       (if has("dc:creator") and (."dc:creator" | type) == "string" then
         [ ."dc:creator" | {
             "creatorType": "author",
-            "firstName": . | split(" ")[0],
-            "lastName": . | split(" ")[1]
+            "firstName": . | split(" ")[1],
+            "lastName": . | split(" ")[0]
           }
         ]
       else
