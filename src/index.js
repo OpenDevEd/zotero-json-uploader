@@ -119,12 +119,11 @@ const argv = yargs
                 describe: 'Chose the transformation to apply to the data. For the option jq, you need to provide a jq file if -j',
                 choices: [
                     'jq',
-                    'openalexjq',
-                    'openalexjs-sdgs',
+                    'openalex',
                     'openalexjs',
-                    'scholarlyjq',
-                    'openalexjq-sdgs',
-                    'scopusjq',
+                    'scholarly',
+                    'scopus',
+                    'scite',
                 ] // Define the allowed values
             })
             .option('jq', {
@@ -165,35 +164,49 @@ const argv = yargs
     .middleware(async (args) => {
         if (!['zotero', 'db-upload'].includes(args._[0]))
             return;
-        if (!args.transform) {
-            args.transform = 'auto';
-        } else {
-            if (args.transform === 'jq' && !args.jq) {
-                console.log('JQ option is missing');
-                process.exit(1);
-            }
+        if (args.transform === 'jq' && !args.jq) {
+            console.log('JQ option is missing');
+            process.exit(1);
+        }
 
-            const transformOptions = [
-                'jq',
-                'openalexjq',
-                'openalexjs-sdgs',
-                'openalexjs',
-                'scholarlyjq',
-                'openalexjq-sdgs',
-                'scopusjq',
-            ];
-            if (!transformOptions.includes(args.transform)) {
-                console.log('Transformation option is not one of the options');
-                process.exit(1);
-            }
+        const transformOptions = [
+            'jq',
+            'openalex',
+            'openalexjs',
+            'scholarly',
+            'scopus',
+            'scite',
+        ];
+        if (!transformOptions.includes(args.transform)) {
+            console.log('Transformation option is not one of the options');
+            process.exit(1);
+        }
 
-            if (args.jq) {
-                if (!fs.existsSync(args.jq)) {
-                    console.log('JQ file not found');
-                    process.exit(1);
-                }
+        if (args.jq) {
+            if (!fs.existsSync(args.jq)) {
+                console.log('JQ file not found');
+                process.exit(1);
             }
         }
+
+        if (argv.jq && !argv.transform) {
+            // Allow both `--jq abc.jq --transform jq` and just `--jq abc.jq`.
+            /* 
+            If these conditions are met, the code sets the transform argument to "jq". 
+            This allows the user to either provide both --jq abc.jq --transform jq or just --jq abc.jq when running the script. 
+            In the latter case, the transform argument is automatically set to "jq".
+            */
+            argv.transform = "jq";
+        };
+        if (argv.jq && argv.transform != 'jq') {
+            // If jq file is provided, transform option must be jq
+            // Disallow, e.g. `--jq abc.jq --transform openalexjq`
+            console.log('JQ file provided but transform option is not jq: Remove --jq or change transform option (--transform) to jq');
+            process.exit(1);
+        };
+
+
+
         if (args.files && args.files.length > 0) {
             for (file of args.files) {
                 try {

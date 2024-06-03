@@ -22,41 +22,42 @@ async function uploadToDatabase(argv) {
         let dbdata;
         let source = 'unknown';
         // handle command line arguments...
-        const transformMapping = {
-            // 'jq': argv.jq.replace('zotero', 'database'),
-            'openalexjq': defaultPath + "/jq/openalex-to-zotero.jq",
-            'scholarlyjq': defaultPath + '/jq/scholarly-to-zotero.jq',
-            'scopusjq': defaultPath + '/jq/scopus-to-zotero.jq'
+        const argvTransformOptionsAndSourceMapping = {
+            'jq': argv.jq,
+            'openalex': defaultPath + "/jq/openalex-to-zotero.jq",
+            'scholarly': defaultPath + '/jq/scholarly-to-zotero.jq',
+            'scopus': defaultPath + '/jq/scopus-to-zotero.jq',
+            'openalexjs': null
         };
 
-        if (Object.keys(transformMapping).includes(argv.transform)) {
-            const dbfilterfile = transformMapping[argv.transform];
-            if (argv.transform !== 'jq' && !fs.existsSync(dbfilterfile)) {
-                console.log(`JQ file not found: ${dbfilterfile}`);
-                process.exit(1);
-            }
-            dbdata = await jqfilter(infile, dbfilterfile);
-        } else {
-            source = detectJsonSource(JSON.parse(fs.readFileSync(infile, 'utf8')));
-            let dbfilterfile;
-            const sourceMapping = {
-                'openalex': defaultPath + '/jq/openalex-to-zotero.jq',
-                'scholarly': defaultPath + '/jq/scholarly-to-zotero.jq',
-                'scopus': defaultPath + '/jq/scopus-to-zotero.jq'
-            };
-            if (Object.keys(sourceMapping).includes(source)) {
-                dbfilterfile = sourceMapping[source];
+        if (argv.transform == "openalexjs") {
+            // TODO: openalexjs transform option not implemented yet
+            console.log('openalexjs transform option not implemented yet');
+            process.exit(1);
+        };
+        let mytransform = '';
+        if (argv.transform) {
+            if (Object.keys(argvTransformOptionsAndSourceMapping).includes(argv.transform)) {
+                mytransform = argv.transform;
             } else {
-                console.log('unknown source for :' + infile);
-                return;
-            }
-            if (!fs.existsSync(dbfilterfile)) {
-                console.log(`JQ file not found: ${dbfilterfile}`);
+                console.log('unknown manual transform option: ' + argv.transform);
                 process.exit(1);
             }
-            dbdata = await jqfilter(infile, dbfilterfile);
+        } else {
+            const source = detectJsonSource(JSON.parse(fs.readFileSync(infile, 'utf8')));
+            if (Object.keys(argvTransformOptionsAndSourceMapping).includes(source)) {
+                mytransform = argvTransformOptionsAndSourceMapping[source];
+            } else {
+                console.log(`Unknown source (${source}) / automatic transform for:` + infile);
+                process.exit(1);
+            }
+        };
+        // argv.transform is not provided, therefore detect source.
+        if (!fs.existsSync(mytransform)) {
+            console.log(`JQ file not found: ${dbfilterfile}`);
+            process.exit(1);
         }
-
+        dbdata = await jqfilter(infile, mytransform);
         try {
             const outdbf = infile + ".database.json";
             fs.writeFileSync(outdbf, dbdata);
