@@ -28,7 +28,7 @@ def showAffiliationInExtra:
       "lastName": .authorName | split(" ")[1:],
     },
     "abstractNote": .abstract,
-    "date": "",
+    "date": .date,
     "language": "",
     "shortTitle": "",
     "url": "",
@@ -36,9 +36,11 @@ def showAffiliationInExtra:
     "archive": "",
     "archiveLocation": "",
     "libraryCatalog": "",
-    "callNumber": "scite:...",
+    "callNumber": .id | ("scite:" + .),
     "rights": "",
-    "extra": "",
+    "extra": (
+      "id: " + .id
+    ),
     "tags": [{
       "tag": "scite:import",
     }],
