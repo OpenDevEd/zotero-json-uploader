@@ -59,13 +59,18 @@ async function zotero_upload({ infile, data, source, collectionInfo, argv }) {
     }
     let scholarlyobject;
     if (transform === 'scholarlyjq' || source === 'scholarly') {
-        scholarlyobject = await jq.run('.results | [ .[] | { "key": .bib.bib_id, "value": . } ] | from_entries', inob, { input: 'json', output: 'json' });
+        scholarlyobject = await jq.run('.results | [ .[] | { "key": (.bib.bib_id // ""), "value": . } ] | from_entries', inob, { input: 'json', output: 'json' });
         fs.writeFileSync(infile + ".scholarly-object.json", JSON.stringify(scholarlyobject, null, 4));
     }
     let scopusobject;
     if (transform === 'scopusjq' || source === 'scopus') {
         scopusobject = await jq.run('.results | [ .[] | { "key": ."dc:identifier", "value": . } ] | from_entries', inob, { input: 'json', output: 'json' });
         fs.writeFileSync(infile + ".scopus-object.json", JSON.stringify(scopusobject, null, 4));
+    }
+    let sciteobject;
+    if (transform === 'scitejq' || source === 'scite') {
+        sciteobject = await jq.run('.results | [ .[] | { "key": .id, "value": . } ] | from_entries', inob, { input: 'json', output: 'json' });
+        fs.writeFileSync(infile + ".scite-object.json", JSON.stringify(sciteobject, null, 4));
     }
     const tempdir = "temp";
     if (!fs.existsSync(tempdir)) {

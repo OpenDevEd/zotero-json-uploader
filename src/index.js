@@ -123,7 +123,7 @@ const argv = yargs
                     'openalexjs',
                     'scholarly',
                     'scopus',
-                    'scite',
+                    'scitejq',
                 ] // Define the allowed values
             })
             .option('jq', {
@@ -175,7 +175,7 @@ const argv = yargs
             'openalexjs',
             'scholarly',
             'scopus',
-            'scite',
+            'scitejq',
         ];
 
         if (args.transform == "openalexjs") {
