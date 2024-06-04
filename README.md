@@ -33,3 +33,9 @@ zotero-json-upload -g "zotero://select/groups/your_group_id/collections/your_col
   - scholarlyjq: Use the pre-defined JQ filter for Scholarcy data (not yet implemented).
 - -j, --jq: Path to your custom JQ file (required when using -t jq).
 
+# Notes
+```mermaid
+graph LR
+json["json from OpenAlex"] --> zotero-json-uploader -->|"partial metadata"| Zotero-Item --> Zotero-Attachment
+zotero-json-uploader -->|"full OpenAlex metadata"| Zotero-Attachment
+```

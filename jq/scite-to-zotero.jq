@@ -1,45 +1,28 @@
-def typeMap:
-  if (.=="" or .==null)
-    then "report"
-  else
-    if . == "article" or . == "Article"
-      then "journalArticle"
-    else "report"
-    end
-  end;
-
-def objectToString:
-  tojson | gsub("\""; "") ;
-
-def arrayToString:
-  . | map(objectToString) | join(", ");
-
-def showAffiliationInExtra:
-   . | arrayToString;
-
+# Consider normalizedTypes
 
 .results | [ .[] | (
   {
-    "itemType": ."",
+    "itemType": "journalArticle",
     "title": .title,
-    "creators": .authors[] | {
+    "creators": [.authors[] | {
       "creatorType": "author",
       "firstName": .authorName | split(" ")[0],
-      "lastName": .authorName | split(" ")[1:],
-    },
+      "lastName": .authorName | split(" ")[1:] | join(" "),
+    }],
     "abstractNote": .abstract,
     "date": .date,
     "language": "",
     "shortTitle": "",
-    "url": "",
+    "url": ("https://doi.org/" + (.doi // "")),
     "accessDate": "",
     "archive": "",
     "archiveLocation": "",
     "libraryCatalog": "",
-    "callNumber": .id | ("scite:" + .),
+    "callNumber": (.id // "") | ("scite:" + .),
     "rights": "",
     "extra": (
-      "id: " + .id
+      "id: scite:" + (.id // "") + "\n"
+      + "doi: " + (.doi // "") + "\n"
     ),
     "tags": [{
       "tag": "scite:import",
@@ -47,14 +30,15 @@ def showAffiliationInExtra:
     "collections": [],
     "relations": {},
   }
-  + (if (.subtypeDescription | typeMap) == "journalArticle" then
+  # TODO: Consider normalizedTypes
+  + (if 1 then
     {
       "publicationTitle": "",
-      "volume": "",
+      "volume": (.volume // ""),
       "issue": "",
       "pages": "",
-      "DOI": "",
-      "ISSN": "",
+      "DOI": (.doi // ""),
+      "ISSN": (.issns[0] // ""),
       "journalAbbreviation": "",
       "seriesText": "",
       "series": "",
