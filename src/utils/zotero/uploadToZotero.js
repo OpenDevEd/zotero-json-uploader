@@ -48,7 +48,7 @@ async function zotero_upload({ infile, data, source, collectionInfo, argv }) {
     }
     let scholarlyobject;
     if (transform === 'scholarlyjq' || source === 'scholarly') {
-        scholarlyobject = await jq.run('.results | [ .[] | { "key": (.bib.bib_id // ""), "value": . } ] | from_entries', inob, { input: 'json', output: 'json' });
+        scholarlyobject = await jq.run('.results | [ .[] | { "key": ([ (.url_scholarbib|capture("info:(?<id>[^:]+):")), (.citedby_url|capture("cites=(?<id>[0-9]+)"))]| map(.id) | join(":")), "value": . } ] | from_entries', inob, { input: 'json', output: 'json' });
         fs.writeFileSync(infile + ".scholarly-object.json", JSON.stringify(scholarlyobject, null, 4));
     }
     let scopusobject;
