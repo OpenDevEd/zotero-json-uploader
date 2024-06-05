@@ -7,6 +7,7 @@ const { deduplicate } = require('./utils/db/deduplicate');
 const { uploadToDatabase } = require('./utils/db/uploadToDatabase');
 const { dump } = require('./utils/db/dump');
 const { init } = require('./utils/init');
+const { deleteSearch } = require('./utils/db/deleteSearch');
 
 /*
 * Issues:
@@ -78,6 +79,14 @@ const argv = yargs
     .command('db-set-connection [url]', 'Setup the database', (yargs) => {
         yargs.positional('url', {
             describe: 'Database URL',
+            type: 'string',
+            array: true,
+        })
+    })
+    .command('db-delete [searchId]', 'Delete a search from the database', (yargs) => {
+        yargs.positional('searchId', {
+            alias: '-s',
+            describe: 'Search ID',
             type: 'string',
             array: true,
         })
@@ -261,7 +270,14 @@ const argv = yargs
         await dump(argValue.table, argValue.output);
         return;
     }
-
-    console.log(argValue);
+    if (argValue._[0] === 'db-delete') {
+        if (argValue.searchId)
+            deleteSearch(argValue.searchId);
+        else {
+            console.log('Search ID not provided');
+        }
+        return;
+    }
+    console.log('Command not found');
 })()
 

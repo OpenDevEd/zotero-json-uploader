@@ -64,7 +64,7 @@ async function uploadToDatabase(argv) {
             const outdbf = inFileExtra + ".database.json";
             fs.writeFileSync(outdbf, dbdata);
             // Upload to database 
-            await uploadSearchResults(parseSearchResults(dbdata));
+            await uploadSearchResults(await parseSearchResults(dbdata));
         } catch (error) {
             console.error(error.message)
         }

@@ -22,14 +22,14 @@ async function transformFileData({ infile, filterfile, transform, jq, tag, autot
         }
         data = await jqfilter(infile, filterfile);
         // TODO: this is deprecated, so we should remove it.
-    // } else if (transform === 'openalexjq-sdgs') {
-    //     const filterfile = defaultPath + '/jq/openalex-to-zotero-sdgs.jq';
-    //     // check if file exists
-    //     if (!fs.existsSync(filterfile)) {
-    //         console.log(`JQ file not found: ${filterfile}`);
-    //         process.exit(1);
-    //     }
-    //     data = await jqfilter(infile, filterfile);
+        // } else if (transform === 'openalexjq-sdgs') {
+        //     const filterfile = defaultPath + '/jq/openalex-to-zotero-sdgs.jq';
+        //     // check if file exists
+        //     if (!fs.existsSync(filterfile)) {
+        //         console.log(`JQ file not found: ${filterfile}`);
+        //         process.exit(1);
+        //     }
+        //     data = await jqfilter(infile, filterfile);
     } else if (transform === 'openalexjs' || transform === 'openalexjs-sdgs') {
         data = await openalexjs(infile, filterfile);
     } else if (transform === 'scholarlyjq') {
@@ -110,7 +110,7 @@ async function jqfilter(infile, filterfile) {
             infileObject,
             { input: 'json', output: 'pretty' });
         return data;
-    } catch (error){
+    } catch (error) {
         console.log(error.message);
         process.exit(1);
     }
