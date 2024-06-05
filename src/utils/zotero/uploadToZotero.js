@@ -3,6 +3,7 @@ const Zotero = require('zotero-lib');
 const jq = require('node-jq');
 const fs = require('fs');
 const path = require('path');
+const { createAiScreening } = require('../parsing/createAiScreening');
 
 async function zotero_upload({ infile, data, source, collectionInfo, argv }) {
     const { collections, autocollections, transform, attachoriginalmetadata } = argv;
@@ -33,19 +34,7 @@ async function zotero_upload({ infile, data, source, collectionInfo, argv }) {
     // This object is what you need for the database (Table 2, deduplicated).
     // So no separate transform is needed: The correct data is already generated.
     // The only difference is the ID. I'm not sure what this ID is here... 
-    const aiscreening = zotobject.map((item) => {
-        const extra = item.extra || '';
-        const lines = extra.split('\n');
-        const id = lines.find((line) => line.startsWith('id:')).split('id:')[1].trim();
-        const keywordsString = lines.find((line) => line.startsWith('keywords:'));
-        const keywords = keywordsString ? keywordsString.split('keywords:')[1].split(',').map((keyword) => keyword.trim()) : [];
-        return {
-            id,
-            title: item.title,
-            abstract: item.abstractNote,
-            keywords,
-        };
-    });
+    const aiscreening = createAiScreening(zotobject);
     console.log("AIScreening: " + JSON.stringify(aiscreening, null, 4));
     fs.writeFileSync(inFileExtra + ".aiscreening.json", JSON.stringify(aiscreening, null, 4));
     const inob = JSON.parse(fs.readFileSync(infile, 'utf8'));

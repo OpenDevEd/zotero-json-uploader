@@ -20,7 +20,6 @@ async function uploadToDatabase(argv) {
     async function main(infile) {
         console.log(`Processing file: ${infile}`);
         let dbdata;
-        let source = 'unknown';
         // handle command line arguments...
         const argvTransformOptionsAndSourceMapping = {
             'jq': argv.jq,
