@@ -20,9 +20,6 @@ async function deleteSearch(searchId) {
             prisma.searchResults.deleteMany({
                 where: { searchId: searchId }
             }),
-            prisma.deduplicated.deleteMany({
-                where: { SearchResults_Deduplicated: { none: {} } }
-            }),
             prisma.searchResults_Deduplicated.deleteMany({
                 where: {
                     OR: [
@@ -30,6 +27,9 @@ async function deleteSearch(searchId) {
                         { searchResultsId: { equals: null } },
                     ],
                 }
+            }),
+            prisma.deduplicated.deleteMany({
+                where: { SearchResults_Deduplicated: { none: {} } }
             }),
         ]);
         console.log('Search results deleted:', res[0].count);

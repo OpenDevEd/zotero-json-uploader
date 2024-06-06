@@ -34,7 +34,8 @@ def parseSearchResults:
         identifierInSource: (.value.callNumber // ""),
         originalJson: (.value | tojson),
         itemPositionWithinSearch: .key,
-        searchId: ($data.meta.searchID // "")
+        searchId: ($data.meta.searchID // ""),
+        date: (.value.date // "")
       }
     ))
   };

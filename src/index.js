@@ -8,6 +8,7 @@ const { uploadToDatabase } = require('./utils/db/uploadToDatabase');
 const { dump } = require('./utils/db/dump');
 const { init } = require('./utils/init');
 const { deleteSearch } = require('./utils/db/deleteSearch');
+const { dbUploadScreening } = require('./utils/db/dbUploadScreening');
 
 /*
 * Issues:
@@ -61,7 +62,12 @@ const argv = yargs
                 describe: 'Output file',
                 type: 'string',
                 demandOption: true,
-            });
+            }).option('unscreened', {
+                alias: '-u',
+                describe: 'Retrieve unscreened data',
+                type: 'boolean',
+                default: false,
+            })
         }
     )
     .command(
@@ -111,6 +117,14 @@ const argv = yargs
         })
     })
     .command('db-deduplicate', 'Deduplicate the database')
+    .command('db-upload-screening [files...]', 'Upload screening data to the database', (yargs) => {
+        yargs.option('files', {
+            alias: 'f',
+            describe: 'File to upload',
+            type: 'string',
+            demandOption: true,
+        })
+    })
     .command('zotero [files...]', 'Upload data to zotero', (yargs) => {
         yargs.positional('files', {
             describe: 'One or more files',
@@ -267,7 +281,7 @@ const argv = yargs
         return;
     }
     if (argValue._[0] === 'db-dump') {
-        await dump(argValue.table, argValue.output);
+        await dump(argValue.table, argValue.output, argValue.unscreened);
         return;
     }
     if (argValue._[0] === 'db-delete') {
@@ -275,6 +289,12 @@ const argv = yargs
             deleteSearch(argValue.searchId);
         else {
             console.log('Search ID not provided');
+        }
+        return;
+    }
+    if (argValue._[0] === 'db-upload-screening') {
+        for (file of argValue.files) {
+            dbUploadScreening(file);
         }
         return;
     }

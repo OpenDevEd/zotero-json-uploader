@@ -3,7 +3,7 @@ const prisma = new PrismaClient();
 
 const ObjectsToCsv = require('objects-to-csv');
 
-async function dump(tableArg, output) {
+async function dump(tableArg, output, unscreened) {
     const tables = ['SearchResults', "Deduplicated"];
     try {
         // Check if the table exists
@@ -15,7 +15,11 @@ async function dump(tableArg, output) {
 
         // Dump the table
         console.log(`Dumping ${table} table to ${output}`);
-        const data = await prisma[table].findMany();
+        const data = await prisma[table].findMany({
+            where: unscreened && table === 'Deduplicated' ? {
+                screening: { is: null }
+            } : {}
+        });
         const csv = new ObjectsToCsv(data);
         await csv.toDisk(nameWithExtension ? output : `${output}.csv`);
     } catch (error) {

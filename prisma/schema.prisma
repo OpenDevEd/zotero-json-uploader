@@ -20,6 +20,7 @@ model SearchResults {
   id                       Int     @id @default(autoincrement())
   title                    String?
   abstract                 String?
+  date                     String?
   keywords                 String? // (”;” separated entries)
   doi                      String?
   sourceDatabase           String?
@@ -29,8 +30,6 @@ model SearchResults {
   itemPositionWithinSearch Int
 
   // Relations
-  searchInformation          SearchInformation[]
-  screening                  Screening[]
   SearchResults_Deduplicated SearchResults_Deduplicated[]
 }
 
@@ -55,11 +54,36 @@ model Deduplicated {
   abstract        String?
   keywords        String?
   doi             String?
+  date            String?
   otherIdentifier String?
   flag            String?
 
   // Relations
+  screening                  Screening?
   SearchResults_Deduplicated SearchResults_Deduplicated[]
+}
+
+model Screening {
+  id Int @id @default(autoincrement())
+
+  screeningUUID     String
+  resultOfScreening Json
+
+  // Relations
+  deduplicatedId       Int                   @unique
+  deduplicated         Deduplicated          @relation(fields: [deduplicatedId], references: [id])
+  ScreeningInformation ScreeningInformation?
+}
+
+model ScreeningInformation {
+  id Int @id @default(autoincrement())
+
+  screeningUUID String
+  screeningInfo Json
+
+  // Relations
+  screeningId Int       @unique
+  screening   Screening @relation(fields: [screeningId], references: [id])
 }
 
 model SearchInformation {
@@ -68,18 +92,4 @@ model SearchInformation {
   filters           Json?
   database          String?
   searchId          String
-
-  // Relations
-  SearchResults  SearchResults? @relation(fields: [searchResultId], references: [id])
-  searchResultId Int?
-}
-
-model Screening {
-  id                       Int     @id @default(autoincrement())
-  resultOfFurtherScreening String?
-  resultOfChatgptScreening String?
-
-  // Relations
-  SearchResults   SearchResults? @relation(fields: [searchResultsId], references: [id])
-  searchResultsId Int?
 }

@@ -16,13 +16,13 @@ async function deduplicate() {
     });
 
     const duplicatesDoiCount = await deduplicate_DOI();
-    const duplicatesIdentifierCount = await deduplicate_identifier();
+    const duplicatesTitleAndDateCount = await deduplicateTitleAndDate()
 
-    if (!duplicatesDoiCount && !duplicatesIdentifierCount) {
+    if (!duplicatesDoiCount && !duplicatesTitleAndDateCount) {
         console.log('No duplicates found.');
     } else {
         console.log('Deduplication complete.');
-        console.log(`\nTotal duplicates: ${duplicatesDoiCount + duplicatesIdentifierCount}`);
+        console.log(`\nTotal duplicates: ${duplicatesDoiCount + duplicatesTitleAndDateCount}`);
     }
 }
 
@@ -65,6 +65,7 @@ async function deduplicate_DOI() {
                     keywords: item.keywords,
                     otherIdentifier: item.identifierInSource,
                     title: item.title,
+                    date: item.date,
                 }
             })
             const [_, creatededuplicated] = await prisma.$transaction([
@@ -88,35 +89,35 @@ async function deduplicate_DOI() {
     return total.linked + total.created;
 }
 
-async function deduplicate_identifier() {
-    console.log('Checking for duplicates using [identifiers]...');
-    const total = { linked: 0, created: 0 }
+async function deduplicateTitleAndDate() {
+
+    console.log('Checking for duplicates using [Title + Date]...');
+    const total = { linked: 0, created: 0 };
     // get all the searchResults with DOI
     const duplicates = await prisma.searchResults.findMany({
-        where: { doi: "", SearchResults_Deduplicated: { none: {} } },
+        where: { SearchResults_Deduplicated: { none: {} }, title: { not: "", }, date: { not: null } },
     });
     const duplicatesCount = duplicates.length;
 
     if (duplicatesCount !== 0) { // If there are duplicates
-        console.log(`Total duplicates [identifier]: ${duplicatesCount}`);
+        console.log(`Total duplicates [Title + Date]: ${duplicatesCount}`);
 
         // Group the duplicates by doi {doi: [searchResults]}
         const grouped = duplicates.reduce((acc, item) => {
-            if (!acc[item.identifierInSource]) acc[item.identifierInSource] = [];
-            acc[item.identifierInSource].push(item);
+            const key = `${item.title}(<|>)${item.date}`;
+            if (!acc[key]) acc[key] = [];
+            acc[key].push(item);
             return acc;
         }, {});
 
-
-        const identifiers = Object.keys(grouped);
-        const toLink = await getDeduplicatedInList(identifiers, 'otherIdentifier');
-        const toCreate = identifiers.filter(identifier =>
-            !toLink.map(i => i.otherIdentifier).includes(identifier)
-        );
+        const keys = Object.keys(grouped);
+        const toLinkList = await getDeduplicatedInList(keys, 'titleAndDate');
+        const toLink = toLinkList.map(i => `${i.title}(<|>)${i.date}`); // only the keys
+        const toCreate = keys.filter(key => !toLink.includes(key));
 
         if (toCreate.length) {
-            const data = toCreate.map(identifier => {
-                const item = grouped[identifier][0];
+            const data = toCreate.map(id => {
+                const item = grouped[id][0];
                 return {
                     abstract: item.abstract,
                     doi: item.doi,
@@ -124,21 +125,25 @@ async function deduplicate_identifier() {
                     keywords: item.keywords,
                     otherIdentifier: item.identifierInSource,
                     title: item.title,
+                    date: item.date,
                 }
             })
-            const [_, creatededuplicated] = await prisma.$transaction([
-                prisma.deduplicated.createMany({ data }),
-                prisma.deduplicated.findMany({ where: { otherIdentifier: { in: toCreate } }, })
-            ])
+
+            const created = await prisma.deduplicated.createMany({ data });
+            if (!created) {
+                console.log('Error creating deduplicated entries.');
+                process.exit(1);
+            }
+            const getdedups = await getDeduplicatedInList(toCreate, 'titleAndDate');
             const createRelationRes = await prisma.searchResults_Deduplicated.createMany({
-                data: generateRelationsUsingIdentifiers(creatededuplicated, grouped)
+                data: generateRelations(getdedups, grouped, 'useTitleAndDate')
             })
             total.created = createRelationRes.count;
         }
 
         if (toLink.length) {
             const linked = await prisma.searchResults_Deduplicated.createMany({
-                data: generateRelationsUsingIdentifiers(toLink, grouped)
+                data: generateRelations(toLinkList, grouped, 'useTitleAndDate')
             })
             total.linked = linked.count;
         }
@@ -151,28 +156,37 @@ async function getDeduplicatedInList(list, distinct) {
     if (distinct === 'doi') {
         const doisArray = await prisma.deduplicated.findMany({
             where: { doi: { in: list } },
-        })
+        });
+
         return doisArray
     }
-    if (distinct === 'otherIdentifier') {
-        const doisArray = await prisma.deduplicated.findMany({
-            where: { otherIdentifier: { in: list } },
-        })
-        return doisArray
+    if (distinct === 'titleAndDate') {
+        const listArray = list.map(item => {
+            const [title, date] = item.split('(<|>)');
+            return { title, date };
+        });
+
+        const itemsArray = await prisma.deduplicated.findMany({
+            where: {
+                OR: [
+                    { title: { in: listArray.map(i => i.title) } },
+                    { date: { in: listArray.map(i => i.date) } }
+                ]
+            },
+        });
+        return itemsArray
     }
 }
 
-function generateRelations(deduplicated, searchResults) {
+function generateRelations(deduplicated, searchResults, usingTitleAndDate = false) {
     const result = [];
-
     // Iterate through each deduplicated entry
     deduplicated.forEach(dedup => {
-        const doi = dedup.doi;
-
+        const key = usingTitleAndDate ? `${dedup.title}(<|>)${dedup.date}` : dedup.doi;
         // Check if there are searchResults for the given DOI
-        if (searchResults[doi]) {
+        if (searchResults[key]) {
             // Map the searchResults to the result format
-            const mappedResults = searchResults[doi].map(sr => ({
+            const mappedResults = searchResults[key].map(sr => ({
                 deduplicatedId: dedup.id,
                 searchResultsId: sr.id,
             }));
@@ -183,27 +197,4 @@ function generateRelations(deduplicated, searchResults) {
     return result;
 }
 
-function generateRelationsUsingIdentifiers(deduplicated, searchResults) {
-    const result = [];
-
-    // Iterate through each deduplicated entry
-    deduplicated.forEach(dedup => {
-        const identifier = dedup.otherIdentifier;
-
-        // Check if there are searchResults for the given DOI
-        if (searchResults[identifier]) {
-            // Map the searchResults to the result format
-            const mappedResults = searchResults[identifier].map(sr => ({
-                deduplicatedId: dedup.id,
-                searchResultsId: sr.id,
-            }));
-            // Add the mapped results to the result array
-            result.push(...mappedResults);
-        }
-    });
-    return result;
-}
-
-module.exports = {
-    deduplicate
-}
+module.exports = { deduplicate }
