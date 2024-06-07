@@ -92,6 +92,4 @@ async function uploadToDatabase(argv) {
     })();
 }
 
-module.exports = {
-    uploadToDatabase
-}
+module.exports = { uploadToDatabase }

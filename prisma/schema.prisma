@@ -70,8 +70,8 @@ model Screening {
   resultOfScreening Json
 
   // Relations
-  deduplicatedId       Int                   @unique
-  deduplicated         Deduplicated          @relation(fields: [deduplicatedId], references: [id])
+  deduplicatedId       Int?                  @unique
+  deduplicated         Deduplicated?         @relation(fields: [deduplicatedId], references: [id])
   ScreeningInformation ScreeningInformation?
 }
 
@@ -86,10 +86,10 @@ model ScreeningInformation {
   screening   Screening @relation(fields: [screeningId], references: [id])
 }
 
-model SearchInformation {
-  id                Int     @id @default(autoincrement())
-  searchDescription String?
-  filters           Json?
-  database          String?
-  searchId          String
-}
+// model SearchInformation {
+//   id                Int     @id @default(autoincrement())
+//   searchDescription String?
+//   filters           Json?
+//   database          String?
+//   searchId          String
+// }

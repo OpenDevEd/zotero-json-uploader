@@ -1,6 +1,6 @@
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
-
+const jq = require('node-jq');
 const ObjectsToCsv = require('objects-to-csv');
 
 async function dump(tableArg, output, unscreened) {
@@ -20,10 +20,32 @@ async function dump(tableArg, output, unscreened) {
                 screening: { is: null }
             } : {}
         });
-        const csv = new ObjectsToCsv(data);
+        const parsedData = table === 'Deduplicated' ? await parseDeduplicated(data) : data;
+        const csv = new ObjectsToCsv(parsedData);
         await csv.toDisk(nameWithExtension ? output : `${output}.csv`);
     } catch (error) {
-        console.error('Error dumping table:', error.message);
+        console.error('Error: ', error.message);
+    }
+}
+
+async function parseDeduplicated(data) {
+    try {
+        const jqFilter = `
+            [ .[] | {
+                "title": .title,
+                "abstract": .abstract,
+                "keywords": .keywords,
+                "doi": .doi,
+                "date": .date,
+                "key": .otherIdentifier,
+                "flag": .flag
+            } ]
+        `;
+        const filterData = await jq.run(jqFilter, data, { input: 'json', output: 'json' });
+        return filterData;
+    } catch (error) {
+        console.error(error);
+        process.exit(1);
     }
 }
 
