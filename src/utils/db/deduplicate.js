@@ -1,28 +1,46 @@
-const { PrismaClient } = require('@prisma/client');
+const { PrismaClient, Prisma } = require('@prisma/client');
 const prisma = new PrismaClient();
 
 
 async function deduplicate() {
+    try {
+        console.log('Cleaning up...');
+        // clean up the deduplicated many-to-many table
+        await prisma.searchResults_Deduplicated.deleteMany({
+            where: {
+                OR: [
+                    { deduplicatedId: { equals: null } },
+                    { searchResultsId: { equals: null } },
+                ],
+            }
+        });
 
-    console.log('Cleaning up...');
-    // clean up the deduplicated many-to-many table
-    await prisma.searchResults_Deduplicated.deleteMany({
-        where: {
-            OR: [
-                { deduplicatedId: { equals: null } },
-                { searchResultsId: { equals: null } },
-            ],
+        const duplicatesDoiCount = await deduplicate_DOI();
+        const duplicatesTitleAndDateCount = await deduplicateTitleAndDate()
+
+        if (!duplicatesDoiCount && !duplicatesTitleAndDateCount) {
+            console.log('No duplicates found.');
+        } else {
+            console.log('Deduplication complete.');
+            console.log(`\nTotal duplicates: ${duplicatesDoiCount + duplicatesTitleAndDateCount}`);
         }
-    });
-
-    const duplicatesDoiCount = await deduplicate_DOI();
-    const duplicatesTitleAndDateCount = await deduplicateTitleAndDate()
-
-    if (!duplicatesDoiCount && !duplicatesTitleAndDateCount) {
-        console.log('No duplicates found.');
-    } else {
-        console.log('Deduplication complete.');
-        console.log(`\nTotal duplicates: ${duplicatesDoiCount + duplicatesTitleAndDateCount}`);
+    } catch (error) {
+        if (error instanceof Prisma.PrismaClientKnownRequestError) {
+            console.error('An error occurred...'.red);
+            // Handle known errors
+            if (error.code === 'P2002') {
+                console.log('Duplicate entry found:', error.meta.target);
+            }
+            // Add more known error codes as needed
+        } else if (error instanceof Prisma.PrismaClientUnknownRequestError) {
+            console.error('An unknown error occurred:', error.message);
+        } else if (error instanceof Prisma.PrismaClientRustPanicError) {
+            console.error('A Rust panic occurred:', error.message);
+        } else if (error instanceof Prisma.PrismaClientInitializationError) {
+            console.error('Prisma Client initialization error:', error.message);
+        } else {
+            console.error('An unexpected error occurred:', error);
+        }
     }
 }
 

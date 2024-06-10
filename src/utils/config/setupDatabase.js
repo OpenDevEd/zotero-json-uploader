@@ -43,7 +43,7 @@ async function setDatabaseURL(databaseURL) {
     else env += `DATABASE_URL=${databaseURL}\n`;
   }
   // create the .env file if it doesn't exist
-  else env = `DATABASE=${database}\nDATABASE_URL=${databaseURL}`;
+  else env = `DATABASE_URL=${databaseURL}`;
   fs.writeFileSync(envPath, env);
 }
 
