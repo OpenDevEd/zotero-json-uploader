@@ -7,6 +7,7 @@ const { uploadToDatabase } = require('./utils/db/uploadToDatabase');
 const { dump } = require('./utils/db/dump');
 const { init } = require('./utils/init');
 const { deleteSearch } = require('./utils/db/deleteSearch');
+const { yargsMiddleware } = require('./middlewares/yargsMiddleware');
 
 // Commands
 const { dbDump } = require('./commands/dbDump');
@@ -16,7 +17,6 @@ const { dbDelete } = require('./commands/dbDelete');
 const { dbUpload } = require('./commands/dbUpload');
 const { dbUploadScreening } = require('./utils/db/dbUploadScreening');
 const { uploadToZotero } = require('./commands/uploadToZotero');
-const { yargsMiddleware } = require('./middlewares/yargsMiddleware');
 
 /*
 * Issues:

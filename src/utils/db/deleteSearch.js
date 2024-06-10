@@ -15,7 +15,6 @@ async function deleteSearch(searchId) {
             console.log('Search deletion cancelled.');
             return;
         }
-
         const res = await prisma.$transaction([
             prisma.searchResults.deleteMany({
                 where: { searchId: searchId }

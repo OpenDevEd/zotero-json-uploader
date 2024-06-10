@@ -90,10 +90,10 @@ async function deduplicate_DOI() {
                 prisma.deduplicated.createMany({ data }),
                 prisma.deduplicated.findMany({ where: { doi: { in: toCreate } }, })
             ])
-            const createRelationRes = await prisma.searchResults_Deduplicated.createMany({
+            await prisma.searchResults_Deduplicated.createMany({
                 data: generateRelations(creatededuplicated, grouped)
             })
-            total.created = createRelationRes.count;
+            total.created = creatededuplicated.count;
         }
 
         if (toLink.length) {
@@ -153,10 +153,10 @@ async function deduplicateTitleAndDate() {
                 process.exit(1);
             }
             const getdedups = await getDeduplicatedInList(toCreate, 'titleAndDate');
-            const createRelationRes = await prisma.searchResults_Deduplicated.createMany({
+            await prisma.searchResults_Deduplicated.createMany({
                 data: generateRelations(getdedups, grouped, 'useTitleAndDate')
             })
-            total.created = createRelationRes.count;
+            total.created = created.count;
         }
 
         if (toLink.length) {

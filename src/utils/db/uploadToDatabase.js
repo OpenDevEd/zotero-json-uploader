@@ -26,6 +26,7 @@ async function uploadToDatabase(argv) {
             'openalex': defaultPath + "/jq/openalex-to-zotero.jq",
             'scholarly': defaultPath + '/jq/scholarly-to-zotero.jq',
             'scopus': defaultPath + '/jq/scopus-to-zotero.jq',
+            'scite': defaultPath + '/jq/scite-to-zotero.jq',
             'openalexjs': null
         };
 

@@ -3,7 +3,7 @@ const prisma = new PrismaClient();
 const path = require('path');
 const jq = require('node-jq');
 const defaultPath = path.join(__dirname, '../../../');
-const { select, confirm } = require('@inquirer/prompts');
+const { confirm } = require('@inquirer/prompts');
 const colors = require('colors')
 
 async function dbUploadScreening(file) {
@@ -55,7 +55,6 @@ async function dbUploadScreening(file) {
             element.screeningId = screening.id;
             return element;
         });
-
         const res2 = await prisma.screeningInformation.createMany({
             data: screeningInformationList
         });
@@ -70,7 +69,6 @@ async function dbUploadScreening(file) {
                     // get the deduplicatedId that already exists
                     await handleSomeDeduplicatesHasScreening(deduplicatedIds, file);
                 }
-
             }
             // Add more known error codes as needed
         } else if (error instanceof Prisma.PrismaClientUnknownRequestError) {
