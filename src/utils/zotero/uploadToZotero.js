@@ -38,9 +38,8 @@ async function zotero_upload({ infile, data, source, collectionInfo, argv }) {
     console.log("AIScreening: " + JSON.stringify(aiscreening, null, 4));
     fs.writeFileSync(inFileExtra + ".aiscreening.json", JSON.stringify(aiscreening, null, 4));
     const inob = JSON.parse(fs.readFileSync(infile, 'utf8'));
+    /* Code no longer needed.
     let openalexobject;
-    // TODO: Elimiate this, and place it into transformFileData.js
-    // callNumber... 
     if (transform === 'openalexjq' || transform === 'openalexjs' || source === 'openalex') {
         openalexobject = await jq.run('.results | [ .[] | { "key": .id, "value": . } ] | from_entries', inob, { input: 'json', output: 'json' });
         fs.writeFileSync(infile + ".oa-object.json", JSON.stringify(openalexobject, null, 4));
@@ -63,6 +62,7 @@ async function zotero_upload({ infile, data, source, collectionInfo, argv }) {
         sciteobject = await jq.run('.results | [ .[] | { "key": .id, "value": . } ] | from_entries', inob, { input: 'json', output: 'json' });
         fs.writeFileSync(infile + ".scite-object.json", JSON.stringify(sciteobject, null, 4));
     }
+    */
     const tempdir = "temp";
     if (!fs.existsSync(tempdir)) {
         fs.mkdirSync(tempdir);
