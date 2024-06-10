@@ -56,7 +56,7 @@ const yargsMiddleware = async (args) => {
     if (args.files && args.files.length > 0) {
         for (file of args.files) {
             try {
-                const stats = fs.statSync(path.join(defaultPath, file));
+                const stats = fs.statSync(path.join(process.cwd(), file));
                 if (!stats.isFile()) {
                     console.log('Path is not a file: ' + file);
                     process.exit(1);
