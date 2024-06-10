@@ -37,52 +37,70 @@ async function zotero_upload({ infile, data, source, collectionInfo, argv }) {
     const aiscreening = createAiScreening(zotobject);
     console.log("AIScreening: " + JSON.stringify(aiscreening, null, 4));
     fs.writeFileSync(inFileExtra + ".aiscreening.json", JSON.stringify(aiscreening, null, 4));
-    const inob = JSON.parse(fs.readFileSync(infile, 'utf8'));
-    /* Code no longer needed.
-    let openalexobject;
-    if (transform === 'openalexjq' || transform === 'openalexjs' || source === 'openalex') {
-        openalexobject = await jq.run('.results | [ .[] | { "key": .id, "value": . } ] | from_entries', inob, { input: 'json', output: 'json' });
-        fs.writeFileSync(infile + ".oa-object.json", JSON.stringify(openalexobject, null, 4));
-    } else if (transform === 'openalexjq-sdgs' || transform === 'openalexjs-sdgs') {
-        openalexobject = await jq.run('[ .[] | { "key": .id, "value": . } ] | from_entries', inob, { input: 'json', output: 'json' });
-        fs.writeFileSync(infile + ".oa-object.json", JSON.stringify(openalexobject, null, 4));
-    }
-    let scholarlyobject;
-    if (transform === 'scholarlyjq' || source === 'scholarly') {
-        scholarlyobject = await jq.run('.results | [ .[] | { "key": ("GoogleScholar:" + ([ (.url_scholarbib|capture("info:(?<id>[^:]+):")), (.citedby_url|capture("cites=(?<id>[0-9]+)"))]| map(.id) | join(":"))), "value": . } ] | from_entries', inob, { input: 'json', output: 'json' });
-        fs.writeFileSync(infile + ".scholarly-object.json", JSON.stringify(scholarlyobject, null, 4));
-    }
-    let scopusobject;
-    if (transform === 'scopusjq' || source === 'scopus') {
-        scopusobject = await jq.run('.results | [ .[] | { "key": ."dc:identifier", "value": . } ] | from_entries', inob, { input: 'json', output: 'json' });
-        fs.writeFileSync(infile + ".scopus-object.json", JSON.stringify(scopusobject, null, 4));
-    }
-    let sciteobject;
-    if (transform === 'scitejq' || source === 'scite') {
-        sciteobject = await jq.run('.results | [ .[] | { "key": .id, "value": . } ] | from_entries', inob, { input: 'json', output: 'json' });
-        fs.writeFileSync(infile + ".scite-object.json", JSON.stringify(sciteobject, null, 4));
-    }
-    */
-    const tempdir = "temp";
-    if (!fs.existsSync(tempdir)) {
-        fs.mkdirSync(tempdir);
-    };
     if (attachoriginalmetadata) {
+        const tempdir = "temp";
+        if (!fs.existsSync(tempdir)) {
+            fs.mkdirSync(tempdir);
+        };
+        const inob = JSON.parse(fs.readFileSync(infile, 'utf8'));
+        /* Code no longer needed.
+        let openalexobject;
+        if (transform === 'openalexjq' || transform === 'openalexjs' || source === 'openalex') {
+            openalexobject = await jq.run('.results | [ .[] | { "key": .id, "value": . } ] | from_entries', inob, { input: 'json', output: 'json' });
+            fs.writeFileSync(infile + ".oa-object.json", JSON.stringify(openalexobject, null, 4));
+        } else if (transform === 'openalexjq-sdgs' || transform === 'openalexjs-sdgs') {
+            openalexobject = await jq.run('[ .[] | { "key": .id, "value": . } ] | from_entries', inob, { input: 'json', output: 'json' });
+            fs.writeFileSync(infile + ".oa-object.json", JSON.stringify(openalexobject, null, 4));
+        }
+        let scholarlyobject;
+        if (transform === 'scholarlyjq' || source === 'scholarly') {
+            scholarlyobject = await jq.run('.results | [ .[] | { "key": ("GoogleScholar:" + ([ (.url_scholarbib|capture("info:(?<id>[^:]+):")), (.citedby_url|capture("cites=(?<id>[0-9]+)"))]| map(.id) | join(":"))), "value": . } ] | from_entries', inob, { input: 'json', output: 'json' });
+            fs.writeFileSync(infile + ".scholarly-object.json", JSON.stringify(scholarlyobject, null, 4));
+        }
+        let scopusobject;
+        if (transform === 'scopusjq' || source === 'scopus') {
+            scopusobject = await jq.run('.results | [ .[] | { "key": ."dc:identifier", "value": . } ] | from_entries', inob, { input: 'json', output: 'json' });
+            fs.writeFileSync(infile + ".scopus-object.json", JSON.stringify(scopusobject, null, 4));
+        }
+        let sciteobject;
+        if (transform === 'scitejq' || source === 'scite') {
+            sciteobject = await jq.run('.results | [ .[] | { "key": .id, "value": . } ] | from_entries', inob, { input: 'json', output: 'json' });
+            fs.writeFileSync(infile + ".scite-object.json", JSON.stringify(sciteobject, null, 4));
+        }
+        */
         // TODO: This option will not work if other sources are used. The code needs to be changed to allow attachment of metadata from any source.
         if (source != 'openalex') {
             console.log("Attachment of original metadata only works with openalex source.");
             process.exit(1);
         };
+        // Iterate over the results of the upload to Zotero:
         for (s of zotobject) {
             console.log("Upload: " + s.key);
             show(s);
-            if (s.callNumber != "" && s.callNumber.startsWith("openalex:")) {
-                const oakey = s.callNumber.replace(/openalex\:\s+/g, '');
-                const writefile = tempdir + "/" + oakey + ".json";
+            // Double check that the call number is not empty:
+            if (s.callNumber != "") { // && s.callNumber.startsWith("openalex:")) {
+                // const oakey = s.callNumber.replace(/openalex\:\s+/g, '');
+                const sourceKey = s.callNumber;
+                const tempdir2 = "temp/" + s.key;
+                if (!fs.existsSync(tempdir)) {
+                    fs.mkdirSync(tempdir);
+                };
+                // const writefile = tempdir + "/" + oakey + ".json";
+                const writefile = tempdir2 + "/opendeved-metadata.json";
+                /* TODO: 
+                Check whether an attachment called opendeved-metadata.json already exists. If yes, we want to augment that file.
+                */
                 console.log(writefile);
-                fs.writeFileSync(writefile, JSON.stringify(openalexobject["https://openalex.org/" + oakey], null, 4));
+                // This line needs changing:
+                // fs.writeFileSync(writefile, JSON.stringify(openalexobject["https://openalex.org/" + oakey], null, 4));
+                const result = {
+                    "opendeved_metadat_version": 0.1,
+                    "zotero_key": s.key,
+                    "sourceData": inob.filter((item) => item.id === sourceKey)
+                };
+                fs.writeFileSync(writefile, JSON.stringify(result, null, 4));
                 // Now attach the file to the zotero record using 'addfiles':
-                await zotero.item({ key: s.key, addfiles: [writefile], addtags: ["openalex:yes"] });
+                await zotero.item({ key: s.key, addfiles: [writefile], addtags: ["opendeved_metadata:yes"] });
             } else {
                 console.log("did not find call number with oa key: " + s.key + " " + s.callNumber);
             };
