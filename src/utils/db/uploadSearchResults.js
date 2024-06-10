@@ -10,11 +10,11 @@ const prisma = new PrismaClient();
 async function uploadSearchResults({ meta, results }) {
   try {
     if (results?.length === 0) throw new Error('No search results to upload');
-    if (!meta?.searchID || !meta?.searchId) throw new Error('Search ID is required');
+    if (!meta?.searchID && !meta?.searchId) throw new Error('Search ID is required');
     console.log(`In progress...`);
     // check if the meta.searchID already exists in the database
     const search = await prisma.searchResults.findFirst({
-      where: { searchId: meta?.searchID || meta?.searchId },
+      where: { searchId: meta?.searchID ?? meta?.searchId },
       select: { searchId: true }
     });
     if (search === null) {
