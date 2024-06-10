@@ -39,6 +39,8 @@ async function zotero_upload({ infile, data, source, collectionInfo, argv }) {
     fs.writeFileSync(inFileExtra + ".aiscreening.json", JSON.stringify(aiscreening, null, 4));
     const inob = JSON.parse(fs.readFileSync(infile, 'utf8'));
     let openalexobject;
+    // TODO: Elimiate this, and place it into transformFileData.js
+    // callNumber... 
     if (transform === 'openalexjq' || transform === 'openalexjs' || source === 'openalex') {
         openalexobject = await jq.run('.results | [ .[] | { "key": .id, "value": . } ] | from_entries', inob, { input: 'json', output: 'json' });
         fs.writeFileSync(infile + ".oa-object.json", JSON.stringify(openalexobject, null, 4));
