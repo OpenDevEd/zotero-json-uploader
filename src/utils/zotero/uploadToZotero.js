@@ -93,10 +93,38 @@ async function zotero_upload({ infile, data, source, collectionInfo, argv }) {
                 console.log(writefile);
                 // This line needs changing:
                 // fs.writeFileSync(writefile, JSON.stringify(openalexobject["https://openalex.org/" + oakey], null, 4));
+                // TODO: Extract this into a function:
+                const sourceData = inob.filter((item) => item.id === sourceKey);
+                const now = new Date().format("yyyy-mm-dd'T'HH:MM:ss'Z'");
                 const result = {
-                    "opendeved_metadat_version": 0.1,
-                    "zotero_key": s.key,
-                    "sourceData": inob.filter((item) => item.id === sourceKey)
+                    "opendeved_metadata_version": 0.1,
+                    "lastEditedByZoteroUser": "<zotero_user>",
+                    "lastEditedTime": now,
+                    "extra_ids": [
+                        {
+                            "type": "zotero",
+                            "group": collectionInfo.group,
+                            "key": s.key,
+                        },
+                        {
+                            "type": s.callNumber.replace(/\:.$/g, ''),
+                            "id": s.callNumber,
+                            "sourceData": sourceData
+                        }
+                    ],
+                    "myeducationevidence": [
+                    ],
+                    "keyvalue_storage": [
+                    ],
+                    "citationstree":
+                    {
+                        "cites": [
+                        ],
+                        "citedBy": [
+                        ],
+                        "related": [
+                        ]
+                    }
                 };
                 fs.writeFileSync(writefile, JSON.stringify(result, null, 4));
                 // Now attach the file to the zotero record using 'addfiles':
