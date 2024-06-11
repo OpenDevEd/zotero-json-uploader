@@ -5,7 +5,8 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
+  previewFeatures = ["fullTextSearch", "fullTextIndex"]
 }
 
 datasource db {
@@ -49,14 +50,17 @@ model Deduplicated {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  id              Int     @id @default(autoincrement())
-  title           String?
-  abstract        String?
-  keywords        String?
-  doi             String?
-  date            String?
-  otherIdentifier String?
-  flag            String?
+  id                Int      @id @default(autoincrement())
+  title             String?
+  abstract          String?
+  keywords          String?
+  doi               String?
+  date              String?
+  otherIdentifier   String?
+  flag              String?
+  item_ids          String[] @default([])
+  number_of_sources Int      @default(0)
+  average_rank      Float    @default(0)
 
   // Relations
   screening                  Screening?

@@ -17,6 +17,8 @@ const { dbDelete } = require('./commands/dbDelete');
 const { dbUpload } = require('./commands/dbUpload');
 const { dbUploadScreening } = require('./utils/db/dbUploadScreening');
 const { uploadToZotero } = require('./commands/uploadToZotero');
+const { dbDeduplicate } = require('./commands/dbDeduplicate');
+const { exportDeduplicate } = require('./utils/db/exportDeduplicate');
 
 /*
 * Issues:
@@ -60,7 +62,7 @@ const argv = yargs
     .command('db-set-connection [url]', 'Setup the database', dbSetConnection)
     .command('db-delete [searchId]', 'Delete a search from the database', dbDelete)
     .command('db-upload [files...]', 'Upload data to the database', dbUpload)
-    .command('db-deduplicate', 'Deduplicate the database')
+    .command('db-deduplicate', 'Deduplicate the database', dbDeduplicate)
     .command('db-upload-screening [files...]', 'Upload screening data to the database', dbUploadScreening)
     .command('zotero [files...]', 'Upload data to zotero', uploadToZotero)
     .help()
@@ -84,7 +86,8 @@ const argv = yargs
         return;
     }
     if (argValue._[0] === 'db-deduplicate') {
-        await deduplicate();
+        if (argValue.export) await exportDeduplicate(argValue);
+        else await deduplicate();
         return;
     }
     if (argValue._[0] === 'zotero') {

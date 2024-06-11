@@ -1,5 +1,6 @@
 const { PrismaClient, Prisma } = require('@prisma/client');
 const prisma = new PrismaClient();
+const colors = require('colors')
 
 
 async function deduplicate() {
@@ -19,10 +20,10 @@ async function deduplicate() {
         const duplicatesTitleAndDateCount = await deduplicateTitleAndDate()
 
         if (!duplicatesDoiCount && !duplicatesTitleAndDateCount) {
-            console.log('No duplicates found.');
+            console.log('No duplicates found.'.green);
         } else {
             console.log('Deduplication complete.');
-            console.log(`\nTotal duplicates: ${duplicatesDoiCount + duplicatesTitleAndDateCount}`);
+            console.log(`\nTotal Items in Deduplicated table: ${duplicatesDoiCount + duplicatesTitleAndDateCount}`.yellow);
         }
     } catch (error) {
         if (error instanceof Prisma.PrismaClientKnownRequestError) {
@@ -45,19 +46,19 @@ async function deduplicate() {
 }
 
 async function deduplicate_DOI() {
-    console.log('Checking for duplicates using [DOI]...');
+    console.log('Checking for duplicates using [DOI]...'.yellow);
     const total = {
         linked: 0,
         created: 0,
     }
     // get all the searchResults with DOI
     const duplicates = await prisma.searchResults.findMany({
-        where: { doi: { not: "", }, SearchResults_Deduplicated: { none: {} } },
+        where: { doi: { not: null, notIn: [""] }, SearchResults_Deduplicated: { none: {} } },
     });
     const duplicatesCount = duplicates.length;
 
     if (duplicatesCount !== 0) { // If there are duplicates
-        console.log(`Total duplicates [DOI]: ${duplicatesCount}`);
+        console.log(`Total duplicates [DOI]: ${duplicatesCount}`.blue);
 
         // Group the duplicates by doi {doi: [searchResults]}
         const grouped = duplicates.reduce((acc, item) => {
@@ -84,6 +85,9 @@ async function deduplicate_DOI() {
                     otherIdentifier: item.identifierInSource,
                     title: item.title,
                     date: item.date,
+                    item_ids: grouped[doi].map(i => i.identifierInSource),
+                    number_of_sources: grouped[doi].length,
+                    average_rank: grouped[doi].reduce((acc, i) => acc + (i.itemPositionWithinSearch ?? 0), 0) / grouped[doi].length
                 }
             })
             const [_, creatededuplicated] = await prisma.$transaction([
@@ -93,13 +97,40 @@ async function deduplicate_DOI() {
             await prisma.searchResults_Deduplicated.createMany({
                 data: generateRelations(creatededuplicated, grouped)
             })
-            total.created = creatededuplicated.count;
+            total.created = _.count;
         }
 
         if (toLink.length) {
+            const relations = generateRelations(toLink, grouped);
             const linked = await prisma.searchResults_Deduplicated.createMany({
-                data: generateRelations(toLink, grouped)
+                data: relations
             })
+            // add the identifierInSource to the deduplicated entries
+            for (rel in relations) {
+                const dedup = toLink.find(i => i.id === rel.deduplicatedId);
+                const item = await prisma.deduplicated.update({
+                    where: { id: rel.deduplicatedId },
+                    data: {
+                        item_ids: {
+                            push: grouped[i.doi].map(i => i.identifierInSource)
+                        },
+                        number_of_sources: {
+                            increment: grouped[i.doi].length
+                        },
+                        average_rank: {
+                            set: (() => {
+                                const OriginalSum = dedup.average_rank * (dedup.number_of_sources);
+                                const newSum = grouped[i.doi].reduce((acc, i) => acc + (i.itemPositionWithinSearch ?? 0), OriginalSum);
+                                return newSum / (dedup.number_of_sources + grouped[i.doi].length);
+                            })()
+                        }
+                    }
+                })
+                if (!item) {
+                    console.log(`Error updating deduplicated with DOI: ${rel.deduplicatedId}`.red);
+                }
+            }
+
             total.linked = linked.count;
         }
     }
@@ -109,7 +140,7 @@ async function deduplicate_DOI() {
 
 async function deduplicateTitleAndDate() {
 
-    console.log('Checking for duplicates using [Title + Date]...');
+    console.log('Checking for duplicates using [Title + Date]...'.yellow);
     const total = { linked: 0, created: 0 };
     // get all the searchResults with DOI
     const duplicates = await prisma.searchResults.findMany({
@@ -118,7 +149,7 @@ async function deduplicateTitleAndDate() {
     const duplicatesCount = duplicates.length;
 
     if (duplicatesCount !== 0) { // If there are duplicates
-        console.log(`Total duplicates [Title + Date]: ${duplicatesCount}`);
+        console.log(`Total duplicates [Title + Date]: ${duplicatesCount}`.blue);
 
         // Group the duplicates by doi {doi: [searchResults]}
         const grouped = duplicates.reduce((acc, item) => {
@@ -144,6 +175,9 @@ async function deduplicateTitleAndDate() {
                     otherIdentifier: item.identifierInSource,
                     title: item.title,
                     date: item.date,
+                    item_ids: grouped[id].map(i => i.identifierInSource),
+                    number_of_sources: grouped[id].length,
+                    average_rank: grouped[id].reduce((acc, i) => acc + (i.itemPositionWithinSearch ?? 0), 0) / grouped[id].length
                 }
             })
 
@@ -160,10 +194,37 @@ async function deduplicateTitleAndDate() {
         }
 
         if (toLink.length) {
+            const relations = generateRelations(toLinkList, grouped, 'useTitleAndDate');
             const linked = await prisma.searchResults_Deduplicated.createMany({
-                data: generateRelations(toLinkList, grouped, 'useTitleAndDate')
+                data: relations
             })
             total.linked = linked.count;
+            for (rel in relations) {
+                // add source identifiers to the items ids
+                const dedup = toLinkList.find(i => i.id === rel.deduplicatedId);
+                const key = `${dedup.title}(<|>)${dedup.date}`;
+                const item = await prisma.deduplicated.update({
+                    where: { id: rel.deduplicatedId },
+                    data: {
+                        item_ids: {
+                            push: grouped[rel.deduplicatedId].map(i => i.identifierInSource)
+                        },
+                        number_of_sources: {
+                            increment: grouped[key].length
+                        },
+                        average_rank: {
+                            set: (() => {
+                                const OriginalSum = dedup.average_rank * (dedup.number_of_sources);
+                                const newSum = grouped[key].reduce((acc, i) => acc + (i.itemPositionWithinSearch ?? 0), OriginalSum);
+                                return newSum / (dedup.number_of_sources + grouped[key].length);
+                            })()
+                        }
+                    }
+                })
+                if (!item) {
+                    console.log(`Error updating deduplicated with ID: ${rel.deduplicatedId}`.red);
+                }
+            }
         }
     }
     return total.linked + total.created;
