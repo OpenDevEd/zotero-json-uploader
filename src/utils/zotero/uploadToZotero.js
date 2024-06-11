@@ -4,6 +4,7 @@ const jq = require('node-jq');
 const fs = require('fs');
 const path = require('path');
 const { createAiScreening } = require('../parsing/createAiScreening');
+const { getId } = require('./getId');
 
 async function zotero_upload({ infile, data, source, collectionInfo, argv }) {
     const { collections, autocollections, transform, attachoriginalmetadata } = argv;
@@ -69,10 +70,10 @@ async function zotero_upload({ infile, data, source, collectionInfo, argv }) {
         }
         */
         // TODO: This option will not work if other sources are used. The code needs to be changed to allow attachment of metadata from any source.
-        if (source != 'openalex') {
-            console.log("Attachment of original metadata only works with openalex source.");
-            process.exit(1);
-        };
+        // if (source != 'openalex') {
+        //     console.log("Attachment of original metadata only works with openalex source.");
+        //     process.exit(1);
+        // };
         // Iterate over the results of the upload to Zotero:
         for (s of zotobject) {
             console.log("Upload: " + s.key);
@@ -94,12 +95,11 @@ async function zotero_upload({ infile, data, source, collectionInfo, argv }) {
                 // This line needs changing:
                 // fs.writeFileSync(writefile, JSON.stringify(openalexobject["https://openalex.org/" + oakey], null, 4));
                 // TODO: Extract this into a function:
-                const sourceData = inob.filter((item) => item.id === sourceKey);
-                const now = new Date().format("yyyy-mm-dd'T'HH:MM:ss'Z'");
+                const sourceData = inob.results.find((item) => getId(item, source) === sourceKey);
                 const result = {
                     "opendeved_metadata_version": 0.1,
                     "lastEditedByZoteroUser": "<zotero_user>",
-                    "lastEditedTime": now,
+                    "lastEditedTime": s.dateModified,
                     "extra_ids": [
                         {
                             "type": "zotero",
@@ -126,6 +126,9 @@ async function zotero_upload({ infile, data, source, collectionInfo, argv }) {
                         ]
                     }
                 };
+                if (!fs.existsSync(path.dirname(writefile))) {
+                    fs.mkdirSync(path.dirname(writefile), { recursive: true });
+                }
                 fs.writeFileSync(writefile, JSON.stringify(result, null, 4));
                 // Now attach the file to the zotero record using 'addfiles':
                 await zotero.item({ key: s.key, addfiles: [writefile], addtags: ["opendeved_metadata:yes"] });

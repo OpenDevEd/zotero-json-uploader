@@ -133,3 +133,6 @@ dist
 
 temp/
 migrations
+
+*.zotero.json
+extra_json/
