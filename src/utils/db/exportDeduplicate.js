@@ -19,9 +19,9 @@ async function exportDeduplicate(args) {
             ...(args.relevance && {
                 orderBy: {
                     _relevance: {
-                        fields: args.fields,
-                        search: args.search,
-                        sort: args.sort
+                        fields: args.rfields,
+                        search: args.rstring,
+                        sort: args.rsort
                     }
                 }
             })
