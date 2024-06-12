@@ -1,29 +1,33 @@
 .results | [ .[] | (
   {
     "itemType": "journalArticle",
-    "title": .TI,
-    "creators": [.AU[] | {
+    "title": .T1,
+    "creators": (if .AU then
+      [.AU[] | {
       "creatorType": "author",
       "firstName": . | split(" ")[0],
       "lastName": . | split(" ")[1:] | join(" "),
-    }],
+      }]
+    else
+      []
+    end),
     "abstractNote": .AB,
-    "date": .PY,
+    "date": .Y1,
     "language": "",
     "shortTitle": "",
-    "url": ("https://doi.org/" + (.DO[0] // "")),
+    "url": ("https://doi.org/" + (.L3[0] // "")),
     "accessDate": "",
     "archive": "",
     "archiveLocation": "",
     "libraryCatalog": "",
-    "callNumber": (.AN[0] // "") | ("wos:" + .),
+    "callNumber":((.UR[0] | capture("AN=(?<id>\\d+)")) | .id) | ("bei:" + .),
     "rights": "",
     "extra": (
-      "id: wos:" + (.AN[0] // "") + "\n"
-      + "doi: " + (.DO[0] // "") + "\n"
+      "id: bei:" +((.UR[0] | capture("AN=(?<id>\\d+)")) | .id) + "\n"
+      + "doi: " + (.L3[0] // "") + "\n"
     ),
     "tags": [{
-      "tag": "WebOfScience:import",
+      "tag": "BritishEducationIndex:import",
     }],
     "collections": [],
     "relations": {},
@@ -34,7 +38,7 @@
       "volume": (.VL // ""),
       "issue": "",
       "pages": ((.SP // "") + "-" + (.EP // "")),
-      "DOI": (.DO[0] // ""),
+      "DOI": (.L3[0] // ""),
       "ISSN": (.SN[0] // ""),
       "journalAbbreviation": "",
       "seriesText": "",
