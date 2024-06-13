@@ -8,6 +8,10 @@ function detectJsonSource(json) {
       return "scholarly";
     } else if (json.meta.source == "Scite") {
       return "scite";
+    } else if (json.meta.source == "WebOfScience") {
+      return "wos";
+    } else if (json.meta.source == "BritishEducationIndex") {
+      return "bei";
     }
   }
   return "unknown";

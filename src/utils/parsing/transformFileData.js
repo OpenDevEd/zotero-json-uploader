@@ -67,6 +67,10 @@ async function transformFileData({ infile, filterfile, transform, jq, tag, autot
             filterfile = defaultPath + '/jq/scopus-to-zotero.jq';
         } else if (source === 'scite') {
             filterfile = defaultPath + '/jq/scite-to-zotero.jq';
+        } else if (source === 'wos') {
+            filterfile = defaultPath + '/jq/wos-to-zotero.jq';
+        } else if (source === 'bei') {
+            filterfile = defaultPath + '/jq/bei-to-zotero.jq';
         } else {
             console.log('unknown source for :' + infile);
             return;

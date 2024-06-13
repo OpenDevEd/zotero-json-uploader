@@ -20,6 +20,10 @@ function getId(item, source) {
       return "scopus:" + (item["dc:identifier"] || "").split(":")[1] || "";
     } else if (source === 'scite') {
         return "scite:" + (item.id || "");
+    } else if (source === 'wos') {
+        return "wos:" + (item.AN[0] || "");
+    } else if (source === 'bei') {
+        return "bei:" + (item.UR[0].match(/AN=(?<id>\d+)/)?.groups.id || "");
     } else {
         console.log('unknown source');
         return;

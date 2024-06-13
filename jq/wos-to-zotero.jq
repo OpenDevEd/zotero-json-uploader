@@ -7,7 +7,7 @@
       "firstName": . | split(" ")[0],
       "lastName": . | split(" ")[1:] | join(" "),
     }],
-    "abstractNote": .AB,
+    "abstractNote": .AB[0],
     "date": .PY,
     "language": "",
     "shortTitle": "",

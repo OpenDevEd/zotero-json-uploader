@@ -1,7 +1,7 @@
 .results | [ .[] | (
   {
     "itemType": "journalArticle",
-    "title": .T1,
+    "title": .T1[0],
     "creators": (if .AU then
       [.AU[] | {
       "creatorType": "author",
@@ -11,8 +11,8 @@
     else
       []
     end),
-    "abstractNote": .AB,
-    "date": .Y1,
+    "abstractNote": .AB[0],
+    "date": .Y1[0],
     "language": "",
     "shortTitle": "",
     "url": ("https://doi.org/" + (.L3[0] // "")),
