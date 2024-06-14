@@ -1,0 +1,680 @@
+{
+  "meta": {
+    "version": "OpenDevEd_jsonUploaderV01",
+    "query": "",
+    "queryUrl": "",
+    "searchTerm": "",
+    "totalResults": "",
+    "source": "BritishEducationIndex",
+    "sourceFormat": "original",
+    "searchId": "be77c584-2749-11ef-b262-00155d1abc6b",
+    "date": "2024-06-04 12:12:12",
+    "searchField": "all",
+    "page": 1,
+    "resultsPerPage": "",
+    "firstItem": "",
+    "startingPage": "",
+    "endingPage": "",
+    "filters": {},
+    "groupBy": "",
+    "sortBy": {}
+  },
+  "results": [
+    {
+      "TY": "JOUR",
+      "AU": [
+        "Yang, Weipeng",
+        "Hu, Xinyun",
+        "Yeter, Ibrahim H.",
+        "Su, Jiahong",
+        "Yang, Yuqin",
+        "Lee, John Chi‐Kin"
+      ],
+      "T1": [
+        "Artificial intelligence education for young children: A case study of technology‐enhanced embodied learning."
+      ],
+      "JO": "Journal of Computer Assisted Learning",
+      "JF": [
+        "Journal of Computer Assisted Learning"
+      ],
+      "Y1": [
+        "2024/04//"
+      ],
+      "VL": "40",
+      "IS": "2",
+      "M3": [
+        "Article"
+      ],
+      "SP": "465",
+      "EP": "477",
+      "SN": [
+        "02664909"
+      ],
+      "AB": [
+        "Background: Artificial Intelligence (AI) literacy is a crucial part of digital literacy that all individuals should possess in today's technologically advanced world. Despite the potential benefits that AI education offers, little research has been done on how to teach AI literacy to children. Objectives: This study aimed to fill that gap by investigating how children were engaged in AI literacy activities that are supported by intelligent agents. These activities were implemented in a Hong Kong kindergarten with a class of six 5‐year‐olds (Mage = 62.83 months, SD = 2.91) over a 6‐week period. Methods: The study gathered data from multiple sources, including classroom observations, teacher interviews, and documents/artefacts. Results and Conclusions: The results showed that children could learn about AI through interaction with intelligent agents in embodied learning contexts. The findings of this study have implications for the broader field of digital technology education, particularly in the context of early childhood education. Lay Description: What is already known about this topic: Artificial Intelligence (AI) literacy is essential in today's world.Little research exists on engaging young children in learning AI literacy. What this paper adds: Technology‐enhanced embodied learning approach affords multimodality in enabling young children's learning with AI‐related agents.Project‐based learning and real‐life examples can enhance children's learning. Implications for practice and/or policy: Early exposure to AI can help children navigate the increasingly digital world.Practical approaches, such as embodied and multimodal learning, seem to be effective.Teachers can enhance children's digital learning by using pedagogical strategies like project‐based learning and real‐life examples. [ABSTRACT FROM AUTHOR]",
+        "Copyright of Journal of Computer Assisted Learning is the property of Wiley-Blackwell and its content may not be copied or emailed to multiple sites or posted to a listserv without the copyright holder's express written permission. However, users may print, download, or email articles for individual use. This abstract may be abridged. No warranty is given about the accuracy of the copy. Users should refer to the original published version of the material for the full abstract. (Copyright applies to all Abstracts.)"
+      ],
+      "KW": [
+        "SCHOOL environment",
+        "CURRICULUM",
+        "ELEMENTARY schools",
+        "ARTIFICIAL intelligence",
+        "EDUCATIONAL outcomes",
+        "TEACHING methods",
+        "TEACHERS",
+        "RESEARCH methodology",
+        "CHILD development",
+        "COMPUTER literacy",
+        "STORYTELLING",
+        "RESEARCH",
+        "LEARNING strategies",
+        "COMPUTER assisted instruction",
+        "LITERACY",
+        "CASE studies",
+        "CHILDREN",
+        "DIGITAL technology",
+        "RESEARCH funding",
+        "SCIENTIFIC observation",
+        "INTERVIEWING",
+        "JUDGMENT sampling",
+        "Hong Kong (China)",
+        "AI literacy",
+        "early childhood curriculum",
+        "multimodality",
+        "pedagogical strategies",
+        "technology‐enhanced embodied learning"
+      ],
+      "N1": [
+        "Accession Number: 176012458; Yang, Weipeng 1; Email Address: wyang@eduhk.hk Hu, Xinyun 1 Yeter, Ibrahim H. 2 Su, Jiahong 3 Yang, Yuqin 4 Lee, John Chi‐Kin 5; Affiliation:  1: Department of Early Childhood Education, The Education University of Hong Kong, Hong Kong SAR, China  2: Natural Science and Science Education Academic Group, National Institute of Education, Nanyang Technological University,, Singapore  3: Faculty of Education, The University of Hong Kong, Hong Kong SAR, China  4: Faculty of Artificial Intelligence in Education, Central China Normal University, Wuhan, China  5: Department of Curriculum and Instruction, The Education University of Hong Kong, Hong Kong SAR, China; Source Info: Apr2024, Vol. 40 Issue 2, p465; Subject Term: SCHOOL environment; Subject Term: CURRICULUM; Subject Term: ELEMENTARY schools; Subject Term: ARTIFICIAL intelligence; Subject Term: EDUCATIONAL outcomes; Subject Term: TEACHING methods; Subject Term: TEACHERS; Subject Term: RESEARCH methodology; Subject Term: CHILD development; Subject Term: COMPUTER literacy; Subject Term: STORYTELLING; Subject Term: RESEARCH; Subject Term: LEARNING strategies; Subject Term: COMPUTER assisted instruction; Subject Term: LITERACY; Subject Term: CASE studies; Subject Term: CHILDREN; Subject Term: DIGITAL technology; Subject Term: RESEARCH funding; Subject Term: SCIENTIFIC observation; Subject Term: INTERVIEWING; Subject Term: JUDGMENT sampling; Subject Term: Hong Kong (China); Author-Supplied Keyword: AI literacy; Author-Supplied Keyword: early childhood curriculum; Author-Supplied Keyword: multimodality; Author-Supplied Keyword: pedagogical strategies; Author-Supplied Keyword: technology‐enhanced embodied learning; NAICS/Industry Codes: 611110 Elementary and Secondary Schools; Number of Pages: 13p; Document Type: Article; Full Text Word Count: 8549"
+      ],
+      "L3": [
+        "10.1111/jcal.12892"
+      ],
+      "UR": [
+        "https://search.ebscohost.com/login.aspx?direct=true&db=bri&AN=176012458&site=ehost-live"
+      ],
+      "DP": [
+        "EBSCOhost"
+      ],
+      "DB": [
+        "bri"
+      ]
+    },
+    {
+      "TY": "JOUR",
+      "AU": [
+        "Guan, Xin",
+        "Sun, Chunmei",
+        "Hwang, Gwo-jen",
+        "Xue, Kegan",
+        "Wang, Zhuo"
+      ],
+      "T1": [
+        "Applying game-based learning in primary education: a systematic review of journal publications from 2010 to 2020."
+      ],
+      "JO": "Interactive Learning Environments",
+      "JF": [
+        "Interactive Learning Environments"
+      ],
+      "Y1": [
+        "2024/04//"
+      ],
+      "VL": "32",
+      "IS": "2",
+      "M3": [
+        "Article"
+      ],
+      "SP": "534",
+      "EP": "556",
+      "SN": [
+        "10494820"
+      ],
+      "AB": [
+        "Play is crucial to children's development. With the prevalent use of digital technologies, children and young adults are seen playing games more often and longer on digital devices. How should teachers capitalize the advantages of games in class, without inducing more health risks or problems for children? To achieve this goal, teachers need empirical details and conclusive results in the application of game-based learning (GBL) in primary education, so that they can design GBL experiences that cater to the specific needs of pupils. The present paper provides a systematic review for 35 experimental studies that substantially integrated gaming elements in primary school lessons. Our major findings include that (1) most studies were published in technology-assisted learning journals, focusing on higher-grade students' natural science learning, through one GBL lesson conducted within one week; (2) theoretical foundations were absent in the majority of studies, with the rest implicitly or explicitly drawing upon Constructivist premises; (3) adopted GBL technologies were mostly self-designed, and used for formal learning; (4) Gamification was the most frequently used game genre and Intellectual Problem-Solving was the top gaming element to be incorporated and (5) there were more positive outcomes than mixed findings and more cognitive results reported than affective or behavioral dimensions. [ABSTRACT FROM AUTHOR]",
+        "Copyright of Interactive Learning Environments is the property of Routledge and its content may not be copied or emailed to multiple sites or posted to a listserv without the copyright holder's express written permission. However, users may print, download, or email articles for individual use. This abstract may be abridged. No warranty is given about the accuracy of the copy. Users should refer to the original published version of the material for the full abstract. (Copyright applies to all Abstracts.)"
+      ],
+      "KW": [
+        "PRIMARY education",
+        "EDUCATIONAL games",
+        "EDUCATIONAL technology",
+        "GAMIFICATION",
+        "COGNITIVE ability",
+        "DIGITAL technology",
+        "Game-based learning",
+        "K-12",
+        "meta-analysis",
+        "systematic review"
+      ],
+      "N1": [
+        "Accession Number: 176395919; Guan, Xin 1 Sun, Chunmei 1 Hwang, Gwo-jen 2 Xue, Kegan 3 Wang, Zhuo 1; Email Address: zhuowang@qdu.edu.cn; Affiliation:  1: College of Education, Qingdao University, Qingdao, People's Republic of China  2: Graduate Institute of Digital Learning and Education, National Taiwan University of Science and Technology, Taipei, People's Republic of China  3: Ningyang County No.2 Primary School, Tai'an City, People's Republic of China; Source Info: Apr2024, Vol. 32 Issue 2, p534; Subject Term: PRIMARY education; Subject Term: EDUCATIONAL games; Subject Term: EDUCATIONAL technology; Subject Term: GAMIFICATION; Subject Term: COGNITIVE ability; Subject Term: DIGITAL technology; Author-Supplied Keyword: Game-based learning; Author-Supplied Keyword: K-12; Author-Supplied Keyword: meta-analysis; Author-Supplied Keyword: systematic review; Number of Pages: 23p; Document Type: Article; Full Text Word Count: 9809"
+      ],
+      "L3": [
+        "10.1080/10494820.2022.2091611"
+      ],
+      "UR": [
+        "https://search.ebscohost.com/login.aspx?direct=true&db=bri&AN=176395919&site=ehost-live"
+      ],
+      "DP": [
+        "EBSCOhost"
+      ],
+      "DB": [
+        "bri"
+      ]
+    },
+    {
+      "TY": "JOUR",
+      "AU": [
+        "Dahalan, Fazlida",
+        "Alias, Norlidah",
+        "Shaharom, Mohd Shahril Nizam"
+      ],
+      "T1": [
+        "Gamification and Game Based Learning for Vocational Education and Training: A Systematic Literature Review."
+      ],
+      "JO": "Education & Information Technologies",
+      "JF": [
+        "Education & Information Technologies"
+      ],
+      "Y1": [
+        "2024/02//"
+      ],
+      "VL": "29",
+      "IS": "2",
+      "M3": [
+        "Article"
+      ],
+      "SP": "1279",
+      "EP": "1317",
+      "SN": [
+        "13602357"
+      ],
+      "AB": [
+        "Games have been used as a learning tool for centuries. Gamification and game-based learning are becoming more prominent in educational settings for several reasons. When it comes to learning, being focused and immersed can massively improve a student's experience. The purpose of this study is to map the emerging trends of gamification and game-based learning (GBL) in the Vocational and Education Training (VET) sector. For this purpose, a Systematic Literature Review was conducted through the three most relevant scientific databases – Web of Science, Scopus, ScienceDirect, and PubMed with Google Scholar as a supporting database. The obtained sample was further selected following the PRISMA guidelines with screening and eligibility processes conducted based on inclusion criteria that were defined with consideration to the research's aim. This review comprised seventeen studies. The findings revealed a growing interest in the Asian continents in research from 2020 onwards. Furthermore, most of the study is centred on vocational schools and colleges in the engineering and healthcare fields. According to the overview, the digital learning platform and simulation technology are the most promising tools used in the research. The findings support the conclusion that gamification and game-based learning can improve academic performance, engagement, and motivation in vocational education learners. As a result, this study suggests that more research is needed to determine the gamification strategies that are most suited for vocational education and learning. [ABSTRACT FROM AUTHOR]",
+        "Copyright of Education & Information Technologies is the property of Springer Nature and its content may not be copied or emailed to multiple sites or posted to a listserv without the copyright holder's express written permission. However, users may print, download, or email articles for individual use. This abstract may be abridged. No warranty is given about the accuracy of the copy. Users should refer to the original published version of the material for the full abstract. (Copyright applies to all Abstracts.)"
+      ],
+      "KW": [
+        "VOCATIONAL education",
+        "GAMIFICATION",
+        "ACADEMIC motivation",
+        "Game-based learning",
+        "Gamification",
+        "Instructor",
+        "Systematic literature review",
+        "TVET",
+        "Web of Science (Web resource)",
+        "PubMed (Online service)"
+      ],
+      "N1": [
+        "Accession Number: 175358473; Dahalan, Fazlida 1 Alias, Norlidah 1; Email Address: drnorlidah@um.edu.my Shaharom, Mohd Shahril Nizam 1; Affiliation:  1: Department of Curriculum and Instructional Technology, Faculty of Education, Jln Profesor Diraja Ungku Aziz, University Malaya, 50603, Kuala Lumpur, Malaysia; Source Info: Feb2024, Vol. 29 Issue 2, p1279; Subject Term: VOCATIONAL education; Subject Term: GAMIFICATION; Subject Term: ACADEMIC motivation; Author-Supplied Keyword: Game-based learning; Author-Supplied Keyword: Gamification; Author-Supplied Keyword: Instructor; Author-Supplied Keyword: Systematic literature review; Author-Supplied Keyword: TVET; Reviews & Products: Web of Science (Web resource); Reviews & Products: PubMed (Online service); NAICS/Industry Codes: 624310 Vocational Rehabilitation Services; NAICS/Industry Codes: 611310 Colleges, Universities, and Professional Schools; Number of Pages: 39p; Document Type: Article; Full Text Word Count: 15178"
+      ],
+      "L3": [
+        "10.1007/s10639-022-11548-w"
+      ],
+      "UR": [
+        "https://search.ebscohost.com/login.aspx?direct=true&db=bri&AN=175358473&site=ehost-live"
+      ],
+      "DP": [
+        "EBSCOhost"
+      ],
+      "DB": [
+        "bri"
+      ]
+    },
+    {
+      "TY": "JOUR",
+      "AU": [
+        "Li, Chenglu",
+        "Xing, Wanli",
+        "Leite, Walter"
+      ],
+      "T1": [
+        "Using fair AI to predict students' math learning outcomes in an online platform."
+      ],
+      "JO": "Interactive Learning Environments",
+      "JF": [
+        "Interactive Learning Environments"
+      ],
+      "Y1": [
+        "2024/05//"
+      ],
+      "VL": "32",
+      "IS": "3",
+      "M3": [
+        "Article"
+      ],
+      "SP": "1117",
+      "EP": "1136",
+      "SN": [
+        "10494820"
+      ],
+      "AB": [
+        "As instruction shifts away from traditional approaches, online learning has grown in popularity in K-12 and higher education. Artificial intelligence (AI) and learning analytics methods such as machine learning have been used by educational scholars to support online learners on a large scale. However, the fairness of AI prediction in educational contexts has received insufficient attention, which can increase educational inequality. This study aims to fill this gap by proposing a fair logistic regression (Fair-LR) algorithm. Specifically, we developed Fair-LR and compared it with fairness-unaware AI models (Logistic Regression, Support Vector Machine, and Random Forest). We evaluated fairness with equalized odds that caters to statistical type I and II errors in predictions across demographic subgroups. The results showed that the Fair-LR could generate desirable predictive accuracy while achieving better fairness. The findings implied that the educational community could adopt a methodological shift to achieve accurate and fair AI to support learning and reduce bias. [ABSTRACT FROM AUTHOR]",
+        "Copyright of Interactive Learning Environments is the property of Routledge and its content may not be copied or emailed to multiple sites or posted to a listserv without the copyright holder's express written permission. However, users may print, download, or email articles for individual use. This abstract may be abridged. No warranty is given about the accuracy of the copy. Users should refer to the original published version of the material for the full abstract. (Copyright applies to all Abstracts.)"
+      ],
+      "KW": [
+        "MATHEMATICS education",
+        "ONLINE education",
+        "HIGHER education",
+        "MACHINE learning",
+        "ARTIFICIAL intelligence in education",
+        "fair AI",
+        "learning analytics",
+        "machine learning",
+        "online learning"
+      ],
+      "N1": [
+        "Accession Number: 177398021; Li, Chenglu 1 Xing, Wanli 1; Email Address: wanli.xing@coe.ufl.edu Leite, Walter 2; Affiliation:  1: School of Teaching & Learning, College of Education, University of Florida, Gainesville, FL, USA  2: School of Human Development and Organizational Studies in Education, College of Education, University of Florida, Gainesville, FL, USA; Source Info: May2024, Vol. 32 Issue 3, p1117; Subject Term: MATHEMATICS education; Subject Term: ONLINE education; Subject Term: HIGHER education; Subject Term: MACHINE learning; Subject Term: ARTIFICIAL intelligence in education; Author-Supplied Keyword: fair AI; Author-Supplied Keyword: learning analytics; Author-Supplied Keyword: machine learning; Author-Supplied Keyword: online learning; Number of Pages: 20p; Document Type: Article; Full Text Word Count: 11158"
+      ],
+      "L3": [
+        "10.1080/10494820.2022.2115076"
+      ],
+      "UR": [
+        "https://search.ebscohost.com/login.aspx?direct=true&db=bri&AN=177398021&site=ehost-live"
+      ],
+      "DP": [
+        "EBSCOhost"
+      ],
+      "DB": [
+        "bri"
+      ]
+    },
+    {
+      "TY": "JOUR",
+      "AU": [
+        "Su, Jiahong",
+        "Yang, Weipeng"
+      ],
+      "T1": [
+        "AI literacy curriculum and its relation to children's perceptions of robots and attitudes towards engineering and science: An intervention study in early childhood education."
+      ],
+      "JO": "Journal of Computer Assisted Learning",
+      "JF": [
+        "Journal of Computer Assisted Learning"
+      ],
+      "Y1": [
+        "2024/02//"
+      ],
+      "VL": "40",
+      "IS": "1",
+      "M3": [
+        "Article"
+      ],
+      "SP": "241",
+      "EP": "253",
+      "SN": [
+        "02664909"
+      ],
+      "AB": [
+        "Background: The number of artificial intelligence (AI) literacy studies in K‐12 education has recently increased, with most research focusing on primary and secondary education contexts. Little research focuses on AI literacy programs in early childhood education. Objectives: The aim of this mixed‐methods study is to examine the feasibility of an AI literacy program called \"AI4KG\" and explore how it might affect kindergarteners' perceptions of robots and attitudes towards engineering and science. Methods: A total of 26 child–parent dyads recruited from a Hong Kong kindergarten were involved in this study, consisting of 26 children (Mage = 4 years, SD = 0.28) and their parents. Quantitative and qualitative data were collected through surveys and interviews designed to explore children's perceptions of robots and attitudes towards engineering and science, and parents' perceptions of the AI4KG intervention. Results: It is found that children have increased their perceptions of robots after the AI literacy program, but the AI4KG curriculum had no significant effects on kindergarten children's engineering and science attitudes. Most parents (22 out of 26) agreed that their children's AI knowledge, AI skills, and AI attitudes have been enhanced after learning through the AI4KG curriculum. Conclusions: This study suggests that the AI4KG curriculum is potentially effective in promoting early AI literacy and favourable attitudes towards the technology, but further research is needed to develop age‐appropriate measures and assess its long‐term impact on children's education and career paths. Lay Description: What is currently known about this topic?: AI literacy is becoming important as AI transforms society, but few studies have explored AI literacy in early childhood education.Prior research found AI activities can positively influence older children's views of robots and engineering. What does this paper add?: It evaluates an 8‐week AI literacy curriculum called AI4KG for kindergarteners in Hong Kong.The curriculum used tools like Teachable Machine and taught concepts through play and storytelling.It improved children's perceptions of robots but did not significantly impact engineering/science attitudes.Parents perceived improvements in children's AI knowledge, skills, and attitudes after the curriculum. Implications for practice/policy: The curriculum provides an example for developing age‐appropriate AI literacy activities.More rigorous research on impacts over time is needed, but results suggest potential benefits of AI literacy in early childhood.Policymakers could consider incorporating AI literacy into kindergarten curricula to prepare children for the future. [ABSTRACT FROM AUTHOR]",
+        "Copyright of Journal of Computer Assisted Learning is the property of Wiley-Blackwell and its content may not be copied or emailed to multiple sites or posted to a listserv without the copyright holder's express written permission. However, users may print, download, or email articles for individual use. This abstract may be abridged. No warranty is given about the accuracy of the copy. Users should refer to the original published version of the material for the full abstract. (Copyright applies to all Abstracts.)"
+      ],
+      "KW": [
+        "PARENT attitudes",
+        "COMPUTER assisted instruction",
+        "RESEARCH methodology",
+        "ARTIFICIAL intelligence",
+        "CURRICULUM",
+        "PRE-tests & post-tests",
+        "PRESCHOOLS",
+        "INTELLECT",
+        "STUDENT attitudes",
+        "COMPUTER literacy",
+        "EDUCATIONAL outcomes",
+        "CHILDREN",
+        "PILOT projects",
+        "INTERVIEWING",
+        "ROBOTICS",
+        "ENGINEERING",
+        "QUESTIONNAIRES",
+        "CHI-squared test",
+        "DATA analysis software",
+        "SCIENCE",
+        "Hong Kong (China)",
+        "AI literacy",
+        "Curriculum",
+        "Early Childhood Education",
+        "Feasibility",
+        "Parental Perception"
+      ],
+      "N1": [
+        "Accession Number: 174818397; Su, Jiahong 1; Email Address: maggiesu@connect.hku.hk Yang, Weipeng 2; Affiliation:  1: Faculty of Education, The University of Hong Kong, Hong Kong SAR, China  2: Department of Early Childhood Education, The Education University of Hong Kong, Hong Kong SAR, China; Source Info: Feb2024, Vol. 40 Issue 1, p241; Subject Term: PARENT attitudes; Subject Term: COMPUTER assisted instruction; Subject Term: RESEARCH methodology; Subject Term: ARTIFICIAL intelligence; Subject Term: CURRICULUM; Subject Term: PRE-tests & post-tests; Subject Term: PRESCHOOLS; Subject Term: INTELLECT; Subject Term: STUDENT attitudes; Subject Term: COMPUTER literacy; Subject Term: EDUCATIONAL outcomes; Subject Term: CHILDREN; Subject Term: PILOT projects; Subject Term: INTERVIEWING; Subject Term: ROBOTICS; Subject Term: ENGINEERING; Subject Term: QUESTIONNAIRES; Subject Term: CHI-squared test; Subject Term: DATA analysis software; Subject Term: SCIENCE; Subject Term: Hong Kong (China); Author-Supplied Keyword: AI literacy; Author-Supplied Keyword: Curriculum; Author-Supplied Keyword: Early Childhood Education; Author-Supplied Keyword: Feasibility; Author-Supplied Keyword: Parental Perception; NAICS/Industry Codes: 624410 Child Day Care Services; Number of Pages: 13p; Document Type: Article; Full Text Word Count: 9469"
+      ],
+      "L3": [
+        "10.1111/jcal.12867"
+      ],
+      "UR": [
+        "https://search.ebscohost.com/login.aspx?direct=true&db=bri&AN=174818397&site=ehost-live"
+      ],
+      "DP": [
+        "EBSCOhost"
+      ],
+      "DB": [
+        "bri"
+      ]
+    },
+    {
+      "TY": "JOUR",
+      "AU": [
+        "Wu, Rong",
+        "Yu, Zhonggen"
+      ],
+      "T1": [
+        "Do AI chatbots improve students learning outcomes? Evidence from a meta‐analysis."
+      ],
+      "JO": "British Journal of Educational Technology",
+      "JF": [
+        "British Journal of Educational Technology"
+      ],
+      "Y1": [
+        "2024/01//"
+      ],
+      "VL": "55",
+      "IS": "1",
+      "M3": [
+        "Article"
+      ],
+      "SP": "10",
+      "EP": "33",
+      "SN": [
+        "00071013"
+      ],
+      "AB": [
+        "Artificial intelligence (AI) chatbots are gaining increasing popularity in education. Due to their increasing popularity, many empirical studies have been devoted to exploring the effects of AI chatbots on students' learning outcomes. The proliferation of experimental studies has highlighted the need to summarize and synthesize the inconsistent findings about the effects of AI chatbots on students' learning outcomes. However, few reviews focused on the meta‐analysis of the effects of AI chatbots on students' learning outcomes. The present study performed a meta‐analysis of 24 randomized studies utilizing Stata software (version 14). The main goal of the current study was to meta‐analytically examine the effects of AI chatbots on students' learning outcomes and the moderating effects of educational levels and intervention duration. The results indicated that AI chatbots had a large effect on students' learning outcomes. Moreover, AI chatbots had a greater effect on students in higher education, compared to those in primary education and secondary education. In addition, short interventions were found to have a stronger effect on students' learning outcomes than long interventions. It could be explained by the argument that the novelty effects of AI chatbots could improve learning outcomes in short interventions, but it has worn off in the long interventions. Future designers and educators should make attempt to increase students' learning outcomes by equipping AI chatbots with human‐like avatars, gamification elements and emotional intelligence. Practitioner notesWhat is already known about this topicIn recent years, artificial intelligence (AI) chatbots have been gaining increasing popularity in education.Studies undertaken so far have provided conflicting evidence concerning the effects of AI chatbots on students' learning outcomes.There has remained a paucity of meta‐analyses synthesizing the contradictory findings about the effects of AI chatbots on students' learning outcomes.What this paper addsThis study, through meta‐analysis, synthesized these recent findings about the effects of AI chatbots on students' learning outcomes.This study found that AI chatbots could have a large effect on students' learning outcomes.This study found that the effects of AI chatbots were moderated by educational levels and intervention duration.Implications for practice and/or policyAI chatbot designers could make AI chatbots better by equipping AI chatbots with human‐like avatars, gamification elements and emotional intelligencePractitioners and/or teachers should draw attention to the positive and negative effects of AI chatbots on students.Considering the importance of ChatGPT, more research is required to develop a better understanding of the effects of ChatGPT in education.More research is needed to examine the mechanisms underlying the effects of AI chatbots on students' learning outcomes. [ABSTRACT FROM AUTHOR]",
+        "Copyright of British Journal of Educational Technology is the property of Wiley-Blackwell and its content may not be copied or emailed to multiple sites or posted to a listserv without the copyright holder's express written permission. However, users may print, download, or email articles for individual use. This abstract may be abridged. No warranty is given about the accuracy of the copy. Users should refer to the original published version of the material for the full abstract. (Copyright applies to all Abstracts.)"
+      ],
+      "KW": [
+        "EDUCATIONAL outcomes",
+        "ARTIFICIAL intelligence",
+        "EMOTIONAL intelligence",
+        "SECONDARY education",
+        "CHATBOTS",
+        "CHATGPT",
+        "artificial intelligence chatbots",
+        "educational levels",
+        "intervention duration",
+        "learning outcomes",
+        "meta‐analysis"
+      ],
+      "N1": [
+        "Accession Number: 174977986; Wu, Rong 1 Yu, Zhonggen 1; Email Address: 401373742@qq.com; Affiliation:  1: Faculty of Foreign Studies, Beijing Language and Culture University, Beijing, China; Source Info: Jan2024, Vol. 55 Issue 1, p10; Subject Term: EDUCATIONAL outcomes; Subject Term: ARTIFICIAL intelligence; Subject Term: EMOTIONAL intelligence; Subject Term: SECONDARY education; Subject Term: CHATBOTS; Subject Term: CHATGPT; Author-Supplied Keyword: artificial intelligence chatbots; Author-Supplied Keyword: educational levels; Author-Supplied Keyword: intervention duration; Author-Supplied Keyword: learning outcomes; Author-Supplied Keyword: meta‐analysis; NAICS/Industry Codes: 611110 Elementary and Secondary Schools; Number of Pages: 24p; Document Type: Article; Full Text Word Count: 9751"
+      ],
+      "L3": [
+        "10.1111/bjet.13334"
+      ],
+      "UR": [
+        "https://search.ebscohost.com/login.aspx?direct=true&db=bri&AN=174977986&site=ehost-live"
+      ],
+      "DP": [
+        "EBSCOhost"
+      ],
+      "DB": [
+        "bri"
+      ]
+    },
+    {
+      "TY": "JOUR",
+      "AU": [
+        "Lin, Xiao-Fan",
+        "Zhou, Yue",
+        "Shen, Weipeng",
+        "Luo, Guoyu",
+        "Xian, Xiaoqing",
+        "Pang, Bo"
+      ],
+      "T1": [
+        "Modeling the structural relationships among Chinese secondary school students' computational thinking efficacy in learning AI, AI literacy, and approaches to learning AI."
+      ],
+      "JO": "Education & Information Technologies",
+      "JF": [
+        "Education & Information Technologies"
+      ],
+      "Y1": [
+        "2024/04/15/"
+      ],
+      "VL": "29",
+      "IS": "5",
+      "M3": [
+        "Article"
+      ],
+      "SP": "6189",
+      "EP": "6215",
+      "SN": [
+        "13602357"
+      ],
+      "AB": [
+        "K-12 artificial intelligence (AI) education requires cultivating students' computational thinking in the school curriculum so as to transfer their computational thinking to diverse problems and authentic contexts. However, students may be limited by traditional computational thinking development activities because they may have a lower degree of computational thinking efficacy for persistent learning of AI when encountering difficulties (computational thinking efficacy in learning AI). Accordingly, this study aimed to explore the relationships among Chinese secondary school students' computational thinking efficacy in learning AI, their AI literacy, and approaches to learning AI. Structural equation modeling was adopted to examine the mediation effect. Data were gathered from 509 Chinese secondary school students, and the confirmatory factor analyses showed that the measures had high reliability and validity. The results revealed that AI literacy was positively related to students' computational thinking efficacy in learning AI, which was mediated by more sophisticated approaches to learning AI, contributing to the current understanding of learning AI. It is crucial to focus on students' AI literacy and deep approaches (e.g., engaging in authentic AI contexts with systematic learning activities for in-depth understanding of AI knowledge) rather than surface approaches (e.g., memorizing AI knowledge) to develop their high-level computational thinking efficacy in learning AI. Implications for designing the AI curriculum are discussed. [ABSTRACT FROM AUTHOR]",
+        "Copyright of Education & Information Technologies is the property of Springer Nature and its content may not be copied or emailed to multiple sites or posted to a listserv without the copyright holder's express written permission. However, users may print, download, or email articles for individual use. This abstract may be abridged. No warranty is given about the accuracy of the copy. Users should refer to the original published version of the material for the full abstract. (Copyright applies to all Abstracts.)"
+      ],
+      "KW": [
+        "SECONDARY school students",
+        "ARTIFICIAL intelligence",
+        "CURRICULUM",
+        "CHINESE students",
+        "STRUCTURAL equation modeling",
+        "AI literacy",
+        "Approaches to learning AI",
+        "Computational thinking",
+        "Efficacy",
+        "Structural equation modeling"
+      ],
+      "N1": [
+        "Accession Number: 177351177; Lin, Xiao-Fan 1; Email Address: linxiaofan@m.scnu.edu.cn Zhou, Yue 2 Shen, Weipeng 3 Luo, Guoyu 3 Xian, Xiaoqing 3 Pang, Bo 4; Affiliation:  1: https://ror.org/01kq0pv72 School of Education Information Technology, GuangDong Engineering Technology Research Center of Smart Learning, Guangdong Provincial Institute of Elementary Education and Information Technology, South China Normal University, Office 214, 55 Zhongshan Dadao Xi, 510631, Guangzhou, Guangzhou, China  2: Foshan Shunde District Fengxiang Primary School, Foshan, China  3: https://ror.org/01kq0pv72 School of Education Information Technology, South China Normal University, Guangzhou, China  4: XuanCheng Vocational & Technical College, Xuancheng, China; Source Info: Apr2024, Vol. 29 Issue 5, p6189; Subject Term: SECONDARY school students; Subject Term: ARTIFICIAL intelligence; Subject Term: CURRICULUM; Subject Term: CHINESE students; Subject Term: STRUCTURAL equation modeling; Author-Supplied Keyword: AI literacy; Author-Supplied Keyword: Approaches to learning AI; Author-Supplied Keyword: Computational thinking; Author-Supplied Keyword: Efficacy; Author-Supplied Keyword: Structural equation modeling; Number of Pages: 27p; Document Type: Article; Full Text Word Count: 12871"
+      ],
+      "L3": [
+        "10.1007/s10639-023-12029-4"
+      ],
+      "UR": [
+        "https://search.ebscohost.com/login.aspx?direct=true&db=bri&AN=177351177&site=ehost-live"
+      ],
+      "DP": [
+        "EBSCOhost"
+      ],
+      "DB": [
+        "bri"
+      ]
+    },
+    {
+      "TY": "JOUR",
+      "AU": [
+        "Novković Cvetković, Biljana",
+        "Mladenović, Miljana",
+        "Spasić Stošić, Ana",
+        "Tasić Mitić, Ivana",
+        "Stojadinović, Aleksandar"
+      ],
+      "T1": [
+        "How pandemics like COVID-19 change education in early childhood: the music practice and tendencies in Serbia."
+      ],
+      "JO": "European Early Childhood Education Research Journal",
+      "JF": [
+        "European Early Childhood Education Research Journal"
+      ],
+      "Y1": [
+        "2024/06//"
+      ],
+      "VL": "32",
+      "IS": "3",
+      "M3": [
+        "Article"
+      ],
+      "SP": "416",
+      "EP": "428",
+      "SN": [
+        "1350293X"
+      ],
+      "AB": [
+        "This paper explores whether a Serbia preschool institution is prepared for education during the pandemic. The research subject is nine kindergarten-preschool units where 140 teachers work with about 2500 children up to 6.5 years. We examined all teachers that work in preschool units. The study aims, for a case study of music education, to answer: Whether the COVID-19 pandemic affected the change in the educational work in the field of music in preschool; Can web-based applications and educational resources improve preschool music outcomes, especially during a pandemic; Would web applications and educational resources reduce financial costs; Would web applications and educational resources enhance parent-teacher communication. The findings show preschool teachers mostly use traditional offline educational techniques and tools but need more online learning tools, Web resources, and applications, especially when working remotely. They believe such resources can reduce financial costs and improve parent-teacher communication. The study found that the pandemic has forced changes in practice. However, according to teachers, these changes can enhance future post-pandemic practice thanks to web-based educational technologies that more closely connect all participants in early childhood education. [ABSTRACT FROM AUTHOR]",
+        "Copyright of European Early Childhood Education Research Journal is the property of Routledge and its content may not be copied or emailed to multiple sites or posted to a listserv without the copyright holder's express written permission. However, users may print, download, or email articles for individual use. This abstract may be abridged. No warranty is given about the accuracy of the copy. Users should refer to the original published version of the material for the full abstract. (Copyright applies to all Abstracts.)"
+      ],
+      "KW": [
+        "MUSIC education",
+        "COVID-19 pandemic",
+        "TEACHING methods",
+        "EDUCATIONAL outcomes",
+        "PARENT-teacher cooperation",
+        "EDUCATIONAL technology",
+        "EARLY childhood education",
+        "Serbia",
+        "COVID-19",
+        "Early childhood education",
+        "kindergarten teachers",
+        "music education in preschool",
+        "teachers' attitudes"
+      ],
+      "N1": [
+        "Accession Number: 177338363; Novković Cvetković, Biljana 1; Email Address: biljanan@pfvr.ni.ac.rs Mladenović, Miljana 1 Spasić Stošić, Ana 1 Tasić Mitić, Ivana 1 Stojadinović, Aleksandar 1; Affiliation:  1: Faculty of Pedagogy, University of Niš, Niš, Serbia; Source Info: Jun2024, Vol. 32 Issue 3, p416; Subject Term: MUSIC education; Subject Term: COVID-19 pandemic; Subject Term: TEACHING methods; Subject Term: EDUCATIONAL outcomes; Subject Term: PARENT-teacher cooperation; Subject Term: EDUCATIONAL technology; Subject Term: EARLY childhood education; Subject Term: Serbia; Author-Supplied Keyword: COVID-19; Author-Supplied Keyword: Early childhood education; Author-Supplied Keyword: kindergarten teachers; Author-Supplied Keyword: music education in preschool; Author-Supplied Keyword: teachers' attitudes; Number of Pages: 13p; Document Type: Article; Full Text Word Count: 6097"
+      ],
+      "L3": [
+        "10.1080/1350293X.2023.2259640"
+      ],
+      "UR": [
+        "https://search.ebscohost.com/login.aspx?direct=true&db=bri&AN=177338363&site=ehost-live"
+      ],
+      "DP": [
+        "EBSCOhost"
+      ],
+      "DB": [
+        "bri"
+      ]
+    },
+    {
+      "TY": "JOUR",
+      "AU": [
+        "Ackermans, Kevin",
+        "Bakker, Marjoke",
+        "Gorissen, Pierre",
+        "van Loon, Anne‐Marieke",
+        "Kral, Marijke",
+        "Camp, Gino"
+      ],
+      "T1": [
+        "Development and validation of a test for measuring primary school students' effective use of ICT: The ECC‐ICT test."
+      ],
+      "JO": "Journal of Computer Assisted Learning",
+      "JF": [
+        "Journal of Computer Assisted Learning"
+      ],
+      "Y1": [
+        "2024/06//"
+      ],
+      "VL": "40",
+      "IS": "3",
+      "M3": [
+        "Article"
+      ],
+      "SP": "960",
+      "EP": "972",
+      "SN": [
+        "02664909"
+      ],
+      "AB": [
+        "Background: A practical test that measures the information and communication technology (ICT) skills students need for effectively using ICT in primary education has yet to be developed (Oh et al., 2021). This paper reports on the development, validation, and reliability of a test measuring primary school students' ICT skills required for effectively using ICT (the ECC‐ICT test). Objectives: Based on existing literature, three ICT use domains were identified for effectively using ICT: Effective, collaborative, and creativeuse of ICT. For these three domains, 24 corresponding teaching objectives were identified from a widely used digital literacy framework. Thirty‐four test items cover these teaching objectives in an online test. Methods: A mixed‐method approach was used for the ECC‐ICT test. Four pilot rounds (n=25) implemented qualitative interviews for cognitive validity and refining the test items, followed by a qualitative usability study(n=6). Confirmatory factor analysis and ANOVA provided quantitative insight into the large‐scale test administration(n=575). Results and Conclusions: Composite reliability of our conceptual 3‐factor confirmatory model showed that the test reliably measured primary school effective use of ICT (ω = 0.82), collaborative use of ICT (ω = 0.80) and creative use of ICT (ω = 0.64). Convergent validity (ranging from 0.41 to 0.46) was acceptable. Internal consistency (ranging from 0.84 to 0.91) and discriminant validity (HTMT values below 0.90) are good. ANOVA results show that mean test scores are higher for students in higher grade levels (p < 0.001). The post hoc Bonferroni results show that most grade‐by‐grade comparisons are significant (p < 0.001). Lay Description: What is already known about this topic: Information and communication technology (ICT) skills are finding their way into national curriculums as teachers implement more digital learning environments.Teachers currently do not have a measurement instrument for the ICT skills primary education students need to learn in a personalised way. What this paper adds: This paper gives teachers a test that reliably measures the effective, collaborative, and creative ICT skills required for primary school students to learn using ICT.To our knowledge, this test is the first of its kind.Al materials to reproduce the test are available digitally for teachers. The implications of study findings for practitioners: For policy, this test can be used to check if a student is ready to use ICT in a self‐regulated setting.With this test, teachers can assess and support students' growth on the effective, collaborative, and creative ICT skills required for primary school students using ICT. [ABSTRACT FROM AUTHOR]",
+        "Copyright of Journal of Computer Assisted Learning is the property of Wiley-Blackwell and its content may not be copied or emailed to multiple sites or posted to a listserv without the copyright holder's express written permission. However, users may print, download, or email articles for individual use. This abstract may be abridged. No warranty is given about the accuracy of the copy. Users should refer to the original published version of the material for the full abstract. (Copyright applies to all Abstracts.)"
+      ],
+      "KW": [
+        "COMMUNICATIVE competence",
+        "INTERPROFESSIONAL relations",
+        "DATA analysis",
+        "RESEARCH methodology evaluation",
+        "INFORMATION technology",
+        "EXPERIMENTAL design",
+        "INFORMATION literacy",
+        "SCHOOL children",
+        "RESEARCH methodology",
+        "COMPUTER literacy",
+        "ACADEMIC achievement",
+        "NATIONAL competency-based educational tests",
+        "FACTOR analysis",
+        "TEST design",
+        "COGNITION",
+        "RESEARCH funding",
+        "PILOT projects",
+        "INTERVIEWING",
+        "RESEARCH evaluation",
+        "ANALYSIS of variance",
+        "STATISTICS",
+        "DISCRIMINANT analysis",
+        "assessment measurement",
+        "effectively using ICT",
+        "ICT skills",
+        "primary education"
+      ],
+      "N1": [
+        "Accession Number: 177193459; Ackermans, Kevin 1; Email Address: kevin.ackermans@ou.nl Bakker, Marjoke 2 Gorissen, Pierre 2 van Loon, Anne‐Marieke 3 Kral, Marijke 2 Camp, Gino 1; Affiliation:  1: Department of Educational Science, Open University of the Netherlands, Heerlen, The Netherlands  2: HAN University of Applied Sciences, Arnhem, The Netherlands  3: Fontys University of Applied Sciences, Eindhoven, The Netherlands; Source Info: Jun2024, Vol. 40 Issue 3, p960; Subject Term: COMMUNICATIVE competence; Subject Term: INTERPROFESSIONAL relations; Subject Term: DATA analysis; Subject Term: RESEARCH methodology evaluation; Subject Term: INFORMATION technology; Subject Term: EXPERIMENTAL design; Subject Term: INFORMATION literacy; Subject Term: SCHOOL children; Subject Term: RESEARCH methodology; Subject Term: COMPUTER literacy; Subject Term: ACADEMIC achievement; Subject Term: NATIONAL competency-based educational tests; Subject Term: FACTOR analysis; Subject Term: TEST design; Subject Term: COGNITION; Subject Term: RESEARCH funding; Subject Term: PILOT projects; Subject Term: INTERVIEWING; Subject Term: RESEARCH evaluation; Subject Term: ANALYSIS of variance; Subject Term: STATISTICS; Subject Term: DISCRIMINANT analysis; Author-Supplied Keyword: assessment measurement; Author-Supplied Keyword: effectively using ICT; Author-Supplied Keyword: ICT skills; Author-Supplied Keyword: primary education; Number of Pages: 13p; Document Type: Article"
+      ],
+      "L3": [
+        "10.1111/jcal.12924"
+      ],
+      "UR": [
+        "https://search.ebscohost.com/login.aspx?direct=true&db=bri&AN=177193459&site=ehost-live"
+      ],
+      "DP": [
+        "EBSCOhost"
+      ],
+      "DB": [
+        "bri"
+      ]
+    },
+    {
+      "TY": "JOUR",
+      "AU": [
+        "Soleimani, Sayed Mohamad",
+        "Jaeger, Martin",
+        "Faheiman, Alanoud",
+        "Alaqqad, Abdel Rahman"
+      ],
+      "T1": [
+        "Success factors of recently implemented eLearning methods at higher education institutions in Kuwait."
+      ],
+      "JO": "Quality in Higher Education",
+      "JF": [
+        "Quality in Higher Education"
+      ],
+      "Y1": [
+        "2024/04//"
+      ],
+      "VL": "30",
+      "IS": "1",
+      "M3": [
+        "Article"
+      ],
+      "SP": "130",
+      "EP": "142",
+      "SN": [
+        "13538322"
+      ],
+      "AB": [
+        "This study determines the critical success factors for students and academic staff when applying and evaluating online delivery methods in colleges and universities in Kuwait. The recently implemented eLearning systems and methods in the country, due to the COVID-19 pandemic, are evaluated and the perception of the eLearning system is gauged. Targeted surveys are distributed to a representative sample of undergraduate engineering students and academic staff. The following critical success factors are considered: benefits of the eLearning system, educational system quality, information quality, instructor quality, learner quality, service quality and technical system quality. Results show that there is a correlation between the perceptions of students and academic staff, particularly regarding instructor quality, information quality and benefits of the eLearning system. Both groups of respondents agreed on the high importance of instructor quality and the low importance of benefits. [ABSTRACT FROM AUTHOR]",
+        "Copyright of Quality in Higher Education is the property of Routledge and its content may not be copied or emailed to multiple sites or posted to a listserv without the copyright holder's express written permission. However, users may print, download, or email articles for individual use. This abstract may be abridged. No warranty is given about the accuracy of the copy. Users should refer to the original published version of the material for the full abstract. (Copyright applies to all Abstracts.)"
+      ],
+      "KW": [
+        "ONLINE education",
+        "HIGHER education administration",
+        "COVID-19 pandemic",
+        "ENGINEERING students",
+        "CRITICAL success factor",
+        "Kuwait",
+        "academic staff",
+        "critical success factors",
+        "eLearning",
+        "Kuwait",
+        "undergraduate engineering education"
+      ],
+      "N1": [
+        "Accession Number: 175722558; Soleimani, Sayed Mohamad 1; Email Address: smsoleimani@psu.edu Jaeger, Martin 1 Faheiman, Alanoud 1 Alaqqad, Abdel Rahman 1; Affiliation:  1: Department of Civil Engineering, Australian University — Kuwait, Kuwait; Source Info: Apr2024, Vol. 30 Issue 1, p130; Subject Term: ONLINE education; Subject Term: HIGHER education administration; Subject Term: COVID-19 pandemic; Subject Term: ENGINEERING students; Subject Term: CRITICAL success factor; Subject Term: Kuwait; Author-Supplied Keyword: academic staff; Author-Supplied Keyword: critical success factors; Author-Supplied Keyword: eLearning; Author-Supplied Keyword: Kuwait; Author-Supplied Keyword: undergraduate engineering education; Number of Pages: 13p; Document Type: Article; Full Text Word Count: 5139"
+      ],
+      "L3": [
+        "10.1080/13538322.2022.2132702"
+      ],
+      "UR": [
+        "https://search.ebscohost.com/login.aspx?direct=true&db=bri&AN=175722558&site=ehost-live"
+      ],
+      "DP": [
+        "EBSCOhost"
+      ],
+      "DB": [
+        "bri"
+      ]
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 function getId(item, source) {
     if (source === 'openalex') {
-        return "openalex:" + (item.ids.openalex || "").split("/").pop() || "";
+        return "openalex: " + (item.ids.openalex || "").split("/").pop() || "";
     } else if (source === 'scholarly') {
       let ids = [];
       if (item.url_scholarbib) {

@@ -1,0 +1,338 @@
+{
+  "meta": {
+    "version": "OpenDevEd_jsonUploaderV01",
+    "query": "",
+    "queryUrl": "",
+    "searchTerm": "",
+    "totalResults": "",
+    "source": "WebOfScience",
+    "sourceFormat": "original",
+    "searchId": "993ba71c-274a-11ef-8b23-00155d1abc6b",
+    "date": "2024-06-04 12:12:12",
+    "searchField": "all",
+    "page": 1,
+    "resultsPerPage": "",
+    "firstItem": "",
+    "startingPage": "",
+    "endingPage": "",
+    "filters": {},
+    "groupBy": "",
+    "sortBy": {}
+  },
+  "results": [
+    {
+      "AU": [
+        "Aesaert, K",
+        "Vanderlinde, R",
+        "Tondeur, J",
+        "van Braak, J"
+      ],
+      "TI": "The content of educational technology curricula: a cross-curricular state of the art",
+      "T2": [
+        "ETR&D-EDUCATIONAL TECHNOLOGY RESEARCH AND DEVELOPMENT"
+      ],
+      "AB": [
+        "The purpose of this study is to analyze the content features of educational technology curricula for primary education developed by national governments. A qualitative cross-case document analysis of the national educational technology curriculum of Norway, Flanders and England was conducted. The analysis focuses on the underlying visions, specific aims and instruction related aspects that are integrated in the national educational technology curricula of the three cases under investigation. The results indicate that specific aims mainly focus on the critical use of educational technology; safe and responsible use of educational technology; information retrieval, processing and production; communication by use of educational technology; and use of educational technology for subject learning. It is possible that a discrepancy exists between the concepts of digital literacy and the specific aims that are addressed in educational technology curricula. Moreover, the rationales that underlie educational technology curricula represent a catalytic and social point of view rather than an economic one. The implications of our findings for curriculum developers and researchers are discussed."
+      ],
+      "SN": [
+        "1042-1629",
+        "1556-6501"
+      ],
+      "DA": [
+        "FEB"
+      ],
+      "PY": "2013",
+      "VL": "61",
+      "IS": "1",
+      "SP": "131",
+      "EP": "151",
+      "DO": [
+        "10.1007/s11423-012-9279-9"
+      ],
+      "AN": [
+        "WOS:000314025400008"
+      ]
+    },
+    {
+      "TY": "CPAPER",
+      "AU": [
+        "Zhu, S",
+        "Cai, J",
+        "Yang, HH"
+      ],
+      "A1": [
+        "IEEE"
+      ],
+      "TI": "Personality and Vocational Interests: What We Have Learned about Students in Educational Technology Major",
+      "T2": [
+        "FIFTH INTERNATIONAL CONFERENCE ON EDUCATIONAL INNOVATION THROUGH TECHNOLOGY (EITT 2016)"
+      ],
+      "CP": [
+        "5th International Conference on Educational Innovation through Technology (EITT)"
+      ],
+      "AB": [
+        "The purpose of this study was to examine the relationships between personality types and vocational choices in terms of educational technology undergraduates and postgraduates in China. A valid sample of 209 undergraduates and 194 postgraduates responded to the research instrument, including 8 items about vocational choices and the Personal Globe Inventory-Short which was employed to measure personality types. The important findings included: (1) the three-letter personality code of both educational technology undergraduates and postgraduates was identified as SAE (i.e., Social, Artistic and Enterprising); (2) significant differences were found between educational technology undergraduates and postgraduates in terms of several vocational choices, and undergraduates showed lower major persistence than postgraduates; (3) realistic personality type was found to be significant positive predictor of most of the vocational choices of educational technology undergraduates; (4) educational technology postgraduates who are interested in realistic activities showed little interests in educational technology, whereas the social personality type express much interests. Finally, several suggestions have been provided for undergraduates, postgraduates, academic advisor, and high school students who choose and intend to choose educational technology as academic major."
+      ],
+      "SN": [
+        "978-1-5090-6138-9"
+      ],
+      "PY": "2016",
+      "SP": "232",
+      "EP": "237",
+      "DO": [
+        "10.1109/EITT.2016.53"
+      ],
+      "AN": [
+        "WOS:000401916300046"
+      ]
+    },
+    {
+      "TY": "CPAPER",
+      "AU": [
+        "MacLeod, J",
+        "Yang, HH"
+      ],
+      "A1": [
+        "IEEE"
+      ],
+      "TI": "Life-cycle Efficacy for Educational Technology: Best-practices for Leading Schools",
+      "T2": [
+        "FIFTH INTERNATIONAL CONFERENCE ON EDUCATIONAL INNOVATION THROUGH TECHNOLOGY (EITT 2016)"
+      ],
+      "CP": [
+        "5th International Conference on Educational Innovation through Technology (EITT)"
+      ],
+      "AB": [
+        "Though the process of qualitative analytical research, historical analysis is applied to evaluate the degree to which public K-12 school districts in Central New York are transparently reporting information regarding their educational technology and whether this process of communication aligns with a literature-based framework for educational technology life-cycle efficacy. Through digital artifact analysis of 10 educational school districts, which account for roughly 52,000 students and annual budget allocations of $840 million, the authors conclude that this sample of school districts were not transparently communicating information pertaining to educational technology and their life-cycle efficacy was not being communicated in accordance with best-practices acknowledged in relevant literature."
+      ],
+      "SN": [
+        "978-1-5090-6138-9"
+      ],
+      "PY": "2016",
+      "SP": "139",
+      "EP": "142",
+      "DO": [
+        "10.1109/EITT.2016.34"
+      ],
+      "AN": [
+        "WOS:000401916300027"
+      ]
+    },
+    {
+      "TY": "CPAPER",
+      "AU": [
+        "Molenaar, I",
+        "Knoop-van Campen, C"
+      ],
+      "A1": [
+        "ACM"
+      ],
+      "TI": "Learning analytics in practice The effects of adaptive educational technology Snappet on students' arithmetic skills",
+      "T2": [
+        "LAK '16 CONFERENCE PROCEEDINGS: THE SIXTH INTERNATIONAL LEARNING ANALYTICS & KNOWLEDGE CONFERENCE,"
+      ],
+      "CP": [
+        "6th International Conference on Learning Analytics and Knowledge (LAK)"
+      ],
+      "AB": [
+        "Even though the recent influx of tablets in primary education goes together with the vision that educational technology empowered with learning analytics will revolutionize education, empirical results supporting this claim are scares. Adaptive educational technology Snappet combines extracted and embedded learning analytics daily in classrooms. While students make exercises on the tablet this technology displays real-time data of learner performance in a teacher dashboard (extracted analytics). At the same time, learner performance is used to adaptively adjust exercises to students' progress (embedded analytics). This quasi-experimental study compares the development of students' arithmetic skills over one schoolyear (grade 2 and 4) in a traditional paper based setting to learning with the adaptive educational technology Snappet. The results indicate that students in the Snappet condition make significantly more progress on arithmetic skills in grade 4. Moreover, in this grade students with a high ability level, benefit the most from working with this adaptive educational technology. Overall the development pattern of students with different abilities was more divergent in the AET condition compared to the control condition. These results indicate that adaptive educational technologies combining extracted and embedded learning analytics are indeed creating new education scenarios that contribute to personalized learning in primary education."
+      ],
+      "SN": [
+        "978-1-4503-4190-5"
+      ],
+      "PY": "2016",
+      "SP": "538",
+      "EP": "539",
+      "DO": [
+        "10.1145/2883851.2883892"
+      ],
+      "AN": [
+        "WOS:000390844700091"
+      ]
+    },
+    {
+      "TY": "JOUR",
+      "AU": [
+        "Alammari, A"
+      ],
+      "TI": "Gifted Students' Viewpoints on Using Educational Technology in their Schools in the Saudi Context",
+      "T2": [
+        "INTERNATIONAL JOURNAL OF COMPUTER SCIENCE AND NETWORK SECURITY"
+      ],
+      "AB": [
+        "This paper explored gifted students' perspectives on using educational technologies in their schools in the Saudi context. Adopting a descriptive research approach, a questionnaire was used to collect information from a sample of 196 gifted secondary school students in Jeddah. Findings showed that educational technology was used to a high degree, with an overall mean of 3.74 and 4.06 for the degree of importance of technological usage. Based on the findings, the researcher forwards some recommendations for effectively using such technologies to promote gifted students' abilities and talents."
+      ],
+      "SN": [
+        "1738-7906"
+      ],
+      "DA": [
+        "MAY 30"
+      ],
+      "PY": "2022",
+      "VL": "22",
+      "IS": "5",
+      "SP": "245",
+      "EP": "249",
+      "DO": [
+        "10.22937/IJCSNS.2022.22.5.34"
+      ],
+      "AN": [
+        "WOS:000806720700033"
+      ]
+    },
+    {
+      "TY": "JOUR",
+      "AU": [
+        "Saal, PE",
+        "Graham, MA"
+      ],
+      "TI": "Comparing the Use of Educational Technology in Mathematics Education between South African and German Schools",
+      "T2": [
+        "SUSTAINABILITY"
+      ],
+      "AB": [
+        "This mixed-method study investigated how primary school mathematics teachers in South Africa and Germany utilise educational technology. The perceptions of the principals and teachers regarding the use of educational technology and the obstacles to its integration were contrasted. In addition, the Trends in International Mathematics and Science Study (TIMSS) 2019 data from these countries were used to evaluate the relationship between educational technology and learner accomplishment. The results showed that teachers from both nations employed educational technology as a presentation-, reinforcement-, supplement-, and problem-solving tool, and also used it to stimulate the learning environment, as shown through semi-structured interviews and classroom observations. In addition, obstacles such as a lack of tablets/computers, technical support, and a lack of relevant continuous professional development impeded the incorporation of educational technology in mathematics by these teachers. Additionally, multi-level models revealed that access to a computer and internet connectivity at home correlated positively with German learners' mathematics performances, while no statistically significant relationship was observed in South Africa. The results of this study have policy implications and are discussed at the end of this paper."
+      ],
+      "SN": [
+        "2071-1050"
+      ],
+      "DA": [
+        "MAR"
+      ],
+      "PY": "2023",
+      "VL": "15",
+      "IS": "6",
+      "C7": [
+        "4798"
+      ],
+      "DO": [
+        "10.3390/su15064798"
+      ],
+      "AN": [
+        "WOS:000968333700001"
+      ]
+    },
+    {
+      "TY": "CPAPER",
+      "AU": [
+        "Elmasry, S",
+        "Hassan, A",
+        "Haggag, M"
+      ],
+      "ED": [
+        "Chova, LG",
+        "Martinez, AL",
+        "Torres, IC"
+      ],
+      "TI": "IMPACT OF EDUCATIONAL TECHNOLOGIES ON THERMAL ZONING IN CONTEMPORARY EDUCATIONAL SPACES",
+      "T2": [
+        "EDULEARN13: 5TH INTERNATIONAL CONFERENCE ON EDUCATION AND NEW LEARNING TECHNOLOGIES"
+      ],
+      "CP": [
+        "5th International Conference on Education and New Learning Technologies (EDULEARN)"
+      ],
+      "AB": [
+        "One of the most dominant features of a classroom space is its high occupancy, which results in high internal heat gain which reaches up to approximately 5 KW. Furthermore, installation of educational technologies, such as smart boards, projectors and computers in the spaces increases potential internal heat gain. Previous studies on office buildings indicate that with the introduction of IT equipment in spaces during the last decade, cooling load demands are increasing with an associated increase in summer electrical demand. Due to the fact that educational technologies in specific correspond to pedagogical practices within the space, a lot of variations due to occupancy patterns occur[1]. Also, thermal loads caused by educational technologies are expected to be dependent on spatial configuration. This study explores the thermal impact of educational technologies in 2 typical educational spaces in a facility of higher education; a typical classroom and computer lab. The results indicate that a heat gain ranging between 0.06 and 0.095 KWh/m2 is generated in the rooms when educational technologies are in use. The study also investigates thermal zones within the rooms due to distribution of educational technologies. Through simulation of thermal performance of the rooms, the thermal impact of locating educational technologies in such rooms have been studied. Results show that thermal heat gain through fenestration and openings in this climatic zone are higher than internal heat gain through educational technologies."
+      ],
+      "SN": [
+        "2340-1117",
+        "978-84-616-3822-2"
+      ],
+      "PY": "2013",
+      "SP": "983",
+      "EP": "991",
+      "AN": [
+        "WOS:000346798301004"
+      ]
+    },
+    {
+      "TY": "JOUR",
+      "AU": [
+        "Soyer, F"
+      ],
+      "TI": "Examining attitudes of academics in departments of physical education and sports towards educational technologies",
+      "T2": [
+        "ENERGY EDUCATION SCIENCE AND TECHNOLOGY PART B-SOCIAL AND EDUCATIONAL STUDIES"
+      ],
+      "AB": [
+        "The aim of this research is to determine the academics' attitudes towards educational technologies in terms of some demographic characteristics. 130 academics who work for 13 different Universities in Turkey participated in the study. Attitudes towards Educational Technology Scale was used to collect the data. Data was analyzed by SPSS 17.0 package program. Descriptive statistics, t-test, ANOVA and Pearson's correlation analysis were used to examine the data. There was not any significant difference for attitudes towards educational technologies' points according to gender, administrative position, academic title and education status. Correlation analysis revealed a negative significant correlation between age and attitudes towards educational technology. Findings of this research showed that points of attitudes towards educational technologies were related to age. It could be concluded that age is a determinant for attitudes towards educational technologies. Attitudes towards educational technologies get negative as academics get older (r = 0.908, p < 0.05) Results were discussed according to the relevant literature and some recommendations were made."
+      ],
+      "SN": [
+        "1308-7711"
+      ],
+      "DA": [
+        "JUL"
+      ],
+      "PY": "2012",
+      "VL": "4",
+      "IS": "3",
+      "SP": "1447",
+      "EP": "1454",
+      "AN": [
+        "WOS:000300336900027"
+      ]
+    },
+    {
+      "TY": "JOUR",
+      "AU": [
+        "Sadykov, S",
+        "Bulatbayeva, K",
+        "Rezuanova, G",
+        "Mukhamedkhanova, A"
+      ],
+      "TI": "The Effect of Health-Saving Educational Technologies on Development of Natural Abilities of Schoolchildren",
+      "T2": [
+        "INTERNATIONAL JOURNAL OF EDUCATION IN MATHEMATICS SCIENCE AND TECHNOLOGY"
+      ],
+      "AB": [
+        "Health saving-based educational technologies aim to provide a combination of children's needs, motivations, knowledge, optimal health level and normal physical development. In this study, the effect of the health-saving educational technologies program applied to secondary school students in increasing their physical fitness, self-efficacy in sports and mental endurance in reducing negative nutritional behaviors was examined. In the study, experimental procedures were carried out according to the 2x2 control group, pretest and posttest trial model. Experimental applications of the study lasted for 10 weeks, with 33 experimental and 33 control group students. During this period, the health-saving educational technologies program was applied in the experimental group; on the other hand, no application was made in the control group. Before and after the experimental procedure, pretests and posttests were applied to the experimental and control groups (Physical Fitness Test, Sports Self-Efficacy Scale, Negative Eating Behavior Scale and Mental Endurance Scale). According to the research findings, the students in the experimental group, who applied the health-saving educational technologies program, achieved higher levels of physical fitness, sports self -efficacy and mental endurance than their peers in the control group. It has also been found that the health-saving educational technologies program is effective in reducing negative eating behaviors."
+      ],
+      "SN": [
+        "2147-611X"
+      ],
+      "PY": "2023",
+      "VL": "11",
+      "IS": "2",
+      "SP": "323",
+      "EP": "339",
+      "DO": [
+        "10.46328/ijemst.3134"
+      ],
+      "AN": [
+        "WOS:000925007100002"
+      ]
+    },
+    {
+      "TY": "CPAPER",
+      "AU": [
+        "Wang, JG",
+        "Li, BX",
+        "Deng, HB",
+        "Sun, DM"
+      ],
+      "A1": [
+        "Destech Publicat Inc"
+      ],
+      "TI": "Evaluation of Teachers' Educational Technology Ability in Higher Vocational Schools Based on Student Satisfaction",
+      "T2": [
+        "2ND INTERNATIONAL CONFERENCE ON HUMANITIES SCIENCE, MANAGEMENT AND EDUCATION TECHNOLOGY (HSMET 2017)"
+      ],
+      "CP": [
+        "2017 2nd International Conference on Humanities Science, Management and Education Technology (HSMET)"
+      ],
+      "AB": [
+        "On the basis of the relevant definition and content description of educational technology ability, an evaluation index system of influencing factors of teachers' educational technology ability in higher vocational school is established from the perspective of student education satisfaction. The weight of the index is calculated. On this basis, I pointed out in the information age of higher vocational school teachers to enhance the educational technology."
+      ],
+      "SN": [
+        "2475-0042",
+        "978-1-60595-494-3"
+      ],
+      "PY": "2017",
+      "SP": "586",
+      "EP": "590",
+      "AN": [
+        "WOS:000426943700125"
+      ]
+    }
+  ]
+}
