@@ -1,7 +1,10 @@
 #!/usr/bin/env node
 const fs = require('fs');
+const path = require('path');
 const { input, select } = require('@inquirer/prompts');
 const { execSync } = require('child_process');
+
+const rootPath = path.join(__dirname, '../../../');
 
 async function setupDatabase(dbURL) {
   try {
@@ -33,7 +36,7 @@ async function setupDatabase(dbURL) {
 
 async function setDatabaseURL(databaseURL) {
   let env = '';
-  const envPath = `${process.cwd()}/.env`;
+  const envPath = `${rootPath}/.env`;
 
   // check if the .env file exists and update the DATABASE_URL
   if (fs.existsSync(envPath)) {
@@ -50,7 +53,7 @@ async function setDatabaseURL(databaseURL) {
 async function migrateDatabase() {
   try {
     console.log('Running migrations...');
-    execSync('npx prisma migrate dev --name init', { stdio: 'inherit' });
+    execSync(`npx prisma migrate dev --name init --schema=${rootPath}/prisma/schema.prisma`, { stdio: 'inherit' });
     console.log('Database migration completed.');
   } catch (error) {
     console.error('Error during migration: please check the database URL and try again.');
