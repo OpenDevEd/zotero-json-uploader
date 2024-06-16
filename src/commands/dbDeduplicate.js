@@ -30,8 +30,8 @@ const dbDeduplicate = async (yargs) => {
         default: 'output.json', // Default to output.json if not provided
         coerce: (output) => {
             // Ensure the file name ends with .json or .csv
-            if (!output.endsWith('.json') && !output.endsWith('.csv')) {
-                console.log('Output file name must end with .json or .csv extension'.red);
+            if (!output.endsWith('.json') && !output.endsWith('.csv') && !output.endsWith('.ris')) {
+                console.log('Output file name must end with .json, .csv or .ris'.red);
                 process.exit(1);
             }
             return output;
@@ -43,7 +43,6 @@ const dbDeduplicate = async (yargs) => {
         demandOption: true,
         default: null
     }).option('relevance', {
-        alias: 'r',
         describe: 'Perform a relevance ranking of the database, according to the terms provided below.',
         type: 'boolean',
         demandOption: false,
@@ -63,6 +62,11 @@ const dbDeduplicate = async (yargs) => {
         describe: 'Specify the sort order',
         choices: ['asc', 'desc'],
         default: 'desc',
+        demandOption: false
+    }).option('orderByRank', {
+        describe: 'Order the results by rank',
+        choices: ['asc', 'desc', null],
+        default: null,
         demandOption: false
     });
 

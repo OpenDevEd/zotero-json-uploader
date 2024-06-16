@@ -18,11 +18,11 @@ model SearchResults {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  id                       Int     @id @default(autoincrement())
+  id                       String  @id @default(uuid())
   title                    String?
   abstract                 String?
   date                     String?
-  keywords                 String? // (”;” separated entries)
+  keywords                 String? // (";" separated entries)
   doi                      String?
   sourceDatabase           String?
   identifierInSource       String
@@ -34,12 +34,11 @@ model SearchResults {
   SearchResults_Deduplicated SearchResults_Deduplicated[]
 }
 
-// Used to store the many-to-many relationship between SearchResults and Deduplicated
 model SearchResults_Deduplicated {
-  id Int @id @default(autoincrement())
+  id String @id @default(uuid())
 
-  searchResultsId Int?
-  deduplicatedId  Int?
+  searchResultsId String?
+  deduplicatedId  String?
 
   // Relations
   SearchResults SearchResults? @relation(fields: [searchResultsId], references: [id])
@@ -50,7 +49,7 @@ model Deduplicated {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  id                Int      @id @default(autoincrement())
+  id                String   @id @default(uuid())
   title             String?
   abstract          String?
   keywords          String?
@@ -68,30 +67,30 @@ model Deduplicated {
 }
 
 model Screening {
-  id Int @id @default(autoincrement())
+  id String @id @default(uuid())
 
   screeningUUID     String
   resultOfScreening Json
 
   // Relations
-  deduplicatedId       Int?                  @unique
+  deduplicatedId       String?               @unique
   deduplicated         Deduplicated?         @relation(fields: [deduplicatedId], references: [id])
   ScreeningInformation ScreeningInformation?
 }
 
 model ScreeningInformation {
-  id Int @id @default(autoincrement())
+  id String @id @default(uuid())
 
   screeningUUID String
   screeningInfo Json
 
   // Relations
-  screeningId Int       @unique
+  screeningId String    @unique
   screening   Screening @relation(fields: [screeningId], references: [id])
 }
 
 // model SearchInformation {
-//   id                Int     @id @default(autoincrement())
+//   id                String @id @default(uuid())
 //   searchDescription String?
 //   filters           Json?
 //   database          String?
