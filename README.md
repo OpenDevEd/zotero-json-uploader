@@ -32,14 +32,6 @@ zotero-json-uploader config --help
     - `database`: Set up the database configuration.
 ### Examples
 
-#### Show Help Information
-
-To show help information for the `config` command:
-
-```bash
-zotero-json-uploader config --help
-```
-
 #### Setup Zotero API Key Configuration
 
 To set up the Zotero API key:
