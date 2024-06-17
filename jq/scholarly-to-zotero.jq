@@ -33,13 +33,19 @@ def extractDOI:
     end
   end;
 
+# def makeScholarlyId:
+#     if has("url_scholarbib") and has("citedby_url")
+#     then
+# 	. | "GoogleScholar:" + ([ (.url_scholarbib|capture("info:(?<id>[^:]+):")), (.citedby_url|capture("cites=(?<id>\\d+)"))]| map(.id) | join(":"))
+# 	else ""
+#     end;
+
 def makeScholarlyId:
     if has("url_scholarbib") and has("citedby_url")
     then
-	. | "GoogleScholar:" + ([ (.url_scholarbib|capture("info:(?<id>[^:]+):")), (.citedby_url|capture("cites=(?<id>\\d+)"))]| map(.id) | join(":"))
+	. | "GoogleScholar:" + ([ (.url_scholarbib|capture("info:(?<id>[^:]+):")), (.citedby_url // ""|capture("cites=(?<id>\\d+)"))]| map(.id) | join(":"))
 	else ""
     end;
-
 
 
 .results | [ .[] | (
