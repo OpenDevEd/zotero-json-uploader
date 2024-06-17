@@ -25,14 +25,6 @@ To display help information for the `config` command, use:
 ```bash
 zotero-json-uploader config --help
 ```
-
-#### Setup Zotero or Database Configuration
-
-To set up the Zotero configuration or database configuration, use the following command:
-
-```bash
-zotero-json-uploader config
-```
 ### Options
 
 - `-s, --set`: Specify the type of configuration to set up. This option is required and has the following choices:
