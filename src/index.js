@@ -19,6 +19,12 @@ const { dbUploadScreening } = require('./utils/db/dbUploadScreening');
 const { uploadToZotero } = require('./commands/uploadToZotero');
 const { dbDeduplicate } = require('./commands/dbDeduplicate');
 const { exportDeduplicate } = require('./utils/db/exportDeduplicate');
+const path = require('path');
+
+// Load environment variables
+require('dotenv').config({
+    path: path.join(__dirname, '../.env')
+});
 
 /*
 * Issues:
