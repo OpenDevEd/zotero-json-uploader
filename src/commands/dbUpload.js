@@ -11,6 +11,10 @@ const dbUpload = (yargs) => {
             'openalexjq-sdgs',
             'scopusjq',
         ]
+    }).option('jq', {
+        alias: 'j',
+        describe: 'Provide your own jq file',
+        type: 'string',
     }).positional('files', {
         describe: 'One or more files',
         type: 'string',

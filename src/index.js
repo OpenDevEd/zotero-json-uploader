@@ -116,6 +116,7 @@ const argv = yargs
             dbUploadScreening(file);
         return;
     }
+
     console.log('Command not found');
 })()
 

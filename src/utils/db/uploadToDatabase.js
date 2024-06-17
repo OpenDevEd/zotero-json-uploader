@@ -33,7 +33,7 @@ async function uploadToDatabase(argv) {
         let mytransform = '';
         if (argv.transform) {
             if (Object.keys(argvTransformOptionsAndSourceMapping).includes(argv.transform)) {
-                mytransform = argv.transform;
+                mytransform = argvTransformOptionsAndSourceMapping[argv.transform];
             } else {
                 console.log('unknown manual transform option: ' + argv.transform);
                 process.exit(1);
@@ -49,7 +49,7 @@ async function uploadToDatabase(argv) {
         };
         // argv.transform is not provided, therefore detect source.
         if (!fs.existsSync(mytransform)) {
-            console.log(`JQ file not found: ${dbfilterfile}`);
+            console.log(`\nJQ file not found: ${mytransform}`.red);
             process.exit(1);
         }
         dbdata = await jqfilter(infile, mytransform);
