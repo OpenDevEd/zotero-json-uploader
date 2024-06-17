@@ -109,7 +109,7 @@ async function deduplicateSearchResultV2(searchResults) {
                     id: dedup.id,
                     item_ids: { push: item?.identifierInSource.toString() },
                     number_of_sources: { increment: 1 },
-                    average_rank: dedup.average_rank + (item.itemPositionWithinSearch - dedup.average_rank) / (dedup.number_of_sources + 1)
+                    average_rank: Math.floor(dedup.average_rank + (item.itemPositionWithinSearch - dedup.average_rank) / (dedup.number_of_sources + 1))
                 }
             });
         }
