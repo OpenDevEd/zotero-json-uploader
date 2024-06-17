@@ -96,18 +96,16 @@ zotero-json-uploader db-upload [files...]
 
 #### Options for db-upload
 
--t, --transform: Choose the transformation to apply to the data. if not provided, the data will be uploaded depending on source in the meta.
-
-Choices:
-  - jq (requires -j): Apply a custom JQ filter defined in the file specified with -j.
-  - openalexjq
-  - openalexjs-sdgs
-  - openalexjs
-  - scholarlyjq
-  - openalexjq-sdgs
-  - scopusjq
-
--j, --jq: Provide your own jq file. Required when using -t jq.
+* -t, --transform: Choose the transformation to apply to the data. if not provided, the data will be uploaded depending on source in the meta.
+  * Choices:
+    - jq (requires -j): Apply a custom JQ filter defined in the file specified with -j.
+    - openalexjq
+    - openalexjs-sdgs
+    - openalexjs
+    - scholarlyjq
+    - openalexjq-sdgs
+    - scopusjq
+* -j, --jq: Provide your own jq file. Required when using -t jq.
 
 ### Deduplicate the Database
 
@@ -125,27 +123,18 @@ zotero-json-uploader db-deduplicate [options...]
 
 * --export, -e: Export the deduplicated database table to CSV or JSON or RIS format. (string)
 for example: "--export deduplicated.json"
-
 * --rank, -r: Select records from the database by rank. (number)
-
 * --compare, -c: Choose the comparison operator for ranking selection. (string)
   - Choices: "equals", "gt", "gte", "lt", "lte"
-
 * -o, --output: Specify the output file name with .json or .csv extension. (string)
-
 * -l, --limit: Limit the number of records to export. (number)
-
 * --orderByRank: Order results by rank.
   - Choices: "asc", "desc"
-
 * --relevance: Perform relevance ranking of the database. (boolean)
-
 * -s, --rstring: Search the database for specified search terms. (string)
   - Must be a keywords for example: "climate | change" or "climate & change" or just "climate".
-
 * -f, --rfields: Specify fields used for relevance ranking.
   - Choices: "title", "abstract", "keywords", "authors", "publication", "doi", "url", "date"
-
 * -t, --rsort: Specify sort order for relevance ranking.
   - Choices: "asc", "desc"
 
@@ -168,7 +157,5 @@ zotero-json-uploader --table Deduplicated --output unscreened_Deduplicated.json 
 #### Options for db-dump
 
 * --table, -t: Specify the table to dump. (string)
-
 * --output, -o: Specify the output file name with .json or .csv extension. (string)
-
 * --unscreened, -u: Retrieve unscreened data from the deduplicated table. (boolean) (Works just with the Deduplicated table)
