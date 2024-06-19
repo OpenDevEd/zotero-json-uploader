@@ -57,6 +57,41 @@ async function status() {
     `Total search results deduplicated: ${searchResultsDeduplicatedLength}`
   );
 }
+async function statusV2() {
+  // number of elements in searchResults
+  const searchResultsLength = await prisma.searchResults.count();
+  // number of elements in deduplicated
+  const deduplicatedLength = await prisma.deduplicated.count();
+  // number of elements in deduplicated that have doi
+  const deduplicatedWithDOI = await prisma.deduplicated.count({
+    where: { doi: { not: null } },
+  });
+  // number of elements in deduplicated does not have abstract
+  const deduplicatedWithoutAbstract = await prisma.deduplicated.count({
+    where: { abstract: { equals: null } },
+  });
+  // Histogram of how many items have x sources ( x % → 1 source, y % → 2 sources)
+  const sourcesHistogram = await prisma.deduplicated.groupBy({
+    by: ['number_of_sources'],
+    _count: { number_of_sources: true },
+  });
+  console.log(`Total items in table 1: ${searchResultsLength}`);
+  console.log(`Total items in table 2: ${deduplicatedLength}`);
+  const percentageWithDOI = (deduplicatedWithDOI / deduplicatedLength) * 100;
+  console.log(`Number in Table 2 that have a DOI (%) : ${percentageWithDOI}`);
+  const percentageWithoutAbstract =
+    (deduplicatedWithoutAbstract / deduplicatedLength) * 100;
+  console.log(
+    `Number in Table 2 that have no abstract (%) : ${percentageWithoutAbstract}`
+  );
+  console.log(
+    `Histogram of number of sources: ${JSON.stringify(
+      sourcesHistogram,
+      null,
+      2
+    )}`
+  );
+}
 async function findSimilarTitles(threshold) {
   const similarTitles = await prisma.$queryRaw`
       SELECT sr1.id, sr2.id as match_id, similarity(sr1.title::text, sr2.title::text) as similarity
@@ -66,4 +101,4 @@ async function findSimilarTitles(threshold) {
   `;
   return similarTitles;
 }
-module.exports = { status };
+module.exports = { status, statusV2 };
