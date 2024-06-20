@@ -23,6 +23,7 @@
   "homepage": "https://github.com/OpenDevEd/zotero-json-uploader#readme",
   "dependencies": {
     "@inquirer/prompts": "^5.0.2",
+    "@prisma/client": "^5.15.1",
     "colors": "^1.4.0",
     "dotenv": "^16.4.5",
     "node-jq": "^4.3.0",
@@ -33,6 +34,6 @@
     "zotero-lib": "^1.0.95"
   },
   "devDependencies": {
-    "prisma": "^5.15.0"
+    "prisma": "^5.15.1"
   }
 }

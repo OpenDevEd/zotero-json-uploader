@@ -1,5 +1,6 @@
 const { default: OpenAlex } = require('openalex-sdk');
 const { PrismaClient, Prisma } = require('@prisma/client');
+const fs = require('fs');
 async function openAlexOneItem(item) {
   // search for items by title first 30 characters and abstract if available
   const openAlex = new OpenAlex();
@@ -7,7 +8,9 @@ async function openAlexOneItem(item) {
 
   // if item has valid year
   const date = item.date;
-  const year = date ? date.substring(0, 4) : null;
+  const year = date !== 'NA' ? date.substring(0, 4) : undefined;
+  console.log(year);
+  return item;
   const searchOption = year
     ? {
         search: item.title,
@@ -20,7 +23,8 @@ async function openAlexOneItem(item) {
   // filter by title and abstract
   let filtered = searchResults.results.filter(
     (result) =>
-      result.title.toLowerCase().includes(item.title.toLowerCase()) ||
+      (result.title &&
+        result.title.toLowerCase().includes(item.title.toLowerCase())) ||
       (result.abstract &&
         result.abstract.toLowerCase().includes(item.abstract.toLowerCase()))
   );
@@ -39,20 +43,45 @@ async function openAlexOneItem(item) {
       })
     );
   });
-  console.log(filtered);
+  return filtered;
 }
 
 async function OpenAlexMatch() {
   const prisma = new PrismaClient();
-
+  let noResult = 0;
   // find first record in searchResults and source from Google Scholar
-  const sample = await prisma.searchResults.findFirst({
+  const sample = await prisma.searchResults.findMany({
     where: {
-      title: 'Teaching and learning mathematics with digital technologies',
+      sourceDatabase: 'Google Scholar',
     },
+    take: 100,
   });
-  console.log(sample);
-  await openAlexOneItem(sample);
+  let results = [];
+  for (let item of sample) {
+    const openAlexResults = await openAlexOneItem(item);
+    if (openAlexResults.length > 0) {
+      // add the result and item
+      const result = {
+        openAlexResult: openAlexResults[0],
+        item,
+      };
+      results.push(result);
+    }
+
+    // if more than 1 result print to console
+    if (openAlexResults.length > 1) {
+      console.log(`more than 1 result for ${item.title}`);
+    }
+    if (openAlexResults.length == 0) {
+      console.log(`no results for ${item.title}`);
+      noResult++;
+    }
+    // save to json
+    await fs.writeFileSync(
+      'openalex-results.json',
+      JSON.stringify(results, null, 2)
+    );
+  }
 }
 
 module.exports = { OpenAlexMatch };
