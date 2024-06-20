@@ -136,3 +136,5 @@ migrations
 
 *.zotero.json
 extra_json/
+
+.env.backup

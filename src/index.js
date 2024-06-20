@@ -20,10 +20,11 @@ const { uploadToZotero } = require('./commands/uploadToZotero');
 const { dbDeduplicate } = require('./commands/dbDeduplicate');
 const { exportDeduplicate } = require('./utils/db/exportDeduplicate');
 const path = require('path');
+const { status, statusV2 } = require('./utils/db/status');
 
 // Load environment variables
 require('dotenv').config({
-    path: path.join(__dirname, '../.env')
+  path: path.join(__dirname, '../.env'),
 });
 
 /*
@@ -62,61 +63,66 @@ Issues:
 
 //TODO: Create middleware
 const argv = yargs
-    // .command('$0 action [files...]', '')
-    .command('db-dump', 'Dump the database', dbDump)
-    .command('config', 'Setup Zotero configuration or database configuration', config)
-    .command('db-set-connection [url]', 'Setup the database', dbSetConnection)
-    .command('db-delete [searchId]', 'Delete a search from the database', dbDelete)
-    .command('db-upload [files...]', 'Upload data to the database', dbUpload)
-    .command('db-deduplicate', 'Deduplicate the database', dbDeduplicate)
-    .command('db-upload-screening [files...]', 'Upload screening data to the database', dbUploadScreening)
-    .command('zotero [files...]', 'Upload data to zotero', uploadToZotero)
-    .help()
-    .alias('help', 'h')
-    .middleware(yargsMiddleware)
-    .parse();
+  // .command('$0 action [files...]', '')
+  .command('db-dump', 'Dump the database', dbDump)
+  .command(
+    'config',
+    'Setup Zotero configuration or database configuration',
+    config
+  )
+  .command('db-set-connection [url]', 'Setup the database', dbSetConnection)
+  .command(
+    'db-delete [searchId]',
+    'Delete a search from the database',
+    dbDelete
+  )
+  .command('db-upload [files...]', 'Upload data to the database', dbUpload)
+  .command('db-deduplicate', 'Deduplicate the database', dbDeduplicate)
+  .command(
+    'db-upload-screening [files...]',
+    'Upload screening data to the database',
+    dbUploadScreening
+  )
+  .command('zotero [files...]', 'Upload data to zotero', uploadToZotero)
+  .command('db-status', 'Get the status of the database', statusV2)
+  .help()
+  .alias('help', 'h')
+  .middleware(yargsMiddleware)
+  .parse();
 
 // main
 (async () => {
-    const argValue = await argv;
+  const argValue = await argv;
 
-    if (argValue._[0] === 'config') {
-        if (argValue.set === 'api-key')
-            await setupZoteroConfig();
-        else if (argValue.set === 'database')
-            await setupDatabase();
-        return;
-    }
-    if (argValue._[0] === 'db-upload') {
-        await uploadToDatabase(argValue);
-        return;
-    }
-    if (argValue._[0] === 'db-deduplicate') {
-        if (argValue.export) await exportDeduplicate(argValue);
-        else await deduplicate();
-        return;
-    }
-    if (argValue._[0] === 'zotero') {
-        await init(argValue);
-        return;
-    }
-    if (argValue._[0] === 'db-dump') {
-        await dump(argValue.table, argValue.output, argValue.unscreened);
-        return;
-    }
-    if (argValue._[0] === 'db-delete') {
-        if (argValue.searchId)
-            deleteSearch(argValue.searchId);
-        else
-            console.log('Search ID not provided');
-        return;
-    }
-    if (argValue._[0] === 'db-upload-screening') {
-        for (file of argValue.files)
-            dbUploadScreening(file);
-        return;
-    }
-
-    console.log('Command not found');
-})()
-
+  if (argValue._[0] === 'config') {
+    if (argValue.set === 'api-key') await setupZoteroConfig();
+    else if (argValue.set === 'database') await setupDatabase();
+    return;
+  }
+  if (argValue._[0] === 'db-upload') {
+    await uploadToDatabase(argValue);
+    return;
+  }
+  if (argValue._[0] === 'db-deduplicate') {
+    if (argValue.export) await exportDeduplicate(argValue);
+    else await deduplicate();
+    return;
+  }
+  if (argValue._[0] === 'zotero') {
+    await init(argValue);
+    return;
+  }
+  if (argValue._[0] === 'db-dump') {
+    await dump(argValue.table, argValue.output, argValue.unscreened);
+    return;
+  }
+  if (argValue._[0] === 'db-delete') {
+    if (argValue.searchId) deleteSearch(argValue.searchId);
+    else console.log('Search ID not provided');
+    return;
+  }
+  if (argValue._[0] === 'db-upload-screening') {
+    for (file of argValue.files) dbUploadScreening(file);
+    return;
+  }
+})();
