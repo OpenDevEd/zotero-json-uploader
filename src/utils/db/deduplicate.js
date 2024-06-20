@@ -10,6 +10,14 @@ async function deduplicate() {
   // await prisma.searchResults.deleteMany();
   await deleteDeduplicated();
   await deduplicateSearchResultV6();
+  console.log(` -> Deduplication 1/2 complete`.green);
+  // find the search results that donst have any
+  // deduplicate and create it in the deduplicated table
+  await createNonDeduplicate();
+  console.log(` -> Deduplication 2/2 complete`.green);
+
+  console.log('Deduplication complete. 🎉'.green);
+
   // process.exit()
   // try {
   //   await deleteDeduplicated();
@@ -148,8 +156,8 @@ async function deduplicateSearchResultV2(searchResults) {
           number_of_sources: { increment: 1 },
           average_rank: Math.floor(
             dedup.average_rank +
-              (item.itemPositionWithinSearch - dedup.average_rank) /
-                (dedup.number_of_sources + 1)
+            (item.itemPositionWithinSearch - dedup.average_rank) /
+            (dedup.number_of_sources + 1)
           ),
         },
       });
@@ -162,7 +170,7 @@ async function deduplicateSearchResultV2(searchResults) {
         abstract: item?.abstract,
         keywords: item?.keywords,
         doi: item?.doi,
-        date: item?.date,
+        date: item?.date ?? (new Date(item.date).getFullYear() || ""),
         otherIdentifier: item?.identifierInSource,
         flag: null,
         item_ids: [item?.identifierInSource.toString()],
@@ -188,8 +196,8 @@ async function deduplicateSearchResultV2(searchResults) {
       : null,
     searchResults_DeduplicatedToCreate.length > 0
       ? prisma.searchResults_Deduplicated.createMany({
-          data: searchResults_DeduplicatedToCreate,
-        })
+        data: searchResults_DeduplicatedToCreate,
+      })
       : null,
     ...updateTransactions,
   ].filter(Boolean);
@@ -387,8 +395,8 @@ async function deduplicateSearchResultV4(searchResults) {
           number_of_sources: { increment: 1 },
           average_rank: Math.floor(
             dedup.average_rank +
-              (item.itemPositionWithinSearch - dedup.average_rank) /
-                (dedup.number_of_sources + 1)
+            (item.itemPositionWithinSearch - dedup.average_rank) /
+            (dedup.number_of_sources + 1)
           ),
         },
       });
@@ -426,8 +434,8 @@ async function deduplicateSearchResultV4(searchResults) {
       : null,
     searchResults_DeduplicatedToCreate.length > 0
       ? prisma.searchResults_Deduplicated.createMany({
-          data: searchResults_DeduplicatedToCreate,
-        })
+        data: searchResults_DeduplicatedToCreate,
+      })
       : null,
     ...updateTransactions,
   ].filter(Boolean);
@@ -524,8 +532,8 @@ async function deduplicateSearchResultV5(searchResults) {
           number_of_sources: { increment: 1 },
           average_rank: Math.floor(
             dedup.average_rank +
-              (item.itemPositionWithinSearch - dedup.average_rank) /
-                (dedup.number_of_sources + 1)
+            (item.itemPositionWithinSearch - dedup.average_rank) /
+            (dedup.number_of_sources + 1)
           ),
         },
       });
@@ -563,8 +571,8 @@ async function deduplicateSearchResultV5(searchResults) {
       : null,
     searchResults_DeduplicatedToCreate.length > 0
       ? prisma.searchResults_Deduplicated.createMany({
-          data: searchResults_DeduplicatedToCreate,
-        })
+        data: searchResults_DeduplicatedToCreate,
+      })
       : null,
     ...updateTransactions,
   ].filter(Boolean);
@@ -572,80 +580,16 @@ async function deduplicateSearchResultV5(searchResults) {
   await prisma.$transaction(transactions);
 }
 async function deduplicateSearchResultV6() {
-  console.log('searching for duplicates in Title and Date...'.yellow);
-  const duplicateTitleDates = await prisma.searchResults.groupBy({
-    by: ['title', 'date'],
-    having: {
-      AND: [
-        {
-          title: {
-            _count: {
-              gt: 1,
-            },
-          },
-        },
-        {
-          date: {
-            _count: {
-              gt: 1,
-            },
-          },
-        },
-      ],
-    },
-    _count: {
-      _all: true,
-    },
+  // find duplicates in search results using the title and date (just if the doi is not available)
+  const allDuplicates = await getDuplicates({
+    gt: 1,
   });
-
-  const titleDateDuplicates = await prisma.searchResults.findMany({
-    where: {
-      OR: duplicateTitleDates.map((d) => ({
-        title: d.title,
-        date: d.date,
-      })),
-    },
-  });
-  console.log(`Title and date duplicates: ${titleDateDuplicates.length}`);
-  console.log('searching for duplicates in DOI...'.yellow);
-  const duplicateDOIs = await prisma.searchResults.groupBy({
-    by: ['doi'],
-    having: {
-      doi: {
-        _count: {
-          gt: 1,
-        },
-        not: {
-          equals: '',
-        },
-      },
-    },
-    _count: {
-      doi: true,
-    },
-  });
-
-  const doiDuplicates = await prisma.searchResults.findMany({
-    where: {
-      doi: {
-        in: duplicateDOIs.map((d) => d.doi),
-      },
-    },
-  });
-
-  console.log(`DOI duplicates: ${doiDuplicates.length}`);
-  console.log('searching for duplicates in Title and Date...'.yellow);
-  // Find Duplicates by Title and Date
-
-  console.log('Combining results...'.yellow);
-  // Combine Results and Remove Exact Duplicates
-  const allDuplicates = [...doiDuplicates, ...titleDateDuplicates];
-  console.log('Removing exact duplicates...'.yellow);
+  console.log('Removing exact duplicates...');
   // Remove exact duplicates if any
   const uniqueDuplicates = Array.from(
     new Set(allDuplicates.map((a) => JSON.stringify(a)))
   ).map((str) => JSON.parse(str));
-  console.log(`Unique duplicates: ${uniqueDuplicates.length}`);
+  console.log(` -> Unique duplicates: ${uniqueDuplicates.length}`.yellow);
 
   const existingDeduplicated = await getExistingDeduplicatedRecords(
     uniqueDuplicates
@@ -656,30 +600,101 @@ async function deduplicateSearchResultV6() {
     searchResults_DeduplicatedToCreate,
     deduplicatedToUpdate,
   } = await processDuplicates(uniqueDuplicates, existingDeduplicated);
-  console.log(`Deduplicated to create: ${deduplicatedToCreate.length}`);
+
   console.log(
-    `SearchResults_Deduplicated to create: ${searchResults_DeduplicatedToCreate.length}`
+    `Found ${deduplicatedToCreate.length} new deduplicated records`.yellow,
+    `\nFound ${deduplicatedToUpdate.length} existing deduplicated records`.yellow
   );
-  console.log(`Deduplicated to update: ${deduplicatedToUpdate.length}`);
-  console.log('Updating deduplicated...'.yellow);
   const updateTransactions = deduplicatedToUpdate.map((item) =>
     prisma.deduplicated.update(item)
   );
-  console.log('Creating deduplicated...'.yellow);
   const transactions = [
     deduplicatedToCreate.length > 0
       ? prisma.deduplicated.createMany({ data: deduplicatedToCreate })
       : null,
     searchResults_DeduplicatedToCreate.length > 0
       ? prisma.searchResults_Deduplicated.createMany({
-          data: searchResults_DeduplicatedToCreate,
-        })
+        data: searchResults_DeduplicatedToCreate,
+      })
       : null,
     ...updateTransactions,
   ].filter(Boolean);
 
   await prisma.$transaction(transactions);
-  console.log('Deduplication complete.'.green);
+}
+
+async function getDuplicates(role) {
+  console.log('searching for duplicates in Title and Date...');
+  const duplicateTitleDates = await prisma.searchResults.groupBy({
+    by: ['title', 'date'],
+    having: {
+      AND: [
+        {
+          title: {
+            _count: role,
+          },
+        },
+        {
+          date: {
+            _count: role,
+          },
+        },
+      ],
+    },
+    where: {
+      OR: [
+        {
+          doi: {
+            equals: null
+          },
+          doi: {
+            equals: ''
+          }
+        }
+      ]
+    },
+    _count: {
+      _all: true,
+    },
+  });
+  const titleDateDuplicates = await prisma.searchResults.findMany({
+    where: {
+      OR: duplicateTitleDates.map((d) => ({
+        title: d.title,
+        date: d.date,
+      })),
+    },
+  });
+  console.log(` -> Title and date duplicates: ${titleDateDuplicates.length}`.yellow);
+
+  // find duplicates in search results using the doi
+  console.log('searching for duplicates in DOI...');
+  const duplicateDOIs = await prisma.searchResults.groupBy({
+    by: ['doi'],
+    having: {
+      doi: {
+        _count: role,
+        not: {
+          equals: '',
+        },
+      },
+    },
+    _count: {
+      doi: true,
+    },
+  });
+  const doiDuplicates = await prisma.searchResults.findMany({
+    where: {
+      doi: {
+        in: duplicateDOIs.map((d) => d.doi),
+      },
+    },
+  });
+  console.log(` -> DOI duplicates: ${doiDuplicates.length}`.yellow);
+
+  console.log('Combining results...');
+  // Combine Results and Remove Exact Duplicates
+  return [...doiDuplicates, ...titleDateDuplicates];
 }
 
 async function getExistingDeduplicatedRecords(duplicates) {
@@ -711,7 +726,6 @@ async function processDuplicates(duplicates, existingDeduplicated) {
   const searchResults_DeduplicatedToCreate = [];
   const deduplicatedToUpdate = [];
 
-  console.log(`Existing deduplicated: ${existingDeduplicated.length}`);
   for (let item of duplicates) {
     let dedup = existingDeduplicated.find(
       (d) =>
@@ -732,8 +746,8 @@ async function processDuplicates(duplicates, existingDeduplicated) {
           number_of_sources: { increment: 1 },
           average_rank: Math.floor(
             dedup.average_rank +
-              (item.itemPositionWithinSearch - dedup.average_rank) /
-                (dedup.number_of_sources + 1)
+            (item.itemPositionWithinSearch - dedup.average_rank) /
+            (dedup.number_of_sources + 1)
           ),
         },
       });
@@ -744,7 +758,7 @@ async function processDuplicates(duplicates, existingDeduplicated) {
         abstract: item.abstract,
         keywords: item.keywords,
         doi: item.doi,
-        date: item.date,
+        date: item.date ?? (new Date(item.date).getFullYear() || ""),
         otherIdentifier: item.identifierInSource,
         flag: null,
         item_ids: [item.identifierInSource.toString()],
@@ -769,10 +783,65 @@ async function processDuplicates(duplicates, existingDeduplicated) {
 }
 
 async function deleteDeduplicated() {
-  console.log('Deleting search deduplicated...'.yellow);
+  console.log('Deleting search<->deduplicated relations...'.yellow);
   await prisma.searchResults_Deduplicated.deleteMany();
   console.log('Deleting deduplicated...'.yellow);
   await prisma.deduplicated.deleteMany();
   // await prisma.searchResults.deleteMany();
 }
+
+async function createNonDeduplicate(allDuplicates) {
+  const config = {
+    take: 10000,
+    skip: 0,
+  };
+
+  do {
+    // get all search results that don't have a dedup
+    const searchResults = await prisma.searchResults.findMany({
+      take: config.take,
+      skip: config.skip,
+      where: { SearchResults_Deduplicated: { none: {} } },
+    });
+    if (searchResults.length === 0) break;
+
+    // create all in deduplicated
+    const deduplicatedToCreate = searchResults.map((item) => ({
+      id: uuid.v4(),
+      title: item.title,
+      abstract: item.abstract,
+      keywords: item.keywords,
+      doi: item.doi,
+      date: item.date ?? (new Date(item.date).getFullYear() || ""),
+      otherIdentifier: item.identifierInSource,
+      flag: null,
+      item_ids: [item.identifierInSource.toString()],
+      number_of_sources: 1,
+      average_rank: item.itemPositionWithinSearch,
+    }));
+
+    // create all in searchResults_Deduplicated
+    const searchResults_DeduplicatedToCreate = searchResults.map((item) => ({
+      searchResultsId: item.id,
+      deduplicatedId: deduplicatedToCreate.find(
+        (d) => d.otherIdentifier === item.identifierInSource
+      ).id,
+    }));
+
+    const res = await prisma.$transaction([
+      prisma.deduplicated.createMany({ data: deduplicatedToCreate }),
+      prisma.searchResults_Deduplicated.createMany({
+        data: searchResults_DeduplicatedToCreate,
+      }),
+    ]);
+
+    if (res) {
+      console.log(
+        `Created ${searchResults.length} non-deduplicated records`.yellow
+      );
+    }
+    config.skip += config.take;
+  } while (true);
+}
+
 module.exports = { deduplicate };
