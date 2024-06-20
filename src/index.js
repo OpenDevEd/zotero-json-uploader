@@ -21,6 +21,7 @@ const { dbDeduplicate } = require('./commands/dbDeduplicate');
 const { exportDeduplicate } = require('./utils/db/exportDeduplicate');
 const path = require('path');
 const { status, statusV2 } = require('./utils/db/status');
+const { OpenAlexMatch } = require('./utils/db/db-match-openalex');
 
 // Load environment variables
 require('dotenv').config({
@@ -85,6 +86,11 @@ const argv = yargs
   )
   .command('zotero [files...]', 'Upload data to zotero', uploadToZotero)
   .command('db-status', 'Get the status of the database', statusV2)
+  .command(
+    'db-match-openalex',
+    'Match the database with OpenAlex',
+    OpenAlexMatch
+  )
   .help()
   .alias('help', 'h')
   .middleware(yargsMiddleware)
