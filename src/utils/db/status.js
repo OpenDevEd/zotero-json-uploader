@@ -64,23 +64,37 @@ async function statusV2() {
   const deduplicatedLength = await prisma.deduplicated.count();
   // number of elements in deduplicated that have doi
   const deduplicatedWithDOI = await prisma.deduplicated.count({
-    where: { doi: { not: null } },
+    where: { doi: { not: '' } },
   });
-  // number of elements in deduplicated does not have abstract
+  // number of elements in deduplicated that have no abstract or abstract is empty
   const deduplicatedWithoutAbstract = await prisma.deduplicated.count({
-    where: { abstract: { equals: null } },
+    where: { abstract: { equals: '' } },
   });
-  // Histogram of how many items have x sources ( x % → 1 source, y % → 2 sources)
+  // Histogram of how many items have x sources ( x % → 1 source, y % → 2 sources) with percentage
+
   const sourcesHistogram = await prisma.deduplicated.groupBy({
     by: ['number_of_sources'],
-    _count: { number_of_sources: true },
+    _count: {
+      number_of_sources: true,
+    },
   });
+  // Histogram of how many items have x sources ( x % → 1 source, y % → 2 sources) with percentage
+  for (const item of sourcesHistogram) {
+    // only 2 digits after the decimal point
+    item.percentage =
+      Math.round((item._count.number_of_sources / deduplicatedLength) * 10000) /
+      100;
+    item.count = item._count.number_of_sources;
+    delete item._count;
+  }
   console.log(`Total items in table 1: ${searchResultsLength}`);
   console.log(`Total items in table 2: ${deduplicatedLength}`);
-  const percentageWithDOI = (deduplicatedWithDOI / deduplicatedLength) * 100;
+  const percentageWithDOI =
+    Math.round((deduplicatedWithDOI / deduplicatedLength) * 10000) / 100;
   console.log(`Number in Table 2 that have a DOI (%) : ${percentageWithDOI}`);
   const percentageWithoutAbstract =
-    (deduplicatedWithoutAbstract / deduplicatedLength) * 100;
+    Math.round((deduplicatedWithoutAbstract / deduplicatedLength) * 10000) /
+    100;
   console.log(
     `Number in Table 2 that have no abstract (%) : ${percentageWithoutAbstract}`
   );

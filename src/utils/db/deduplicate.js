@@ -156,8 +156,8 @@ async function deduplicateSearchResultV2(searchResults) {
           number_of_sources: { increment: 1 },
           average_rank: Math.floor(
             dedup.average_rank +
-            (item.itemPositionWithinSearch - dedup.average_rank) /
-            (dedup.number_of_sources + 1)
+              (item.itemPositionWithinSearch - dedup.average_rank) /
+                (dedup.number_of_sources + 1)
           ),
         },
       });
@@ -170,7 +170,7 @@ async function deduplicateSearchResultV2(searchResults) {
         abstract: item?.abstract,
         keywords: item?.keywords,
         doi: item?.doi,
-        date: item?.date ?? (new Date(item.date).getFullYear() || ""),
+        date: item?.date ?? (new Date(item.date).getFullYear() || ''),
         otherIdentifier: item?.identifierInSource,
         flag: null,
         item_ids: [item?.identifierInSource.toString()],
@@ -196,8 +196,8 @@ async function deduplicateSearchResultV2(searchResults) {
       : null,
     searchResults_DeduplicatedToCreate.length > 0
       ? prisma.searchResults_Deduplicated.createMany({
-        data: searchResults_DeduplicatedToCreate,
-      })
+          data: searchResults_DeduplicatedToCreate,
+        })
       : null,
     ...updateTransactions,
   ].filter(Boolean);
@@ -395,8 +395,8 @@ async function deduplicateSearchResultV4(searchResults) {
           number_of_sources: { increment: 1 },
           average_rank: Math.floor(
             dedup.average_rank +
-            (item.itemPositionWithinSearch - dedup.average_rank) /
-            (dedup.number_of_sources + 1)
+              (item.itemPositionWithinSearch - dedup.average_rank) /
+                (dedup.number_of_sources + 1)
           ),
         },
       });
@@ -434,8 +434,8 @@ async function deduplicateSearchResultV4(searchResults) {
       : null,
     searchResults_DeduplicatedToCreate.length > 0
       ? prisma.searchResults_Deduplicated.createMany({
-        data: searchResults_DeduplicatedToCreate,
-      })
+          data: searchResults_DeduplicatedToCreate,
+        })
       : null,
     ...updateTransactions,
   ].filter(Boolean);
@@ -532,8 +532,8 @@ async function deduplicateSearchResultV5(searchResults) {
           number_of_sources: { increment: 1 },
           average_rank: Math.floor(
             dedup.average_rank +
-            (item.itemPositionWithinSearch - dedup.average_rank) /
-            (dedup.number_of_sources + 1)
+              (item.itemPositionWithinSearch - dedup.average_rank) /
+                (dedup.number_of_sources + 1)
           ),
         },
       });
@@ -571,8 +571,8 @@ async function deduplicateSearchResultV5(searchResults) {
       : null,
     searchResults_DeduplicatedToCreate.length > 0
       ? prisma.searchResults_Deduplicated.createMany({
-        data: searchResults_DeduplicatedToCreate,
-      })
+          data: searchResults_DeduplicatedToCreate,
+        })
       : null,
     ...updateTransactions,
   ].filter(Boolean);
@@ -603,7 +603,8 @@ async function deduplicateSearchResultV6() {
 
   console.log(
     `Found ${deduplicatedToCreate.length} new deduplicated records`.yellow,
-    `\nFound ${deduplicatedToUpdate.length} existing deduplicated records`.yellow
+    `\nFound ${deduplicatedToUpdate.length} existing deduplicated records`
+      .yellow
   );
   const updateTransactions = deduplicatedToUpdate.map((item) =>
     prisma.deduplicated.update(item)
@@ -614,8 +615,8 @@ async function deduplicateSearchResultV6() {
       : null,
     searchResults_DeduplicatedToCreate.length > 0
       ? prisma.searchResults_Deduplicated.createMany({
-        data: searchResults_DeduplicatedToCreate,
-      })
+          data: searchResults_DeduplicatedToCreate,
+        })
       : null,
     ...updateTransactions,
   ].filter(Boolean);
@@ -645,13 +646,13 @@ async function getDuplicates(role) {
       OR: [
         {
           doi: {
-            equals: null
+            equals: null,
           },
           doi: {
-            equals: ''
-          }
-        }
-      ]
+            equals: '',
+          },
+        },
+      ],
     },
     _count: {
       _all: true,
@@ -665,7 +666,9 @@ async function getDuplicates(role) {
       })),
     },
   });
-  console.log(` -> Title and date duplicates: ${titleDateDuplicates.length}`.yellow);
+  console.log(
+    ` -> Title and date duplicates: ${titleDateDuplicates.length}`.yellow
+  );
 
   // find duplicates in search results using the doi
   console.log('searching for duplicates in DOI...');
@@ -746,8 +749,8 @@ async function processDuplicates(duplicates, existingDeduplicated) {
           number_of_sources: { increment: 1 },
           average_rank: Math.floor(
             dedup.average_rank +
-            (item.itemPositionWithinSearch - dedup.average_rank) /
-            (dedup.number_of_sources + 1)
+              (item.itemPositionWithinSearch - dedup.average_rank) /
+                (dedup.number_of_sources + 1)
           ),
         },
       });
@@ -758,7 +761,7 @@ async function processDuplicates(duplicates, existingDeduplicated) {
         abstract: item.abstract,
         keywords: item.keywords,
         doi: item.doi,
-        date: item.date ?? (new Date(item.date).getFullYear() || ""),
+        date: item.date ?? (new Date(item.date).getFullYear() || ''),
         otherIdentifier: item.identifierInSource,
         flag: null,
         item_ids: [item.identifierInSource.toString()],
@@ -796,13 +799,22 @@ async function createNonDeduplicate(allDuplicates) {
     skip: 0,
   };
 
-  do {
+  // get all search results that don't have a dedup
+  const searchResultsCount = await prisma.searchResults.count({
+    where: { SearchResults_Deduplicated: { none: {} } },
+  });
+  console.log(`Total search results to process: ${searchResultsCount}`.yellow);
+
+  const iterations = Math.ceil(searchResultsCount / config.take);
+  console.log(`Total iterations: ${iterations}`.yellow);
+
+  for (let i = 0; i < iterations; i++) {
     // get all search results that don't have a dedup
     const searchResults = await prisma.searchResults.findMany({
       take: config.take,
-      skip: config.skip,
       where: { SearchResults_Deduplicated: { none: {} } },
     });
+
     if (searchResults.length === 0) break;
 
     // create all in deduplicated
@@ -812,7 +824,7 @@ async function createNonDeduplicate(allDuplicates) {
       abstract: item.abstract,
       keywords: item.keywords,
       doi: item.doi,
-      date: item.date ?? (new Date(item.date).getFullYear() || ""),
+      date: item.date ?? (new Date(item.date).getFullYear() || ''),
       otherIdentifier: item.identifierInSource,
       flag: null,
       item_ids: [item.identifierInSource.toString()],
@@ -840,8 +852,7 @@ async function createNonDeduplicate(allDuplicates) {
         `Created ${searchResults.length} non-deduplicated records`.yellow
       );
     }
-    config.skip += config.take;
-  } while (true);
+  }
 }
 
 module.exports = { deduplicate };
