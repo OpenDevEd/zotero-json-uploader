@@ -202,7 +202,7 @@ async function OpenAlexMatch() {
       date: result.date,
       keywords: result.keywords,
       doi: result.doi,
-      sourceDatabase: result.sourceDatabase,
+      sourceDatabase: 'Google Scholar OpenAlex',
       identifierInSource: result.identifierInSource,
       originalJson: result.originalJson,
       searchId: result.searchId,
