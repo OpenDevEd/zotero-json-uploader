@@ -25,13 +25,25 @@ model SearchResults {
   keywords                 String? // (";" separated entries)
   doi                      String?
   sourceDatabase           String?
-  identifierInSource       String
-  originalJson             Json
+  identifierInSource       String?
+  originalJson             Json?
   searchId                 String?
-  itemPositionWithinSearch Int
+  itemPositionWithinSearch Int?
 
   // Relations
   SearchResults_Deduplicated SearchResults_Deduplicated[]
+  filledItemsMain            FilledItems[]                @relation("MainSourceRelation")
+  filledItemsMatched         FilledItems[]                @relation("MatchedItemRelation")
+}
+
+model FilledItems {
+  id            String  @id @default(uuid())
+  mainSourceId  String?
+  matchedItemId String?
+
+  // Relations
+  mainSource  SearchResults? @relation("MainSourceRelation", fields: [mainSourceId], references: [id])
+  matchedItem SearchResults? @relation("MatchedItemRelation", fields: [matchedItemId], references: [id])
 }
 
 model SearchResults_Deduplicated {

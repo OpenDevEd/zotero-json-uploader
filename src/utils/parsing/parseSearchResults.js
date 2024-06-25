@@ -3,10 +3,12 @@ const defaultPath = path.join(__dirname, '../../../');
 const fs = require('fs');
 const jq = require('node-jq');
 
-async function parseSearchResults(data) {
+async function parseSearchResults(data, parse = true) {
   try {
+
+    const dataForJq = parse ? JSON.parse(data) : data;
     const filterString = fs.readFileSync(defaultPath + '/jq/searchResultsParser.jq', 'utf8');
-    const dataAfter = await jq.run(filterString, JSON.parse(data), { input: 'json', output: 'pretty' });
+    const dataAfter = await jq.run(filterString, dataForJq, { input: 'json', output: 'pretty' });
     return JSON.parse(dataAfter);
 
   } catch (error) {
