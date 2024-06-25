@@ -138,3 +138,8 @@ migrations
 extra_json/
 
 .env.backup
+
+openalex-*.json
+deduplicate*.json
+filledItemsToCreate.json
+searchResults*.json

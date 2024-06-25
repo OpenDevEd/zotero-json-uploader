@@ -26,13 +26,12 @@ async function openAlexOneItem(item) {
   const searchOption =
     year >= 1970 || year <= new Date().getFullYear()
       ? {
-        search: item.title,
-        filter: {
-          publication_year: [year - 1, year, year + 1],
-        },
-        AbstractArrayToString: true,
-      }
-      : { search: item.title, AbstractArrayToString: true };
+          search: item.title,
+          filter: {
+            publication_year: [year - 1, year, year + 1],
+          },
+        }
+      : { search: item.title };
   const searchResults = await openAlex.works(searchOption);
   item.title = oldTitle;
   // filter by title and abstract
@@ -110,7 +109,7 @@ async function OpenAlexMatch() {
       sourceDatabase: 'Google Scholar',
       // id: '0f9d75a7-9880-4d31-9fbc-fbcdf66dc1c7',
     },
-    take: 10,
+    take: 20,
   });
   let results = [];
   for (let item of sample) {
@@ -140,9 +139,13 @@ async function OpenAlexMatch() {
   }
 
   // parse openalex results
-  const filter = fs.readFileSync(path.join(defaultPath, '/jq/parseOpenAlexMatched.jq'), 'utf8');
+  const filter = fs.readFileSync(
+    path.join(defaultPath, '/jq/parseOpenAlexMatched.jq'),
+    'utf8'
+  );
   const parsedOpenAlexResults = await jq.run(filter, results, {
-    input: 'json', output: 'pretty'
+    input: 'json',
+    output: 'pretty',
   });
 
   // convert to Object
@@ -152,10 +155,8 @@ async function OpenAlexMatch() {
   const ParentsOfNewSearchResults = await prisma.searchResults.findMany({
     where: {
       id: {
-        in: newSearchResults.results.map((result) =>
-          result.parentId
-        )
-      }
+        in: newSearchResults.results.map((result) => result.parentId),
+      },
     },
     include: {
       SearchResults_Deduplicated: {
@@ -170,8 +171,27 @@ async function OpenAlexMatch() {
   const deduplicatedsToUpdate = [];
   const deduplicatedsToCreate = [];
 
+  // pull data from filed items and remove new search results that are already in the database
+
+  const filledItems = await prisma.filledItems.findMany({
+    where: {
+      mainSourceId: {
+        in: newSearchResults.results.map((result) => result.parentId),
+      },
+    },
+  });
+  // remove the search results that are already in the database
+  newSearchResults.results = newSearchResults.results.filter(
+    (result) =>
+      !filledItems.some(
+        (filledItem) => filledItem.mainSourceId === result.parentId
+      )
+  );
+
   for (let result of newSearchResults.results) {
-    const parent = ParentsOfNewSearchResults.find((parent) => parent.id === result.parentId);
+    const parent = ParentsOfNewSearchResults.find(
+      (parent) => parent.id === result.parentId
+    );
     const deduplicated = parent.SearchResults_Deduplicated[0]?.Deduplicated;
 
     // create the search result
@@ -187,13 +207,14 @@ async function OpenAlexMatch() {
       originalJson: result.originalJson,
       searchId: result.searchId,
       itemPositionWithinSearch: result.itemPositionWithinSearch,
-    }
+    };
     searchResultsToCreate.push(newSearchResult);
 
     // create the filled item
+
     filledItemsToCreate.push({
-      mainSourceId: newSearchResult.id,
-      matchedItemId: result.parentId,
+      mainSourceId: result.parentId,
+      matchedItemId: newSearchResult.id,
     });
 
     if (deduplicated) {
@@ -206,10 +227,10 @@ async function OpenAlexMatch() {
           item_ids: { push: deduplicated.otherIdentifier.toString() },
           average_rank: Math.floor(
             deduplicated.average_rank +
-            (result.itemPositionWithinSearch - deduplicated.average_rank) /
-            (deduplicated.number_of_sources + 1)
+              (result.itemPositionWithinSearch - deduplicated.average_rank) /
+                (deduplicated.number_of_sources + 1)
           ),
-          number_of_sources: { increment: 1 }
+          number_of_sources: { increment: 1 },
         },
       });
 
@@ -233,7 +254,7 @@ async function OpenAlexMatch() {
         },
         average_rank: result.itemPositionWithinSearch,
         number_of_sources: 1,
-      }
+      };
 
       // create the deduplicate.
       deduplicatedsToCreate.push(newDedup);
@@ -247,14 +268,13 @@ async function OpenAlexMatch() {
   }
 
   try {
-
     const toUpdate = deduplicatedsToUpdate.map((deduplicated) => {
       return prisma.deduplicated.update({
         where: {
-          id: deduplicated.where.id
+          id: deduplicated.where.id,
         },
-        data: deduplicated.data
-      })
+        data: deduplicated.data,
+      });
     });
 
     await prisma.$transaction([
@@ -263,18 +283,32 @@ async function OpenAlexMatch() {
       prisma.deduplicated.createMany({ data: deduplicatedsToCreate }),
       ...toUpdate,
       prisma.searchResults_Deduplicated.createMany({
-        data: searchResultsDudplicatedRelationsToCreate
+        data: searchResultsDudplicatedRelationsToCreate,
       }),
     ]);
 
     // JUST FOR TESTING
-    // write all to files 
-    fs.writeFileSync("searchResultsToCreate.json", JSON.stringify(searchResultsToCreate, null, 2));
-    fs.writeFileSync("filledItemsToCreate.json", JSON.stringify(filledItemsToCreate, null, 2));
-    fs.writeFileSync("searchResultsDudplicatedRelationsToCreate.json", JSON.stringify(searchResultsDudplicatedRelationsToCreate, null, 2));
-    fs.writeFileSync("deduplicatedsToUpdate.json", JSON.stringify(deduplicatedsToUpdate, null, 2));
-    fs.writeFileSync("deduplicatedsToCreate.json", JSON.stringify(deduplicatedsToCreate, null, 2));
-
+    // write all to files
+    fs.writeFileSync(
+      'searchResultsToCreate.json',
+      JSON.stringify(searchResultsToCreate, null, 2)
+    );
+    fs.writeFileSync(
+      'filledItemsToCreate.json',
+      JSON.stringify(filledItemsToCreate, null, 2)
+    );
+    fs.writeFileSync(
+      'searchResultsDudplicatedRelationsToCreate.json',
+      JSON.stringify(searchResultsDudplicatedRelationsToCreate, null, 2)
+    );
+    fs.writeFileSync(
+      'deduplicatedsToUpdate.json',
+      JSON.stringify(deduplicatedsToUpdate, null, 2)
+    );
+    fs.writeFileSync(
+      'deduplicatedsToCreate.json',
+      JSON.stringify(deduplicatedsToCreate, null, 2)
+    );
   } catch (error) {
     console.log(error);
   }
@@ -285,7 +319,6 @@ async function OpenAlexMatch() {
   //   JSON.stringify(results, null, 2)
   // );
   // console.log(`no results: ${noResult}`.red);
-
 }
 
 module.exports = { OpenAlexMatch };
