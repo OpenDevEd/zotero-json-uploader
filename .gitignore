@@ -143,3 +143,4 @@ openalex-*.json
 deduplicate*.json
 filledItemsToCreate.json
 searchResults*.json
+result000*

@@ -8,7 +8,7 @@ async function deduplicate() {
   // await prisma.deduplicated.deleteMany();
   // await prisma.searchResults_Deduplicated.deleteMany();
   // await prisma.searchResults.deleteMany();
-  await deleteDeduplicated();
+  // await deleteDeduplicated();
   await deduplicateSearchResultV6();
   console.log(` -> Deduplication 1/2 complete`.green);
   // find the search results that donst have any
@@ -602,13 +602,14 @@ async function deduplicateSearchResultV6() {
   } = await processDuplicates(uniqueDuplicates, existingDeduplicated);
 
   console.log(
-    `Found ${deduplicatedToCreate.length} new deduplicated records`.yellow,
-    `\nFound ${deduplicatedToUpdate.length} existing deduplicated records`
-      .yellow
+    `Found ${deduplicatedToCreate.length} new deduplicated records`.yellow
   );
+  // print how many records are going to be updated
+  console.log(`Updating ${deduplicatedToUpdate.length} records...`.yellow);
   const updateTransactions = deduplicatedToUpdate.map((item) =>
     prisma.deduplicated.update(item)
   );
+
   const transactions = [
     deduplicatedToCreate.length > 0
       ? prisma.deduplicated.createMany({ data: deduplicatedToCreate })
@@ -729,6 +730,15 @@ async function processDuplicates(duplicates, existingDeduplicated) {
   const searchResults_DeduplicatedToCreate = [];
   const deduplicatedToUpdate = [];
 
+  let linkedDedup = [];
+  linkedDedup = await prisma.searchResults_Deduplicated.findMany({
+    where: {
+      searchResultsId: {
+        in: duplicates.map((d) => d.id),
+      },
+    },
+  });
+
   for (let item of duplicates) {
     let dedup = existingDeduplicated.find(
       (d) =>
@@ -737,6 +747,12 @@ async function processDuplicates(duplicates, existingDeduplicated) {
     );
 
     if (dedup) {
+      // check if the search result is already linked to the dedup
+      const isLinked = linkedDedup.find(
+        (l) => l.deduplicatedId === dedup.id && l.searchResultsId === item.id
+      );
+
+      if (isLinked) continue;
       searchResults_DeduplicatedToCreate.push({
         searchResultsId: item.id,
         deduplicatedId: dedup.id,
@@ -798,24 +814,51 @@ async function createNonDeduplicate(allDuplicates) {
     take: 10000,
     skip: 0,
   };
-
+  console.log('Creating non-deduplicated records...'.yellow);
   // get all search results that don't have a dedup
-  const searchResultsCount = await prisma.searchResults.count({
-    where: { SearchResults_Deduplicated: { none: {} } },
-  });
-  console.log(`Total search results to process: ${searchResultsCount}`.yellow);
+  // const searchResultsCount = await prisma.searchResults.count({
+  //   where: { SearchResults_Deduplicated: { none: {} } },
+  // });
+  // changed it to raw query because it was taking so long takes around 1-3 min sometimes and my raw query takes 1-2 sec to run
+  const searchResultsCount = await prisma.$queryRaw`SELECT COUNT(*)
+FROM searchtrailstest."SearchResults"
+WHERE NOT EXISTS (
+    SELECT 1
+    FROM searchtrailstest."SearchResults_Deduplicated"
+    WHERE searchtrailstest."SearchResults"."id" = searchtrailstest."SearchResults_Deduplicated"."searchResultsId"
+);`;
 
-  const iterations = Math.ceil(searchResultsCount / config.take);
+  console.log(
+    `Total search results to process: ${searchResultsCount[0].count}`.yellow
+  );
+
+  const iterations = Math.ceil(
+    parseInt(searchResultsCount[0].count) / config.take
+  );
   console.log(`Total iterations: ${iterations}`.yellow);
 
   for (let i = 0; i < iterations; i++) {
     // get all search results that don't have a dedup
-    const searchResults = await prisma.searchResults.findMany({
-      take: config.take,
-      where: { SearchResults_Deduplicated: { none: {} } },
-    });
+    // const searchResults = await prisma.searchResults.findMany({
+    //   take: config.take,
+    //   where: { SearchResults_Deduplicated: { none: {} } },
+    // });
 
-    if (searchResults.length === 0) break;
+    const searchResults = await prisma.$queryRaw`
+    SELECT *
+    FROM searchtrailstest."SearchResults"
+    WHERE NOT EXISTS (
+        SELECT 1
+        FROM searchtrailstest."SearchResults_Deduplicated"
+        WHERE searchtrailstest."SearchResults"."id" = searchtrailstest."SearchResults_Deduplicated"."searchResultsId"
+    )
+    LIMIT ${config.take};
+`;
+
+    if (searchResults.length === 0) {
+      console.log(searchResults);
+      break;
+    }
 
     // create all in deduplicated
     const deduplicatedToCreate = searchResults.map((item) => ({

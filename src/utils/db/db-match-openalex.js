@@ -7,17 +7,39 @@ const { openalexToZotero } = require('../openalex-to-zotero');
 const jq = require('node-jq');
 const path = require('path');
 const uuid = require('uuid');
+const { title } = require('process');
 
 const defaultPath = path.join(__dirname, '../../../');
-
+const openAlex = new OpenAlex();
 async function openAlexOneItem(item) {
   // search for items by title first 30 characters and abstract if available
-  const openAlex = new OpenAlex();
+
   const originalJson = JSON.parse(item.originalJson);
   let oldTitle = item.title;
   // check if the title had , in it if so remove it
   if (item.title.includes('&')) {
     item.title = item.title.replace('&', '');
+  }
+  if (item.title.includes('(')) {
+    item.title = item.title.replace('(', '');
+  }
+  if (item.title.includes(')')) {
+    item.title = item.title.replace(')', '');
+  }
+  if (item.title.includes(':')) {
+    item.title = item.title.replace(':', '');
+  }
+  if (item.title.includes('.')) {
+    item.title = item.title.replace('.', '');
+  }
+  if (item.title.includes(',')) {
+    item.title = item.title.replace(',', '');
+  }
+  if (item.title.includes('!')) {
+    item.title = item.title.replace('!', '');
+  }
+  if (item.title.includes('?')) {
+    item.title = item.title.replace('?', '');
   }
   // if item has valid year
   const date = item.date;
@@ -32,72 +54,82 @@ async function openAlexOneItem(item) {
           },
         }
       : { search: item.title };
-  const searchResults = await openAlex.works(searchOption);
-  item.title = oldTitle;
-  // filter by title and abstract
-  let filtered = searchResults.results.filter(
-    (result) =>
-      (result.title &&
-        result.title.toLowerCase().includes(item.title.toLowerCase())) ||
-      (result.abstract &&
-        result.abstract.toLowerCase().includes(item.abstract.toLowerCase()))
-  );
-  if (filtered.length === 0) {
-    console.log(`no results for part 1 ${item.title}`.red);
-    filtered = searchResults.results;
-  }
-  // filter by author last name
-  else if (filtered.length == 1)
-    return {
-      meta: searchResults.meta,
-      results: filtered,
-    };
-  else if (filtered.length > 1)
-    console.log(`more than 1 result in part 1 for ${item.title}`.red);
-
-  const authorsMap = originalJson.creators;
-
-  let filtered2 = filtered.filter((result) => {
-    return result.authorships.some((authorship) =>
-      authorsMap.some((author) => {
-        if (author.lastName) {
-          return authorship.author.display_name
-            .toLowerCase()
-            .includes(author.lastName.toLowerCase());
-        }
-        return false;
-      })
+  try {
+    const searchResults = await openAlex.works(searchOption);
+    item.title = oldTitle;
+    // filter by title and abstract
+    let filtered = searchResults.results.filter(
+      (result) =>
+        (result.title &&
+          result.title.toLowerCase().includes(item.title.toLowerCase())) ||
+        (result.abstract &&
+          result.abstract.toLowerCase().includes(item.abstract.toLowerCase()))
     );
-  });
-  if (filtered2.length === 0) {
-    console.log(`no results for part 2 ${item.title}`.red);
-    filtered2 = filtered;
-  } else if (filtered2.length == 1)
-    return {
-      meta: searchResults.meta,
-      results: filtered2,
-    };
-  else if (filtered2.length > 1)
-    console.log(`more than 1 result in part 2 for ${item.title}`.red);
+    if (filtered.length === 0) {
+      filtered = searchResults.results;
+    }
+    // filter by author last name
+    else if (filtered.length == 1)
+      return {
+        meta: searchResults.meta,
+        results: filtered,
+      };
+    else if (filtered.length > 1)
+      console.log(`more than 1 result in part 1 for ${item.title}`.red);
 
-  // filter by string similarity of title
-  const filtered3 = filtered2.filter((result) => {
-    return stringSimilarity.compareTwoStrings(result.title, item.title) > 0.85;
-  });
-  if (filtered3.length === 0) {
-    console.log(`no results for part 3 ${item.title}`.red);
-  }
-  if (filtered3.length == 1)
+    const authorsMap = originalJson.creators;
+
+    let filtered2 = filtered.filter((result) => {
+      return result.authorships.some((authorship) =>
+        authorsMap.some((author) => {
+          if (author.lastName) {
+            return authorship.author.display_name
+              .toLowerCase()
+              .includes(author.lastName.toLowerCase());
+          }
+          return false;
+        })
+      );
+    });
+    if (filtered2.length === 0) {
+      filtered2 = filtered;
+    } else if (filtered2.length == 1)
+      return {
+        meta: searchResults.meta,
+        results: filtered2,
+      };
+    else if (filtered2.length > 1)
+      console.log(`more than 1 result in part 2 for ${item.title}`.red);
+
+    // filter by string similarity of title
+    const filtered3 = filtered2.filter((result) => {
+      if (result.title) {
+        return (
+          stringSimilarity.compareTwoStrings(result.title, item.title) > 0.8
+        );
+      }
+      return false;
+    });
+    if (filtered3.length === 0) {
+    }
+    if (filtered3.length == 1)
+      return {
+        meta: searchResults.meta,
+        results: filtered3,
+      };
+    else if (filtered3.length > 1)
+      console.log(`more than 1 result in part 3 for ${item.title}`.red);
     return {
       meta: searchResults.meta,
-      results: filtered3,
+      results: [],
     };
-  else if (filtered3.length > 1)
-    console.log(`more than 1 result in part 3 for ${item.title}`.red);
-  return {
-    meta: searchResults.meta,
-    results: [],
-  };
+  } catch (error) {
+    console.log(`error in openalex search ${error}`.red);
+    return {
+      meta: {},
+      results: [],
+    };
+  }
 }
 
 async function OpenAlexMatch() {
@@ -109,34 +141,75 @@ async function OpenAlexMatch() {
       sourceDatabase: 'Google Scholar',
       // id: '0f9d75a7-9880-4d31-9fbc-fbcdf66dc1c7',
     },
-    take: 20,
+    skip: 11000, // next 7000
   });
+  // print count of records
+  console.log(`total records: ${sample.length}`.green);
   let results = [];
-  for (let item of sample) {
-    const openAlexResults = await openAlexOneItem(item);
+  // for (let item of sample) {
+  //   const openAlexResults = await openAlexOneItem(item);
 
-    if (openAlexResults.results.length > 0) {
-      // add the result and item
-      const result = {
-        openAlexResult: openAlexResults.results,
-        item,
-      };
-      results.push(result);
-    }
+  //   if (openAlexResults.results.length > 0) {
+  //     // add the result and item
+  //     const result = {
+  //       openAlexResult: openAlexResults.results,
+  //       item,
+  //     };
+  //     results.push(result);
+  //   }
 
-    // if more than 1 result print to console
-    else if (openAlexResults.results.length > 1) {
-      console.log(`more than 1 result for ${item.title}`);
-    } else if (openAlexResults.results.length == 0) {
-      console.log(`no results for ${item.title}`);
-      noResult++;
-      const result2 = {
-        openAlexResult: [],
-        item,
-      };
-      results.push(result2);
+  //   // if more than 1 result print to console
+  //   else if (openAlexResults.results.length > 1) {
+  //     console.log(`more than 1 result for ${item.title}`);
+  //   } else if (openAlexResults.results.length == 0) {
+  //     console.log(`no results for ${item.title}`);
+  //     noResult++;
+  //     const result2 = {
+  //       openAlexResult: [],
+  //       item,
+  //     };
+  //     results.push(result2);
+  //   }
+  // }
+
+  // Process all items in parallel
+  // Function to process each item with rate limiting
+  const processWithRateLimit = async (items, limit, interval) => {
+    const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+    const queue = [...items];
+
+    const results = [];
+    while (queue.length > 0) {
+      const batch = queue.splice(0, limit);
+      const batchResults = await Promise.all(
+        batch.map(async (item) => {
+          const openAlexResults = await openAlexOneItem(item);
+          if (openAlexResults.results.length > 0) {
+            return {
+              openAlexResult: openAlexResults.results,
+              item,
+            };
+          } else if (openAlexResults.results.length > 1) {
+            console.log(`more than 1 result for ${item.title}`);
+          } else if (openAlexResults.results.length == 0) {
+            console.log(`no results for ${item.title}`);
+            noResult++;
+            return {
+              openAlexResult: [],
+              item,
+            };
+          }
+        })
+      );
+      results.push(...batchResults);
+      await delay(interval);
     }
-  }
+    return results;
+  };
+
+  // Process items with a limit of 10 requests per second
+  results = await processWithRateLimit(sample, 10, 1000);
+  console.log(`no results: ${noResult}`.red);
 
   // parse openalex results
   const filter = fs.readFileSync(
@@ -209,31 +282,66 @@ async function OpenAlexMatch() {
       itemPositionWithinSearch: result.itemPositionWithinSearch,
     };
     searchResultsToCreate.push(newSearchResult);
+    // extract original search result
+    const searchResult = await prisma.searchResults.findUnique({
+      where: {
+        id: result.parentId,
+      },
+    });
 
     // create the filled item
 
     filledItemsToCreate.push({
-      mainSourceId: result.parentId,
-      matchedItemId: newSearchResult.id,
+      mainSourceId: result.parentId, // original search result id aka google scholar record
+      matchedItemId: newSearchResult.id, // new search result id aka openalex record
     });
 
     if (deduplicated) {
-      // update deduplicated
-      deduplicatedsToUpdate.push({
-        where: {
-          id: deduplicated.id,
-        },
-        data: {
-          item_ids: { push: deduplicated.otherIdentifier.toString() },
-          average_rank: Math.floor(
-            deduplicated.average_rank +
-              (result.itemPositionWithinSearch - deduplicated.average_rank) /
-                (deduplicated.number_of_sources + 1)
-          ),
-          number_of_sources: { increment: 1 },
-        },
-      });
-
+      // check if the deduplicated source is google scholar if so update the deduplicated information source u will find it in the search result
+      // TODO: need to double check about this , not sure if this will work 100%
+      // also double check if the deduplicated have all of those filed or it just have the id
+      if (
+        searchResult.sourceDatabase === 'Google Scholar' &&
+        searchResult.title == deduplicated.title &&
+        searchResult.abstract == deduplicated.abstract &&
+        searchResult.date == deduplicated.date &&
+        searchResult.doi == deduplicated.doi
+      ) {
+        deduplicatedsToUpdate.push({
+          where: {
+            id: deduplicated.id,
+          },
+          data: {
+            item_ids: { push: newSearchResult.identifierInSource.toString() },
+            title: result.title,
+            abstract: result.abstract,
+            keywords: result.keywords,
+            doi: result.doi,
+            date: result.date,
+            average_rank: Math.floor(
+              deduplicated.average_rank +
+                (result.itemPositionWithinSearch - deduplicated.average_rank) /
+                  (deduplicated.number_of_sources + 1)
+            ),
+            number_of_sources: { increment: 1 },
+          },
+        });
+      } else {
+        deduplicatedsToUpdate.push({
+          where: {
+            id: deduplicated.id,
+          },
+          data: {
+            item_ids: { push: newSearchResult.identifierInSource.toString() },
+            average_rank: Math.floor(
+              deduplicated.average_rank +
+                (result.itemPositionWithinSearch - deduplicated.average_rank) /
+                  (deduplicated.number_of_sources + 1)
+            ),
+            number_of_sources: { increment: 1 },
+          },
+        });
+      }
       // create the relation
       searchResultsDudplicatedRelationsToCreate.push({
         deduplicatedId: deduplicated.id,
@@ -276,6 +384,16 @@ async function OpenAlexMatch() {
         data: deduplicated.data,
       });
     });
+    // save to database
+    console.log(`saving to database`.green);
+    console.log(`searchResultsToCreate: ${searchResultsToCreate.length}`.green);
+    console.log(`filledItemsToCreate: ${filledItemsToCreate.length}`.green);
+    console.log(
+      `searchResultsDudplicatedRelationsToCreate: ${searchResultsDudplicatedRelationsToCreate.length}`
+        .green
+    );
+    console.log(`deduplicatedsToUpdate: ${deduplicatedsToUpdate.length}`.green);
+    console.log(`deduplicatedsToCreate: ${deduplicatedsToCreate.length}`.green);
 
     await prisma.$transaction([
       prisma.searchResults.createMany({ data: searchResultsToCreate }),
